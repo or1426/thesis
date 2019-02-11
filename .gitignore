@@ -1,0 +1,10 @@
+*.toc
+*.out
+*.lot
+*.log
+*.lof
+*.idx
+*.aux
+*.blg
+*.bbl
+*.dvi

@@ -3,7 +3,6 @@
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
 
-
 \newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
 \newcommand{\ot}{\otimes}
 \newcommand{\eps}{\epsilon}
@@ -40,8 +39,7 @@
 \newcommand{\smath}{\mathbb{S}}
 \newcommand{\norm}[3]{\vert  #1 {\vert }_{#2}^{#3}} %%26/12/2013
 \newcommand{\Norm}[3]{\Vert  #1 {\Vert }_{#2}^{#3}} %%26/12/2013
-\
-%\newcommand{\eps}{\varepsilon}
+
 \newcommand{\then}{\Rightarrow}
 \newcommand\Eb{\mathbb{E}}
 \newcommand\N{\mathbb{N}}
@@ -64,3 +62,256 @@
 \def\divv{\mathrm{div}}
 \def\rE{\mathrm{E}}
 \def\e{\mathbb{E}}
+
+
+%----------------------------------------------------------------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------------------------------------------------------------
+%from low dimensional preparation ur paper
+\newcommand{\bor}{\bm{r}}
+\newcommand{\born}{\bm{r}_0}
+\newcommand{\boa}{\bm{a}}
+\newcommand{\bob}{\bm{b}}
+\newcommand{\boc}{\bm{c}}
+\newcommand{\bou}{\bm{u}}
+\newcommand{\boe}{\bm{e}}
+\newcommand{\boex}{\bm{x}}
+\newcommand{\boy}{\bm{y}}
+\newcommand{\bogam}{\bm{\gamma}}
+
+\newcommand{\bosig}{{\boldsymbol\sigma}}
+\newcommand{\opa}{\operatorname{A}}%{\mathrm{A}} 
+\newcommand{\opb}{\operatorname{B}}%{\mathrm{B}}
+\newcommand{\opc}{\operatorname{C}}
+\newcommand{\opi}{\operatorname{I}}
+\newcommand{\oppi}{\operatorname{\Pi}}
+\newcommand{\opq}{\operatorname{Q}}
+\newcommand{\opp}{\operatorname{P}}
+
+\newcommand{\expr}[1]{\left\langle {#1}\right\rangle_\rho} % for the expectation value
+\newcommand{\expnr}[1]{\left\langle {#1}\right\rangle} % for the expectation value without state argument
+
+\DeclareDocumentCommand{\sdev}{ O{} m }{
+  {\Delta_{{#1}} {#2}}
+}
+\DeclareDocumentCommand{\var}{ O{} m }{
+  {\Delta^2_{#1} {#2}}
+}
+\newcommand{\varr}[1]{{\var[\rho]{{#1}}}}
+\newcommand{\sdevr}[1]{{\sdev[\rho]{{#1}}}}
+
+\newcommand{\sdevmin}[1]{{\sdev{#1}_\text{min}}}
+\newcommand{\varmin}[1]{{\var{#1}_\text{min}}}
+
+\newcommand{\sdevmax}[1]{{\sdev{#1}_\text{max}}}
+\newcommand{\varmax}[1]{{\var{#1}_\text{max}}}
+
+\newcommand{\ft}[1]{\widetilde{#1}} % formal Fourier transform
+\newcommand{\Cos}[1]{\cos\left(#1\right)} % cos with brackets
+\newcommand{\Sin}[1]{\sin\left(#1\right)} % sin with brackets
+
+\newcommand{\bracks}[1]{\left(#1\right)} % for brackets
+\newcommand{\sbracks}[1]{\left[#1\right]} % square brackets
+\newcommand{\com}[2]{\left[#1,#2\right]} % commutator
+\newcommand{\comm}[2]{#1 #2 - #2 #1} % commutator spelled out
+\newcommand{\acom}[2]{#1 #2 + #2 #1} % anti-commutator
+
+\newcommand{\si}{\mathcal{S}}
+\newcommand{\hi}{\mathcal{H}}
+
+\renewcommand{\max}{{\operatorname{max}}}
+\renewcommand{\min}{{\operatorname{min}}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\ival}{I}
+\newcommand{\PUR}[3]{\operatorname{PUR}_{#1}\left({#2},{#3}\right)}
+
+
+\pgfkeys{
+  /drawSemiCircle/.is family, /drawSemiCircle,
+  defaults/.style = {scale = \textwidth,
+    aAngle = 0,
+    bAngle = 0,
+    rAngle = 0,
+    rLength = 1,
+    drawBPrime = false,
+    drawRightAngles = true,
+    rightAngleScale = 0.07},
+  scale/.estore in = \scale,
+  aAngle/.estore in = \aAngle,
+  bAngle/.estore in =\bAngle,
+  rAngle/.estore in =\rAngle,
+  rLength/.estore in =\rLength,
+  drawBPrime/.estore in =\drawBPrime,
+  rSub/.estore in =\rSub,
+  drawRightAngles/.estore in =\drawRightAngles,
+  rightAngleScale/.estore in =\rightAngleScale,
+}
+
+
+
+\newcommand{\DrawSemiCircle[2]}{%
+  \pgfkeys{/drawSemiCircle, defaults, #1}%
+  \begin{tikzpicture}[scale=\scale/2cm,>=stealth] %because a circle of radius 1 is 2cm wide this is the base length for the figure
+    % draw the base line (before clipping so it doesn't get cut in half)
+    \draw (-1,0) -- (1,0);
+
+    % clip out the upper half
+    \clip (-1cm, 0cm) rectangle (1.2cm, 1.2cm);
+
+    % Draw the circle
+    \draw (0cm,0cm) circle (1cm);
+
+    % Put the a and b vectors on it
+    \draw [name=vect,thick,->] (0,0) -- node[pos=1,fill=none,label=\aAngle:$\boa$] {} (\aAngle:1cm);
+    \draw [name=vect,thick,->] (0,0) -- node[pos=1,fill=none,label=\bAngle:$\bob$] {} (\bAngle:1cm);
+    \IfEqCase{\drawBPrime}{
+      {true}{
+        \pgfmathsetmacro{\bPrimeAngle}{\bAngle-90};
+        \draw [name=vect,thick,->] (0,0) -- node[pos=1, left  = 0.1 ,fill=none] {$\bob^\prime$} (\bPrimeAngle:1cm);
+        \IfEqCase{\drawRightAngles}{
+          {true}{
+            \pgfmathsetmacro{\midAngle}{(\bPrimeAngle+\bAngle)/2}
+            \pgfmathsetmacro{\midLength}{sqrt(2)*\rightAngleScale}
+            \draw [name=rangle] (\bAngle:\rightAngleScale) -- (\midAngle:\midLength) -- (\bPrimeAngle:\rightAngleScale);
+          }
+          {false}{}
+        }
+      }
+      {false}{}
+    }
+    % now the r vector
+    \draw [name=vect,thick,->] (0,0) -- node[midway, fill=white] {$\bor_{\rSub}$} (\rAngle:\rLength);
+
+    % now we can compute r.a, r.b
+    \pgfmathsetmacro{\ra}{1*\rLength*cos(\aAngle-\rAngle)}
+    \pgfmathsetmacro{\rb}{1*\rLength*cos(\bAngle-\rAngle)}
+
+    % and draw a*, b*, x and y
+    \draw [name=vect,thick,->] (0,0) -\- node[pos=1, below right = 0.06 and 0.03 ,fill=none] {$\boa^*$} (\aAngle:\ra);
+    \draw [name=vect,thick,->] (\aAngle:\ra) -- node[midway,fill=white] {$\bm{x}$} (\rAngle:\rLength);
+    \IfEq{\rb}{0}{
+      \IfEqCase{\drawRightAngles}{
+        {true}{
+          \pgfmathsetmacro{\midAngle}{(\rAngle+\bAngle)/2}
+          \pgfmathsetmacro{\midLength}{sqrt(2)*\rightAngleScale}
+          \draw [name=rangle] (\rAngle:\rightAngleScale) -- (\midAngle:\midLength) -- (\bAngle:\rightAngleScale);
+        }
+        {false}{}
+      }
+    }
+    {\draw [name=vect,thick,->] (0,0) -- node[pos=1, below left  = 0.05 and 0.03 ,fill=none] {$\bob^*$} (\bAngle:\rb);
+      \draw [name=vect,thick,->] (\bAngle:\rb) -- node[midway,fill=white] {$\bm{y}$} (\rAngle:\rLength);}
+
+    % draw right angles between a*,x and b*,y
+    \IfEq{\ra}{0}{}{
+      \IfEqCase{\drawRightAngles}{
+        {true}{
+          \pgfmathsetmacro{\rx}{\rLength*cos(\rAngle)}
+          \pgfmathsetmacro{\ry}{\rLength*sin(\rAngle)}
+
+          \pgfmathsetmacro{\rax}{\ra*cos(\aAngle)}
+          \pgfmathsetmacro{\ray}{\ra*sin(\aAngle)}
+          \pgfmathsetmacro{\xxUnNormed}{\rx - \rax}
+          \pgfmathsetmacro{\xyUnNormed}{\ry - \ray}
+          \pgfmathsetmacro{\xx}{\xxUnNormed / sqrt(\xxUnNormed*\xxUnNormed + \xyUnNormed*\xyUnNormed)}
+          \pgfmathsetmacro{\xy}{\xyUnNormed / sqrt(\xxUnNormed*\xxUnNormed + \xyUnNormed*\xyUnNormed)}
+          \pgfmathsetmacro{\aStartX}{\rax * (1 + \rightAngleScale/\ra)}
+          \pgfmathsetmacro{\aStartY}{\ray * (1 + \rightAngleScale/\ra)}
+          \pgfmathsetmacro{\aMidX}{\aStartX  + \rightAngleScale*\xx}
+          \pgfmathsetmacro{\aMidY}{\aStartY  + \rightAngleScale*\xy}
+          \pgfmathsetmacro{\aEndX}{\rax + \rightAngleScale*\xx}
+          \pgfmathsetmacro{\aEndY}{\ray + \rightAngleScale*\xy}
+          \draw [name=rangle] (\aStartX,\aStartY) --  (\aMidX,\aMidY) -- (\aEndX,\aEndY);
+        }
+        {false}{}
+      }
+    }
+    \IfEq{\rb}{0}{}{
+      \IfEqCase{\drawRightAngles}{
+        {true}{
+          \pgfmathsetmacro{\rbx}{\rb*cos(\bAngle)}
+          \pgfmathsetmacro{\rby}{\rb*sin(\bAngle)}
+          \pgfmathsetmacro{\yxUnNormed}{\rx - \rbx}
+          \pgfmathsetmacro{\yyUnNormed}{\ry - \rby}
+          \pgfmathsetmacro{\yx}{\yxUnNormed / sqrt(\yxUnNormed*\yxUnNormed + \yyUnNormed*\yyUnNormed)}
+          \pgfmathsetmacro{\yy}{\yyUnNormed / sqrt(\yxUnNormed*\yxUnNormed + \yyUnNormed*\yyUnNormed)}
+          \pgfmathsetmacro{\bStartX}{\rbx * (1 + \rightAngleScale/\rb)}
+          \pgfmathsetmacro{\bStartY}{\rby * (1 + \rightAngleScale/\rb)}
+          \pgfmathsetmacro{\bMidX}{\bStartX  + \rightAngleScale*\yx}
+          \pgfmathsetmacro{\bMidY}{\bStartY  + \rightAngleScale*\yy}
+          \pgfmathsetmacro{\bEndX}{\rbx + \rightAngleScale*\yx}
+          \pgfmathsetmacro{\bEndY}{\rby + \rightAngleScale*\yy}
+          \draw [name=rangle] (\bStartX,\bStartY) --  (\bMidX,\bMidY) -- (\bEndX,\bEndY);
+        }
+        {false}{}
+      }
+    }
+  \end{tikzpicture}
+}
+%correctly handles the cases where all the vectors are different, where b = r_0 and/or where b' = r_1 but no others (e.g. b' = r_1, b = a etc. will break the labels)
+\DeclareDocumentCommand{\DrawSphere}{ m m m }{%
+  \begin{tikzpicture}
+    \tdplotsetmaincoords{10}{0}
+    \tdplotsetrotatedcoords{90}{90}{-90}
+    \coordinate (O) at (0,0,0);
+    \pgfmathsetmacro{\scale}{0.1cm}
+
+    \pgfmathsetmacro{\aAngle}{{#1}}
+    \pgfmathsetmacro{\bAngle}{{#2}}
+    \pgfmathsetmacro{\rZeroAngle}{{#3}}
+    \pgfmathsetmacro{\rOneAngle}{\aAngle - abs(\aAngle - \rZeroAngle)}
+    \pgfmathsetmacro{\rOneLength}{\rOneAngle < 0 ? sqrt( 1 + (cos(\aAngle - \bAngle) / cos(\bAngle - \aAngle + 90))^2  ) *  abs(cos(\rZeroAngle - \aAngle)) : 1}
+    \pgfmathsetmacro{\rOneAngle}{\rOneAngle < 0 ? 0 : \rOneAngle}
+
+    \pgfmathsetmacro{\bPrimeAngle}{\bAngle - 90}
+
+    \tdplotsetcoord{a}{\scale}{90}{\aAngle}
+    \tdplotsetcoord{b}{\scale}{90}{\bAngle}
+    \tdplotsetcoord{bPrime}{\scale}{90}{\bPrimeAngle}
+    \tdplotsetcoord{rZero}{\scale}{90}{\rZeroAngle}
+    \tdplotsetcoord{rOne}{\rOneLength*\scale}{90}{\rOneAngle}
+
+    \tdplotdrawarc[tdplot_screen_coords]{(O)}{\scale}{0}{360}{}{}
+
+    %\draw [thick,->] (O) -- node[pos=1, right = 0.1, fill=none] {$\boa$} (a);
+    \draw [thick,->] (O) -- node[pos=1,fill=none, label={\aAngle:$\boa$}] {} (a);
+    \IfEq{\bAngle}{\rZeroAngle}{
+      \draw [thick,->] (O) -- node[pos=1, fill=none, label={\bAngle:$\bob = \bor_0$}] {} (b);
+    }{
+      \draw [thick,->] (O) -- node[pos=1, fill=none, label={\bAngle:$\bob$}] {} (b);
+      \draw [thick,->] (O) -- node[pos=1, fill=none, label={\rZeroAngle:$\bor_0$}] {} (rZero);
+    }
+
+    \IfEq{\bPrimeAngle}{\rOneAngle}{
+      \IfEq{\rOneLength}{1}{
+        \draw [thick,->] (O) -- node[pos=1, fill=none, label={\bPrimeAngle:$\bob^\prime = \bor_1$}] {} (bPrime);
+      }{
+        \draw [thick,->] (O) -- node[pos=1, fill=none, label={\bPrimeAngle:$\bob^\prime=\hat\bor_1$}] {} (bPrime);
+        \draw [thick,->] (O) -- node[pos=1, fill=none, label={[label distance=0.2*\scale]120:$\bor_1$}] {} (rOne);
+      }
+    }{
+      \draw [thick,->] (O) -- node[pos=1, fill=none, label={\bPrimeAngle:$\bob^\prime$}] {} (bPrime);
+      \draw [thick,->] (O) -- node[pos=1, fill=none, label={\rOneAngle:$\bor_1$}] {} (rOne);
+    }
+    \pgfmathsetmacro{\bRZeroCircleRad}{abs(sin(\bAngle - \rZeroAngle))}
+    \pgfmathsetmacro{\bRZeroCircleLoc}{abs(cos(\bAngle - \rZeroAngle))}
+    \tdplotdrawarc[tdplot_rotated_coords]{(0,0,\bRZeroCircleLoc*\scale)}{\bRZeroCircleRad*\scale}{0}{180}{anchor=north}{  }
+    \tdplotdrawarc[tdplot_rotated_coords, style=dashed]{(0,0,\bRZeroCircleLoc*\scale)}{\bRZeroCircleRad*\scale}{180}{360}{anchor=north}{  }
+
+    \pgfmathsetmacro{\bROneCircleRad}{abs(sin(\bAngle - \rOneAngle))}
+    \pgfmathsetmacro{\bROneCircleLoc}{cos(\bAngle - \rOneAngle)}
+    \tdplotdrawarc[tdplot_rotated_coords]{(0,0,\bROneCircleLoc*\scale)}{\bROneCircleRad*\scale}{0}{180}{anchor=north}{  }
+    \tdplotdrawarc[tdplot_rotated_coords, style=dashed]{(0,0,\bROneCircleLoc*\scale)}{\bROneCircleRad*\scale}{180}{360}{anchor=north}{  }
+
+    \tdplotsetrotatedcoords{\aAngle}{90}{-90}
+    \pgfmathsetmacro{\aRCircleRad}{abs(sin(\aAngle - \rZeroAngle))}
+    \pgfmathsetmacro{\aRCircleLoc}{abs(cos(\aAngle - \rZeroAngle))}
+    \tdplotdrawarc[tdplot_rotated_coords]{(0,0,\aRCircleLoc*\scale)}{\aRCircleRad*\scale}{0}{180}{anchor=north}{  }
+    \tdplotdrawarc[tdplot_rotated_coords, style=dashed]{(0,0,\aRCircleLoc*\scale)}{\aRCircleRad*\scale}{180}{360}{anchor=north}{  }
+  \end{tikzpicture}
+}
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------------------------------------------------------------

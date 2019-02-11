@@ -28,7 +28,7 @@
 %\bigskip
 
 
-\subsection{Introduction}
+\section{Introduction}
 
 The textbook expression of the uncertainty principle is given by the standard uncertainty relation,
 \begin{equation}\label{eq:HUR}
@@ -53,9 +53,9 @@ The purpose of the present work is to give an accessible introduction of the sub
 
 The  paper is organised as follows. After a brief review of the uncertainty region for the position and momentum of a particle in the line (Section \ref{sec:qp}), we give a general definition of the uncertainty region (Section \ref{sec:pur-def}) and proceed to consider the qubit case in some detail (Section \ref{sec:qubit}). We then proceed to determine uncertainty regions for some pairs of qutrit observables, noting interesting contrasts with the case of qubit observables (Section \ref{sec:qutrit}). We conclude with a summary and some general observations (Section \ref{sec:conclusion}).
 
-\subsection{Uncertainty regions}
+\section{Uncertainty regions}
 
-\subsubsection{Warm-up: a review of position and momentum}\label{sec:qp}
+\subsection{Warm-up: a review of position and momentum}\label{sec:qp}
 
 The Heisenberg uncertainty relation for position $\operatorname{Q}$ and momentum $\operatorname{P}$ of a particle on a line is given by the inequality \eqref{eq:HUR},
 \begin{equation}\label{eq:qp-ur}
@@ -103,7 +103,7 @@ Geometrically, the limiting case of equality in \eqref{eq:qp-add-lin} represents
 %\end{center}
 
 
-\subsubsection{Uncertainty region: general definition}\label{sec:pur-def}
+\subsection{Uncertainty region: general definition}\label{sec:pur-def}
 We seek to explore further the feature of tightness of an uncertainty relation  and so adopt the following definitions (see, e.g., Ref. \cite{abbott-state-indep-qubits}).
 We will understand tightness in the sense that the given uncertainty relation fully characterizes the set of admissible uncertainty pairs. In order for an inequality for the uncertainties to achieve this, it is necessary that the only state-dependent terms are the uncertainties themselves; hence such inequalities are of the form $f(\sdev{\opa},\sdev{\opb}, \opa,\opb)\ge 0$. As the reference to $\rho$ can then be dropped, we refer to such uncertainty relations as {\em state-independent}, in line with the terminology introduced in  Ref.~\cite{abbott-state-indep-qubits}.
 The term {\em tight} is sometimes used to describe an inequality for a set of variables where the limiting case of equality can be reached for some values; here instead we refer to this situation as {\em saturation} of the inequality. 
@@ -138,7 +138,7 @@ Some analytical, as well as some semianalytical bounds on uncertainty regions we
 
 Here we review the case of qubit observables, providing yet another proof of a geometric flavor that immediately focuses on and highlights the extremality property that defines the boundary of the uncertainty region (Section \ref{sec:qubit}). We also investigate to what extent the standard uncertainty relations may or may not characterise the uncertainty region and find that the Schr\"odinger inequality cannot, in general, be cast in a state-independent form as defined here. The examples of pairs of qutrit observables given in Section \ref{sec:qutrit} show that structural features found in the qubit case are no longer present in higher dimensions, for example the uncertainty region for two sharp, $\pm 1$-valued qubit observables contains the origin if and only if they commute.
 
-\subsection{Optimal qubit uncertainty relations}\label{sec:qubit}
+\section{Optimal qubit uncertainty relations}\label{sec:qubit}
 
 We consider sharp qubit observables with measurement outcomes (eigenvalues) $\pm 1$. These are represented as Hermitian operators (or $2\times 2$-matrices) of the form $\opa=\boa\cdot\bosig=a_x\sigma_x+a_y\sigma_y+a_z\sigma_z$, where vector $\boa$ has Euclidean length  $\|\boa\|=1$ and  $\sigma_x,\sigma_y,\sigma_z$ denote the Pauli matrices on ${\mathbb C}^2$. A general qubit state may be expressed as the density operator
 \begin{equation}
@@ -159,7 +159,7 @@ We also note  the operator norm of the commutator of $\opa,\opb$ is given by
 which suggests that $\sin\theta=\|\boa\times\bob\|$ is the relevant quantity to measure the degree of noncommutativity (incompatibility) of $\opa$ and $\opb$.
 
 
-\subsubsection{Uncertainty bounds for $\sigma_x,\sigma_y,\sigma_z$}\label{sec:xyz}
+\subsection{Uncertainty bounds for $\sigma_x,\sigma_y,\sigma_z$}\label{sec:xyz}
 Considering the variances of $\sigma_x,\sigma_y,\sigma_z$ in a general state $\rho$,
 \begin{equation}
   \varr{\sigma_x}=1-r_x^2,\quad \varr{\sigma_y}=1-r_y^2,  \quad \varr{\sigma_z}=1-r_z^2,
@@ -245,7 +245,7 @@ We summarise:
 
 \end{enumerate}
 
-\subsubsection{Uncertainty region for general $\pm 1$-valued qubit measurements}
+\subsection{Uncertainty region for general $\pm 1$-valued qubit measurements}
 \label{sec:qubit-uncertainty}
 %\subsubsection{Defining the uncertainty region}
 We  now consider general observables represented as $\opa=\boa\cdot\bosig$, $\opb=\bob\cdot\bosig$ where $\boa$ and $\bob$ are unit vectors but no longer assumed to be orthogonal. Observables of this form are sufficient to explore the shapes of uncertainty regions since any two outcome qubit observable may be simulated by one of this form using classical post processing (relabelling the measurement outcomes $\pm1$ and adding classical noise).
@@ -416,7 +416,7 @@ The resulting uncertainty region is plotted in Fig.~\ref{fig:top-level-err-regio
 \end{figure*}
 
 
-\subsubsection{Schr\"odinger uncertainty relation}\label{sec:sch-uncertainty-relation}
+\subsection{Schr\"odinger uncertainty relation}\label{sec:sch-uncertainty-relation}
 
 
 We now turn to a brief analysis of the Schr\"odinger inequality, beginning with the following observation.
@@ -502,9 +502,9 @@ An unexpected feature becomes apparent in the case of minimal uncertainty. Note 
 This term is analogous in form to the classical covariance; however, in the quantum context, this interpretation only applies where the measurements are compatible and thus have physical joint probabilities.
 
 
-\subsection{Qutrit uncertainty}
+\section{Qutrit uncertainty}
 \label{sec:qutrit}
-\subsubsection{Extended qubit observables}
+\subsection{Extended qubit observables}
 \label{sec:qubit-extended-uncertainty}
 A natural continuation of the qubit example is provided by extending the general, sharp, $\pm 1$-valued qubit observables $\boa\cdot\bosig$ and $\bob\cdot\bosig$ into a third dimension
 \begin{alignat}{3}
@@ -668,7 +668,7 @@ We then note that in the range $x\in\left[\frac{3}{4} ,1\right]$ only the $\rho_
 \end{align}
 For ease of exposition we here restrict our attention to $x = 1$, in which case only $\rho_{11} = \frac{1}{2}$ leads to a valid quantum state. We can therefore directly compute $f(1) = 0$, and note that as the function is continuous there is an interval where the Schr\"odinger inequality is too weak to completely describe the uncertainty region.  
 
-\subsection{Conclusion} \label{sec:conclusion}
+\section{Conclusion} \label{sec:conclusion}
 In this paper we have introduced the notion of the uncertainty region for a pair (or a finite collection) of quantum observables, and provided a range of examples illustrating the concept. In contrast to the well-known uncertainty relations, we observed that an uncertainty region is most appropriately described by a {\em state-independent} form of relation that describes, in particular, its boundary.
 
 We have given a geometrical derivation of the exact uncertainty region for an  arbitrary pair of $\pm1$-valued qubit observables, in the explicit form of a state independent uncertainty relation.  When the observables $\opa,\opb$ have non-orthogonal Bloch vectors $\boa,\bob$, we found non-trivial upper bounds for the variance $\varr{\opb}$ as a function of $\varr{\opa}$, and showed that this may be understood in terms of the uncertainty trade-off between $\opa$ and another observable $\opb'$ (whose Bloch vector $\bob'$ is in the plane of $\boa,\bob$ and perpendicular to $\bob$): the observables $\opb,\opb'$ obey the uncertainty relation $\var{\opb}+\var{\opb'}\ge 1$, and then the minimum value of $\sdev{\opb'}$ given $\sdev{\opa}$ dictates the maximum value of $\sdev{\opb}$.
@@ -682,17 +682,17 @@ The examples studied here reinforce the qualitative understanding of  the uncert
 The general theory of the structure of uncertainty regions is still unknown. It seems likely that an expanding library of case studies, like those described above, will help point the way for future investigations of this theory. A notable feature of these investigations is how rapidly the computations become more difficult as the Hilbert space dimension increases, for example attempting to generalise the results of sections \ref{sec:qubit-uncertainty} and \ref{sec:qubit-extended-uncertainty} to the case of extended qubit observables with non-orthogonal Bloch vectors requires computing the roots of fifth order polynomials. One avenue for further investigation could be the use of numerical methods in the analysis; since the variance is quadratic in the state the problem may be reduced to polynomial root finding, which may be efficiently solved using well known numerical techniques.
 To conclude, we expect that much can be learned about the uncertainty principle through the study of uncertainty regions, and hope our investigation will encourage some readers to undertake further case studies.
 
-\subsection*{Acknowledgements}
+\section*{Acknowledgements}
 
 We would like to thank Stefan Weigert and Roger Colbeck for helpful and stimulating discussions, as well as for feedback on previous drafts. Thomas Bullock kindly provided useful comments on the first arXiv version. Oliver Reardon-Smith gratefully acknowledges the support of the Engineering and Physical Sciences Research Council, as well as that of the University of York Department of Mathematics.
 
-\subsection*{Author contributions}
+\section*{Author contributions}
 
 Both authors contributed extensively to the work. Sadly, Paul Busch passed away in June 2018, when this manuscript was almost finalised. Since then it has been completed by Oliver Reardon-Smith under the supervision of Roger Colbeck.
 
 \appendix
 
-\subsection{Uncertainty region for Gell-Mann observables}
+\section{Uncertainty region for Gell-Mann observables}
 \label{app:gellmann-ur}
 Given
 \begin{align}
@@ -747,7 +747,7 @@ The constraints on $\rho_{13}$ imply that $0\leq\left(\Re{\rho_{13}}\right)^2\le
 \end{align}
 For a fixed $x$ the local minima and maxima will either be where the inequalities above are saturated or where the derivative of $\var[\rho^\pm]{\opa}$ with respect to $\rho_{11}$ (considering $\rho_{33}^\pm$ as a function of $\rho_{11}$) is zero. 
 
-\subsubsection{Exploring minima}
+\subsection{Exploring minima}
 Here we consider the case $\left(\Re{\rho_{13}}\right)^2 = \rho_{11}\rho_{33}^\pm$. In this case
 \begin{align}
   \var[\rho^\pm]{\opb} &= \rho_{11} + \rho_{33}^\pm -4\rho_{11}\rho_{33}^{\pm}\\
@@ -803,7 +803,7 @@ the (locally) extremising values of $\rho_{11}$ are summarised in Figure \ref{fi
   \caption{The filled region indicates the allowed values of $\rho_{11}$ as a function of $\var[\rho^+]{\opa}$ in each case. The solid lines are the boundary curves, given in  {\eqref{eqn:rho11-con}}}
 \end{figure}
 
-\subsubsection{Exploring maxima}
+\subsection{Exploring maxima}
 Here we consider the case $\left(\Re{\rho_{13}}\right)^2 = 0$. In this case
 \begin{align}
   \var[\rho^\pm]{\opb} &= \rho_{11} + \rho_{33}^\pm\\
@@ -819,7 +819,7 @@ There are no solutions for $\rho_{33}^-$, but $\rho_{33}^+$ has the solution
 \end{align}
 which is always a valid solution for $\rho^+$ and never valid for $\rho^-$. To this we add the boundary values which are the same as those with $\left(\Re{\rho_{13}}\right)^2 = \rho_{11}\rho_{33}$, given in \eqref{eqn:rho11-con}.
 
-\subsubsection{The bounding curves}
+\subsection{The bounding curves}
 Comparing the local extrema we can now describe the full uncertainty region shown in figure \ref{fig:qutrit-uncertainty-region}
 \begin{alignat}{2}
   & \var{\opb} = 1, \quad && \var{\opa}\in\left[0,\frac{1}{4}\right]\\

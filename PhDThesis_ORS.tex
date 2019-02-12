@@ -14,7 +14,7 @@
 % http://www.ctan.org/tex-archive/macros/latex/contrib/memoir/
 %
 % Memoir class loads useful packages by default (see manual).
-\documentclass[a4paper,11pt,leqno,openbib]{memoir} %add 'draft' to turn draft option on (see below)
+\documentclass[a4paper,11pt,leqno]{memoir} %add 'draft' to turn draft option on (see below)
 %
 %
 % Adding metadata:
@@ -36,10 +36,7 @@
 \fi
 
 \usepackage{subcaption}
-%
-% Declare figure/table as a subfloat.
-%\newsubfloat{figure}
-%\newsubfloat{table}
+
 % Better page layout for A4 paper, see memoir manual.
 \settrimmedsize{297mm}{210mm}{*}
 \setlength{\trimtop}{0pt} 
@@ -139,12 +136,9 @@
 \usepackage{newlfont}					%Helpful package for fonts and symbols
 \usepackage{layouts}					%Layout diagrams
 \usepackage{graphicx}					%Calls figure environment
-%\usepackage{caption}
-%\usepackage{subcaption}
 
 \usepackage{longtable,rotating}			%Long tab environments including rotation. 
 \usepackage[utf8]{inputenc}			%Needed to encode non-english characters 
-%Changed from applemac to utf8 (mirjam)
 					
 %directly for mac
 \usepackage{dsfont}									
@@ -157,12 +151,13 @@
 \usepackage{verbatim}					%Permits pre-formated text insertion
 \usepackage{upgreek}					%Calls other kind of greek alphabet
 \usepackage{latexsym}					%Extra symbols
-\usepackage[square,numbers,
-		     sort&compress]{natbib}		%Calls bibliography commands 
+
+\usepackage[style=numeric-comp]{biblatex}
+\bibliography{PhDThesis_ORS}
+
 \usepackage{url}						%Supports url commands
 \usepackage{etex}						%eTeXÕs extended support for counters
-%\usepackage{fixltx2e}					%Eliminates some in felicities of the 
-									%original LaTeX kernel
+
 \usepackage[spanish,main=english,german,french]{babel}		%For languages characters and hyphenation
 \usepackage{color}                    				%Creates coloured text and background
 \usepackage[colorlinks=true,
@@ -240,19 +235,6 @@
  \addtocounter{proofcount}{-1}
  \popQED\endtrivlist
 }
-%
-%
-% New definition of square root:
-% it renames \sqrt as \oldsqrt
-\let\oldsqrt\sqrt
-% it defines the new \sqrt in terms of the old one
-\def\sqrt{\mathpalette\DHLhksqrt}
-\def\DHLhksqrt#1#2{%
-\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
-\advance\dimen0-0.2\ht0
-\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
-{\box0\lower0.4pt\box2}}
-
 
 %My caption style
 \newcommand{\mycaption}[2][\@empty]{
@@ -286,8 +268,6 @@
 %
 % Theorem styles used in my thesis
 %
-
-
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[chapter]
 \theoremstyle{plain}
@@ -311,8 +291,6 @@
 \hyphenation{sol-va-bi-li-ty}
 
 \numberwithin{equation}{section}
-
-
 
 %
 %
@@ -369,130 +347,8 @@
 \clearemptydoublepage
 \import{chapter_conclusion/}{conclusion.tex}
 \clearemptydoublepage
-%
-%
 %BIBLIOGRAPHY
-\bibliographystyle{siam}
-\bibname
-\begin{thebibliography}{100}
-\bibitem{heisenberg-ur}
-  W.~Heisenberg,
-  \newblock{``\"Uber den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik"}
-  \newblock{\em Z.~f\"ur Phys.} {\bf 43} (1929) 172--198. English translation in: Wheeler, J.A. and Zurek, W.H. (eds), {\em Quantum Theory and Measurement} (Princeton University Press, Princeton, 1983, 2014).%-198
+\printbibliography
 
-\bibitem{kennard-ur}
-  E.H. ~Kennard,
-  \newblock{``Zur Quantenmechanik einfacher Bewegungstypen"}
-  \newblock{\em Z.~f\"ur Phys.} {\bf 44} (1927) 326--352.%-352
-
-\bibitem{weyl-ur}
-  H. Weyl,
-  \newblock{\em Gruppentheorie und Quantenmechanik} (Leipzig, Hirzel, 1928).
-
-\bibitem{robertson-ur}
-  H.P.~Robertson,
-  \newblock {``The Uncertainty Principle,"}
-  \newblock {\em Phys.~Rev.} {\bf 34} (1929) 163--164.%-164.
-
-\bibitem{schrodinger-ur}
-  E.~Schr\"odinger,
-  \newblock{``Zum Heisenbergschen Unsch\"arfeprinzip"}
-  \newblock{\em Sitzungsberichte der Preussischen Akademie der Wissenschaften, Physikalisch-mathematische Klasse} {\bf 14} (1930) 296--303.
-  English translation: \href{https://arxiv.org/abs/quant-ph/9903100}{arXiv:quant-ph/9903100}.%-303.
-
-\bibitem{Pati}
-  L.~Maccone, and A.K.~Pati,
-  \newblock{``Stronger Uncertainty Relations for All Incompatible Observables"}
-  \newblock{\em Phys.~Rev.~Lett.} {\bf 113} (2014) 260401
-  \href{https://doi.org/10.1103/PhysRevLett.113.260401}{doi:10.1103/PhysRevLett.113.260401}.
-
-\bibitem{physRevA.86.024101} Y. Huang
-  \newblock{``Variance-based uncertainty relations''}
-  \newblock{\em Phys.~Rev.~A}  {\bf 86} (2012) 024101
-  \newblock{\href{https://doi.org/10.1103/PhysRevA.86.024101}{doi:10.1103/PhysRevA.86.024101}.}
-
-\bibitem{birbil} I.\  Bia\l{}ynicki-Birula, and J.~Mycielski,
-  \newblock{``Uncertainty Relations for Information Entropy in Wave Mechanics"}
-  \newblock{\em Commun.~Math.~Phys.} {\bf 44} (1975) 129--132
-  \href{https://doi.org/10.1007/BF01608825}{doi:10.1007/BF01608825}.
-
-\bibitem{deutsch-entropic-ur}
-  D.~Deutsch,
-  \newblock{``Uncertainty in Quantum Measurements"}
-  \newblock{\em Phys.~Rev.~Lett.} {\bf 50} (1983) 631--633
-  \href{https://doi.org/10.1103/PhysRevLett.50.631}{doi:10.1103/PhysRevLett.50.631}.
-
-\bibitem{maassen-uffink-entropic-ur}
-  H.~Maassen, and J.B.M.~Uffink,
-  \newblock{``Generalized Entropic Uncertainty Relations"}
-  \newblock{\em Phys.~Rev.~Lett.} {\bf 60} (1988) 1103--1106
-  \href{https://doi.org/10.1103/PhysRevLett.60.1103}{doi:10.1103/PhysRevLett.60.1103}.
-
-\bibitem{UH} J.B.M.~Uffink, and J.~Hilgevoord,
-  \newblock{``Uncertainty Principle and Uncertainty Relations"}
-  \newblock{\em Found.~Phys.} {\bf 15} (1985) 925--944
-  \href{https://doi.org/10.1007/BF00739034}{doi:3390/math4010008}.
-
-\bibitem{BLW-coll} 
-  P.~Busch, P.~Lahti, and R.F.~Werner,
-  \newblock{``Colloquium: Quantum root-mean-square error and measurement uncertainty relations"}
-  \newblock{Rev.~Mod.~Phys.} {\bf 86} (2014) 1261--1281.
-
-\bibitem{werner-ang-mom}
-  L.~Dammeier, R.~Schwonnek, and  R.F.~Werner,
-  \newblock{``Uncertainty relations for angular momentum"}
-  \newblock{\em New Journal of Physics} {\bf 17} (2015) 093046
-  \newblock{\href{https://arxiv.org/abs/1505.00049}{arXiv:1505.00049 [quant-ph]}.}
-
-\bibitem{li-refomulating-uncertainty-principle}J.~Li, and C.~Qiao,
-  \newblock{``Reformulating the Quantum Uncertainty Relation"}
-  \newblock{\em Scientific Reports} {\bf 5} (2015) 12708
-  \newblock{\href{https://arxiv.org/abs/1502.06292}{arXiv:1502.06292 [quant-ph]}.}
-
-\bibitem{PhysRevA.90.012332}
-  J.~Kaniewski, M.~Tomamichel, and S.~Wehner,
-  \newblock{``Entropic uncertainty from effective anticommutators"}
-  \newblock{\em Phys. ~Rev. ~A} {\bf 90} (1) (2015) 012332
-  \newblock{\href{https://link.aps.org/doi/10.1103/PhysRevA.90.012332}{doi:10.1103/PhysRevA.90.012332}.}
- 
-\bibitem{BLW14} P.~Busch, P.~Lahti, and R.F.~Werner,
-  \newblock{``Heisenberg uncertainty for qubit measurements"}
-  \newblock{\em Phys.~Rev.~A} {\bf 89} (2014) 012129
-  \newblock{\href{https://arxiv.org/abs/1311.0837}{arXiv:1311.0837 [quant-ph]}.}
- 
-\bibitem{abbott-state-indep-qubits}
-  A.A.~Abbott, P.L.~Alzieu, M.J.W.~Hall and C.~Branciard,
-  \newblock{``Tight State-Independent Uncertainty Relations for Qubits"}
-  \newblock{\em Mathematics} {\bf 2016} 4, 8; \href{http://dx.doi.org/10.3390/math4010008}{doi:10.3390/math4010008}.
-
-\bibitem{Hofmann03} H.F.~Hofmann, and S.~Takeuchi,
-  \newblock{``Violation of local uncertainty relations as a signature of entanglement"}
-  \newblock{\em Phys.~Rev.~A} {\bf 68} (2003) 032103
-  \newblock{\href{https://arxiv.org/abs/0212090}{arXiv:0212090 [quant-ph]}.}
-
-\bibitem{1804.06191} K. Szymański, and K. \.{Z}yczkowski,
-  \newblock{``Geometric and algebraic origins of additive uncertainty relations"}
-  \newblock{\em arXiv preprint} 
-  \newblock{\href{https://arxiv.org/abs/1804.06191}{arXiv:1804.06191 [quant-ph]}.}
-
-\bibitem{zhang-etal-stronger-ur}
-  J.~Zhang, Y.~Zhang, and C.S.~Yu,
-  \newblock{``Stronger uncertainty relations with arbitrarily tight upper and lower bounds"}
-  \newblock{{\em Quantum Inf. Process.} {\bf 16} (2017) 131}
-  \newblock{\href{https://arxiv.org/abs/1607.08223}{arXiv:1607.08223 [quant-ph]}.}
-
-\bibitem{busch-heinosaari-qubit}
-  P.~Busch, and T.~Heinosaari,
-  \newblock{``Approximate joint measurements of qubit observables"}
-  \newblock{\em Quantum Inf. \& Comput.} {\bf 8} (8\&9) (2008) 797--818
-  \newblock{\href{https://arxiv.org/abs/0706.1415}{arXiv:0706.1415 [quant-ph]}.}
-
-\bibitem{busch-bullock-qubit}
-  T.~Bullock, and P.~Busch,
-  \newblock{``Measurement uncertainty relations: characterising optimal error bounds for qubits"}
-  \newblock{\em  J. Phys. A: Math. Theor.} {\bf 51} (28) (2018) 283001
-  \newblock{\href{https://doi.org/10.1088/1751-8121/aac729}{doi:10.1088/1751-8121/aac729}.}
-  
-\end{thebibliography}
    
 \end{document}

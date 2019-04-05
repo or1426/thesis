@@ -14,6 +14,8 @@
 \newcommand{\lin}[1]{\mathcal{L}\left( #1 \right)} %linear operators...
 \newcommand{\linH}[1]{\mathcal{L}_\mathrm{H}\left( #1 \right)}
 
+\newcommand{\epi}{\operatorname{epi}}
+
 %Quantum 
 \newcommand{\ket}[1]{| #1 \rangle}
 \newcommand{\bra}[1]{\langle #1 |}
@@ -24,9 +26,10 @@
 \newcommand{\id}{\mathbbm{1}}
 \newcommand{\cptp}{\mathcal{E}}
 
-
+\newcommand{\acal}{\mathcal{A}}
 \newcommand{\bcal}{\mathcal{B}}
 \newcommand{\ccal}{\mathcal{C}}
+\newcommand{\dcal}{\mathcal{D}}
 \newcommand{\ecal}{\mathcal{E}}
 \newcommand{\fcal}{\mathcal{F}}
 \newcommand{\lcal}{\mathcal{L}}
@@ -34,20 +37,66 @@
 \newcommand{\vcal}{\mathcal{V}}
 \newcommand{\zcal}{\mathcal{Z}}
 \newcommand{\kcal}{\mathcal{K}}
+\newcommand{\hcal}{\mathcal{H}}
+\newcommand{\tcal}{\mathcal{T}}
+\newcommand{\scal}{\mathcal{S}}
+\newcommand{\pcal}{\mathcal{P}}
+
+\newcommand{\sbuild}[2]{\left\{#1\,\middle|\,#2\right\}}
+
+%operator spaces
+\NewDocumentCommand{\bops}{ o o }
+{
+  \lcal\IfValueT{#1}{\!\left({#1}\IfValueT{#2}{,{#2}}\right)}
+}
+
+\NewDocumentCommand{\saops}{ o }
+{
+  \lcal_{s}\IfValueT{#1}{\!\left({#1}\right)}
+}
+
+\NewDocumentCommand{\posops}{ o }
+{
+  \lcal_{s}^{+}\IfValueT{#1}{\!\left({#1}\right)}
+}
+
+\NewDocumentCommand{\trops}{ o }
+{
+  \tcal\IfValueT{#1}{\!\left({#1}\right)}
+}
+
+\NewDocumentCommand{\dops}{ o }
+{
+  \scal\IfValueT{#1}{\!\left({#1}\right)}
+}
+
+\NewDocumentCommand{\probs}{ m m }
+{
+  \pcal\!\left({#1}, {#2}\right)
+}
+
+%sequence middle bit, variable, inf and sup
+\NewDocumentCommand{\seq}{ m o o o }
+{
+  \left({#1}\right)_{ \IfValueT{#2}{#2\IfValueT{#3}{={#3}} }  }^{\IfValueT{#4}{#4}}
+}
+
 
 \newcommand{\fmath}{\mathbb{F}}
 \newcommand{\smath}{\mathbb{S}}
-\newcommand{\norm}[3]{\vert  #1 {\vert }_{#2}^{#3}} %%26/12/2013
-\newcommand{\Norm}[3]{\Vert  #1 {\Vert }_{#2}^{#3}} %%26/12/2013
-
+%\newcommand{\norm}[3]{\vert  #1 {\vert }_{#2}^{#3}} %%26/12/2013
+\newcommand{\abs}[1]{{\left\lvert{#1}\right\rvert}}
 \newcommand{\then}{\Rightarrow}
 \newcommand\Eb{\mathbb{E}}
 \newcommand\N{\mathbb{N}}
 \newcommand\Z{\mathbb{Z}}
 \newcommand\Q{\mathbb{Q}}
 \newcommand\ps{{(\Omega, \mathcal{F}, \mathbb{P})}}
-\newcommand\R{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
 \newcommand\Pb{\mathbb{P}}
+\newcommand{\exR}{\overline{\R}}
+
 \newcommand\s{$\sigma$\textrm{-field} }
 \newcommand\notsubset{\subset\hspace{-3.5mm}{/}\hspace{1.5mm}}
 
@@ -67,28 +116,80 @@
 %----------------------------------------------------------------------------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------------------------------------------------------------------------
 %from low dimensional preparation ur paper
-\newcommand{\bor}{\bm{r}}
+
 \newcommand{\born}{\bm{r}_0}
+
 \newcommand{\boa}{\bm{a}}
 \newcommand{\bob}{\bm{b}}
 \newcommand{\boc}{\bm{c}}
-\newcommand{\bou}{\bm{u}}
+\newcommand{\bod}{\bm{d}}
 \newcommand{\boe}{\bm{e}}
+\newcommand{\bof}{\bm{f}}
+\newcommand{\bog}{\bm{g}}
+\newcommand{\boh}{\bm{h}}
+%\newcommand{\boi}{\bm{i}} %overlap with Bable command 
+\newcommand{\boj}{\bm{j}}
+\newcommand{\bok}{\bm{k}}
+\newcommand{\bol}{\bm{l}}
+\newcommand{\bom}{\bm{m}}
+\newcommand{\bon}{\bm{n}}
+\newcommand{\boo}{\bm{o}}
+\newcommand{\bop}{\bm{p}}
+\newcommand{\boq}{\bm{q}}
+\newcommand{\bor}{\bm{r}}
+\newcommand{\bos}{\bm{s}}
+%\newcommand{\bot}{\bm{t}} %overlap with the \perp symbol
+\newcommand{\bou}{\bm{u}}
+\newcommand{\bov}{\bm{v}}
+\newcommand{\bow}{\bm{w}}
 \newcommand{\boex}{\bm{x}}
 \newcommand{\boy}{\bm{y}}
+\newcommand{\boz}{\bm{z}}
+
 \newcommand{\bogam}{\bm{\gamma}}
+\newcommand{\boalpha}{\bm{\alpha}}
+
 
 \newcommand{\bosig}{{\boldsymbol\sigma}}
-\newcommand{\opa}{\operatorname{A}}%{\mathrm{A}} 
-\newcommand{\opb}{\operatorname{B}}%{\mathrm{B}}
+
+
+\newcommand{\opa}{\operatorname{A}}
+\newcommand{\opb}{\operatorname{B}}
 \newcommand{\opc}{\operatorname{C}}
+\newcommand{\opd}{\operatorname{D}}
+\newcommand{\ope}{\operatorname{E}}
+\newcommand{\opf}{\operatorname{F}}
+\newcommand{\opg}{\operatorname{G}}
+\newcommand{\oph}{\operatorname{H}}
 \newcommand{\opi}{\operatorname{I}}
-\newcommand{\oppi}{\operatorname{\Pi}}
-\newcommand{\opq}{\operatorname{Q}}
+\newcommand{\opj}{\operatorname{J}}
+\newcommand{\opk}{\operatorname{K}}
+\newcommand{\opl}{\operatorname{L}}
+\newcommand{\opm}{\operatorname{M}}
+\newcommand{\opn}{\operatorname{N}}
+\newcommand{\opo}{\operatorname{O}}
 \newcommand{\opp}{\operatorname{P}}
+\newcommand{\opq}{\operatorname{Q}}
+\newcommand{\opr}{\operatorname{R}}
+\newcommand{\ops}{\operatorname{S}}
+\newcommand{\opt}{\operatorname{T}}
+\newcommand{\opu}{\operatorname{U}}
+\newcommand{\opv}{\operatorname{V}}
+\newcommand{\opw}{\operatorname{W}}
+\newcommand{\opx}{\operatorname{X}}
+\newcommand{\opy}{\operatorname{Y}}
+\newcommand{\opz}{\operatorname{Z}}
+% \newcommand{\opf}{\mathrm{F}}
+% \newcommand{\opj}{\mathrm{J}}
+% \newcommand{\opx}{\mathrm{X}}
+% \newcommand{\opy}{\mathrm{Y}}
+
+\newcommand{\defeq}{:=}
 
 \newcommand{\expr}[1]{\left\langle {#1}\right\rangle_\rho} % for the expectation value
 \newcommand{\expnr}[1]{\left\langle {#1}\right\rangle} % for the expectation value without state argument
+
+
 
 \DeclareDocumentCommand{\sdev}{ O{} m }{
   {\Delta_{{#1}} {#2}}
@@ -96,6 +197,13 @@
 \DeclareDocumentCommand{\var}{ O{} m }{
   {\Delta^2_{#1} {#2}}
 }
+
+
+\DeclareDocumentCommand{\qbit}{ O{} O{+} O{\frac{1}{2}} m }{
+  {{#3}\left({#1}\opi\, {#2}\, {#4}\cdot\bosig\right)}
+}
+
+
 \newcommand{\varr}[1]{{\var[\rho]{{#1}}}}
 \newcommand{\sdevr}[1]{{\sdev[\rho]{{#1}}}}
 
@@ -118,8 +226,8 @@
 \newcommand{\si}{\mathcal{S}}
 \newcommand{\hi}{\mathcal{H}}
 
-\renewcommand{\max}{{\operatorname{max}}}
-\renewcommand{\min}{{\operatorname{min}}}
+%\renewcommand{\max}{{\operatorname{max}}} % why do we need these??????
+%\renewcommand{\min}{{\operatorname{min}}}
 
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
@@ -314,4 +422,17 @@
 
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------
+% specific for cov-mur stuff
 %----------------------------------------------------------------------------------------------------------------------------------------------------------
+\newcommand{\grp}[3]{g\left({#1}, {#2}, {#3}\right)}
+\newcommand{\map}[3]{R_{{#1}, {#2}, {#3}}}
+
+\newcommand{\adj}[1]{{\operatorname{adj}\left({#1}\right)}}
+
+\DeclareDocumentCommand{\cyc}{ O{n} }{
+  {\mathbb{Z}_n}
+}
+\newcommand{\norm}[1]{{\left\lVert{#1}\right\rVert}}
+\DeclareDocumentCommand{\pnorm}{ m O{p} }{
+  \norm{{#1}}_{#2}
+}

@@ -19,12 +19,12 @@
 %
 % Adding metadata:
 \usepackage{datetime}
-\usepackage{ifpdf}
+\usepackage{ifpdf} 
 \ifpdf
 \pdfinfo{
    /Author Oliver Owen Douglas Reardon-Smith
    /Title (PhD Thesis)
-   /Keywords (One; Two; Three)
+   /Keywords (One; Two ; Three)
    /CreationDate (D:\pdfdate)
 }
 \fi
@@ -153,7 +153,7 @@
 \usepackage{latexsym}					%Extra symbols
 
 \usepackage[style=numeric-comp]{biblatex}
-\bibliography{PhDThesis_ORS}
+\bibliography{bib_PhDThesis_ORS}
 
 \usepackage{url}						%Supports url commands
 \usepackage{etex}						%eTeXÕs extended support for counters
@@ -344,6 +344,8 @@
 \import{chapter02/}{chap_prelim.tex}
 \clearemptydoublepage
 \import{chapter03/}{chap_low_dim_prep_ur.tex}
+\clearemptydoublepage
+\import{chapter04/}{chap_cov_mur.tex}
 \clearemptydoublepage
 \import{chapter_conclusion/}{conclusion.tex}
 \clearemptydoublepage

@@ -646,7 +646,8 @@ By elementary methods (differentiating, finding local extrema and comparing them
 \end{center}
 
 Similar to the qubit case, the uncertainty region contains nontrivial upper bounds, and it is not of a simple convex shape; however, there are fundamental differences. The region shown in Fig.~\ref{fig:qutrit-uncertainty-region} does touch and include the origin (0,0), reflecting the fact that the two observables have a common eigenstate. The shape of the region is also quite asymmetrical; in particular, it is not possible for both uncertainties to get large simultaneously. It is possible that these features can be connected to trade-off relations involving other observables, as we indicated in the qubit case. However, this may require the acquisition of a host of further case studies.
-The Schr\"odinger relation does not entail the lower bound of the uncertainty region in this case. %We show this by calculating the largest possible value of the ``right hand side" given that $\varr{\opa}$ has some value $c$. Dividing by $c$ gives a curve which must be everywhere greater than any lower bound defined by the Schr\"odinger relation. If there is a gap between this curve and the actual uncertainty region then we can tell the Schr\"odinger %relation is not tight, that is there exist pairs $(\var{\opa}, \var{\opb})$ for which every state with $\varr{\opa} = \var{\opa}$ satisfies \ref{eq:sch-uncertainty-region} but no state has $\varr{\opb} = \var{\opb}$. Note that this procedure gives no information in cases where our ``greatest lower bound" is above or equal to the actual lower bound of the uncertainty region.
+The Schr\"odinger relation does not entail the lower bound of the uncertainty region in this case. 
+
 We show this by determining the maximum value in the interval of possible values of the Schr\"odinger bound,
 $\{S(\opa,\opb,\rho)\,|\, \rho\in\si(\sdev{\opa})\}$, and we find indeed that for some range of values of $\sdev{\opa}$,
 \begin{equation}\label{eq:sch-uncertainty-region}%\begin{split}
@@ -681,16 +682,6 @@ The examples studied here reinforce the qualitative understanding of  the uncert
 
 The general theory of the structure of uncertainty regions is still unknown. It seems likely that an expanding library of case studies, like those described above, will help point the way for future investigations of this theory. A notable feature of these investigations is how rapidly the computations become more difficult as the Hilbert space dimension increases, for example attempting to generalise the results of sections \ref{sec:qubit-uncertainty} and \ref{sec:qubit-extended-uncertainty} to the case of extended qubit observables with non-orthogonal Bloch vectors requires computing the roots of fifth order polynomials. One avenue for further investigation could be the use of numerical methods in the analysis; since the variance is quadratic in the state the problem may be reduced to polynomial root finding, which may be efficiently solved using well known numerical techniques.
 To conclude, we expect that much can be learned about the uncertainty principle through the study of uncertainty regions, and hope our investigation will encourage some readers to undertake further case studies.
-
-\section*{Acknowledgements}
-
-We would like to thank Stefan Weigert and Roger Colbeck for helpful and stimulating discussions, as well as for feedback on previous drafts. Thomas Bullock kindly provided useful comments on the first arXiv version. Oliver Reardon-Smith gratefully acknowledges the support of the Engineering and Physical Sciences Research Council, as well as that of the University of York Department of Mathematics.
-
-\section*{Author contributions}
-
-Both authors contributed extensively to the work. Sadly, Paul Busch passed away in June 2018, when this manuscript was almost finalised. Since then it has been completed by Oliver Reardon-Smith under the supervision of Roger Colbeck.
-
-\appendix
 
 \section{Uncertainty region for Gell-Mann observables}
 \label{app:gellmann-ur}
@@ -800,7 +791,7 @@ the (locally) extremising values of $\rho_{11}$ are summarised in Figure \ref{fi
     \includegraphics[height=0.65\linewidth]{figs/qutrit-rhominus-r11vals}
     \caption[Range of $\rho_{11}$ given $\rho_{33} = \rho_{33}^-$]{Range of $\rho_{11}$ given $\rho_{33} = \rho_{33}^-$. There are no local extrema other than the boundary curves.}\label{fig:rho-minus-vals}
   \end{subfigure}
-  \caption{The filled region indicates the allowed values of $\rho_{11}$ as a function of $\var[\rho^+]{\opa}$ in each case. The solid lines are the boundary curves, given in  {\eqref{eqn:rho11-con}}}
+  \caption[Allowed values of $\rho_{11}$ in the minimizing states for the Gell-Mann pair]{The filled region indicates the allowed values of $\rho_{11}$ as a function of $\var[\rho^+]{\opa}$ in each case. The solid lines are the boundary curves, given in  {\eqref{eqn:rho11-con}}}
 \end{figure}
 
 \subsection{Exploring maxima}

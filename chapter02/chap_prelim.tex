@@ -42,12 +42,48 @@ noting that the density of $D(A)$ ensures that the $\eta_{\psi}$ is unique, for 
   A^{**} &= A\\
   \left(A^{-1}\right)^* &= \left(A^*\right)^{-1},
 \end{align}
-hold, with the last equation requiring the additional assumption that $A$ is invertable with bounded inverse. Certain operators mapping a Hilbert space to itself are equal to their own adjoint, the identity is a trivial example, we call those the self-adjoint operators, denoted $\saops[\hcal]$, and note that, where the domains match, they are a vector space over the reals, with pointwise addition and scalar multiplication. 
+hold, with the last equation requiring the additional assumption that $A$ is invertable with bounded inverse. Certain operators mapping a Hilbert space to itself are equal to their own adjoint, we call those the self-adjoint, denoted $\saops[\hcal]$, and note that, where the domains match, they are a vector space over the reals, with pointwise addition and scalar multiplication. 
 
-Those elements of $A\in\bops[\hcal]$ such that $\langle\psi |A \psi\rangle \geq 0$ for all $\psi\in\hcal$ are called positive, and the cone of such operators is denoted $\posops[\hcal]$. For any $A\in\bops$ the operator $A^* A$ is positive, which may be verified by noting
+We now give several versions of the \emph{spectral theorem} a (if not the) central result in functional analysis. We point the reader towards \coma{cite Simom \& Reed} for more information.
+\begin{thm}[Spectral theorem for self-adjoint operators - bounded functional calculus form]\label{thm:spectral-sa-ops-bounded-functions}
+    Let $A$ be a self-adjoint operator on $\hcal$, there is a unique map $\hat{\phi}$ from the bounded Borel functions on $\R$ to $\bops{\hcal}$ such that
+    \begin{itemize}
+      \item $\hat{\phi}$ is an algebraic $*$-homomorphism 
+      \item $\hat{\phi}$ is norm continuous $\norm{\hat{\phi}(h)} \leq \norm{h}_\infty$
+      \item If $h_n$ is a sequence of bounded Borel functions converging (pointwise) to the identity function and $\abs{h_n(x)} \leq x$ for all $x$ and $n$, then for any $\psi\in D(A)$ we have $\lim_{n\to\infty} \hat{\phi}(h_n)\psi = A\psi$
+      \item If $h_n \to h$ pointwise and the sequence $\norm{h_n}_\infty$ is bounded then $\hat{\phi}(h_n) \to \hat{\phi}(h)$ strongly
+      \item If $A\psi$ = $\lambda\psi$ then $\hat{\phi}(h)\psi = h(\lambda)\psi$
+      \item If $h\geq 0$ then $\hat{\phi}(h) \geq 0$
+    \end{itemize}
+\end{thm}
+
+We use this as a stepping stone to a more general formulation
+
+\begin{thm}[Spectral theorem for self-adjoint operators - Borel functional calculus form]\label{thm:spectral-sa-ops-unbounded-functions}
+  Let $A$ be a self-adjoint operator on $\hcal$, and $\chi_\Omega$ the characteristic function of the measurable set $\Omega\subseteq\R$. We define the operators $P_\Omega = \hat{\phi}(\chi_\Omega)$, and note the following properties
+  \begin{itemize}
+    \item The $P_\Omega$ are orthogonal projections
+    \item $P_\R = I$ and $P_\varnothing = 0$
+    \item If $\Omega$ is a countable union of disjoint sets $\Omega_n$ then $P_\Omega = \lim_{N\to\infty} \sum_{n=1}^N P_{\Omega_n}$, where the limit converges strongly
+    \item $P_\Omega P_\Delta = P_{\Omega\cap\Delta}$.
+  \end{itemize}
+  The map $\Omega\mapsto\langle\psi| P_\Omega \phi\rangle$ is a complex-valued Borel measure on $\R$ for each $\psi, \phi\in\hcal$ and denote it $\mu_{\psi\phi}$. If $g$ is a bounded Borel function on $\R$ then we can define $g(A)$ by
+  \begin{align}
+    \langle \psi|g(A)\phi\rangle = \int_\R g(\lambda)\,d\mu_{\psi\phi}(\lambda),
+  \end{align}
+  and note that this agrees with $\hat{\phi}(g)$, further if $g$ is an unbounded, complex valued, Borel function on $\R$ we can define 
+  \begin{align}
+    D(g(A)) &= \sbuild{\psi}{\int_\R \abs{g(\lambda)}^2 d\mu_{\psi\psi}(\lambda)<\infty}\\
+    \langle \psi | g(A)\phi\rangle &= \int_\R g(\lambda) d\mu_{\psi\phi}(\lambda),
+  \end{align}
+  We write $g(A) = \int_\R g(\lambda) P_\lambda$, and note that $g(A)$ is self-adjoint if $g$ is real. 
+\end{thm}
+We call the support of a self-adjoint operator $A$, $\supp{A}$, the complement of the union of all the open sets $\Omega$ for which $P_\Omega = 0$, and note that we can restrict the integrals over $\R$ in the previous theorem to over $\supp{A}$, we therefore generalise to complex-valued Borel functions defined on $\supp{A}$, rather than requiring that they are defined on the whole real line.
+
+Those operators which may be written in the form $A = B^*B$, for some linear operator $B$ are called positive, and the set of such operators forms a \emph{convex  cone} \coma{ref to convex section} denoted $\posops[\hcal]$. For any $\psi\in D(A^*A)$ we note that 
 \begin{align}
   \langle\psi | A* A \psi \rangle &= \langle A \psi | A \psi\rangle \\
-                                  &= \norm{A\psi}^2 \geq 0,
+                                  &= \norm{A\psi}^2 \geq 0.
 \end{align}
 
 If $\seq{\boe_k}[k\in\N]$ is an orthonormal basis for a Hilbert space $\hcal$ then we define the trace of an operator $A\in\bops[\hcal]$ 

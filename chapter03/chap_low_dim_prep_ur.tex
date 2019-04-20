@@ -23,7 +23,7 @@
 %\affiliation{Department of Mathematics, University of York, York YO10 5DD, UK}
 %\date{\today}
 
-\section*{Forward to chapters \ref{chap:low_dim_prep} and \ref{} }
+\chapter*{Forward to chapters \ref{chap:low_dim_prep} and \ref{chap:interferometric_prep_ur}}
 
 \chapter{Low dimensional Preparation uncertainty}
 \label{chap:low_dim_prep}
@@ -56,7 +56,7 @@ if $\opa,\opb$ do not commute, these regions cannot, in general, contain all poi
 An extensive study of uncertainty regions for spin components was undertaken by  Dammeier et al.\cite{DammeierSchwonnekWerner2015}
 However, the features uncovered in these cases are not representative, as illustrated by the example we examine in section \ref{sec:qutrit}. In particular we note that if the point $(\sdev{\opa},\sdev{\opb} ) = (0,0)$ is in the uncertainty region, then the monotone-closure procedure, taking the set of points $\{(x,y) |\, \exists \rho \text{ s.t. } x\geq \sdevr{\opa},\, y\geq\sdevr{\opb}\}$, employed to great effect in the spin case, has the undesirable property that the closure defined is the \emph{entire} positive quadrant.
 
-A state dependent bound for the joint expectation values of an $n$-tuple of sharp, $\pm 1$-valued observables was given by Kaniewski, Tomamichel and Wehner \cite{KaniewskiTomamichelWehner2015}. Since a binary probability distribution is entirely characterised by the expectation value this provides an implicit characterisation of the uncertainty region. A complete characterisation of the uncertainty region in terms of variances for pairs of measurements on qubits was given by Li and Qiao\cite{LiQiao2015}. However, their relation is an implicit rather than explicit one, with the expectation values and variances of each measurement appearing on both sides of the inequality. Abbott et al\cite{AbbottAlzieuHallBranciard2016}  then derived the full qubit uncertainty region in a way which more readily generalises to provide (not-necessarily tight) bounds in higher dimensional systems and for more than two observables.
+A state dependent bound for the joint expectation values of an $n$-tuple of sharp, $\pm 1$-valued observables was given by Kaniewski, Tomamichel and Wehner \cite{KaniewskiTomamichelWehner2015}. Since a binary probability distribution is entirely characterised by the expectation value this provides an implicit characterisation of the uncertainty region. A complete characterisation of the uncertainty region in terms of variances for pairs of observables on qubits was given by Li and Qiao\cite{LiQiao2015}. However, their relation is an implicit rather than explicit one, with the expectation values and variances of each observable appearing on both sides of the inequality. Abbott et al\cite{AbbottAlzieuHallBranciard2016}  then derived the full qubit uncertainty region in a way which more readily generalises to provide (not-necessarily tight) bounds in higher dimensional systems and for more than two observables.
 
 Some analytical, as well as some semianalytical bounds on uncertainty regions were recently given by Szymański and \.{Z}yczkowski\cite{SzymanskiZyczkowski2018}, who also give a method for writing a saturated, state independent bound for a general ``sum of variances'' uncertainty relation as a polynomial root finding problem.
 
@@ -144,7 +144,7 @@ We illustrate cases where there are non-trivial \emph{upper} bounds for $\sdevr{
 
 \section{Optimal qubit uncertainty relations}\label{sec:qubit}
 
-We consider sharp qubit observables with measurement outcomes (eigenvalues) $\pm 1$. These are represented as Hermitian operators (or $2\times 2$-matrices) of the form $\opa=\boa\cdot\bosig=a_x\sigma_x+a_y\sigma_y+a_z\sigma_z$, where vector $\boa$ has Euclidean length  $\|\boa\|=1$ and  $\sigma_x,\sigma_y,\sigma_z$ denote the Pauli matrices on ${\mathbb C}^2$. A general qubit state may be expressed as the density operator
+We consider sharp qubit observables with outcomes (eigenvalues) $\pm 1$. These are represented as Hermitian operators (or $2\times 2$-matrices) of the form $\opa=\boa\cdot\bosig=a_x\sigma_x+a_y\sigma_y+a_z\sigma_z$, where vector $\boa$ has Euclidean length  $\|\boa\|=1$ and  $\sigma_x,\sigma_y,\sigma_z$ denote the Pauli matrices on ${\mathbb C}^2$. A general qubit state may be expressed as the density operator
 \begin{equation}
   \rho=\frac12(I+\bor\cdot\bosig),\quad \|\bor\|=r\le 1,
 \end{equation}
@@ -249,10 +249,10 @@ We summarise:
 
 \end{enumerate}
 
-\subsection{Uncertainty region for general $\pm 1$-valued qubit measurements}
+\subsection{Uncertainty region for pairs of $\pm 1$-valued qubit observables}
 \label{sec:qubit-uncertainty}
 %\subsubsection{Defining the uncertainty region}
-We  now consider general observables represented as $\opa=\boa\cdot\bosig$, $\opb=\bob\cdot\bosig$ where $\boa$ and $\bob$ are unit vectors but no longer assumed to be orthogonal. Observables of this form are sufficient to explore the shapes of uncertainty regions since any two outcome qubit observable may be simulated by one of this form using classical post processing (relabelling the measurement outcomes $\pm1$ and adding classical noise).
+We  now consider general observables represented as $\opa=\boa\cdot\bosig$, $\opb=\bob\cdot\bosig$ where $\boa$ and $\bob$ are unit vectors but no longer assumed to be orthogonal. Observables of this form are sufficient to explore the shapes of uncertainty regions since any two outcome qubit observable may be simulated by one of this form using classical post processing (relabelling the outcomes $\pm1$ and adding classical noise).
 
 We begin by noting some simple known examples of state-independent uncertainty relations for the pair $\opa,\opb$ given in Ref.~\cite{BuschLahtiWerner2014}:
 \begin{align}
@@ -503,8 +503,12 @@ Nevertheless, it does provide a specification of the lower boundary of the uncer
 Thus we find that the strengthening \eqref{eq:S-eq} of the Schr\"odinger inequality into an equation determines the uncertainty region for $\boa\cdot\bosig,\ \bob\cdot\bosig$. However, the Schr\"odinger inequality itself gives the lower bound for $\sdevr{\opb}$ given $\sdev{\opa}$, and similarly the lower bound for $\sdev{\opa}$ given $\sdevr{\opb}$. Since the uncertainty region is symmetric under reflection on the axis $\sdev{\opa}=\sdev{\opb}$, the minimal boundaries for the two uncertainties together, obtained by the Schr\"odinger inequality alone, determine the uncertainty region.
 
 An unexpected feature becomes apparent in the case of minimal uncertainty. Note that one may always move the vector $\bor$ into the plane spanned by $\boa$ and $\bob$ without changing the variances $\varr{\opa}$ and $\varr{\opb}$. Since $\bor$ is then perpendicular to $\boa\times\bob$ the ``commutator term" $\left(\left(\boa\times\bob\right)\cdot\bor\right)^2$ in the uncertainty relation \eqref{eq:S-eq} is zero for all of these vectors. Hence the lower uncertainty bound (which is always assumed on unit vectors, so that the above corollary remains applicable) is a feature purely of the anti-commutator term. 
-This term is analogous in form to the classical covariance; however, in the quantum context, this interpretation only applies where the measurements are compatible and thus have physical joint probabilities.
+This term is analogous in form to the classical covariance; however, in the quantum context, this interpretation only applies where the observables are compatible and thus have physical joint probabilities.
 
+\subsection{Uncertainty region for triples of $\pm 1$-valued qubit observables}
+\label{sec:qubit-triple-uncertainty}
+
+\coma{This should be fun!}
 
 \section{Qutrit uncertainty}
 \label{sec:qutrit}

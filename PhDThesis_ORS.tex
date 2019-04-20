@@ -152,7 +152,7 @@
 \usepackage{upgreek}					%Calls other kind of greek alphabet
 \usepackage{latexsym}					%Extra symbols
 
-\usepackage[style=numeric-comp]{biblatex}
+\usepackage[style=numeric-comp,maxbibnames=99]{biblatex}
 \bibliography{bib_PhDThesis_ORS}
 
 \usepackage{url}						%Supports url commands
@@ -343,9 +343,12 @@
 \clearemptydoublepage
 \import{chapter02/}{chap_prelim.tex}
 \clearemptydoublepage
+\part{Preparation uncertainty}
 \import{chapter03/}{chap_low_dim_prep_ur.tex}
+\import{chapter04/}{chap_interferometric_ur.tex}
 \clearemptydoublepage
-\import{chapter04/}{chap_cov_mur.tex}
+\part{Measurement uncertainty}
+\import{chapter05/}{chap_cov_mur.tex}
 \clearemptydoublepage
 \import{chapter_conclusion/}{conclusion.tex}
 \clearemptydoublepage

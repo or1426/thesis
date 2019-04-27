@@ -1,3 +1,4 @@
+
 \renewcommand{\labelitemi}{$\bullet$}
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
@@ -8,7 +9,7 @@
 \newcommand{\eps}{\epsilon}
 \newcommand{\sth}{ \ \mathrm{s.t.} \ }
 \newcommand{\trans}{\mathrm{T}}
-\newcommand{\tr}[1]{\operatorname{tr}\left( #1 \right)}
+%\newcommand{\tr}[1]{\operatorname{tr}\left( #1 \right)}
 \newcommand{\partr}[2]{\operatorname{tr}_{#2}\left( #1 \right)}
 \newcommand{\trdist}[2]{\operatorname{D}\left( #1 | #2 \right)}
 \newcommand{\lin}[1]{\mathcal{L}\left( #1 \right)} %linear operators...
@@ -41,10 +42,12 @@
 \newcommand{\tcal}{\mathcal{T}}
 \newcommand{\scal}{\mathcal{S}}
 \newcommand{\pcal}{\mathcal{P}}
+\newcommand{\ucal}{\mathcal{U}}
+%\newcommand{\fcal}{\mathcal{F}}
 
 \newcommand{\sbuild}[2]{\left\{#1\,\middle|\,#2\right\}}
 
-\newcommand{\supp}[1]{\operatorname{supp}{#1}\left(\right)}
+\newcommand{\supp}[1]{\operatorname{supp}\left({#1}\right)}
 
 %operator spaces
 \NewDocumentCommand{\bops}{ o o }
@@ -83,6 +86,14 @@
   \left({#1}\right)_{ \IfValueT{#2}{#2\IfValueT{#3}{={#3}} }  }^{\IfValueT{#4}{#4}}
 }
 
+%\newcommand{\tr}[1]{\operatorname{tr}\left( #1 \right)}
+%trace - optional partial trace
+\NewDocumentCommand{\tr}{ m o }
+{
+  \operatorname{tr}{\IfValueT{#2}{_{#2}}}\left( #1 \right)
+}
+
+\newcommand{\vspan}[1]{\operatorname{span}\left(#1\right)}
 
 \newcommand{\fmath}{\mathbb{F}}
 \newcommand{\smath}{\mathbb{S}}
@@ -98,7 +109,7 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand\Pb{\mathbb{P}}
 \newcommand{\exR}{\overline{\R}}
-
+\newcommand{\Cx}{\mathbb{C}}
 \newcommand\s{$\sigma$\textrm{-field} }
 \newcommand\notsubset{\subset\hspace{-3.5mm}{/}\hspace{1.5mm}}
 
@@ -121,6 +132,8 @@
 
 \newcommand{\born}{\bm{r}_0}
 
+\newcommand{\boap}{\bm{\overline{a}}}
+\newcommand{\vproj}[2]{\pi_{{#1}{#2}}}
 \newcommand{\boa}{\bm{a}}
 \newcommand{\bob}{\bm{b}}
 \newcommand{\boc}{\bm{c}}
@@ -434,7 +447,32 @@
 \DeclareDocumentCommand{\cyc}{ O{n} }{
   {\mathbb{Z}_n}
 }
+
 \newcommand{\norm}[1]{{\left\lVert{#1}\right\rVert}}
+
 \DeclareDocumentCommand{\pnorm}{ m O{p} }{
   \norm{{#1}}_{#2}
 }
+
+%---------------------------------------------------------------------------------------------------------------------------------------------------------
+% specific for interferometric prep stuff
+%----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\newcommand{\MOD}[1]{#1_{\mathrm{mod}}} % APP's Pmod and Qmod
+\newcommand{\psdev}[1]{\tilde\Delta{\big(#1\big)}} % for the periodic standard deviation
+\newcommand{\ws}[1]{\delta{\big(#1\big)}} % for the delta-spread
+\newcommand{\dom}[1]{\mathcal{D}(#1)}
+\newcommand{\E}{\mathsf{E}} % spectral measure
+\newcommand{\iunit}{\mathrm{i}} % for the imaginary unit i
+%\newcommand{\diff}[2]{\frac{{\rm d}#1}{{\rm d }#2}} % diffs
+\newcommand{\IT}{{I}_T} % for the interval [-T/2,T/2]
+\newcommand{\IK}{{I}_K} % for the interval [-K/2,K/2]
+\newcommand{\Ewp}{\mathsf E}
+\newcommand{\Efc}{\mathsf F}
+
+%pictures
+\newcommand{\hh}{^H} %Heisenberg picture
+\renewcommand{\ss}{^S} %Schroedinger picture
+
+\newcommand{\expe}[2]{\left\langle{#1}\right\rangle_{#2}}
+

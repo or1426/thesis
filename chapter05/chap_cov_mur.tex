@@ -68,54 +68,53 @@ Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used 
 
 \section{Definitions and error measure}
 \label{sec:error-measure}
-Let $\mathcal{H}$ be a (finite dimensional) Hilbert space, $\saops{\mathcal{H}}$ the self-adjoint operators on $\mathcal{H}$, $\posops{\mathcal{H}}$ the cone of positive operators within $\saops{H}$, and $\Omega$ a (finite) set.  A map $\ope:\Omega\to \posops{\mathcal{H}}$ is an \emph{observable} if it is normalised
+Let $\hcal$ be a (finite dimensional) Hilbert space, $\saops[\hcal]$ the self-adjoint operators on $\hcal$, $\posops[\hcal]$ the cone of positive operators within $\saops[\hcal]$, and $\Omega$ a (finite) set.  A map $\ope:\Omega\to \posops[\hcal]$ is an \emph{observable} if it is normalised
 \begin{align}
   \sum_{\omega\in\Omega} \ope(\omega) &= \opi,
 \end{align}
-where $\opi$ is the identity operator on $\mathcal{H}$. We call $\Omega$ the outcome set of $\ope$.
+where $\opi$ is the identity operator on $\hcal$. We call $\Omega$ the outcome set of $\ope$.
 
-A set of $n$ observables on the Hilbert space $\mathcal{H}$, $\sbuild{\ope_i\,}{\,i=1\hdots n}$, with outcome sets $\Omega_i$ is \emph{compatible} if there exists a joint observable, $\opj: \Omega \to \posops{\mathcal{H}}$,
+A set of $n$ observables on the Hilbert space $\hcal$, $\sbuild{\ope_i\,}{\,i=1\hdots n}$, with outcome sets $\Omega_i$ is \emph{compatible} if there exists a joint observable, $\opj: \Omega \to \posops[\hcal]$,
 \begin{align}
   \label{eqn:cart-joint}
   \sum_{\substack{\bm{\omega}\in\Omega\\\bm{\omega}_i = \omega^*}}\opj(\bm{\omega}) = \ope_i(\omega^*), \quad \forall i\in 1\hdots n,\ \forall \omega^*\in\Omega_i,
 \end{align}
 where $\Omega = \prod_i \Omega_i$ is the Cartesian product and $\bm{\omega}_i$ is the $i^\text{th}$ component of $\bm{\omega}$. Such an observable is called a Cartesian joint for the observables $\sbuild{\ope_i}{i\in 1\hdots n}$.
 
-Given a pair of probability distributions, $S$ and $T$  over the same (finite) set $\Omega$, we define the following family of measures of how much they differ
-% \begin{align}
-%   \delta_p(S,T) &\defeq \pnorm{S(\omega) - T(\omega)}\\
-%                  &= \left(\sum_{\omega\in\Omega}\abs{S(\omega) - T(\omega)}^p\right)^{\frac{1}{p}}, \quad \forall p\in[1,\infty)\\
-%   \delta_\infty(S,T) &\defeq \max_{\omega\in\Omega}\abs{S(\omega) - T(\omega)}.
-% \end{align}
-note that $\delta_p(S,T) \geq 0$ with equality if and only if $S = T$ and
+Given a pair of probability distributions, $S$ and $T$  over the same (finite) set $\Omega$, we can compute the $p$-norm of their (pointwise) difference. The resulting quantity is easily seen to be a metric on the space of probability distributions over $\Omega$,
+\begin{align}
+  \delta_p(S,T) &\defeq \pnorm{S - T}\\
+                 &= \left(\sum_{\omega\in\Omega}\abs{S(\omega) - T(\omega)}^p\right)^{\frac{1}{p}}, \quad \forall p\in[1,\infty),\\
+  \delta_\infty(S,T) &\defeq \max_{\omega\in\Omega}\abs{S(\omega) - T(\omega)}.
+\end{align}
+We note that $\delta_p(S,T) \geq 0$ with equality if and only if $S = T$ and that
 \begin{align}
   \delta_p(S,T) \leq 2^{\frac{1}{p}}, \quad \forall p\in [1,\infty].
 \end{align}
+When $p=1$ this quantity is equal to the total variation distance, up to a global factor of $2$ and is also equal to the Wasserstein $1$-distance between $S$ and $T$, where the ``cost-function'' is given by the discrete metric \cite{markov-mixing-levin-peres-wilmer}\cite{optimal-transport-villani}.
 
-Given an observable $\ope:\Omega\to\saops{\mathcal{H}}$ and a quantum state $\rho\in\saops{\mathcal{H}}$ on the same Hilbert space we can define a probability distribution over $\Omega$
+Given an observable $\ope:\Omega\to\posops[\hcal]$ and a quantum state $\rho\in\dops[\hcal]$ we can define a probability distribution over $\Omega$,
 \begin{equation}
-  \ope^\rho(\omega) =   \tr{\ope(\omega)\rho}.
+  \ope^\rho:\omega \mapsto \tr{\ope(\omega)\rho}.
 \end{equation}
-
-We can then lift our distance measure on probability distributions with outcome set $\Omega$ to one on observables on the same set, simply by taking the $\sup$ of the distance for the probability distributions over all states
+We can lift the distance measure on probability distributions with outcome set $\Omega$ to one on observables on the same set, simply by taking the $\sup$ of the distance for the probability distributions over all states
 \begin{align}
-  d_p(\ope, \opf) &\defeq \sup_{\rho\in\dops{\mathcal{H}}} \delta_p(\ope^\rho, \opf^\rho)\\
-                  &= \sup_{\rho\in\dops{\mathcal{H}}} \left(\sum_{\omega\in\Omega}\abs{\ope^\rho(\omega) - \opf^\rho(\omega)}^p\right)^{\frac{1}{p}},
+  d_p(\ope, \opf) &\defeq \sup_{\rho\in\dops[\hcal]} \delta_p(\ope^\rho, \opf^\rho)\\
+                  &= \sup_{\rho\in\dops[\hcal]} \left(\sum_{\omega\in\Omega}\abs{\ope^\rho(\omega) - \opf^\rho(\omega)}^p\right)^{\frac{1}{p}},
 \end{align}
-where $\dops{\mathcal{H}}$ is the set of trace $1$ density operators within $\posops{\mathcal{H}}$. Note that $\dops{\mathcal{H}}$ is a compact set, so the $\sup$ is actually achieved by some $\rho^*$. We specialise the definition \eqref{eqn:general-ur-definition} of the uncertainty region to these error measures, where $\ope_i:\Omega_i\to\posops{\mathcal{H}}$ are the target observables
+where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\hcal]$. Note that $\dops[\hcal]$ is a compact set, so the $\sup$ is actually achieved by some $\rho^*$. We specialise the definition \eqref{eqn:general-ur-definition} of the uncertainty region to these error measures, where $\ope_i:\Omega_i\to\posops[\hcal]$ are the target observables
 \begin{equation}
-  S_p(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d_p(\ope_1, \opf_1), d_p(\ope_2, \opf_2)\hdots d_p(\ope_n, \opf_n))}{\opf_i:\Omega_i\to\posops{\mathcal{H}} \text{ are compatible}},\quad p\in [1,\infty].
+  S_p(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d_p(\ope_1, \opf_1), d_p(\ope_2, \opf_2)\hdots d_p(\ope_n, \opf_n))}{\opf_i:\Omega_i\to\posops[\hcal] \text{ are compatible}},\quad p\in [1,\infty].
 \end{equation}
-
-It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps $\Omega\to \saops{\mathcal{H}}$.
+It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps $\Omega\to \saops[\hcal]$.
 %\begin{align}
 %  \left( a \ope + b \opf\right)(\omega) = a\ope(\omega) + b\opf(\omega).
 %\end{align}
 This space can be equipped with the ``$\sup$-$p$'' norm
 \begin{equation}
-  \pnorm{\ope} =  \sup_{\rho\in\saops{\mathcal{H}}} \pnorm{\ope^\rho},
+  \pnorm{\ope} =  \sup_{\rho\in\saops[\hcal]} \pnorm{\ope^\rho},
 \end{equation}
-allowing us to rewrite our distance
+allowing us to rewrite the distance
 \begin{align}
   d_p(\ope, \opf) = \pnorm{\ope - \opf}
 \end{align}
@@ -128,21 +127,21 @@ Applying the techniques in section \ref{sec:covariance} results in compatible ap
   \label{lem:infty-increase-error}
   Let $\{\ope_i\}$ be a family of observables with outcome sets $\Omega_i$. Choose $i\in 1\hdots n$ and $\bov = (v_1\hdots v_i\hdots v_n) \in S_\infty(\ope_1\hdots\ope_n)$, such that there exists some $\omega^*\in\Omega_i$ where $\ope_i(\omega^*)$ is not of full rank, then $v_i \leq v_i^\prime \leq 1 \implies \bov^\prime = (v_1\hdots v_i^\prime\hdots v_n) \in S_\infty(\ope_1\hdots\ope_n)$.
   \begin{proof}
-    Let $\Omega = \prod_i \Omega_i$ be the Cartesian product of the outcome sets, since $\bov\in S_\infty(\ope_1\hdots\ope_n)$ there exists a compatible family of observabless $\opf_i$ with joint $\opj:\Omega\to\saops{\mathcal{H}}$ such that
+    Let $\Omega = \prod_i \Omega_i$ be the Cartesian product of the outcome sets, since $\bov\in S_\infty(\ope_1\hdots\ope_n)$ there exists a compatible family of observabless $\opf_i$ with joint $\opj:\Omega\to\saops[\hcal]$ such that
     \begin{align}
       d_\infty(\ope_i, \opf_i) = v_i
     \end{align}
     Now define
     \begin{align}
-      \tilde{\opj}&:\Omega\to \saops{\mathcal{H}}\\
+      \tilde{\opj}&:\Omega\to \saops[\hcal]\\
       \tilde{\opj}&:(\omega_1\hdots\omega_{n}) \mapsto \begin{cases}\sum_{\omega\in\Omega_i} \opj(\omega_1\hdots\omega_{i-1},\omega,\omega_{i+1}\hdots\omega_{n}), & \omega_i = \omega^*\\\ 0,&\text{else}\end{cases},
     \end{align}
     Let $\tilde{\opf}_j$ be the $j^\text{th}$ Cartesian margin of $\tilde{\opj}$, and note that for $j\neq i$ we have $\tilde{\opf}_j = \opf_j$, but that $\tilde{\opf}_i:\omega\mapsto \delta_{\omega \omega^*}\opi$ is the trivial observable which gives outcome $\omega^*$ with certainty in any state. Since $\ope_i(\omega^*)$ is not of full rank, there exists a pure state $\rho$ such that $\tr{\ope_i(\omega^*)\rho} = 0$; therefore $d_\infty(\ope_i, \tilde{\opf}_i) = 1$.
 
     We can now define the observable $\opj_\lambda = (1-\lambda) \opj + \lambda \tilde{\opj}$, for $\lambda\in[0,1]$, with margins $\opf_{j \lambda}$. As before we have $j\neq i \implies \opf_{j\lambda} = \opf_j$, but $\opf_{i,\lambda} = (1-\lambda)\opf_i + \lambda \tilde{\opf}_i$. We can compute the distance
     \begin{align}
-      d_\infty(\ope_i, \opf_{i\lambda}) &= \sup_{\rho\in\dops{\mathcal{H}}}\max_{\omega\in\Omega} \abs{\tr{\rho(\ope_i(\omega) - \opf_{i\lambda}(\omega))}}\\
-                                         &= \sup_{\rho\in\dops{\mathcal{H}}}\max_{\omega\in\Omega} \abs{(1-\lambda)\tr{\rho(\ope_i(\omega) - \opf_{i})} + \lambda\tr{\rho(\ope_i(\omega) - \tilde{\opf}_{i})}(\omega)}g,
+      d_\infty(\ope_i, \opf_{i\lambda}) &= \sup_{\rho\in\dops[\hcal]}\max_{\omega\in\Omega} \abs{\tr{\rho(\ope_i(\omega) - \opf_{i\lambda}(\omega))}}\\
+                                        &= \sup_{\rho\in\dops[\hcal]}\max_{\omega\in\Omega} \abs{(1-\lambda)\tr{\rho(\ope_i(\omega) - \opf_{i})} + \lambda\tr{\rho(\ope_i(\omega) - \tilde{\opf}_{i})}(\omega)},
     \end{align}
     as we take the $\sup_\rho$ over a compact set, so $\lambda\mapsto d_\infty(\ope_i,\opf_{i\lambda})$ is a continuous function from $[0,1]\to\mathbb{R}^+$, by the intermediate value theorem every value between $d_\infty(\ope_i, \opf_{i})$ and $d_\infty(\ope_i, \tilde{\opf}_i) = 1$ is achieved by some $\lambda$.
   \end{proof}
@@ -150,15 +149,15 @@ Applying the techniques in section \ref{sec:covariance} results in compatible ap
 
 \begin{lem}[Increasing the error - $p$-norm]
   \label{lem:p-increase-error}
-  Let $\{\ope_i\}$ be a family of observables with outcome sets $\Omega_i$. Choose $i\in 1\hdots n$ and $\bov = (v_1\hdots v_i\hdots v_n) \in S_p(\ope_1\hdots\ope_n)$, such that there exists some $\omega^*\in\Omega_i$ where $\tr{\ope_i(\omega^*)\rho^*} = 1$ for some $\rho^*\in\dops{\mathcal{H}}$ then $v_i \leq v_i^\prime \leq 2^{\frac{1}{p}} \implies \bov^\prime = (v_1\hdots v_i^\prime\hdots v_n) \in S_p(\ope_1\hdots\ope_n)$.
+  Let $\{\ope_i\}$ be a family of observables with outcome sets $\Omega_i$. Choose $i\in 1\hdots n$ and $\bov = (v_1\hdots v_i\hdots v_n) \in S_p(\ope_1\hdots\ope_n)$, such that there exists some $\omega^*\in\Omega_i$ where $\tr{\ope_i(\omega^*)\rho^*} = 1$ for some $\rho^*\in\dops[\hcal]$ then $v_i \leq v_i^\prime \leq 2^{\frac{1}{p}} \implies \bov^\prime = (v_1\hdots v_i^\prime\hdots v_n) \in S_p(\ope_1\hdots\ope_n)$.
   \begin{proof}
-    Let $\Omega = \prod_i \Omega_i$ be the Cartesian product of the outcome sets, since $\bov\in S_p(\ope_1\hdots\ope_n)$ there exists a compatible family of observables $\opf_i$ with joint $\opj:\Omega\to\saops{\mathcal{H}}$ such that
+    Let $\Omega = \prod_i \Omega_i$ be the Cartesian product of the outcome sets, since $\bov\in S_p(\ope_1\hdots\ope_n)$ there exists a compatible family of observables $\opf_i$ with joint $\opj:\Omega\to\saops[\hcal]$ such that
     \begin{align}
       d_p(\ope_i, \opf_i) = v_i
     \end{align}
     Now choose $\tilde{\omega} \neq \omega^*$ and define
     \begin{align}
-      \tilde{\opj}&:\Omega\to \saops{\mathcal{H}}\\
+      \tilde{\opj}&:\Omega\to \saops[\hcal]\\
       \tilde{\opj}&:(\omega_1\hdots\omega_{n}) \mapsto \begin{cases}\sum_{\omega\in\Omega_i} \opj(\omega_1\hdots\omega_{i-1},\omega,\omega_{i+1}\hdots\omega_{n}), & \omega_i = \tilde{\omega}\\\ 0,&\text{else}\end{cases},
     \end{align}
     Let $\tilde{\opf}_j$ be the $j^\text{th}$ Cartesian margin of $\tilde{\opj}$, and note that for $j\neq i$ we have $\tilde{\opf}_j = \opf_j$, but that $\tilde{\opf}_i:\omega\mapsto \delta_{\omega \tilde{\omega}}\opi$ is the trivial observable which gives outcome $\tilde{\omega}$ with certainty in any state. Since we have $\tr{\ope(\omega^*)\rho^*} = 1$ we can compute %There exists a projector $\rho$ such that $\tr{\ope(\omega^*)\rho} = 0$, therefore $d(\ope_i, \tilde{\opf}_i) = 1$.
@@ -179,7 +178,7 @@ Applying the techniques in section \ref{sec:covariance} results in compatible ap
 
 \section{Covariance}
 \label{sec:covariance}
-Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive linear maps acting on $\saops{\mathcal{H}}$ we say an observable $E:\Omega\to\saops{\mathcal{H}}$ is \emph{covariant} if
+Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive linear maps acting on $\saops[\hcal]$ we say an observable $E:\Omega\to\saops[\hcal]$ is \emph{covariant} if
 \begin{equation}
   E(f_g(\omega)) = R_g \left[E(\omega)\right], \quad \forall g\in G, \omega\in\Omega.
 \end{equation}
@@ -200,15 +199,15 @@ This has some useful properties
   Covariant observables are unchanged by the invariant mean.
 \end{lem}
 \begin{lem}
-  For any observable $\ope:\Omega\to\saops{\mathcal{H}}$, with $R$ and $f$ defined as above, the invariant mean $M_{R,f}(\ope)$ is a covariant observable
+  For any observable $\ope:\Omega\to\saops[\hcal]$, with $R$ and $f$ defined as above, the invariant mean $M_{R,f}(\ope)$ is a covariant observable
 \end{lem}
 \begin{lem}
   \label{lem:cov-reduces-p-norm}
-  For any group $G$, with $R_g$ and $f_g$ defined as above, $M_{R,f}$ acts to reduce the $\sup$-$p$-norm of maps from $\Omega$ to $\saops{\mathcal{H}}$.
+  For any group $G$, with $R_g$ and $f_g$ defined as above, $M_{R,f}$ acts to reduce the $\sup$-$p$-norm of maps from $\Omega$ to $\saops[\hcal]$.
   \begin{proof}
     First define the observables
     \begin{align}
-      \ope_g:\Omega&\to\posops{\mathcal{H}}\\
+      \ope_g:\Omega&\to\posops[\hcal]\\
       \ope_g:\omega&\mapsto R_{g^{-1}}[\ope(f_g(\omega))]
     \end{align}
     and note that
@@ -243,9 +242,9 @@ there is also a marginal action $\mu^i$ of the direct product group on each $\Om
 \end{align}
 
 \begin{lem}\label{lem:margins-inv-mean-same}
-  For $i\in 1\hdots n$ let $\ope_i:\Omega_i \to \posops{\mathcal{H}}$ be a compatible family of observables, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops{\mathcal{H}}$. If $\opj$ is any Cartesian joint observable for the $\ope_i$, and $\tilde{\opj}_i$ the $i^\text{th}$ margin of $M_{R,\pi}(\opj)$,
+  For $i\in 1\hdots n$ let $\ope_i:\Omega_i \to \posops[\hcal]$ be a compatible family of observables, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops[\hcal]$. If $\opj$ is any Cartesian joint observable for the $\ope_i$, and $\tilde{\opj}_i$ the $i^\text{th}$ margin of $M_{R,\pi}(\opj)$,
   \begin{align}
-    \tilde{\opj}_i&: \Omega_i \to \posops{\mathcal{H}}\\
+    \tilde{\opj}_i&: \Omega_i \to \posops[\hcal]\\
     \tilde{\opj}_i &: \omega^* \mapsto \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}}M_{R,\pi}(\opj)(\underline{\omega}),
   \end{align}
   where $\underline{\omega}_i$ denotes the $i^\text{th}$ element of the tuple $\underline{\omega}$, then
@@ -267,11 +266,11 @@ there is also a marginal action $\mu^i$ of the direct product group on each $\Om
 
 \begin{thm}
   \label{thm:cov-obs-improve-approx}
-  Let $\sbuild{\ope_i}{ i\in 1\hdots n}$ be a family of (not necessarily compatible) observables, $\ope_i:\Omega_i \to \posops{\mathcal{H}}$, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops{\mathcal{H}}$ such that
+  Let $\sbuild{\ope_i}{ i\in 1\hdots n}$ be a family of (not necessarily compatible) observables, $\ope_i:\Omega_i \to \posops[\hcal]$, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops[\hcal]$ such that
   \begin{align}
     M_{R,\mu^i}(\ope_i) = \ope_i.
   \end{align}
-  Then for any compatible family of observables $\sbuild{\opf_i}{ i\in 1\hdots n}$, $\opf_i:\Omega_i \to \posops{\mathcal{H}}$, with joint observable $\opj:\Omega\to\posops{\mathcal{H}}$, the observables
+  Then for any compatible family of observables $\sbuild{\opf_i}{ i\in 1\hdots n}$, $\opf_i:\Omega_i \to \posops[\hcal]$, with joint observable $\opj:\Omega\to\posops[\hcal]$, the observables
   \begin{align}
     \tilde{\opf}_i &= M_{R, \mu^i}(\opf_i)
   \end{align}
@@ -428,14 +427,14 @@ The subset of $S_p$ covered by covariant observables is a sphere of radius $2^{\
 \label{sec:fourier-pair}
 Let $\cyc[n] = \{0\hdots n-1\}$ denote the cyclic group of order $n$, equivalent to the set of natural numbers less than $n$, with the group operation addition modulo $n$, denoted $+$. Although this is only a field for $n$ prime, it will be useful to define multiplication, denoted by juxtaposition, as the usual multiplication of natural numbers modulo $n$. 
 
-Let $\mathcal{H}$ be a Hilbert space of dimension $n\in\mathbb{N}$, $n \geq 2$, $\sbuild{\ket{g}}{g \in \cyc[n]}$ be an orthonormal set of vectors, hereafter called the \emph{computational basis} and let
+Let $\hcal$ be a Hilbert space of dimension $n\in\mathbb{N}$, $n \geq 2$, $\sbuild{\ket{g}}{g \in \cyc[n]}$ be an orthonormal set of vectors, hereafter called the \emph{computational basis} and let
 \begin{align}
   \ket{f_h} &\defeq \sqrt{\frac{1}{n}}\sum_{g\in \cyc[n]} e^{\frac{2\pi i}{n} gh}\ket{g}, \quad h\in\cyc[n]\\
   \implies \ket{g} &= \sqrt{\frac{1}{n}}\sum_{h\in \cyc[n]} e^{-\frac{2\pi i}{n} gh} \ket{f_h}, \quad g\in\cyc[n]
 \end{align}
-be the well known \emph{Fourier basis}. It is easily verified that the $\ket{f_h}$ are an orthonormal basis for $\mathcal{H}$ and are \emph{mutually unbiased} with the computational basis. We define sharp observables for these bases
+be the well known \emph{Fourier basis}. It is easily verified that the $\ket{f_h}$ are an orthonormal basis for $\hcal$ and are \emph{mutually unbiased} with the computational basis. We define sharp observables for these bases
 \begin{align}
-  \opa&:\cyc[n] \to \posops{\mathcal{H}} & \opb&:\cyc[n] \to \posops{\mathcal{H}}\\
+  \opa&:\cyc[n] \to \posops[\hcal] & \opb&:\cyc[n] \to \posops[\hcal]\\
   \opa&:g\mapsto \ketbra{g}{g} & \opb&:h\mapsto \ketbra{f_h}{f_h}.
 \end{align}
 We can define unitary \emph{shift operators} for these bases
@@ -458,11 +457,11 @@ It is easy to verify the commutation relations
 \end{align}
 by, for example, applying the operator on each side of the equality to the states in the Fourier basis. Therefore
 \begin{align}
-  U_k V_q \rho\, V_q^\dagger U^\dagger_k = V_q U_k \rho\,  U^\dagger_k V_q^\dagger, \quad \forall \rho\in\saops{\mathcal{H}}.
+  U_k V_q \rho\, V_q^\dagger U^\dagger_k = V_q U_k \rho\,  U^\dagger_k V_q^\dagger, \quad \forall \rho\in\saops[\hcal].
 \end{align}
 We therefore consider the linear maps
 \begin{align}
-  R_{k,q}&:\saops{\mathcal{H}}\to \saops{\mathcal{H}}\\
+  R_{k,q}&:\saops[\hcal]\to \saops[\hcal]\\
   R_{k,q}&:\rho \mapsto U_k V_q \rho\, V^\dagger_q U^\dagger_k =  V_q U_k  \rho\,  U^\dagger_k V^\dagger_q,
 \end{align}
 and note that they form a representation of the direct product group $\cyc[n]\times\cyc[n]$, with the group operation given by operator composition
@@ -477,13 +476,13 @@ These maps act on the effects of the target observables correctly
 Therefore we can apply the theorems of section \ref{sec:covariance} to establish that the covariant joint observables are optimal with respect to the $d_p$ distance measures.
 
 \subsection{Commutivity} 
-There is a one-to-one relation between covariant joint observables $\opj:\cyc[n]\times\cyc[n]\to\posops{\mathcal{H}}$ and trace one positive operators on $\mathcal{H}$ given by 
+There is a one-to-one relation between covariant joint observables $\opj:\cyc[n]\times\cyc[n]\to\posops[\hcal]$ and trace one positive operators on $\hcal$ given by 
 \begin{align}
   \opj:(k,q)\mapsto \frac{1}{n}R_{k,q}\left[\tau\right].
 \end{align}
 All covariant, $\cyc[n]\times\cyc[n]$ valued observable are obtained in this way, for some trace $1$ positive $\tau$, as we can take $\tau = n\opj(0,0)$, and all trace $1$ positive operators give rise to some covariant, $\cyc[n]\times\cyc[n]$ valued observable. We can write down the margins of such an observable
 \begin{align}
-  \opc&:\cyc[n] \to \posops{\mathcal{H}} & \opd&:\cyc[n] \to \posops{\mathcal{H}}\\
+  \opc&:\cyc[n] \to \posops[\hcal] & \opd&:\cyc[n] \to \posops[\hcal]\\
   \opc&:g\mapsto \sum_h \opj(g,h) = \frac{1}{n}\sum_h R_{g,h}\left[\tau\right] &  \opd&:h\mapsto \sum_g \opj(g,h) = \frac{1}{n}\sum_g R_{g,h}\left[\tau\right].
   \label{eqn:write-down-margins}
 \end{align}
@@ -599,7 +598,7 @@ then computing the lower boundary of the uncertainty region is equivalent to the
 \end{equation}
 We can impose the equality constraints in \eqref{eqn:semidefinite-program}, by means of the linear map
 \begin{align}
-  \mathcal{M}&: \saops{\mathcal{H}} \to M_2(\mathbb{C})\\
+  \mathcal{M}&: \saops[\hcal] \to M_2(\mathbb{C})\\
   \mathcal{M}&:X \mapsto \begin{pmatrix}\tr{\ketbra{0}{0} X} & 0 \\ 0 & \tr{X}\end{pmatrix},
 \end{align}
 where $M_2(\mathbb{C})$ is the set of $2$ by $2$ matrices over the field $\mathbb{C}$. If

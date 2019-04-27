@@ -23,7 +23,7 @@
 %\affiliation{Department of Mathematics, University of York, York YO10 5DD, UK}
 %\date{\today}
 
-\chapter*{Forward to chapters \ref{chap:low_dim_prep} and \ref{chap:interferometric_prep_ur}}
+%\chapter*{Forward to chapters \ref{chap:low_dim_prep} and \ref{chap:interferometric_prep_ur}}
 
 \chapter{Low dimensional Preparation uncertainty}
 \label{chap:low_dim_prep}
@@ -508,7 +508,14 @@ This term is analogous in form to the classical covariance; however, in the quan
 \subsection{Uncertainty region for triples of $\pm 1$-valued qubit observables}
 \label{sec:qubit-triple-uncertainty}
 
-\coma{This should be fun!}
+Here we sue similar methods to those employed for pairs of general qubit observables. We consider three observables defined by unit Bloch vectors $\opa = \boa\cdot\bosig$, $\opb = \bob\cdot\bosig$ and $\opc = \boc\cdot\bosig$, and a state $\rho = \qbit{\bor}$. By relabelling $\pm 1 \mapsto \mp 1$, if necessary we can ensure $\boa\cdot\bob, \bob\cdot\boc, \boc\cdot\boa \geq 0$. Requiring that $\varr{\opc} = z^2$, for some fixed $z\in [0,1]$ constrains $\bor$, in particular to be in one of two planes, $\bor\cdot\boc = \pm\sqrt{1-z^2}$, the state $\rho = \qbit[][-]{\bor}$ has exactly the same variance triple $(\varr{\opa}, \var{\opb}, \var{\opc})$ as $\rho$, so we only consider the positive plane $\bor\cdot\boc = \sqrt{1-z^2}$. The intersection of this plane with the Bloch sphere is a disk of radius $z$ centered at $\sqrt{1-z^2}\boc$, we will denote this disk $D(\boc,z)$. The variances of $\opa$ and $\opb$, respectively are not sensitive to the full vector $\bor$, but instead the quantities $\bor\cdot\boa$ and $\bor\cdot\bob$, respectively. We therefore seek the projection of the $D(\boc,z)$, onto the plane spanned by $\boa$ and $\bob$. It is well known that the orthogonal projection of a circle is an ellipse, and so the orthogonal projection of a disk must be the region bounded by an ellipse. We choose a basis for the $\boa,\bob$ plane $\boa, \boap$, where $\boa\cdot\boap=0$ and $\boap\cdot\bob \geq 0$. If $\vproj{\boa}{\bob}:\R^2\to\R^2$ is the orthogonal projection onto the $\boa,\bob$ plane the ellipse is centered at $\sqrt{1-z^2}\vproj{\boa}{\bob}\boc = \sqrt{1-z^2}(\boc\cdot\boa,\boc\cdot\boap)$, has semi-minor axis parallel to $(\boc\cdot\boa,\boc\cdot\boap)$ of length $z\sqrt{ 1 - \norm{\vproj{\boa}{\bob}\boc}^2}$, and semi-major axis of length $z$. We can give an explicit description of the ellipse as the set of points $(r_1, r_2)$, satisfying
+% \begin{align} %opposite convention for z <-> sqrt{1-z^2}
+%   \left(1-\text{c1}^2\right) y^2+\text{c1}^2+2 \text{c1} \text{c2} x y-2 \text{c1} x z+\left(1-\text{c2}^2\right) x^2+\text{c2}^2-2 \text{c2} y z+z^2-1=0
+% \end{align}
+\begin{align}
+  (r_1, r_2, 1) \begin{pmatrix} 1 - c_2^2& c_1 c_2 & -c_1 \sqrt{1-z^2} \\c_1 c_2 & 1 - c_1^2& -c_2z \\-c_1 \sqrt{1-z^2} & -c_2 z & c_1^2 + c_2^2 -z^2\end{pmatrix} \begin{pmatrix}r_1\\r_2\\1\end{pmatrix} = 0.
+\end{align}
+To determine the uncertainty region we first seek the minimum and maximum values of the variance $\varr{\opb}$ achievable with $\vproj{\opa}{\opb}\bor\in \vproj{\opa}{\opb}D(\boc,z)$. We consider separately the cases where there exists a vector in the interior of the ellipse orthogonal to $\bob$, in this case the maximum variance $\varr{\opb} = 1$ is achieved. Where no such vectors exist it is easy to see that the extrema are attained by vectors on the ellipse and, by differentiating and comparing stationary points the 
 
 \section{Qutrit uncertainty}
 \label{sec:qutrit}

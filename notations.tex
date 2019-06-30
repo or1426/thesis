@@ -110,6 +110,7 @@
 \newcommand\Pb{\mathbb{P}}
 \newcommand{\exR}{\overline{\R}}
 \newcommand{\Cx}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
 \newcommand\s{$\sigma$\textrm{-field} }
 \newcommand\notsubset{\subset\hspace{-3.5mm}{/}\hspace{1.5mm}}
 
@@ -453,6 +454,9 @@
 \DeclareDocumentCommand{\pnorm}{ m O{p} }{
   \norm{{#1}}_{#2}
 }
+\newcommand{\fdiv}[3]{D_{#1}\left({#2}\parallel{#3}\right)}
+
+\newcommand{\ovms}{\mathcal{M}}
 
 %---------------------------------------------------------------------------------------------------------------------------------------------------------
 % specific for interferometric prep stuff
@@ -460,7 +464,19 @@
 
 \newcommand{\MOD}[1]{#1_{\mathrm{mod}}} % APP's Pmod and Qmod
 \newcommand{\psdev}[1]{\tilde\Delta{\big(#1\big)}} % for the periodic standard deviation
-\newcommand{\ws}[1]{\delta{\big(#1\big)}} % for the delta-spread
+%\newcommand{\ws}[1]{\delta{\big(#1\big)}} % for the delta-spread
+\DeclareDocumentCommand{\ws}{ m o }{
+  \operatorname{W}\IfValueT{ #2 }{_{#2}}{ } \left({#1}\right)
+}
+
+\DeclareDocumentCommand{\wsDev}{ m o }{
+  \Delta\IfValueT{ #2 }{_{#2}}{ } \left({#1}\right)
+}
+
+\DeclareDocumentCommand{\lPVar}{ m m O{p} }{
+  \delta_{#3}\left({#1}, {#2}\right)
+}
+
 \newcommand{\dom}[1]{\mathcal{D}(#1)}
 \newcommand{\E}{\mathsf{E}} % spectral measure
 \newcommand{\iunit}{\mathrm{i}} % for the imaginary unit i
@@ -476,3 +492,15 @@
 
 \newcommand{\expe}[2]{\left\langle{#1}\right\rangle_{#2}}
 
+\DeclareDocumentCommand{\borel}{ m o }{
+  \mathcal{B}\left({#1}\IfValueT{#2}{,{#2}} \right)
+}
+
+\newcommand{\width}[2]{W_{#2}\left({#1}\right)}
+
+\DeclareDocumentCommand{\calibError}{ m m m o }{
+  \Delta^{\IfValueTF{#4}{#4}{c}}_{#3}\left({#1}, {#2}\right)
+}
+
+\newcommand{\spec}[1]{\sigma\left({#1}\right)}
+\newcommand{\res}[1]{\rho\left({#1}\right)}

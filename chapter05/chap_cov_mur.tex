@@ -1,8 +1,12 @@
 
 \chapter{Measurement uncertainty and covariance - finite dimensional case studies}
-
+\label{chap:cov-meas-ur}
 \section{Introduction}
-Measurement uncertainty provides a quantitative framework to study the incompatibility inherent to quantum observables, through the lens of compatible approximations. One first defines a figure of merit, say $d$, which says something about how well one observable may be said to approximate another, then for a fixed set of target observables, attempts to find the set of values allowed for the figure of merit of merit, given that the approximations are compatible\cite{blw-meas-uncertainty}\cite{srw-meas-uncertainty-finite}. 
+Measurement uncertainty provides a quantitative framework to study the incompatibility inherent to quantum observables, through the lens of compatible approximations. One first defines a figure of merit, say $d$, which says something about how well one observable may be said to approximate another, then for a fixed set of target observables, attempts to find the set of values allowed for the figure of merit of merit, given that the approximating observables are compatible. This idea dates back to Heisenberg's early Gedanken experiments \cite{Heisenberg1927-Wheeler+Zurek}
+
+ \cite{quantum-measurement-busch-et-al}, chapter 13 for a comprehensive introduction to this line of thinking, a 
+
+\coma{\cite{blw-meas-uncertainty}\cite{srw-meas-uncertainty-finite}}
 
 More concretely, given a family of $n$ target observables $\sbuild{\ope_i}{n\in1\hdots n}$, acting on the same Hilbert space, and a figure of merit $d$ assumed to take real values, we seek the \emph{error region}, defined to be the set
 \begin{equation}
@@ -63,6 +67,7 @@ Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used 
     \path (F2) -- node[auto=false]{{\huge$\vdots$}} (Fn);
   \end{tikzpicture}
   \caption{Target observables $\ope_i$,  compatible approximations $\opf_i$, and their joint $\opj$}
+  \label{fig:depict-meas-uncertainty}
   \end{center}
 \end{figure}
 
@@ -81,7 +86,7 @@ A set of $n$ observables on the Hilbert space $\hcal$, $\sbuild{\ope_i\,}{\,i=1\
 \end{align}
 where $\Omega = \prod_i \Omega_i$ is the Cartesian product and $\bm{\omega}_i$ is the $i^\text{th}$ component of $\bm{\omega}$. Such an observable is called a Cartesian joint for the observables $\sbuild{\ope_i}{i\in 1\hdots n}$.
 
-Given a pair of probability distributions, $S$ and $T$  over the same (finite) set $\Omega$, we can compute the $p$-norm of their (pointwise) difference. The resulting quantity is easily seen to be a metric on the space of probability distributions over $\Omega$,
+Given a pair of probability distributions, $S$ and $T$  over the same (finite) set $\Omega$, we can compute the $p$-norm of their (pointwise) difference. The resulting quantity is a metric on the space of probability distributions over $\Omega$,
 \begin{align}
   \delta_p(S,T) &\defeq \pnorm{S - T}\\
                  &= \left(\sum_{\omega\in\Omega}\abs{S(\omega) - T(\omega)}^p\right)^{\frac{1}{p}}, \quad \forall p\in[1,\infty),\\
@@ -106,7 +111,210 @@ where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\
 \begin{equation}
   S_p(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d_p(\ope_1, \opf_1), d_p(\ope_2, \opf_2)\hdots d_p(\ope_n, \opf_n))}{\opf_i:\Omega_i\to\posops[\hcal] \text{ are compatible}},\quad p\in [1,\infty].
 \end{equation}
-It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps $\Omega\to \saops[\hcal]$.
+
+Given two probability measures $\mu,\nu$ on the same outcome space $(\Omega, \fcal)$ we say that that $\mu$ \emph{dominates} $\nu$ if $\mu(X) = 0\implies\nu(X) = 0$, for all measureable sets $X\in\fcal$, this is denoted $\mu\gg\nu$. This is often referred to as $\nu$ being \emph{absolutely continuous} withe respect to $\mu$.
+
+A theorem due to Radon and Nikodym, \coma{cite} states that if $\mu$ dominates $\nu$ then there exists a measureable function $f:\Omega\to \R$ such that 
+\begin{align}\label{eqn:radon-nikodym}
+  \nu(X) = \int_X f d\mu,
+\end{align}
+for all $X\in\fcal$. The $f$, so defined, is unique up to a set of $\mu$-measure $0$, more precisely, if $f$ and $g$ both satisfy \eqref{eqn:radon-nikodym} for some measures $\nu$, $\mu$ then the set of points $\omega\in\Omega$ such that $f(\omega)\neq g(\omega)$ has $\mu$-measure $0$. A function satisfying \eqref{eqn:radon-nikodym} is called a (or, by mild abuse of notation the) \emph{Radon-Nikodym derivative} of $\nu$ with respect to $\mu$, and denoted $\frac{d\nu}{d\mu}$ so \eqref{eqn:radon-nikodym} becomes
+\begin{align}\label{eqn:radon-nikodym-2}
+  \nu(X) = \int_X \frac{d\nu}{d\mu} d\mu.
+\end{align}
+
+We now define the $f$-divergence, for two probability measures $\mu\gg\nu$, on a measurable space $(\Omega, \fcal)$, and convex function $f:\R\to\R$ such that $f(1) = 0$
+\begin{align}\label{eqn:f-div-defn}
+  \fdiv{f}{\nu}{\mu} = \int_\Omega f\left(\frac{d\nu}{d\mu}\right) d\mu.
+\end{align}
+
+This definition is quite general, and includes several ``divergences'' well known from the literature. In the \coma{Liese, F.; Vajda, I. (2006). "On divergences and informations in statistics and information theory"}. 
+
+We note that both the $f$-divergences and the $p$-norm based divergences above have the property of \emph{joint convexity}, that is if $\mu_1, \mu_2, \nu_1,\nu_2$ are probability measures such that each divergence is defined, and $\lambda\in [0,1]$ then
+\begin{align}
+  \delta_p(\lambda\nu_1 + (1-\lambda)\nu_2, \lambda\mu_1 + (1-\lambda)\mu_2) &\leq \lambda \delta_p(\nu_1, \mu_1) + (1-\lambda)\delta_p(\nu_2, \mu_2)\\
+  \fdiv{f}{\lambda\nu_1 + (1-\lambda)\nu_2}{\lambda\mu_1 + (1-\lambda)\mu_2} &\leq  \lambda\fdiv{f}{\nu_1}{\mu_1} + (1-\lambda)\fdiv{f}{\nu_2}{\mu_2},
+\end{align}
+it is this property that we will require for theorems \ref{thm:inv-mean-reduces-error} and\ref{thm:cov-obs-improve-approx}.
+\section{Covariance}
+\label{sec:covariance}
+
+It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps $\Omega\to \saops[\hcal]$ which, for convenience, we denote $\ovms$. The set of such maps ranging in the positive operators is a convex cone in $\ovms$, and the constraint $\sum_\omega\ope(\omega) = \opi$ defines an affine space.
+
+Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive, unital, linear maps acting on $\saops[\hcal]$ we say an observable $E:\Omega\to\saops[\hcal]$ is \emph{covariant} if
+\begin{equation}
+  E(f_g(\omega)) = R_g \left[E(\omega)\right], \quad \forall g\in G, \omega\in\Omega.
+\end{equation}
+Note that the $R_g$ must be unital since
+\begin{align}
+  \opi &= \sum_\omega \ope(f_g(\omega))\\
+       &= \sum_\omega R_g\left[\ope(\omega)\right]\\
+       &= R_g\left[ \sum_\omega \ope(\omega)\right]\\
+       &= R_g\left[ \opi\right].
+\end{align}
+
+Given such a $G$, $f_g$, and $R_g$ we can define the \emph{invariant mean}, $M_{R,f}:\ovms\to\ovms$
+\begin{equation}
+  M_{R,f}(\ope)(\omega) = \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]
+\end{equation}
+This has some useful properties. 
+
+\begin{lem}\label{lem:inv-mean-obs-to-obs}
+  The invariant mean of an observable is an observable.
+  \begin{proof}
+    For any observable $\ope:\Omega\to\posops[\hcal]$ the map $M_{R,f}(\ope)$ takes positive values since the $R_g$ are positive, and the positive operators are a convex set. Further, if $\ope$ is an observable then so is $M_{R,f}(\ope)$, since
+    \begin{align}
+      \sum_{\omega\in\Omega} M_{R,f}(\ope)(\omega) &= \frac{1}{\abs{G}} \sum_{\omega\in\Omega} \sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]\\
+                                                   &= \frac{1}{\abs{G}} \sum_{g\in G} R_{g^{-1}}\! \left[\sum_{\omega\in\Omega}\ope(f_g(\omega))\right]\\
+                                                   &= \frac{1}{\abs{G}} \sum_{g\in G} \opi\\
+                                                   &= \opi.
+    \end{align}
+  \end{proof}
+\end{lem}
+\begin{lem}\label{lem:inv-mean-proj}
+  The invariant mean is the projection from $\ovms$ onto the subspace of $(R,f)$-covariant maps.
+  \begin{proof}
+    First note that $M_{R,f}$ is linear, since the $R_g$ are linear. For any $\ope\in\ovms$, $M_{R,f}(\ope)$ is covariant since
+    \begin{align}
+      M_{R,f}(\ope)(f_h(\omega)) &= \frac{1}{\abs{G}} \sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g\circ f_h(\omega))\right]\\
+                                 &= \frac{1}{\abs{G}} \sum_{g^\prime\in G} R_{{(g^\prime h^{-1})}^{-1}}\! \left[\ope(f_{g^\prime h^{-1}}\circ f_h(\omega))\right]\\
+                                 &= \frac{1}{\abs{G}} \sum_{g^\prime\in G} R_{h{g^\prime}^{-1}} \! \left[\ope(f_{g^\prime}(\omega))\right]\\
+                                 &= R_h\!\left[\frac{1}{\abs{G}} \sum_{g^\prime\in G} R_{{g^\prime}^{-1}} \! \left[\ope(f_{g^\prime}(\omega))\right]\right]\\
+                                 &= R_h\!\left[M_{R,f}(\ope)(\omega)\right].
+    \end{align}
+    Now $(R,f)$-covariant maps are invariant under $M_{R,f}$
+    \begin{align}
+      M_{R,f}(\ope)(\omega) &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]\\
+                            &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[R_{g}\!\left[\ope(\omega)\right]\right]\\
+                            &= \frac{1}{\abs{G}}\sum_{g\in G} \ope(\omega)\\
+                            &= \ope(\omega),
+    \end{align}
+    so $M_{R,f}$ is idempotent.
+  \end{proof}
+\end{lem}
+It follows that the space of $(R,f)$-covariant maps is a vector subspace of $\ovms$, and that $\ope=M_{R,f}(\ope)$ if, and only if, $\ope$ is $(R,f)$-covariant.
+
+\begin{thm}
+  \label{thm:inv-mean-reduces-error}
+  Let $G$ be a group, $f_g:\Omega\to\Omega$ an action and $R_g:\saops[\hcal]\to\saops[\hcal]$ a positive, unital, linear representation of $G$. Let $d$ be a jointly convex map from the probability distributions over $\Omega$ to $\R$, compatible with $f_g$ in the sense that
+  \begin{align}\label{eqn:group-rep-error-compat}
+    d(P\circ f_g, Q\circ f_g) = d(P,Q),
+  \end{align}
+  for all probability distributions $P,Q$ and all $g\in G$, then
+  \begin{align}
+    \sup_\rho d\left(M_{R,f}(\ope)^\rho, M_{R,f}(\opf)^\rho\right) \leq \sup_\rho d\left(\ope^\rho,\opf^\rho\right),
+  \end{align}
+  For all observables $\ope, \opf:\Omega\to\posops[\hcal]$.
+  \begin{proof}
+    \begin{align}
+      \sup_\rho d\left(M_{R,f}(\ope)^\rho, M_{R,f}(\opf)^\rho\right) &= \sup_\rho d\left( \frac{1}{\abs{G}}\sum_{g\in G} \left(R_{g^{-1}} \circ \ope\circ f_g\right)^\rho , \frac{1}{\abs{G}}\sum_{g\in G}\left(R_{g^{-1}} \circ \opf\circ f_g\right)^\rho \right)\\
+                                                                     &\leq \sup_\rho \frac{1}{\abs{G}}\sum_{g\in G} d\left( \left(R_{g^{-1}} \circ \ope\circ f_g\right)^\rho ,\left(R_{g^{-1}} \circ \opf\circ f_g\right)^\rho \right)\\
+                                                                     &\leq \frac{1}{\abs{G}}\sum_{g\in G}\sup_\rho d\left( \left(R_{g^{-1}} \circ \ope\circ f_g\right)^\rho ,\left(R_{g^{-1}} \circ \opf\circ f_g\right)^\rho \right)\\
+                                                                     &= \frac{1}{\abs{G}}\sum_{g\in G}\sup_\rho d\left( \left( \ope\circ f_g\right)^{R_{g^{-1}}^*[\rho]} ,\left(\opf\circ f_g\right)^{R_{g^{-1}}^*[\rho]} \right)\\
+                                                                     &\leq \frac{1}{\abs{G}}\sum_{g\in G}\sup_\rho d\left( \left( \ope\circ f_g\right)^{\rho} ,\left(\opf\circ f_g\right)^{\rho} \right)\\
+                                                                     &= \frac{1}{\abs{G}}\sum_{g\in G}\sup_\rho d\left( \ope^{\rho}\circ f_g , \opf^{\rho}\circ f_g \right)\\
+                                                                     &= \frac{1}{\abs{G}}\sum_{g\in G}\sup_\rho d\left(\ope^{\rho} ,\opf^{\rho}\right)\\
+                                                                     &= \sup_\rho d\left(\ope^{\rho} ,\opf^{\rho}\right).
+    \end{align}
+  \end{proof}
+\end{thm}
+
+The compatibility condition \eqref{eqn:group-rep-error-compat}, may arise for quite different reasons. The $p$-norm error measures defined in section \ref{sec:error-measure} is invariant under all bijective functions on the outcome set\footnote{Elements of a group action must be invertible, and hence bijective.}, as are entropic quantities such as the Kullback-Leiber divergence. On the other hand the Wasserstein metrics mentioned in section \ref{sec:comp-measures-and-dists} are only compatible with maps which leave the underlying metric on $\Omega$ invariant, for example where $\Omega = \R$ the standard metric on $\R$ is compatible with translations. In the proof of theorem \ref{thm:inv-mean-reduces-error} we only require that $d(P\circ f_g, Q\circ f_g) \leq d(P,Q)$, however this being true for all $g\in G$ implies equality.
+
+% \begin{lem}
+%   \label{lem:cov-reduces-p-norm}
+%   For any group $G$, with $R_g$ and $f_g$ defined as above, $M_{R,f}$ acts to reduce the $\sup$-$p$-norm of maps from $\Omega$ to $\saops[\hcal]$.
+%   \begin{proof}
+%     First define the observables
+%     \begin{align}
+%       \ope_g:\Omega&\to\posops[\hcal]\\
+%       \ope_g:\omega&\mapsto R_{g^{-1}}[\ope(f_g(\omega))]
+%     \end{align}
+%     and note that
+%     \begin{equation}
+%       M_{R,f}(\ope) = \frac{1}{\abs{G}} \sum_{g\in G}\ope_g.
+%     \end{equation}
+%     Then, denoting $M_{R,f} = M$
+%     \begin{align}
+%       \pnorm{M(\ope)} &=\pnorm{\frac{1}{\abs{G}} \sum_{g\in G} \ope_g}\\
+%                       &\leq \frac{1}{\abs{G}}\sum_{g\in G} \pnorm{\ope_g}\\
+%                       &= \frac{1}{\abs{G}} \sum_{g\in G} \sup_\rho \pnorm{\ope_g^\rho}\\
+%                       &=\frac{1}{\abs{G}} \sum_{g\in G} \sup_\rho \left(\sum_{\omega\in\Omega}\abs{\tr{R_{g^{-1}}[\ope(f_g(\omega))]\rho}}^p\right)^{\frac{1}{p}}\\
+%                       &=\frac{1}{\abs{G}} \sum_{g\in G} \sup_\rho \left(\sum_{\omega\in\Omega}\abs{\tr{\ope(f_g(\omega))R_{g^{-1}}^*[\rho]}}^p\right)^{\frac{1}{p}}\\
+%       \label{eqn:line-use-R-adjoint-tp}
+%                       &\leq\frac{1}{\abs{G}} \sum_{g\in G} \sup_\rho \left(\sum_{\omega\in\Omega}\abs{\tr{\ope(f_g(\omega))\rho}}^p\right)^{\frac{1}{p}}\\
+%                       &=\sup_\rho \left(\sum_{\omega\in\Omega}\abs{\tr{\ope(\omega)\rho}}^p\right)^{\frac{1}{p}}\\
+%                       &=\pnorm{\ope},
+%     \end{align}
+%     where \eqref{eqn:line-use-R-adjoint-tp} is true since $R_g$ being positive and unital implies that $R_g^*$ is positive and trace preserving, implying that if $\rho$ is a density operator then $R_g^*[\rho]$ is also a density operator.
+%   \end{proof}
+% \end{lem}
+
+Given a set of $n\in\mathbb{N}$ finite sets $\sbuild{\Omega_i}{i\in 1\hdots n}$, and $n$ finite groups $\sbuild{G_i}{i\in 1\hdots n}$, with action $f_{g_i}^i: \Omega_i \to \Omega_i$, for each $g_i\in G_i$ there is a \emph{product action} $\pi$ of the direct product group $G = \prod_i G_i$ on the Cartesian product set $\Omega = \prod_i \Omega_i$
+\begin{align}
+  \pi_g&: \Omega \to \Omega, \quad \forall g\in G\\
+  \pi_{(g_1, \hdots, g_i,\hdots, g_n)} &: (\omega_1, \hdots \omega_n) \mapsto (f_{g_1}^1(\omega_1), \hdots, f_{g_n}^n(\omega_n)),
+\end{align}
+there is also a marginal action $\mu^i$ of the direct product group on each $\Omega_i$
+\begin{align}
+  \mu^i_g &:\Omega_i \to \Omega_i, \quad \forall g\in G\\
+  \mu^i_{(g_1,\hdots, g_i,\hdots,g_n)}&:\omega\mapsto f^i_{g_i}(\omega).
+\end{align}
+
+\begin{lem}\label{lem:margins-inv-mean-same}
+  For $i\in 1\hdots n$ let $\ope_i:\Omega_i \to \posops[\hcal]$ be a compatible family of observables, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops[\hcal]$. If $\opj$ is any Cartesian joint observable for the $\ope_i$, and $\tilde{\opj}_i$ the $i^\text{th}$ margin of $M_{R,\pi}(\opj)$,
+  \begin{align}
+    \tilde{\opj}_i&: \Omega_i \to \posops[\hcal]\\
+    \tilde{\opj}_i &: \omega^* \mapsto \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}}M_{R,\pi}(\opj)(\underline{\omega}),
+  \end{align}
+  where $\underline{\omega}_i$ denotes the $i^\text{th}$ element of the tuple $\underline{\omega}$, then
+  \begin{align}
+    \tilde{\opj}_i(\omega) &= M_{R,\mu^i}(\ope_i)(\omega), \quad \forall \omega \in \Omega_i.
+  \end{align} %\frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\ope_i(\phi_g^i(\omega^*))\right],
+  \begin{proof}
+    \begin{align}
+      \tilde{\opj}_i(\omega^*) &= \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}}M_{R,\pi}(\opj)(\underline{\omega})\\
+                               &= \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}} \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\opj(\pi_g(\underline{\omega}))\right]\\
+                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}} \opj(\pi_g(\underline{\omega}))\right]\\
+                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \pi_{g^{-1}}(\underline{\omega})_i = \omega^*}} \opj(\underline{\omega})\right]\\
+                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \mu^i_{g}(\omega^*)}} \opj(\underline{\omega})\right]\\
+                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\ope\left(\mu^i_{g}(\omega^*)\right)\right]\\
+                               &= M_{R, \mu^i}(\ope_i)(\omega^*).
+    \end{align}
+  \end{proof}
+\end{lem}
+
+\begin{thm}
+  \label{thm:cov-obs-improve-approx}
+  Let $\sbuild{\ope_i}{ i\in 1\hdots n}$ be a family of (not necessarily compatible) observables, $\ope_i:\Omega_i \to \posops[\hcal]$, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops[\hcal]$ such that
+  \begin{align}
+    M_{R,\mu^i}(\ope_i) = \ope_i.
+  \end{align}
+  Then for any compatible family of observables $\sbuild{\opf_i}{ i\in 1\hdots n}$, $\opf_i:\Omega_i \to \posops[\hcal]$, with joint observable $\opj:\Omega\to\posops[\hcal]$, the observables
+  \begin{align}
+    \tilde{\opf}_i &= M_{R, \mu^i}(\opf_i)
+  \end{align}
+  are compatible, with joint $\tilde{\opj} = M_{R, \pi}(\opj)$, and for any function $d$ satisfying the constraints of theorem \ref{thm:inv-mean-reduces-error}
+  \begin{align}
+    \label{eqn:inv-mean-reduce-error}
+    \sup_\rho d(\tilde{\opf}^\rho_i, \ope_i^\rho) \leq \sup_\rho d(\opf_i^\rho, \ope_i^\rho).
+  \end{align}
+  \begin{proof}
+    The compatibility of the $\tilde{\opf}_i$ follows directly from lemma \ref{lem:margins-inv-mean-same}, it only remains to establish inequality \eqref{eqn:inv-mean-reduce-error},
+    \begin{align}
+      \sup_\rho  d(\tilde{\opf}_i, \ope_i) &= \sup_\rho d(M_{R, \mu^i}(\opf), \ope_i)\\
+      \label{eqn:line-target-inv}
+                                           &= \sup_\rho d(M_{R, \mu^i}(\opf),  M_{R, \mu^i}(\ope_i))\\
+      \label{eqn:line-inv-mean-contraction}
+                                           &\leq d(\opf_i, \ope_i).
+    \end{align}
+    line \eqref{eqn:line-target-inv} is a consequence of assuming the target observables are unchanged by the invariant mean, and \eqref{eqn:line-inv-mean-contraction} is the result of theorem \ref{thm:inv-mean-reduces-error}.
+  \end{proof}
+\end{thm}
+
+\section{Increasing the error}
+\label{sec:inc-error}
+
 %\begin{align}
 %  \left( a \ope + b \opf\right)(\omega) = a\ope(\omega) + b\opf(\omega).
 %\end{align}
@@ -116,11 +324,9 @@ This space can be equipped with the ``$\sup$-$p$'' norm
 \end{equation}
 allowing us to rewrite the distance
 \begin{align}
-  d_p(\ope, \opf) = \pnorm{\ope - \opf}
+  d_p(\ope, \opf) = \pnorm{\ope - \opf}.
 \end{align}
 
-\section{Increasing the error}
-\label{sec:inc-error}
 Applying the techniques in section \ref{sec:covariance} results in compatible approximations that are ``not worse than'' any other compatible approximations, in the sense that for any family of compatible approximations to the targets, there exists a covariant family of of compatible approximations with $d_p$ values less than or equal to the original family. It is therefore useful to know when we can \emph{increase} the $d_p$ values so we can cover the entire uncertainty region with convex combinations of covariant and trivial observables.
 
 \begin{lem}[Increasing the error - $\infty$-norm]
@@ -176,123 +382,6 @@ Applying the techniques in section \ref{sec:covariance} results in compatible ap
   \end{proof}
 \end{lem}
 
-\section{Covariance}
-\label{sec:covariance}
-Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive linear maps acting on $\saops[\hcal]$ we say an observable $E:\Omega\to\saops[\hcal]$ is \emph{covariant} if
-\begin{equation}
-  E(f_g(\omega)) = R_g \left[E(\omega)\right], \quad \forall g\in G, \omega\in\Omega.
-\end{equation}
-Note that the $R_g$ must be unital since
-\begin{align}
-  \opi &= \sum_\omega \ope(f_g(\omega))\\
-       &= \sum_\omega R_g\left[\ope(\omega)\right]\\
-       &= R_g\left[ \sum_\omega \ope(\omega)\right]\\
-       &= R_g\left[ \opi\right],
-\end{align}
-Given $G$, $f_g$, and $R_g$ we can define the \emph{invariant mean}, which maps POVMs to POVMs
-\begin{equation}
-  M_{R,f}(\ope)(\omega) = \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]
-\end{equation}
-This has some useful properties
-\begin{lem}
-  \label{lem:cov-obs-invariant}
-  Covariant observables are unchanged by the invariant mean.
-\end{lem}
-\begin{lem}
-  For any observable $\ope:\Omega\to\saops[\hcal]$, with $R$ and $f$ defined as above, the invariant mean $M_{R,f}(\ope)$ is a covariant observable
-\end{lem}
-\begin{lem}
-  \label{lem:cov-reduces-p-norm}
-  For any group $G$, with $R_g$ and $f_g$ defined as above, $M_{R,f}$ acts to reduce the $\sup$-$p$-norm of maps from $\Omega$ to $\saops[\hcal]$.
-  \begin{proof}
-    First define the observables
-    \begin{align}
-      \ope_g:\Omega&\to\posops[\hcal]\\
-      \ope_g:\omega&\mapsto R_{g^{-1}}[\ope(f_g(\omega))]
-    \end{align}
-    and note that
-    \begin{equation}
-      M_{R,f}(\ope) = \frac{1}{\abs{G}} \sum_{g\in G}\ope_g.
-    \end{equation}
-    Then, denoting $M_{R,f} = M$
-    \begin{align}
-      \pnorm{M(\ope)} &=\pnorm{\frac{1}{\abs{G}} \sum_{g\in G} \ope_g}\\
-                      &\leq \frac{1}{\abs{G}}\sum_{g\in G} \pnorm{\ope_g}\\
-                      &= \frac{1}{\abs{G}} \sum_{g\in G} \sup_\rho \pnorm{\ope_g^\rho}\\
-                      &=\frac{1}{\abs{G}} \sum_{g\in G} \sup_\rho \left(\sum_{\omega\in\Omega}\abs{\tr{R_{g^{-1}}[\ope(f_g(\omega))]\rho}}^p\right)^{\frac{1}{p}}\\
-                      &=\frac{1}{\abs{G}} \sum_{g\in G} \sup_\rho \left(\sum_{\omega\in\Omega}\abs{\tr{\ope(f_g(\omega))R_{g^{-1}}^*[\rho]}}^p\right)^{\frac{1}{p}}\\
-      \label{eqn:line-use-R-adjoint-tp}
-                      &\leq\frac{1}{\abs{G}} \sum_{g\in G} \sup_\rho \left(\sum_{\omega\in\Omega}\abs{\tr{\ope(f_g(\omega))\rho}}^p\right)^{\frac{1}{p}}\\
-                      &=\sup_\rho \left(\sum_{\omega\in\Omega}\abs{\tr{\ope(\omega)\rho}}^p\right)^{\frac{1}{p}}\\
-                      &=\pnorm{\ope},
-    \end{align}
-    where \eqref{eqn:line-use-R-adjoint-tp} is true since $R_g$ being positive and unital implies that $R_g^*$ is positive and trace preserving, implying that if $\rho$ is a density operator then $R_g^*[\rho]$ is also a density operator.
-  \end{proof}
-\end{lem}
-
-Given a set of $n\in\mathbb{N}$ finite sets $\sbuild{\Omega_i}{i\in 1\hdots n}$, and $n$ finite groups $\sbuild{G_i}{i\in 1\hdots n}$, with action $f_{g_i}^i: \Omega_i \to \Omega_i$, for each $g_i\in G_i$ there is a \emph{product action} $\pi$ of the direct product group $G = \prod_i G_i$ on the Cartesian product set $\Omega = \prod_i \Omega_i$
-\begin{align}
-  \pi_g&: \Omega \to \Omega, \quad \forall g\in G\\
-  \pi_{(g_1, \hdots, g_i,\hdots, g_n)} &: (\omega_1, \hdots \omega_n) \mapsto (f_{g_1}^1(\omega_1), \hdots, f_{g_n}^n(\omega_n)),
-\end{align}
-there is also a marginal action $\mu^i$ of the direct product group on each $\Omega_i$
-\begin{align}
-  \mu^i_g &:\Omega_i \to \Omega_i, \quad \forall g\in G\\
-  \mu^i_{(g_1,\hdots, g_i,\hdots,g_n)}&:\omega\mapsto f^i_{g_i}(\omega).
-\end{align}
-
-\begin{lem}\label{lem:margins-inv-mean-same}
-  For $i\in 1\hdots n$ let $\ope_i:\Omega_i \to \posops[\hcal]$ be a compatible family of observables, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops[\hcal]$. If $\opj$ is any Cartesian joint observable for the $\ope_i$, and $\tilde{\opj}_i$ the $i^\text{th}$ margin of $M_{R,\pi}(\opj)$,
-  \begin{align}
-    \tilde{\opj}_i&: \Omega_i \to \posops[\hcal]\\
-    \tilde{\opj}_i &: \omega^* \mapsto \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}}M_{R,\pi}(\opj)(\underline{\omega}),
-  \end{align}
-  where $\underline{\omega}_i$ denotes the $i^\text{th}$ element of the tuple $\underline{\omega}$, then
-  \begin{align}
-    \tilde{\opj}_i(\omega) &= M_{R,\mu^i}(\ope_i)(\omega), \quad \forall \omega \in \Omega_i.
-  \end{align} %\frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\ope_i(\phi_g^i(\omega^*))\right],
-  \begin{proof}
-    \begin{align}
-      \tilde{\opj}_i(\omega^*) &= \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}}M_{R,\pi}(\opj)(\underline{\omega})\\
-                               &= \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}} \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\opj(\pi_g(\underline{\omega}))\right]\\
-                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}} \opj(\pi_g(\underline{\omega}))\right]\\
-                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \pi_{g^{-1}}(\underline{\omega})_i = \omega^*}} \opj(\underline{\omega})\right]\\
-                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \mu^i_{g}(\omega^*)}} \opj(\underline{\omega})\right]\\
-                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\ope\left(\mu^i_{g}(\omega^*)\right)\right]\\
-                               &= M_{R, \mu^i}(\ope_i)(\omega^*).
-    \end{align}
-  \end{proof}
-\end{lem}
-
-\begin{thm}
-  \label{thm:cov-obs-improve-approx}
-  Let $\sbuild{\ope_i}{ i\in 1\hdots n}$ be a family of (not necessarily compatible) observables, $\ope_i:\Omega_i \to \posops[\hcal]$, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops[\hcal]$ such that
-  \begin{align}
-    M_{R,\mu^i}(\ope_i) = \ope_i.
-  \end{align}
-  Then for any compatible family of observables $\sbuild{\opf_i}{ i\in 1\hdots n}$, $\opf_i:\Omega_i \to \posops[\hcal]$, with joint observable $\opj:\Omega\to\posops[\hcal]$, the observables
-  \begin{align}
-    \tilde{\opf}_i &= M_{R, \mu^i}(\opf_i)
-  \end{align}
-  are compatible, with joint $\tilde{\opj} = M_{R, \pi}(\opj)$, and $\forall p\in [1,\infty]$
-  \begin{align}
-    \label{eqn:inv-mean-reduce-error}
-    d_p(\tilde{\opf}_i, \ope_i) \leq d_p(\opf_i, \ope_i).
-  \end{align}
-  \begin{proof}
-    The compatibility of the $\tilde{\opf}_i$ follows directly from lemma \ref{lem:margins-inv-mean-same}, it only remains to establish inequality \eqref{eqn:inv-mean-reduce-error},
-    \begin{align}
-      d_p(\tilde{\opf}_i, \ope_i) &= \sup_\rho \pnorm{M_{R, \mu^i}(\opf) - \ope_i}\\
-      \label{eqn:line-target-inv}
-                                  &= \sup_\rho \pnorm{M_{R, \mu^i}(\opf) - M_{R, \mu^i}(\ope_i)}\\
-                                  &= \sup_\rho \pnorm{M_{R, \mu^i}(\opf - \ope_i)}\\
-                                  &\leq \sup_\rho \pnorm{\opf - \ope_i}\\
-      \label{eqn:line-inv-mean-contraction}
-                                  &= d_p(\opf_i, \ope_i).
-    \end{align}
-    Note that \eqref{eqn:line-target-inv} is a consequence of assuming the target observables are unchanged by the invariant mean, and \eqref{eqn:line-inv-mean-contraction} is the result of lemma \ref{lem:cov-reduces-p-norm}.
-  \end{proof}
-\end{thm}
 
 \section{The qubit triple}
 \label{sec:qubit-triple}

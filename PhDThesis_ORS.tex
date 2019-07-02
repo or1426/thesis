@@ -35,8 +35,6 @@
 	\SetWatermarkText{\textbf Draft: \today}
 \fi
 
-\usepackage{subcaption}
-
 % Better page layout for A4 paper, see memoir manual.
 \settrimmedsize{297mm}{210mm}{*}
 \setlength{\trimtop}{0pt} 
@@ -152,13 +150,14 @@
 \usepackage{upgreek}					%Calls other kind of greek alphabet
 \usepackage{latexsym}					%Extra symbols
 
-\usepackage[style=numeric-comp,maxbibnames=99]{biblatex}
+\usepackage[style=numeric-comp,maxbibnames=99,backend=biber]{biblatex}
 \bibliography{bib_PhDThesis_ORS}
 
 \usepackage{url}						%Supports url commands
-\usepackage{etex}						%eTeXÕs extended support for counters
+%\usepackage{etex}						%eTeXÕs extended support for counters
 
 \usepackage[spanish,main=english,german,french]{babel}		%For languages characters and hyphenation
+\usepackage{subcaption} %apparently has to go after babel
 \usepackage{color}                    				%Creates coloured text and background
 \usepackage[colorlinks=true,
 		     allcolors=black]{hyperref}              %Creates hyperlinks in cross references

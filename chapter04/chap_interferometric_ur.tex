@@ -96,7 +96,7 @@ In both cases, there are plenty of observables satisfying the requirement. In or
 \section{Characterisation of path measurements and uncertainty relations}
 The characterisation of covariant observables is based on the spectral representation of $\MOD P$: we let $\mathcal H_0$ be any infinite dimensional Hilbert space, fix a basis $|n\rangle$ of $\mathcal H_0$, and define a unitary operator
 $$U:L^2(\mathbb R) \to L^2([-\pi,\pi],\mathcal H_0)\simeq L^2[-\pi,\pi]\otimes \mathcal H_0=:\mathcal K$$
-by setting $(U\psi)(p) = \sum_{n} \hat\psi(p+n2\pi) \,|n\rangle\in \mathcal H_0$ for (almost all) $p\in [-\pi,\pi]$. (Note that $\hat\psi(p+n2\pi)$ is square summable for almost all $p$ by Fubini's theorem.) Clearly,
+by setting $(U\psi)(p) = \sum_{n} \hat\psi(p+n2\pi) \,|n\rangle\in \mathcal H_0$ for (almost all) $p\in [-\pi,\pi]$. Note that $\hat\psi(p+n2\pi)$ is square summable for almost all $p$ by Fubini's theorem. Now
 $$
 U\MOD P U^* = Q_0\otimes \id,
 $$
@@ -106,7 +106,7 @@ where $Q_0\otimes \id$ acts $(Q_0\otimes \id)\hat\psi(p) = p\hat\psi(p)$. We now
 
 We begin with case (a), where position on the second detector is recorded periodically, that is, each point $(2n+1)\pi$ is consider equal, so that e.g. distance between $\pi-\epsilon$ and $-\pi+\epsilon$ approaches zero as $\epsilon\rightarrow 0$.
 
-Any observable satisfying the covariance condition \eqref{covA} can be dilated to $l^2(\mathbb Z, \mathcal K_0)$ where it acts as a canonical position on $\mathbb Z$ \cite{} where the multiplicity space $\mathcal K_0$ must contain $\mathcal H_0$, that is, there is an isometry $\iota_0:\mathcal H_0\mapsto \mathcal K_0$. Of course, the only requirement for this is that $\mathcal K_0$ must be infinite-dimensional. In particular, the \emph{rank} of the observable \cite{JP} is infinite. Applying the discrete Fourier transform $l^2(\mathbb Z)\to L^2[-\pi,\pi]$ to map this back to the spectral representation of $\MOD P$, we get the following characterisation:
+Any observable satisfying the covariance condition \eqref{covA} can be dilated to $l^2(\mathbb Z, \mathcal K_0)$ where it acts as a canonical position on $\mathbb Z$ \cite{WERNER1990166} where the multiplicity space $\mathcal K_0$ must contain $\mathcal H_0$, that is, there is an isometry $\iota_0:\mathcal H_0\mapsto \mathcal K_0$. Of course, the only requirement for this is that $\mathcal K_0$ must be infinite-dimensional. In particular, the \emph{rank} of the observable is infinite \cite{JP}. Applying the discrete Fourier transform $l^2(\mathbb Z)\to L^2[-\pi,\pi]$ to map this back to the spectral representation of $\MOD P$, we get the following characterisation:
 \newcommand{\Pc}{\mathsf P^c}
 \newcommand{\Qd}{Q_d}
 \begin{align}
@@ -221,14 +221,13 @@ for sufficiently large $n\in\N$. We can recover the graph of $b$ by (numerically
 \begin{align}
   \left\{(x,b(x))\middle|x\in \left(0,\frac{\pi^2}{3}\right)\right\} = \left\{ (c^\prime(\alpha), c(\alpha)-\alpha c^\prime(\alpha))\middle| \alpha > 0\right\}
 \end{align}
-the resulting curve is plotted in figure \ref{fig:ring-ur}
+the resulting curve is plotted in figure \ref{fig:ring-ur}.
 
 \begin{figure}
-  \begin{center}
+  \centering
   \includegraphics[width=0.8\textwidth]{ring-ur}
-  \label{fig:ring-ur}
-  \end{center}
   \caption{The uncertainty region for the particle on a ring system, showing the curve obtained from the least eigenvalues of the operators $\Qd^2 + \alpha \MOD P^2$.}
+  \label{fig:ring-ur}
 \end{figure}
 
 % further we can form the state
@@ -272,7 +271,7 @@ Now in general we can write
 $$
 \delta(E,\psi)^2 = \|E[1]\psi\|^2 - \langle \psi| E[1]\psi\rangle^2 + N_E(\psi)
 $$
-where $N_E(\psi) := \int x^2 E_\psi(dx) -\|E[1]\psi\|^2$ is called the \emph{variance form} \cite{werner}. Since $E$ is not projection valued, $N_E$ is typically not zero, in which case the ``intrinsic noise'' of the observable adds to the uncertainty. Hence from the point of view of sharp uncertainty relations it makes sense to restrict to observables with $N_E(\psi)=0$, which are called \emph{variance free} \cite{}. In this case the uncertainty quantity reduces to the form identical to the projection valued case, namely
+where $N_E(\psi) := \int x^2 E_\psi(dx) -\|E[1]\psi\|^2$ is called the \emph{variance form} \cite{werner-screen-obs-1986}. Since $E$ is not projection valued, $N_E$ is typically not zero, in which case the ``intrinsic noise'' of the observable adds to the uncertainty. Hence from the point of view of sharp uncertainty relations it makes sense to restrict to observables with $N_E(\psi)=0$, which are called \emph{variance free} \cite{}. In this case the uncertainty quantity reduces to the form identical to the projection valued case, namely
 $$
 \delta(E,\psi)^2 = \|E[1]\psi\|^2 - \langle \psi| E[1]\psi\rangle^2 = \inf_{x_0} \| E[1]e^{-ix_0\MOD P}\psi\|^2,
 $$
@@ -355,11 +354,10 @@ In the limit of small position uncertainties this lower bound becomes tight, in 
 which can be demonstrated by considering a sequence of truncated Gaussian states, equal to Gaussians with standard deviations $\sigma_n$ within the interval $[-\pi+\sigma_n, \pi-\sigma_n]$ and linearly interpolating between their values at $\pm (\pi-\sigma_n)$ and $\pm \pi$ outside as $\sigma_n \to 0$.
 
 \begin{figure}
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{box-ur}
-    \label{fig:box-ur}
-  \end{center}
+  \centering
+  \includegraphics[width=0.8\textwidth]{box-ur}  
   \caption{The uncertainty region for the particle in a box system, showing the curve obtained from the least eigenvalues of the operators $P_0^2 + \alpha Q_0^2$ (solid curve), this is the exact boundary curve on the right hand side of the vertical line at $\sqrt{\frac{\pi^2}{3} -2}$ (dashed). On the left hand side the true curve lies between the solid curve and the canonical hyperbola (dotted). }
+  \label{fig:box-ur}
 \end{figure}
 
 $$ \inf_{x_0} \int_\mathbb{T} d_\mathbb{T}(x,x_0)^2 d\mu(x)$$

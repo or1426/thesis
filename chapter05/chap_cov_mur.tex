@@ -19,7 +19,7 @@ Finding the uncertainty region for generic observables seems to be a difficult p
 Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used throughout, \ref{sec:inc-error} contains some technical lemmas related to how we fill the uncertainty region. Section \ref{sec:covariance} contains quite general results about the use of covariance to simplify measurement uncertainty problems, with the key result being that if the target observables are covariant, then for every family of jointly measurable approximators there exists a covariant family of joint approximators which is at least as good, according to the $d_p$ figure of merit. Finally sections \ref{sec:qubit-triple} and \ref{sec:fourier-pair} are case studies, applying the previous results to the three mutually unbiased qubit observables, and the pair of observables related by the quantum Fourier transform in dimension $n$, respectively. Exact results about measurement uncertainty in arbitrary dimension are rare, so the latter result is particularly interesting.
 
 \begin{figure}[ht]
-  \begin{center}
+  \centering
   \begin{tikzpicture}[scale=1]
     % \SetGraphUnit{5}
     % \useasboundingbox (0,-5) rectangle (5,5);
@@ -68,7 +68,6 @@ Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used 
   \end{tikzpicture}
   \caption{Target observables $\ope_i$,  compatible approximations $\opf_i$, and their joint $\opj$}
   \label{fig:depict-meas-uncertainty}
-  \end{center}
 \end{figure}
 
 \section{Definitions and error measure}
@@ -403,7 +402,7 @@ The condition $\opd$, $\ope$, $\opf$ are compatible is equivalent to the existen
 
 \tdplotsetmaincoords{70}{130}
 \begin{figure}[ht]
-  \begin{center}
+  \centering
   \begin{tikzpicture}[tdplot_main_coords]
     \def\R{2.5} % sphere radius
     % \def\angEl{15} % elevation angle
@@ -435,7 +434,6 @@ The condition $\opd$, $\ope$, $\opf$ are compatible is equivalent to the existen
     % \coordinate[] (S) at (0,-\H);
   \end{tikzpicture}
   \caption{The Bloch sphere, with orthonormal vectors $\boa$, $\bob$ and $\boc$.}
-  \end{center}
 \end{figure}
 
 Since we have three, two outcome target observables we take as our product group the elementary Abelian group of order $8$, the additive group of the vector space $\left(\mathbb{Z}/2\mathbb{Z}\right)^3$
@@ -472,7 +470,7 @@ By lemma \ref{lem:margins-inv-mean-same} this is equivalent to taking the invari
 \begin{align}
   \tilde{\opd}(k) &= M_{R,f^1}(\opd)(k) & \tilde{\ope}(l) &= M_{R,f^2}(\ope)(l) & \tilde{\opf}(m) &= M_{R,f^3}(\opf)(m)
 \end{align}
-These margin groups, actions and representations satisfy all of the requirements of lemma \ref{lem:cov-reduces-p-norm} above, so the group averaging maps are contractions of the sup norm We also have that $M_{R,\mu^1}(\opa) = \opa$ etc. so we can apply theorem \ref{thm:cov-obs-improve-approx} implying that for every compatible triple $\opd$, $\ope$, $\opf$ there exists a \emph{covariant} compatible triple with lower distances. Since we can also increase the distances \ref{lem:infty-increase-error} as needed we can fill the set $S(\opa, \opb, \opc)$ by searching over the covariant observables, and then increasing the distances up to the trivial maximum of $2^{\frac{1}{p}}$.
+These margin groups, actions and representations satisfy all of the requirements of lemma \ref{thm:cov-obs-improve-approx} above, so the group averaging maps reduce the error. We also have that $M_{R,\mu^1}(\opa) = \opa$ etc. so we can apply theorem \ref{thm:cov-obs-improve-approx} implying that for every compatible triple $\opd$, $\ope$, $\opf$ there exists a \emph{covariant} compatible triple with lower distances. Since we can also increase the distances \ref{lem:infty-increase-error} as needed we can fill the set $S(\opa, \opb, \opc)$ by searching over the covariant observables, and then increasing the distances up to the trivial maximum of $2^{\frac{1}{p}}$.
 The covariant joints have the form
 \begin{align}
   \opj(k,l,m) = \qbit[][+][\frac{1}{8}]{\begin{pmatrix}k j_1\\ l j_2 \\ m j_3\end{pmatrix}},
@@ -824,26 +822,26 @@ We note that this is a section of the ellipse with defining equation
 which has center $\left(\frac{1}{2}, \frac{1}{2}\right)$, and touches the coordinate axes at the points $\left(0, 1-\frac{1}{n}\right)$ and $\left(1-\frac{1}{n}, 0\right)$. The major axis of the ellipse has angle $\frac{\pi}{4}$ with each coordinate axis, as it must by symmetry.
 
 \begin{figure}
-  \begin{center}
-    \begin{subfigure}[t]{0.4\textwidth}
-      \includegraphics[width=\textwidth]{fourier-ur-2}
-    \end{subfigure}\quad
-    \begin{subfigure}[t]{0.4\textwidth}
-      \includegraphics[width=\textwidth]{fourier-ur-3}
-    \end{subfigure}\\
-    \begin{subfigure}[t]{0.4\textwidth}
-      \includegraphics[width=\textwidth]{fourier-ur-4}
-    \end{subfigure}\quad
-    \begin{subfigure}[t]{0.4\textwidth}
-      \includegraphics[width=\textwidth]{fourier-ur-6}
-    \end{subfigure}\\
-    \begin{subfigure}[t]{0.4\textwidth}
-      \includegraphics[width=\textwidth]{fourier-ur-8}
-    \end{subfigure}\quad
-    \begin{subfigure}[t]{0.4\textwidth}
-      \includegraphics[width=\textwidth]{fourier-ur-10}
-    \end{subfigure}\\
-\end{center}
+  \centering
+  \begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{fourier-ur-2}
+  \end{subfigure}\quad
+  \begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{fourier-ur-3}
+  \end{subfigure}\\
+  \begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{fourier-ur-4}
+  \end{subfigure}\quad
+  \begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{fourier-ur-6}
+  \end{subfigure}\\
+  \begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{fourier-ur-8}
+  \end{subfigure}\quad
+  \begin{subfigure}[t]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{fourier-ur-10}
+  \end{subfigure}\\
+  \caption{The measurement uncertainty region for quantum Fourier pair observables in several dimensions.}
 \end{figure}
 
 % \begin{figure}

@@ -95,7 +95,7 @@ We note that $\delta_p(S,T) \geq 0$ with equality if and only if $S = T$ and tha
 \begin{align}
   \delta_p(S,T) \leq 2^{\frac{1}{p}}, \quad \forall p\in [1,\infty].
 \end{align}
-When $p=1$ this quantity is equal to the total variation distance, up to a global factor of $2$ and is also equal to the Wasserstein $1$-distance between $S$ and $T$, where the ``cost-function'' is given by the discrete metric \cite{markov-mixing-levin-peres-wilmer}\cite{optimal-transport-villani}.
+When $p=1$ this quantity is equal to the total variation distance, up to a global factor of $2$ and is also equal to the Wasserstein $1$-distance between $S$ and $T$, where the ``cost-function'' is given by the discrete metric \cites{markov-mixing-levin-peres-wilmer}{optimal-transport-villani}.
 
 Given an observable $\ope:\Omega\to\posops[\hcal]$ and a quantum state $\rho\in\dops[\hcal]$ we can define a probability distribution over $\Omega$,
 \begin{equation}
@@ -113,7 +113,7 @@ where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\
 
 Given two probability measures $\mu,\nu$ on the same outcome space $(\Omega, \fcal)$ we say that that $\mu$ \emph{dominates} $\nu$ if $\mu(X) = 0\implies\nu(X) = 0$, for all measureable sets $X\in\fcal$, this is denoted $\mu\gg\nu$. This is often referred to as $\nu$ being \emph{absolutely continuous} withe respect to $\mu$.
 
-A theorem due to Radon and Nikodym, \coma{cite} states that if $\mu$ dominates $\nu$ then there exists a measureable function $f:\Omega\to \R$ such that 
+A theorem due to Radon and Nikodym, \cites{billingsley-prob-and-measure}{Nikodym1930} states that if $\mu$ dominates $\nu$ then there exists a $\mu$-measureable function $f:\Omega\to \R$ such that 
 \begin{align}\label{eqn:radon-nikodym}
   \nu(X) = \int_X f d\mu,
 \end{align}
@@ -122,38 +122,36 @@ for all $X\in\fcal$. The $f$, so defined, is unique up to a set of $\mu$-measure
   \nu(X) = \int_X \frac{d\nu}{d\mu} d\mu.
 \end{align}
 
-We now define the $f$-divergence, for two probability measures $\mu\gg\nu$, on a measurable space $(\Omega, \fcal)$, and convex function $f:\R\to\R$ such that $f(1) = 0$
+We define the $f$-divergence, introduced independently in refs. \cite{10.2307/2984279} and \cite{der1964informationstheoretische}. For two probability measures $\mu\gg\nu$, on a measurable space $(\Omega, \fcal)$, and convex function $f:\R\to\R$ such that $f(1) = 0$
 \begin{align}\label{eqn:f-div-defn}
   \fdiv{f}{\nu}{\mu} = \int_\Omega f\left(\frac{d\nu}{d\mu}\right) d\mu.
 \end{align}
 
-This definition is quite general, and includes several ``divergences'' well known from the literature. In the \coma{Liese, F.; Vajda, I. (2006). "On divergences and informations in statistics and information theory"}. 
+This definition is quite general, and includes several ``divergences'' well known from the literature. Liese and Vajda \cite{1705001g} express the Kullback–Leibler divergence, Pearson divergence, Hellinger distance and total variation in terms of $f$-divergences with $f$ equal to
+\begin{align}
+  t&\mapsto t\log t,\\
+  t&\mapsto (t-1)^2,\\
+  t&\mapsto (\sqrt{t} -1)^2,\\
+  t&\mapsto \abs{t-1},
+\end{align}
+respectively, while Arimoto defines the $\beta$-divergence, given, for finite outcome sets, by
+\begin{align}
+  t \mapsto \begin{cases}1-\max_k p_k, & \beta = 0\\ \frac{1}{1-\beta}\left(1- \left(\sum_k p_k^\frac{1}{\beta}\right)^\beta\right), &\beta >0, \text{ and } \beta\neq 1 \\ -\sum_k p_k \log p_k, & \beta = 1\end{cases}.
+\end{align}
 
 We note that both the $f$-divergences and the $p$-norm based divergences above have the property of \emph{joint convexity}, that is if $\mu_1, \mu_2, \nu_1,\nu_2$ are probability measures such that each divergence is defined, and $\lambda\in [0,1]$ then
 \begin{align}
   \delta_p(\lambda\nu_1 + (1-\lambda)\nu_2, \lambda\mu_1 + (1-\lambda)\mu_2) &\leq \lambda \delta_p(\nu_1, \mu_1) + (1-\lambda)\delta_p(\nu_2, \mu_2)\\
-  \fdiv{f}{\lambda\nu_1 + (1-\lambda)\nu_2}{\lambda\mu_1 + (1-\lambda)\mu_2} &\leq  \lambda\fdiv{f}{\nu_1}{\mu_1} + (1-\lambda)\fdiv{f}{\nu_2}{\mu_2},
+  \fdiv{f}{\lambda\nu_1 + (1-\lambda)\nu_2}{\lambda\mu_1 + (1-\lambda)\mu_2} &\leq  \lambda\fdiv{f}{\nu_1}{\mu_1} + (1-\lambda)\fdiv{f}{\nu_2}{\mu_2}.
 \end{align}
-it is this property that we will require for theorems \ref{thm:inv-mean-reduces-error} and\ref{thm:cov-obs-improve-approx}.
-\section{Covariance}
-\label{sec:covariance}
+The theorems in this section \ref{sec:covariance}, in particualar theorems \ref{thm:inv-mean-reduces-error} and \ref{thm:cov-obs-improve-approx}, hold for any jointly convex error measure.
+\section{Invariant Mean}
+\label{sec:invariant-mean}
 
 It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps $\Omega\to \saops[\hcal]$ which, for convenience, we denote $\ovms$. The set of such maps ranging in the positive operators is a convex cone in $\ovms$, and the constraint $\sum_\omega\ope(\omega) = \opi$ defines an affine space.
 
-Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive, unital, linear maps acting on $\saops[\hcal]$ we say an observable $E:\Omega\to\saops[\hcal]$ is \emph{covariant} if
-\begin{equation}
-  E(f_g(\omega)) = R_g \left[E(\omega)\right], \quad \forall g\in G, \omega\in\Omega.
-\end{equation}
-Note that the $R_g$ must be unital since
-\begin{align}
-  \opi &= \sum_\omega \ope(f_g(\omega))\\
-       &= \sum_\omega R_g\left[\ope(\omega)\right]\\
-       &= R_g\left[ \sum_\omega \ope(\omega)\right]\\
-       &= R_g\left[ \opi\right].
-\end{align}
-
 Given such a $G$, $f_g$, and $R_g$ we can define the \emph{invariant mean}, $M_{R,f}:\ovms\to\ovms$
-\begin{equation}
+\begin{equation}\label{eqn:inv-mean-defn}
   M_{R,f}(\ope)(\omega) = \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]
 \end{equation}
 This has some useful properties. 
@@ -310,6 +308,18 @@ there is also a marginal action $\mu^i$ of the direct product group on each $\Om
     line \eqref{eqn:line-target-inv} is a consequence of assuming the target observables are unchanged by the invariant mean, and \eqref{eqn:line-inv-mean-contraction} is the result of theorem \ref{thm:inv-mean-reduces-error}.
   \end{proof}
 \end{thm}
+
+It is tempting to attempt to generalise equation \ref{eqn:inv-mean-defn}, and, for a locally compact group $G$, with (left) Haar measure $\mu$, continuous action $\alpha: (g,\omega)\mapsto g\cdot\omega$ on a Borel measurable space $(\Omega, \fcal)$, and continuous representation $R_g$, on $\posops[\hcal]$ define
+\begin{align}
+  M[F]: X\mapsto\int_G d\mu(g) R_g[F(g.X)],
+\end{align}
+for a POVM $F:\fcal\to\posops[\hcal]$. Unfortunately there are significant technical obstacles to defining such a quantity. In particular one would have to show the function $g\mapsto R_g[F(g.X)]$ is $\mu$-measurable, in the sense of the Bochner integral \coma{cite}, either for all observables, or for a physically relevant subset. In the (possibly highly restricted) cases that such a quantity may be defined it is easy to see that it will be necessary for the group $G$ to be compact, rather than locally compact since
+\begin{align}
+  M[F]:\Omega&\mapsto\int_G d\mu(g) R_g[F(g.\Omega)]\\
+             &=\int_G d\mu(g) R_g[\opi]\\
+             &=\opi\int_G d\mu(g).\label{eqn:inv-mean-identity-infinite-case}
+\end{align}
+The Haar measure $\mu$ may be normalised to a probability measure if, and only if, the group is compact. This excludes several physically relevant groups including the translation group of $\R$ or $\R^n$, the Galilei group and the Poincar{\'e} group. Compact groups relevant to physical applications include the finite groups covered above, the unitary, special unitary groups, orthogonal and special orthogonal groups in $n\in\N$ dimensions.
 
 \section{Increasing the error}
 \label{sec:inc-error}

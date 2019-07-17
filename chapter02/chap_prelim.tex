@@ -393,6 +393,33 @@ Given two quantum observables, say $E_1:\fcal_1\to\posops[\hcal]$ and $E_2:\fcal
 \end{align}
 When such a joint observable exists we call the $E_1$ and $E_2$ \emph{compatible}, two observables will generically be incompatible.
 
+Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive, unital, linear maps acting on $\saops[\hcal]$ we say an observable $E:\fcal\to\saops[\hcal]$ is \emph{covariant} if
+\begin{equation}
+  E(f_g(X)) = R_g \left[E(X)\right], \quad \forall g\in G, X\in\fcal
+\end{equation}
+where $\fcal$ is the $\sigma$-algebra of measureable sets over $\Omega$. Note that the $R_g$ must be unital since
+\begin{align}
+  \opi &=  \ope(f_g(\Omega))\\
+       &= R_g\left[\Omega\right]\\
+       &= R_g\left[\opi\right].
+\end{align}
+An application of Wigner's theorem shows that the representation must be of the form
+\begin{align}
+  R_g:A\mapsto U_g A U_g^*,
+\end{align}
+where the $U_g$ are either unitary or anti-unitary operators on $\hcal$. Since anti-unitary operators, and anti-linear operators in general, are much less common than their linear counterparts in the quantum information and foundation literature we note the following example, a map $K:\Cx^n\to\Cx^n$ provided by fixing an orthonormal basis $B = \ket{0}\ldots \ket{n-1}$, and defining
+\begin{align}
+  K: \ket{\varphi} \mapsto \sum_i \braket{i}{\varphi}^* \ket{i},
+\end{align}
+which differs from a definition of the identity operator only by the complex conjugate. The resulting map is not, of course, independent of the basis chosen, however for any two anti-unitary maps $K, K^\prime$ there exists a unitary $U$ such that
+\begin{align}
+  K^\prime = U K,
+\end{align}
+so a single anti-unitary, combined with the familiar structure of the unitary operators, suffices to explore the space of anti-unitaries.
+
+Covariant quantum observables were introduced by Davies \cite{DAVIES1970318}, using the language of general quantum instruments rather than POVMs, and were already being used in the study of uncertainty by Holevo in 1978 \cite{HOLEVO1979385}. Special cases which have been studied in the literature are covariant symmetric informationally complete-POVMS (SIC-POVMs) \cites{doi:10.1063/1.1896384}{doi:10.1063/1.1737053} and extreme covariant POVMs \cites{doi:10.1063/1.2940328}{doi:10.1063/1.3668317}{doi:10.1063/1.1806262}{erkka-thesis}. Covariance has been employed in the study of measurement uncertainty for angular momentum observables \cite{DammeierSchwonnekWerner2015}, number and angle \cite{sharp-ur-num-angle}, general phase spaces \cite{Werner2016}.
+
+
 % For the most part we will deal only with probability spaces where the outcome set is $\Omega\subseteq\R$, in this case we can define the variance of a probability measure $\mu$
 % \begin{align}
 %   \var{\mu} \defeq \inf_{x_0\in\R}\int_\Omega (x-x_0)^2 d\mu(x),

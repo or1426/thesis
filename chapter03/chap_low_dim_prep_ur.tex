@@ -503,15 +503,117 @@ This term is analogous in form to the classical covariance; however, in the quan
 
 \subsection{Uncertainty region for triples of $\pm 1$-valued qubit observables}
 \label{sec:qubit-triple-uncertainty}
+Here, as before, $\opa = \boa\cdot\bosig$ and $\opb = \bob\cdot\bosig$, for $\boa, \bob$ non-collinear 3-vectors of unit norm, however we now consider the uncertainty region
+\begin{equation}
+  {\mathrm MUR}_\Delta(\opa,\opb,\opc),
+\end{equation}
+where $\opc = \boc\cdot\bosig$, for $\boc = \frac{\boa\times\bob}{\|\boa\times\bob\|}$.
 
-Here we use similar methods to those employed for pairs of general qubit observables. We consider three observables defined by unit Bloch vectors $\opa = \boa\cdot\bosig$, $\opb = \bob\cdot\bosig$ and $\opc = \boc\cdot\bosig$, and a state $\rho = \qbit{\bor}$. By relabelling $\pm 1 \mapsto \mp 1$, if necessary we can ensure $\boa\cdot\bob, \bob\cdot\boc, \boc\cdot\boa \geq 0$. Requiring that $\varr{\opc} = z^2$, for some fixed $z\in [0,1]$ constrains $\bor$, in particular to be in one of two planes, $\bor\cdot\boc = \pm\sqrt{1-z^2}$, the state $\rho = \qbit[][-]{\bor}$ has exactly the same variance triple $(\varr{\opa}, \var{\opb}, \var{\opc})$ as $\rho$, so we only consider the positive plane $\bor\cdot\boc = \sqrt{1-z^2}$. The intersection of this plane with the Bloch sphere is a disk of radius $z$ centered at $\sqrt{1-z^2}\boc$, we will denote this disk $D(\boc,z)$. The variances of $\opa$ and $\opb$, respectively are not sensitive to the full vector $\bor$, but instead the quantities $\bor\cdot\boa$ and $\bor\cdot\bob$, respectively. We therefore seek the projection of the $D(\boc,z)$, onto the plane spanned by $\boa$ and $\bob$. It is well known that the orthogonal projection of a circle is an ellipse, and so the orthogonal projection of a disk must be the region bounded by an ellipse. We choose a basis for the $\boa,\bob$ plane $\boa, \boap$, where $\boa\cdot\boap=0$ and $\boap\cdot\bob \geq 0$. If $\vproj{\boa}{\bob}:\R^2\to\R^2$ is the orthogonal projection onto the $\boa,\bob$ plane the ellipse is centered at $\sqrt{1-z^2}\vproj{\boa}{\bob}\boc = \sqrt{1-z^2}(\boc\cdot\boa,\boc\cdot\boap)$, has semi-minor axis parallel to $(\boc\cdot\boa,\boc\cdot\boap)$ of length $z\sqrt{ 1 - \norm{\vproj{\boa}{\bob}\boc}^2}$, and semi-major axis of length $z$. We can give an explicit description of the ellipse as the set of points $(r_1, r_2)$, satisfying
-% \begin{align} %opposite convention for z <-> sqrt{1-z^2}
-%   \left(1-\text{c1}^2\right) y^2+\text{c1}^2+2 \text{c1} \text{c2} x y-2 \text{c1} x z+\left(1-\text{c2}^2\right) x^2+\text{c2}^2-2 \text{c2} y z+z^2-1=0
-% \end{align}
+Consider a circular slice $C_Z$ through the Bloch sphere, made up of the vectors $\bor$, such that $\bor\cdot\boc = \sqrt{1-Z^2}$, for a fixed $Z\in[0,1]$. Each of these vectors may be projected into the plane spanned by $\boa$ and $\bob$, and a vector $\bou$ in the $\opa$, $\opb$ plane is in the image of this projection if and only if, $\|\bou\| \leq Z$
 \begin{align}
-  (r_1, r_2, 1) \begin{pmatrix} 1 - c_2^2& c_1 c_2 & -c_1 \sqrt{1-z^2} \\c_1 c_2 & 1 - c_1^2& -c_2z \\-c_1 \sqrt{1-z^2} & -c_2 z & c_1^2 + c_2^2 -z^2\end{pmatrix} \begin{pmatrix}r_1\\r_2\\1\end{pmatrix} = 0.
+  \oppi_{\boa\bob} C_Z = \left\{\bou\in \operatorname{span}(\boa,\bob)\,\middle|\,\|\bou\| \leq Z\right\}.
 \end{align}
-To determine the uncertainty region we first seek the minimum and maximum values of the variance $\varr{\opb}$ achievable with $\vproj{\opa}{\opb}\bor\in \vproj{\opa}{\opb}D(\boc,z)$. We consider separately the cases where there exists a vector in the interior of the ellipse orthogonal to $\bob$, in this case the maximum variance $\varr{\opb} = 1$ is achieved. Where no such vectors exist it is easy to see that the extrema are attained by vectors on the ellipse and, by differentiating and comparing stationary points the 
+We note that the variances of $\opa$ and $\opb$ are unchanged by this projection so
+\begin{align}
+  \left\{(\varr{\opa}, \varr{\opb})\middle|\,\varr{\opc} = Z\right\} = \left\{(\varr{\opa}, \varr{\opb})\middle|\, \rho = \frac{1}{2}\left(1 + \bou\cdot\bosig\right),\, \bou\in\oppi_{\boa\bob}C_Z\right\}.
+\end{align}
+This may be characterised with the following procedure, first choose a $\var{\opc}\in[0,1]$, then fix a $\var{\opa}\in[\sqrt{1-\var{\opc}}, 1]$, then the variances for $\opb$ realised by states with these fixed standard deviations for $\opa$ and $\opc$ are exactly those which satisfy the inequality
+\begin{align}
+  \xi_- \leq \var{\opb}   \leq\begin{cases}\xi_+ & \var{\opa} \leq 1-\var{\opc}\|\boa\times\bob\|^2\\1&\text{otherwise}\end{cases}
+\end{align}
+where
+\begin{align}
+  \xi_\pm = (\boa\cdot\bob)^2 \var{\opa} + \|\boa\times\bob\|^2(1-\var{\opa} + 1-\var{\opc}) \pm 2(\boa\cdot\bob)\sqrt{1-\var{\opa}}\|\boa\times\bob\|\sqrt{\var{\opa} + \var{\opc} -1}
+\end{align}
+
+To prove this we let $\boa$, $\bob$ and $\boc$ be unit three vectors, and, without loss of generality, assume the following
+\begin{align}
+  \boa &= \begin{pmatrix}1\\0\\0\end{pmatrix} &&
+                                                \bob = \begin{pmatrix}b_1\\b_2\\0\end{pmatrix} &&
+  \boc = \begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}\\
+  1 &> b_1, b_2, > 0\\
+  1 &> c_1, c_3 > 0,
+\end{align}
+where we have exploited our freedom to choose coordinates to fix $\boa$, $b_3$ and $c_3$ and the equivalence of the observables $\boe\cdot\bosig$ and $-\boe\cdot\bosig$ to choose $b_1, b_2$ and $c_1$ $>$ 0. We now choose a $Z\in (0,1)$ and consider the disk formed by the intersection of the Bloch sphere with plane $\{\bor\in\mathbb{R}^3\,|\,\bor\cdot\boc = Z\}$. This disk is perpendicular to the vector $\boc$, has centre $Z \boc$ and radius $\sqrt{1-Z^2}$. The projection of this disk onto the plane spanned by $\boa$ and $\bob$ is an ellipse and may be characterised with the parameters
+\begin{align}
+  a &= \sqrt{1-Z^2}\\
+  b &= c_3\sqrt{1-Z^2}\\
+  \bogam &= Z \begin{pmatrix}c_1\\c_2\\0\end{pmatrix}\\
+  \tan\theta &= -\frac{c_1}{c_2},
+\end{align}
+where $a$, $b$ are the lengths of the semi-major and minor axes respectively, $\bogam$ is the center and $\theta$ is the angle the semi-major axis makes with $\boa$. Alternatively, the boundary of the ellipse has the characterisation
+\begin{align}
+  \label{eqn:ellipse-quadratic}
+  0 = r_1^2(c_3^2 + c_1^2) + r_2^2(c_3^2 + c_2^2) + 2 r_2 r_1 c_1 c_2 - 2 Z (r_1 c_1 + r_2 c_2) + (z^2 - c_3^2).
+\end{align}
+We can compute the range of $r_1$ values realisable by points in the ellipse by considering the discriminant of \eqref{eqn:ellipse-quadratic} viewed as a quadratic in $r_2$
+\begin{align}
+  X_\pm &= c_1 Z \pm \sqrt{(1-c_1^2)(1-Z^2)}\\
+  r_1 &\in [X_- , X_+].
+\end{align}
+Recalling that $b_1$ and $b_2$ are have been chosen to be positive, we see that the minimum $\varr{\opb}$ with a fixed $\varr{\opc} = Z\in (0,1)$ and $\varr{\opa} = X\in [X_-(Z), X_+(Z)]$ will be realised by the largest value $r_2$ such that $(X, r_2)$ is in the ellipse. This may be obtained by solving the quadratic \eqref{eqn:ellipse-quadratic}
+\begin{align}
+Y_\text{max}(X,Z) &= \frac{c_2( Z - c_1 X) + \sqrt{1-c_1^2 - X^2 + Z(2c_1 X - Z)}\sqrt{1-c_1^2 - c_2^2}}{1-c_1^2}.
+\end{align}
+
+Finding the maximum for $\var{\opb}$ with a fixed $\var{\opc}$ and $\var{\opa}$ first requires finding when we can attain the trivial upper bound $\var{\opb} = 1$. We search for solutions to \eqref{eqn:ellipse-quadratic} with $\bob\cdot\bor = 0$
+\begin{align}
+  0 &= \bob\cdot\bor \implies r_2 = -r_1 \frac{b_1}{b_2}\\
+  0 &= r_1^2(c_3^2 + c_1^2) + r_2^2(c_3^2 + c_2^2) + 2 r_2 r_1 c_1 c_2 - 2 Z (r_1 c_1 + r_2 c_2) + (z^2 - c_3^2)\\
+  0 &= r_1^2b_2^2(c_3^2 + c_1^2) + r_1^2 b_1^2(c_3^2 + c_2^2) - 2 r_1^2 b_1 b_2  c_1 c_2 - 2 Z b_2 r_1 ( b_2 c_1 - b_1 c_2) + b_2^2(z^2 - c_3^2)\\
+  0 &= r_1^2 (c_3^2 + (b_2 c_1 - b_1 c_2)^2 ) - 2 Z b_2 r_1 ( b_2 c_1 - b_1 c_2) + b_2^2(z^2 - c_3^2).
+      \label{eqn:abc-upper-bound-quadratic}
+\end{align}
+There are two cases, which may be distinguished using the discriminant of \eqref{eqn:abc-upper-bound-quadratic}
+\begin{align}
+  Z^2 > \|\bob\times\boc\|^2 &\iff \text{ $\var{\opb} = 1$ may not be attained}\\
+  Z^2 \leq \|\bob\times\boc\|^2 &\iff \text{ $\var{\opb} = 1$ is attained if $\boa\cdot\bor$ is in the interval } \\ & \left[\frac{b_2(Z(\boc\times\bob)_3 - \sqrt{c_3^2 (\|\boc\times\bob\|^2 - Z^2)})}{\|\boc\times\bob\|^2},\frac{b_2(Z(\boc\times\bob)_3 + \sqrt{c_3^2 (\|\boc\times\bob\|^2 - Z^2)})}{\|\boc\times\bob\|^2}\right].
+\end{align}
+
+\begin{figure*}[ht]
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-1}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
+    \label{fig:err-region-pi-by-16}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-2}
+    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
+    \label{fig:err-region-pi-by-8}
+  \end{subfigure}\\
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-4-16-1}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{4\pi}{16}$.}
+    \label{fig:err-region-pi-by-16}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-4-16-2}
+    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{4\pi}{16}$.}
+    \label{fig:err-region-pi-by-8}
+  \end{subfigure}\\
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-8-16-1}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{8\pi}{16}$.}
+    \label{fig:err-region-pi-by-16}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-8-16-2}
+    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{8\pi}{16}$.}
+    \label{fig:err-region-pi-by-8}
+  \end{subfigure}
+  \caption{Plots of the uncertainty region for $3$ sharp, $\pm1$-valued qubit observables where the Bloch vector of one observable is orthogonal to the other two.}
+  \label{fig:top-level-err-region}
+\end{figure*}
+
+
+% Here we use similar methods to those employed for pairs of general qubit observables. We consider three observables defined by unit Bloch vectors $\opa = \boa\cdot\bosig$, $\opb = \bob\cdot\bosig$ and $\opc = \boc\cdot\bosig$, and a state $\rho = \qbit{\bor}$. By relabelling $\pm 1 \mapsto \mp 1$, if necessary we can ensure $\boa\cdot\bob, \bob\cdot\boc, \boc\cdot\boa \geq 0$. Requiring that $\varr{\opc} = z^2$, for some fixed $z\in [0,1]$ constrains $\bor$, in particular to be in one of two planes, $\bor\cdot\boc = \pm\sqrt{1-z^2}$, the state $\rho = \qbit[][-]{\bor}$ has exactly the same variance triple $(\varr{\opa}, \var{\opb}, \var{\opc})$ as $\rho$, so we only consider the positive plane $\bor\cdot\boc = \sqrt{1-z^2}$. The intersection of this plane with the Bloch sphere is a disk of radius $z$ centered at $\sqrt{1-z^2}\boc$, we will denote this disk $D(\boc,z)$. The variances of $\opa$ and $\opb$, respectively are not sensitive to the full vector $\bor$, but instead the quantities $\bor\cdot\boa$ and $\bor\cdot\bob$, respectively. We therefore seek the projection of the $D(\boc,z)$, onto the plane spanned by $\boa$ and $\bob$. It is well known that the orthogonal projection of a circle is an ellipse, and so the orthogonal projection of a disk must be the region bounded by an ellipse. We choose a basis for the $\boa,\bob$ plane $\boa, \boap$, where $\boa\cdot\boap=0$ and $\boap\cdot\bob \geq 0$. If $\vproj{\boa}{\bob}:\R^2\to\R^2$ is the orthogonal projection onto the $\boa,\bob$ plane the ellipse is centered at $\sqrt{1-z^2}\vproj{\boa}{\bob}\boc = \sqrt{1-z^2}(\boc\cdot\boa,\boc\cdot\boap)$, has semi-minor axis parallel to $(\boc\cdot\boa,\boc\cdot\boap)$ of length $z\sqrt{ 1 - \norm{\vproj{\boa}{\bob}\boc}^2}$, and semi-major axis of length $z$. We can give an explicit description of the ellipse as the set of points $(r_1, r_2)$, satisfying
+% % \begin{align} %opposite convention for z <-> sqrt{1-z^2}
+% %   \left(1-\text{c1}^2\right) y^2+\text{c1}^2+2 \text{c1} \text{c2} x y-2 \text{c1} x z+\left(1-\text{c2}^2\right) x^2+\text{c2}^2-2 \text{c2} y z+z^2-1=0
+% % \end{align}
+% \begin{align}
+%   (r_1, r_2, 1) \begin{pmatrix} 1 - c_2^2& c_1 c_2 & -c_1 \sqrt{1-z^2} \\c_1 c_2 & 1 - c_1^2& -c_2z \\-c_1 \sqrt{1-z^2} & -c_2 z & c_1^2 + c_2^2 -z^2\end{pmatrix} \begin{pmatrix}r_1\\r_2\\1\end{pmatrix} = 0.
+% \end{align}
+% To determine the uncertainty region we first seek the minimum and maximum values of the variance $\varr{\opb}$ achievable with $\vproj{\opa}{\opb}\bor\in \vproj{\opa}{\opb}D(\boc,z)$. We consider separately the cases where there exists a vector in the interior of the ellipse orthogonal to $\bob$, in this case the maximum variance $\varr{\opb} = 1$ is achieved. Where no such vectors exist it is easy to see that the extrema are attained by vectors on the ellipse and, by differentiating and comparing stationary points the 
 
 \section{Qutrit uncertainty}
 \label{sec:qutrit}

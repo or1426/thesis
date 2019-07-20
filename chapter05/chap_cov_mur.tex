@@ -16,7 +16,7 @@ More concretely, given a family of $n$ target observables $\sbuild{\ope_i}{n\in1
 
 Finding the uncertainty region for generic observables seems to be a difficult problem for interesting figures of merit, with exact results known only in cases with high symmetry or low dimension\cite{yu-oh-qubit}\cite{dsw-meas-ur-ang-mom}. Here we do not remedy this situation, but instead employ a systematic approach to exploiting available symmetries to simplify measurement uncertainty problems. 
 
-Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used throughout, \ref{sec:inc-error} contains some technical lemmas related to how we fill the uncertainty region. Section \ref{sec:covariance} contains quite general results about the use of covariance to simplify measurement uncertainty problems, with the key result being that if the target observables are covariant, then for every family of jointly measurable approximators there exists a covariant family of joint approximators which is at least as good, according to the $d_p$ figure of merit. Finally sections \ref{sec:qubit-triple} and \ref{sec:fourier-pair} are case studies, applying the previous results to the three mutually unbiased qubit observables, and the pair of observables related by the quantum Fourier transform in dimension $n$, respectively. Exact results about measurement uncertainty in arbitrary dimension are rare, so the latter result is particularly interesting.
+Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used throughout, \ref{sec:inc-error} contains some technical lemmas related to how we fill the uncertainty region. Section \ref{sec:invariant-mean} contains quite general results about the use of covariance to simplify measurement uncertainty problems, with the key result being that if the target observables are covariant, then for every family of jointly measurable approximators there exists a covariant family of joint approximators which is at least as good, according to the $d_p$ figure of merit. Finally sections \ref{sec:qubit-triple} and \ref{sec:fourier-pair} are case studies, applying the previous results to the three mutually unbiased qubit observables, and the pair of observables related by the quantum Fourier transform in dimension $n$, respectively. Exact results about measurement uncertainty in arbitrary dimension are rare, so the latter result is particularly interesting.
 
 \begin{figure}[ht]
   \centering
@@ -144,7 +144,7 @@ We note that both the $f$-divergences and the $p$-norm based divergences above h
   \delta_p(\lambda\nu_1 + (1-\lambda)\nu_2, \lambda\mu_1 + (1-\lambda)\mu_2) &\leq \lambda \delta_p(\nu_1, \mu_1) + (1-\lambda)\delta_p(\nu_2, \mu_2)\\
   \fdiv{f}{\lambda\nu_1 + (1-\lambda)\nu_2}{\lambda\mu_1 + (1-\lambda)\mu_2} &\leq  \lambda\fdiv{f}{\nu_1}{\mu_1} + (1-\lambda)\fdiv{f}{\nu_2}{\mu_2}.
 \end{align}
-The theorems in this section \ref{sec:covariance}, in particualar theorems \ref{thm:inv-mean-reduces-error} and \ref{thm:cov-obs-improve-approx}, hold for any jointly convex error measure.
+The theorems in this section \ref{sec:invariant-mean}, in particualar theorems \ref{thm:inv-mean-reduces-error} and \ref{thm:cov-obs-improve-approx}, hold for any jointly convex error measure.
 \section{Invariant Mean}
 \label{sec:invariant-mean}
 
@@ -336,7 +336,7 @@ allowing us to rewrite the distance
   d_p(\ope, \opf) = \pnorm{\ope - \opf}.
 \end{align}
 
-Applying the techniques in section \ref{sec:covariance} results in compatible approximations that are ``not worse than'' any other compatible approximations, in the sense that for any family of compatible approximations to the targets, there exists a covariant family of of compatible approximations with $d_p$ values less than or equal to the original family. It is therefore useful to know when we can \emph{increase} the $d_p$ values so we can cover the entire uncertainty region with convex combinations of covariant and trivial observables.
+Applying the techniques in section \ref{sec:invariant-mean} results in compatible approximations that are ``not worse than'' any other compatible approximations, in the sense that for any family of compatible approximations to the targets, there exists a covariant family of of compatible approximations with $d_p$ values less than or equal to the original family. It is therefore useful to know when we can \emph{increase} the $d_p$ values so we can cover the entire uncertainty region with convex combinations of covariant and trivial observables.
 
 \begin{lem}[Increasing the error - $\infty$-norm]
   \label{lem:infty-increase-error}
@@ -570,7 +570,7 @@ These maps act on the effects of the target observables correctly
   R_{k,q}\left[\ketbra{g}{g}\right] &=  \ketbra{g+k}{g+k}\\
   R_{k,q}\left[\ketbra{f_h}{f_h}\right] &=  \ketbra{f_{h+q}}{f_{h+q}}.
 \end{align}
-Therefore we can apply the theorems of section \ref{sec:covariance} to establish that the covariant joint observables are optimal with respect to the $d_p$ distance measures.
+Therefore we can apply the theorems of section \ref{sec:invariant-mean} to establish that the covariant joint observables are optimal with respect to the $d_p$ distance measures.
 
 \subsection{Commutivity} 
 There is a one-to-one relation between covariant joint observables $\opj:\cyc[n]\times\cyc[n]\to\posops[\hcal]$ and trace one positive operators on $\hcal$ given by 

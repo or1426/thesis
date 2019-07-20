@@ -9,7 +9,7 @@
 
 \subsection{Hilbert space theory}
 
-We will be considering separable Hilbert spaces over the complex numbers, where separability is taken to mean the existence of a countable orthonormal basis. We will adopt the convention that the inner product, denoted $\langle\cdot|\cdot\rangle$, is linear in the second argument and conjugate-linear in the first. Such an inner product naturally induces a norm $\norm{\boex} \defeq \sqrt{\langle \boex| \boex\rangle}$. We will use the notation $\bops[V][W]$ for the space of continuous (and equivalently bounded) linear maps between normed vector spaces $V$ and $W$, over the same field, omitting the second argument if the two spaces are the same. This is once more a vector space over the same field, with addition and scalar multiplication being defined pointwise. Moreover it inherits a natural norm 
+We will be considering separable Hilbert spaces over the complex numbers, where separability is taken to mean the existence of a countable orthonormal basis. We will adopt the convention that the inner product, denoted $\langle\cdot|\cdot\rangle$, is linear in the second argument and conjugate-linear in the first. Such an inner product naturally induces a norm $\norm{\boex} \defeq \sqrt{\langle \boex| \boex\rangle}$. We will use the notation $\bops[V][W]$ for the space of continuous (and equivalently bounded) linear maps between normed vector spaces $V$ and $W$, over the same field, omitting the second argument if the two spaces are the same. This is once more a vector space over the same field, with addition and scalar multiplication being defined pointwise. Moreover it inherits a natural norm, called the \emph{operator norm} 
 \begin{align}
   \norm{\cdot}&:\bops[V][W]\to \K\\
   \norm{T} &\defeq \sup_{\substack{\bov\in V \\ \norm{\bov}\leq 1}}\norm{T\bov}, \label{eqn:operator-norm}
@@ -30,7 +30,7 @@ under which it is a Banach space. A particularly important special case is the s
 % \end{align}
 % and extending linearly to the whole space. If $V$ and $W$ are Hilbert spaces then $V\otimes W$, with $\otimes$ defined in this way is not generally a Hilbert space, because it is not complete. For Hilbert $\hcal$ and $\kcal$ spaces we call take the completion with respect to the inner product defined above to get $\hcal\otimes\kcal$. As we shall see later, once we have defined the trace of an operator, there is relatively explicit construction of the tensor product of Hilbert spaces in terms of the Hilbert-Schmidt class of operators.
 
-We are often required to consider maps which are not defined on the whole Hilbert space. An \emph{operator} for a linear map $A$ whose domain, denoted $D(A)$, is a vector subspace of the Hilbert space of interest. A motivating example is the differential operator $\opp:\phi\mapsto -i \phi^\prime$, defined on the subspace of absolutely continuous functions in $L^2(\R)$, whose weak derivatives are also in $L^2(\R)$. If $A:\hcal\to\kcal$ is an operator, defined on a dense domain $D(A)\subseteq \hcal$ we may define the domain of the \emph{adjoint} $D(A^*)$, to be the set of vectors $\psi \in \kcal$ for which there exists an $\eta_{\psi}\in \hcal$ such that
+We are often required to consider maps which are not defined on the whole Hilbert space. An \emph{operator} is a linear map $A$ whose domain, denoted $D(A)$, is a vector subspace (not necessarily closed) of the Hilbert space of interest. A motivating example is the differential operator $\opp:\phi\mapsto -i \phi^\prime$, defined on the subspace of absolutely continuous functions in $L^2(\R)$, whose weak derivatives are also in $L^2(\R)$. If $A:\hcal\to\kcal$ is an operator, defined on a dense domain $D(A)\subseteq \hcal$ we may define the domain of the \emph{adjoint} $D(A^*)$, to be the set of vectors $\psi \in \kcal$ for which there exists an $\eta_{\psi}\in \hcal$ such that
 \begin{align}
   \langle \psi | A\phi \rangle  = \langle \eta_{\psi}| \phi\rangle,
 \end{align}
@@ -44,16 +44,23 @@ noting that the density of $D(A)$ ensures that the $\eta_{\psi}$ is unique, for 
   A^{**} &= A\\
   \left(A^{-1}\right)^* &= \left(A^*\right)^{-1},
 \end{align}
-hold, with the last equation requiring the additional assumption that $A$ is invertable with bounded inverse. 
-are
+hold, with the last equation requiring the additional assumption that $A$ is invertible with bounded inverse. 
+
+The \emph{compact operators} are an important subclass of the bounded operators, they are those which may be written as the limit of a sequence of finite rank operators
+\begin{align}
+  T_n:\varphi&\mapsto\sum_{k=0}^n \lambda_k\braket{f_k}{\varphi} \ket{g_k} \\
+  T_n &\xrightarrow{n\to\infty} T,
+\end{align}
+where the limit converges in the operator norm and $(f_k)_{k\in \N}$ and $(g_k)_{k\in \N}$ are orthonormal sets in $\hcal$.
+
 Certain operators are equal to their own adjoint, we call those the \emph{self-adjoint}, denoted $\saops[\hcal]$, and note that they form a vector space over the reals, where the domain of a sum of two operators is the intersection of the domains. 
 
-Those operators which may be written in the form $A = B^*B$, for some operator $B$ are called positive, we denote this with $A\geq 0$. The set of such operators forms a \emph{convex  cone} in $\saops[\hcal]$ \coma{ref to convex section?} denoted $\posops[\hcal]$. For any $\psi\in D(A^*A)$ we have that 
+Those operators which may be written in the form $A = B^*B$, for some operator $B$ are called positive, we denote this with $A\geq 0$. The set of such operators forms a \emph{convex  cone} in $\saops[\hcal]$ (see section \ref{sec:prelim-comvex-analysis}, for definitions related to convexity) denoted $\posops[\hcal]$. For any $\psi\in D(A^*A)$ we have that 
 \begin{align}
   \langle\psi | B^* B \psi \rangle &= \langle B \psi | B \psi\rangle \\
                                   &= \norm{B\psi}^2 \geq 0.
 \end{align}
-There is a natural a partial order on the $\saops[\hcal]$, defined via $\posops[\hcal]$, we will say $A\geq B$, if $A-B\geq 0$. Every positive operator $A$ has a square root, the unique positive operator $B$ such that $A = B^2$, this may be shown via the spectral theorem, although also independent proofs exist, including an adaptation of the so-called Babylonian method, known to Hero of Alexandria~\cite{hero-brill}.
+There is a natural a partial order on the $\saops[\hcal]$, defined via $\posops[\hcal]$, we will say $A\geq B$, if $A-B\geq 0$. Every positive operator $A$ has a square root, the unique positive operator $B$ such that $A = B^2$, this may be shown via the spectral theorem, although also independent proofs exist, including an adaptation of the so-called Babylonian method, known to Hero of Alexandria~\cite{hero-brill}. \coma{put this in an appendix}
 
 We define the operator absolute value to be
 \begin{align}
@@ -73,7 +80,7 @@ converges to some real number for any, equivalently every, basis $\seq{\boe_k}[k
 \begin{align}
   \tr{A} &= \sum_k \braket{\boe_k}{A\boe_k},
 \end{align}
-is \emph{absolutely convergent}, and is independent of the choice of basis. Every trace-class operator is bounded, and compact \coma{talk about compact somewhere}. The trace-class is a vector space over the $\Cx$, we summarise several useful properties in Lemma \ref{lem:properties-of-trops}.
+is \emph{absolutely convergent}, and is independent of the choice of basis. Every trace-class operator is bounded, and compact. The trace-class is a vector space over $\Cx$, we summarise several useful properties in Lemma \ref{lem:properties-of-trops}.
 \begin{lem}[Properties of the trace-class]
 \label{lem:properties-of-trops}\leavevmode
 \begin{itemize}
@@ -213,8 +220,8 @@ where the \emph{resolvant set}, $\res{A}$ is defined to be the set of $\lambda\i
 Some important special cases are: the spectral measure of a compact operator is supported on a finite number of points, or a sequence of points which converges to zero; the spectral measure of an operator on a finite dimensional Hilbert space is supported on a finite number of points; the spectral measure of a positive operator is supported within the non-negative real numbers.
 
 \section{Convex analysis}
-
-Convex analysis concerns itself with convex sets and convex functions. Although there is an interesting theory of convex subsets of infinite dimensional vector spaces \coma{cite?} this is beyond the scope of this thesis. Here all convex sets will be subsets of finite dimensional real vector spaces. We will follow the exposition of Rockerfellar \cite{rtr-conv-anal-book}. Since we are only dealing with finite dimensional spaces a vector space $V$ is canonically isometrically isomorphic to its bidual $V^{**}$, and we do not distinguish the two, equating the vector $\boex\in V$ and the evaluation map $(\psi\mapsto\psi(\boex))\in V^{**}$. This identification is convenient for discussing the convex conjugate of a function.
+\label{sec:prelim-comvex-analysis}
+Convex analysis concerns itself with convex sets and convex functions. Although there is an interesting theory of convex subsets of infinite dimensional vector spaces\footnote{See, for example \cite{10.1007/978-1-84800-155-8_12}} this is beyond the scope of this thesis. Here all convex sets will be subsets of finite dimensional real vector spaces. We will follow the exposition of Rockerfellar \cite{rtr-conv-anal-book}. Since we are only dealing with finite dimensional spaces a vector space $V$ is canonically isometrically isomorphic to its bidual $V^{**}$, and we do not distinguish the two, equating the vector $\boex\in V$ and the evaluation map $(\psi\mapsto\psi(\boex))\in V^{**}$. This identification is convenient for discussing the convex conjugate of a function.
 
 \begin{defn}\label{defn:convex-set}
   A subset $C$ of a real vector space is \emph{convex} if for all $\boex,\boy\in C$ and for all $\lambda\in [0,1]$
@@ -394,7 +401,7 @@ Given two quantum observables, say $E_1:\fcal_1\to\posops[\hcal]$ and $E_2:\fcal
 When such a joint observable exists we call the $E_1$ and $E_2$ \emph{compatible}, two observables will generically be incompatible.
 
 Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive, unital, linear maps acting on $\saops[\hcal]$ we say an observable $E:\fcal\to\saops[\hcal]$ is \emph{covariant} if
-\begin{equation}
+\begin{equation}\label{eqn:general-covariance}
   E(f_g(X)) = R_g \left[E(X)\right], \quad \forall g\in G, X\in\fcal
 \end{equation}
 where $\fcal$ is the $\sigma$-algebra of measureable sets over $\Omega$. Note that the $R_g$ must be unital since
@@ -403,6 +410,8 @@ where $\fcal$ is the $\sigma$-algebra of measureable sets over $\Omega$. Note th
        &= R_g\left[\Omega\right]\\
        &= R_g\left[\opi\right].
 \end{align}
+A group, representation, action and observable satisfying equation \eqref{eqn:general-covariance} are called a \emph{system of covariance} or \emph{system of imprimitivity}.
+
 An application of Wigner's theorem shows that the representation must be of the form
 \begin{align}
   R_g:A\mapsto U_g A U_g^*,
@@ -542,3 +551,12 @@ where $\opm$ is an observable with outcome set $\R\times\R$, $\opm^Q$ and $\opm^
   c_{\alpha\beta} = \alpha^{\frac{1}{\beta}} \beta^{\frac{1}{\alpha}} \left(\frac{g_{\alpha\beta}}{\alpha+\beta}\right)^{\frac{1}{\alpha} + \frac{1}{\beta}}.
 \end{align}
 
+\appendix
+
+\section{Square root of positive operator}
+
+Let $A\in\posops[\hcal]$ be positive and bounded, without loss of generality we choose $A \leq \opi$, by multiplying by a positive real number if necessary. We choose $B_0 = \opi$, and note that if $X$ is a positive definite (hence invertible) operator, then
+\begin{align}
+  \frac{1}{2}\left( \frac{A}{X} + X \right),
+\end{align}
+is also positive definite

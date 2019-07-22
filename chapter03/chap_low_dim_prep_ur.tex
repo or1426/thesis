@@ -105,7 +105,7 @@ Geometrically, the limiting case of equality in \eqref{eq:qp-add-lin} represents
 
 
 %\begin{center}
-  \begin{figure}[ht]
+  \begin{figure}[ht]\centering
     \includegraphics[width=\textwidth]{figs/qp-error-region}
     \caption[The uncertainty region for the standard deviations of position and momentum.]{The uncertainty region for the standard deviations of position and momentum (in units where $\hbar = 1$). The solid boundary line represents the hyperbola $\sdev{\opq}\sdev{\opp}=\frac{1}{2}$, and the dash-dotted and dotted curves show examples of the tangential straight and elliptic line segments represented by the bounds given in \eqref{eq:qp-add-lin} and \eqref{eq:qp-add-quadr}, respectively.}\label{fig:QP-UR}
   \end{figure}
@@ -171,14 +171,14 @@ it is easy to see that the positivity condition for $\rho$, $r_x^2+r_y^2+r_z^2\l
 This inequality is saturated if and only if $\rho$ is a pure state ($r^2=1$).
 Given that the standard deviations $\sdevr{\sigma_k}\in[0,1]$, the uncertainty region for the triple $(\sigma_x,\sigma_y,\sigma_z)$ is given as the complement of the open ball at the origin with radius $\sqrt{2}$ intersected with the unit cube $[0,1]\times[0,1]\times[0,1]$ (Fig.~\ref{fig:orth-triple}). The inequality \eqref{eq:urxyz} is an instance of a general triple uncertainty relation for the components of a spin-$s$ system, with the bound for the sum of variances being $s$, as shown in Ref.~\cite{HofmannTakeuchi2003}.
 
-\begin{center}
-  \begin{figure*}[ht]
-    \includegraphics[width=.5\textwidth]{figs/qubit-triple}
-    \caption[The uncertainty region for the standard deviations of the qubit triple $(\sigma_x,\sigma_y,\sigma_z)$]{The uncertainty region for the standard deviations of the qubit triple $(\sigma_x,\sigma_y,\sigma_z)$. Note that the top surface with $\sdev{\sigma_z}=1$, shows the uncertainty region for the pair $\sigma_x,\sigma_y$, determined by
+\begin{figure*}[ht]\centering
+  \includegraphics[width=.5\textwidth]{figs/qubit-triple}
+  \caption[The uncertainty region for the standard deviations of the qubit triple $(\sigma_x,\sigma_y,\sigma_z)$]{The uncertainty region for the standard deviations of the qubit triple $(\sigma_x,\sigma_y,\sigma_z)$. Note that the top surface with $\sdev{\sigma_z}=1$, shows the uncertainty region for the pair $\sigma_x,\sigma_y$, determined by
     $\varr{\sigma_x}+\varr{\sigma_y}\ge 1$, which can be filled with states whose Bloch vectors have component $r_z=0$.}
-    \label{fig:orth-triple}
-  \end{figure*}
-\end{center}
+  \label{fig:orth-triple}
+\end{figure*}
+
+
 
 We briefly revisit and compare the Heisenberg and Schr\"odinger inequalities for spin components.
 The uncertainty relation \eqref{eq:HUR} for $\sigma_x,\sigma_y$ is equivalent to
@@ -279,22 +279,22 @@ We obtain the following Lemma.
 \begin{figure}[h]
   \centering
   %\includegraphics[trim=1cm 0 0 2cm,clip,width=0.9\textwidth]{figs/qubit-min-max-PUR.jpeg}
-  \begin{minipage}{0.45\textwidth}
+  \begin{subfigure}{0.45\textwidth}
     \DrawSphere{60}{90}{90}
-    \subcaption{$\boa\cdot\bor > \boa\cdot\bob \iff \sdev{\opa} < \|\boa\times\bob\|$}
-  \end{minipage}\hfill
-  \begin{minipage}{0.45\textwidth}
+    \caption{$\boa\cdot\bor > \boa\cdot\bob \iff \sdev{\opa} < \|\boa\times\bob\|$}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.45\textwidth}
     \DrawSphere{60}{90}{90}
-    \subcaption{$\boa\cdot\bor = \boa\cdot\bob > \boa\cdot\bob^\prime = \|\boa\times\bob\| \iff \sdev{\opa} = \|\boa\times\bob\|$}
-  \end{minipage}\\
-  \begin{minipage}{0.45\textwidth}
+    \caption{$\boa\cdot\bor = \boa\cdot\bob > \boa\cdot\bob^\prime = \|\boa\times\bob\| \iff \sdev{\opa} = \|\boa\times\bob\|$}
+  \end{subfigure}\\
+  \begin{subfigure}{0.45\textwidth}
     \DrawSphere{60}{90}{120}
-    \subcaption{$\boa\cdot\bor = \boa\cdot\bob^\prime = \|\boa\times\bob\| \iff \sdev{\opa} =\boa\cdot\bob$}
-  \end{minipage}\hfill
-  \begin{minipage}{0.45\textwidth}
+    \caption{$\boa\cdot\bor = \boa\cdot\bob^\prime = \|\boa\times\bob\| \iff \sdev{\opa} =\boa\cdot\bob$}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.45\textwidth}
     \DrawSphere{60}{90}{130}
-    \subcaption{$0 < \boa\cdot\bor < \boa\cdot\bob^\prime \iff \sdev{\opa} > \boa\cdot\bob$}
-  \end{minipage}
+    \caption{$0 < \boa\cdot\bor < \boa\cdot\bob^\prime \iff \sdev{\opa} > \boa\cdot\bob$}
+  \end{subfigure}
   %\caption{Case $\boa\cdot\bob > \|\boa\times\bob\|$ (shown here for $\theta = \frac{\pi}{6}$)}
   \caption[The Bloch vectors of the states minimizing and maximizing $\varr{\opb}$ given $\sdevr{\opa}=\sdev{\opa}$]{Determining the locations of Bloch vectors $\bor_0,\bor_1$ (in the plane spanned by $\boa,\bob$) for states minimizing and maximizing $\varr{\opb}$ within the set of states with $\sdevr{\opa}=\sdev{\opa}$. We consider the case $\boa\cdot\bob > \|\boa\times\bob\|$ only (shown here for $\theta = \frac{\pi}{6}$). }\label{fig:min-max}
 \end{figure}
@@ -318,7 +318,7 @@ Minimality (maximality) of $\varr{\opb}$   is equivalent to maximality (minimali
 %   \label{fig:semicircle-max-plane}
 % \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[ht]\centering
   \begin{subfigure}[t]{0.45\textwidth}
     \DrawSemiCircle[aAngle=40,bAngle=107.5,rAngle=70, scale=\textwidth,rSub=0]{}
     \caption{Cross-section through the Bloch sphere showing the relations between the various vectors in the case where the choice of $\sdevr{\opa}=\|\boex\|$ fixes $\bor_0$ to be between $\boa$ and $\bob$ to minimize $\sdevr{\opb}=\|\boy\|$. Note that $\boex\cdot\boy=-\boa\cdot\bob\,\|\boex\|\|\boy\|$.}
@@ -570,6 +570,7 @@ There are two cases, which may be distinguished using the discriminant of \eqref
 \end{align}
 
 \begin{figure*}[ht]
+  \centering
   \begin{subfigure}[b]{0.4\textwidth}
     \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-1}
     \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
@@ -749,13 +750,13 @@ We can set $\rho_{12}$ and $\rho_{23}$ equal to zero without changing the uncert
 \end{equation}
 
 By elementary methods (differentiating, finding local extrema and comparing them) we can find the minimum and maximum values of $\varr{\opb}$ as a function of $\varr{\opa}$. Because of the way the various constraints change with $\varr{\opa}$ the functional form of the minima and maxima also change. In all there are ten distinct bounding curve segments, given in equation \eqref{eqn:gellmann-bounding-curves} and shown in Figure \ref{fig:qutrit-uncertainty-region}. We give a derivation of these curves in Appendix \ref{app:gellmann-ur}.
-\begin{center}
-  \begin{figure*}[ht]
-    \includegraphics[width=.8\textwidth]{figs/full-gellmann-ur}
-    \caption[The uncertainty region for the qutrit observables defined in equation \eqref{eq:qutrit-observables-def}]{The uncertainty region for the qutrit observables defined in equation \eqref{eq:qutrit-observables-def}. The region contained in the solid curves is the allowed uncertainty region.}
-    \label{fig:qutrit-uncertainty-region}
-  \end{figure*}
-\end{center}
+
+\begin{figure*}[ht]\centering
+  \includegraphics[width=\textwidth]{figs/full-gellmann-ur-square}
+  \caption[The uncertainty region for the qutrit observables defined in equation \eqref{eq:qutrit-observables-def}]{The uncertainty region for the qutrit observables defined in equation \eqref{eq:qutrit-observables-def}. The region contained in the solid curves is the allowed uncertainty region.}
+  \label{fig:qutrit-uncertainty-region}
+\end{figure*}
+
 
 Similar to the qubit case, the uncertainty region contains nontrivial upper bounds, and it is not of a simple convex shape; however, there are fundamental differences. The region shown in Fig.~\ref{fig:qutrit-uncertainty-region} does touch and include the origin (0,0), reflecting the fact that the two observables have a common eigenstate. The shape of the region is also quite asymmetrical; in particular, it is not possible for both uncertainties to get large simultaneously. It is possible that these features can be connected to trade-off relations involving other observables, as we indicated in the qubit case. However, this may require the acquisition of a host of further case studies.
 The Schr\"odinger relation does not entail the lower bound of the uncertainty region in this case. 
@@ -794,6 +795,8 @@ The examples studied here reinforce the qualitative understanding of  the uncert
 
 The general theory of the structure of uncertainty regions is still unknown. It seems likely that an expanding library of case studies, like those described above, will help point the way for future investigations of this theory. A notable feature of these investigations is how rapidly the computations become more difficult as the Hilbert space dimension increases, for example attempting to generalise the results of sections \ref{sec:qubit-uncertainty} and \ref{sec:qubit-extended-uncertainty} to the case of extended qubit observables with non-orthogonal Bloch vectors requires computing the roots of fifth order polynomials. One avenue for further investigation could be the use of numerical methods in the analysis; since the variance is quadratic in the state the problem may be reduced to polynomial root finding, which may be efficiently solved using well known numerical techniques.
 To conclude, we expect that much can be learned about the uncertainty principle through the study of uncertainty regions, and hope our investigation will encourage some readers to undertake further case studies.
+
+\begin{subappendices}
 
 \section{Uncertainty region for Gell-Mann observables}
 \label{app:gellmann-ur}
@@ -894,7 +897,7 @@ note that the apparently exceptional point $x = \frac{9}{16}$, $\rho_{11} = \fra
 \end{align}
 \end{subequations}
 the (locally) extremising values of $\rho_{11}$ are summarised in Figure \ref{fig:rho-plus-vals}. The values of $\var[\rho_{11}^+]{\opb}$ given these choices of $\rho_{11}$, and $\left(\Re{\rho_{13}}\right)^2 = \rho_{11}\rho_{33}^\pm$ are plotted in Figure \ref{fig:rho-minus-vals}.
-\begin{figure}[ht]
+\begin{figure}[ht]\centering
   \begin{subfigure}[t]{0.4\textwidth}
     \includegraphics[height=0.65\linewidth]{figs/qutrit-rhoplus-r11vals}
     \caption[Range of $\rho_{11}$ given $\rho_{33} = \rho_{33}^+$]{Range of $\rho_{11}$ given $\rho_{33} = \rho_{33}^+$. The dotted lines are the where $\Re{\rho_{13}}$ is maximal and the derivative of $\var[\rho^+]{\opb}$ with respect to $\rho_{11}$ is zero \eqref{eqn:rho-plus-zero-deriv-solns}, the dashed line is the where $\Re{\rho_{13}} = 0$ and the derivative of $\var[\rho^+]{\opb}$ with respect to $\rho_{11}$ is zero \eqref{eqn:rho-plus-max-zero-deriv-solns}.}\label{fig:rho-plus-vals}
@@ -937,5 +940,7 @@ Comparing the local extrema we can now describe the full uncertainty region show
   & \var{\opb} = 1-4\,\var{\opa}, \quad && \var{\opa}\in\left[0,\frac{3}{16}\right].
   \label{eqn:gellmann-bounding-curves}
 \end{alignat}
+
+\end{subappendices}
 
 %%------------------

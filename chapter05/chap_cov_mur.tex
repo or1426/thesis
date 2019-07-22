@@ -2,7 +2,15 @@
 \chapter{Measurement uncertainty and covariance - finite dimensional case studies}
 \label{chap:cov-meas-ur}
 \section{Introduction}
-Measurement uncertainty provides a quantitative framework to study the incompatibility inherent to quantum observables, through the lens of compatible approximations. One first defines a figure of merit, say $d$, which says something about how well one observable may be said to approximate another, then for a fixed set of target observables, attempts to find the set of values allowed for the figure of merit of merit, given that the approximating observables are compatible. This idea dates back to Heisenberg's early Gedanken experiments \cite{Heisenberg1927-Wheeler+Zurek}
+
+We first consider a restricted, but illustrative example, reminiscent of Heisenberg's $\gamma$-ray microscope thought experiment. The system of interest is a massive, non-relativistic particle, and the aim is an approximate joint measurement of the position and momentum of said particle. Let $P,Q:\borel{\R}\to\posops[\hcal]$ be the usual momentum and position observables, and let $\mu:\borel{\R}\to [0,1]$ be a probability measure. The \emph{convolution} $\mu\ast Q$ is the observable defined by the family of complex measures
+\begin{align}
+  \mu\ast Q_{\varphi,\psi}: X \mapsto \int_\R \mu(X-y)dQ_{\varphi,\psi}(y),
+\end{align}
+for $\varphi, \psi\in\hcal$. That this defines an observable follows from the the monotone convergence theorem. Taking $\mu$ to be a point measure at zero recovers the original, sharp position, and loosely, taking $\mu$ to be increasingly broad leads to worse and worse approximations
+
+
+Measurement uncertainty provides a quantitative framework to study the incompatibility inherent to quantum observables, through the lens of compatible approximations. One first defines a figure of merit, say $d$, which says something about how well one observable may be said to approximate another, then for a fixed set of target observables, attempts to find the set of values allowed for the figure of merit of merit, given that the approximating observables are compatible. This idea arguably dates back to Heisenberg's early, albeit rather vague, Gedanken experiments. In his 1927 paper~\cite{Heisenberg1927-Wheeler+Zurek} he suggests performing an approximate measurement of the position of a massive particle will impart a momentum ``kick'', if one performs a sharp measurement of momentum on the ``kicked'' particle the outcome will .
 
  \cite{quantum-measurement-busch-et-al}, chapter 13 for a comprehensive introduction to this line of thinking, a 
 

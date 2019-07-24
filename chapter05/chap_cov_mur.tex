@@ -3,26 +3,41 @@
 \label{chap:cov-meas-ur}
 \section{Introduction}
 
-We first consider a restricted, but illustrative example, reminiscent of Heisenberg's $\gamma$-ray microscope thought experiment. The system of interest is a massive, non-relativistic particle, and the aim is an approximate joint measurement of the position and momentum of said particle. Let $P,Q:\borel{\R}\to\posops[\hcal]$ be the usual momentum and position observables, and let $\mu:\borel{\R}\to [0,1]$ be a probability measure. The \emph{convolution} $\mu\ast Q$ is the observable defined by the family of complex measures
+We first consider a restricted, but illustrative example, reminiscent of Heisenberg's $\gamma$-ray microscope thought experiment. Let $\hcal$ be a finite dimensional complex Hilbert space, $A, B:\{0\hdots n-1\}\to\posops[\hcal]$ be finite outcome, sharp (i.e. projection valued) observables. We first measure $A$ by means of the L\"uders measurement \cites{doi:10.1063/1.528831}{Busch2009-compendium-of-physics-luders}, and subsequently measure $B$. If the initial state of the system is $\rho\in\hcal$, and we observe outcome $k\in\{0\hdots n-1\}$ then after the L\"uders measurement the system will be in state
 \begin{align}
-  \mu\ast Q_{\varphi,\psi}: X \mapsto \int_\R \mu(X-y)dQ_{\varphi,\psi}(y),
+  \rho_i = \frac{A(i)\rho A(i)}{\tr{A(i)\rho A(i)}}.
 \end{align}
-for $\varphi, \psi\in\hcal$. That this defines an observable follows from the the monotone convergence theorem. Taking $\mu$ to be a point measure at zero recovers the original, sharp position, and loosely, taking $\mu$ to be increasingly broad leads to worse and worse approximations
-
-
-Measurement uncertainty provides a quantitative framework to study the incompatibility inherent to quantum observables, through the lens of compatible approximations. One first defines a figure of merit, say $d$, which says something about how well one observable may be said to approximate another, then for a fixed set of target observables, attempts to find the set of values allowed for the figure of merit of merit, given that the approximating observables are compatible. This idea arguably dates back to Heisenberg's early, albeit rather vague, Gedanken experiments. In his 1927 paper~\cite{Heisenberg1927-Wheeler+Zurek} he suggests performing an approximate measurement of the position of a massive particle will impart a momentum ``kick'', if one performs a sharp measurement of momentum on the ``kicked'' particle the outcome will .
-
- \cite{quantum-measurement-busch-et-al}, chapter 13 for a comprehensive introduction to this line of thinking, a 
+This state change is the analogue of the ``kick'' Heisenberg's particle receives from the position measurement. Note that we avoid division by zero since outcomes with $\tr{A(i)\rho A(i)} = 0$ have zero probability to be observed. 
+On measuring $B$ on the state $\rho_i$ the outcomes are distributed according to
+\begin{align}
+  P(j|i) &= \tr{\rho_i B(j)}\\
+         &= \frac{\tr{A(i)\rho A(i) B(j)}}{\tr{A(i)\rho A(i)}}\\
+         &= \frac{\tr{\rho A(i) B(j)A(i)}}{\tr{A(i)\rho A(i)}},
+\end{align}
+and there is a joint distribution
+\begin{align}
+  P(i,j) = \tr{\rho A(i) B(j)A(i)}.
+\end{align}
+It is natural to wonder how good an approximation the marginal distribution $P(j) = \sum_i P(i,j)$ is to the outcome distribution of a direct measurement of $B$ on the state $\rho$. For example if $A$ is trivial, with each effect proportional to the identity, then the observed statistics of $P(j)$ will be exactly those for direct measurement of $B$, for all states. Conversely if every effect of $A$ is rank-$1$ then the effective observable
+\begin{align}
+  \tilde{B}:j\mapsto \sum_i A(i)B(j)A(i),
+\end{align}
+is a smearing of $A$, the convolution of $A$ with a probability measure, and doesn't necessarily approximate $B$, in a useful way. We generalise this picture by noting that instead of measuring $B$ after $A$ one could instead measure another observable $D$, and it may be that
+\begin{align}
+  \tilde{C}:j\mapsto \sum_i A(i)C(j)A(i),
+\end{align}
+provides a better approximation to $B$ than $\tilde{B}$ does. We might also allow measuring an arbitrary observable instead of performing the L\"uders measurement of $A$, it may be the case that allowing a errors in the $A$ measurement allows a better approximation to $B$. In addition, rather than focusing on sequential measurements we instead allow any compatible approximations, and rather than restricting to only two observables we allow finitely many.  The general picture is then summarised in figure~\ref{fig:depict-meas-uncertainty}, where $E_i$ are the target observables, and $F_i$ are respective compatible approximations, and $J$ is a joint observable for the $F_i$. If supplied with a ``figure of merit'' $d$ indicating how well one observable approximates another we can explore the set
+\begin{equation}
+  S(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d(\ope_1, \opf_1), d(\ope_2, \opf_2)\hdots d(\ope_n, \opf_n))}{\opf_i \text{ are compatible}},
+  \label{eqn:general-ur-definition}
+\end{equation}
+which we call a \emph{measurement uncertainty region}. We refer to  \cite{quantum-measurement-busch-et-al}, chapter 13 for an introduction to this line of thinking. 
 
 \coma{\cite{blw-meas-uncertainty}\cite{srw-meas-uncertainty-finite}}
 
 More concretely, given a family of $n$ target observables $\sbuild{\ope_i}{n\in1\hdots n}$, acting on the same Hilbert space, and a figure of merit $d$ assumed to take real values, we seek the \emph{error region}, defined to be the set
-\begin{equation}
-  S(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d(\ope_1, \opf_1), d(\ope_2, \opf_2)\hdots d(\ope_n, \opf_n))}{\opf_i \text{ are compatible}}\subset \mathbb{R}^n.
-  \label{eqn:general-ur-definition}
-\end{equation}
 
-Finding the uncertainty region for generic observables seems to be a difficult problem for interesting figures of merit, with exact results known only in cases with high symmetry or low dimension\cite{yu-oh-qubit}\cite{dsw-meas-ur-ang-mom}. Here we do not remedy this situation, but instead employ a systematic approach to exploiting available symmetries to simplify measurement uncertainty problems. 
+Finding the uncertainty region for generic observables seems to be a difficult problem for interesting figures of merit, with exact results known only in cases with high symmetry or low dimension~\cites{yu-oh-qubit}{dsw-meas-ur-ang-mom}. Here we do not remedy this situation, but instead employ a systematic approach to exploiting available symmetries to simplify measurement uncertainty problems. 
 
 Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used throughout, \ref{sec:inc-error} contains some technical lemmas related to how we fill the uncertainty region. Section \ref{sec:invariant-mean} contains quite general results about the use of covariance to simplify measurement uncertainty problems, with the key result being that if the target observables are covariant, then for every family of jointly measurable approximators there exists a covariant family of joint approximators which is at least as good, according to the $d_p$ figure of merit. Finally sections \ref{sec:qubit-triple} and \ref{sec:fourier-pair} are case studies, applying the previous results to the three mutually unbiased qubit observables, and the pair of observables related by the quantum Fourier transform in dimension $n$, respectively. Exact results about measurement uncertainty in arbitrary dimension are rare, so the latter result is particularly interesting.
 

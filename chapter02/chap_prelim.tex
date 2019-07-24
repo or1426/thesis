@@ -452,22 +452,22 @@ The dynamics of a perfectly isolated quantum system are reversible, through Wign
 \end{align}
 where $U:\hcal\to\hcal$ is a unitary or anti-unitary map, see \cite{wigner1960} for a translation of the original work \cite{wigner1931}, or \cite{bargmann1964-wigner} for a detailed proof. The time evolution of quantum mechanics is given by the unitary case, although the anti-unitary operators will be useful in section \ref{chap:cov-meas-ur} when we consider observables symmetric under the action of a group, represented by \coma{(anti-)unitary maps}.
 
-We will occasionally be interested in the state of a system \emph{after} the measurement of an observable. This is formulated in the language of quantum instruments, we will use the Schr\"odinger picture of the evolution of states, although again, one can employ the dual map to obtain the Heisenberg picture. Given a  measurable set $(\Omega, \fcal)$ a \emph{quantum instrument} is map $\mathfrak{I}:\fcal\mapsto \bops[\trops[\hcal]][\trops[\kcal]]$ with the properties
-\begin{enumerate}
-  \item $\mathfrak{I}(X)$ is completely positive, $\forall X\in\fcal$;
-  \item $0\leq \tr{\mathfrak{I}(X)(T)} \leq 1$, $\forall X\in\fcal$ and $T\in\dops[\hcal]$;
-  \item $\tr{\mathfrak{J}(\Omega)(T)} = \tr{T}$, $\forall T\in\trops[\hcal]$;
-  \item $\mathfrak{J}(\bigcup_{i=1}^\infty X_i)(T) = \sum_{i=1}^\infty \mathfrak{J}(X_i)(T)$, $\forall T\in\dops[\hcal]$, and all disjoint sequences $(X_i)_{i=1}^\infty$ where the series converges in trace-norm.
-\end{enumerate}
-We associate $\mathfrak{I}$ with an observable $F$ by the formula
-\begin{align}
-  \tr{F(X)\rho} = \tr{\mathfrak{J}(X)(\rho)},
-\end{align}
-for all $\rho\in\dops[\hcal]$ and all $X\in\fcal$. Every instrument defines a unique observable by this formula, conversely any observable $F$ may be associated with infinitely many instruments. If an observable $F$ is measured via an instrument $\mathfrak{I}$, on state $\rho$ then the post measurement state, having observed outcome $X$ is given by the expression
-\begin{align}
-  \frac{\mathfrak{I}(X)(\rho)}{\tr{\mathfrak{I}(X)(\rho)}},
-\end{align}
-where we avoid division by zero by noting that the probability of observing an outcome $X$ with $\tr{\mathfrak{I}(X)(\rho)} = 0$ is $0$.
+% We will occasionally be interested in the state of a system \emph{after} the measurement of an observable. This is formulated in the language of quantum instruments, we will use the Schr\"odinger picture of the evolution of states, although again, one can employ the dual map to obtain the Heisenberg picture. Given a  measurable set $(\Omega, \fcal)$ a \emph{quantum instrument} is map $\mathfrak{I}:\fcal\mapsto \bops[\trops[\hcal]][\trops[\kcal]]$ with the properties
+% \begin{enumerate}
+%   \item $\mathfrak{I}(X)$ is completely positive, $\forall X\in\fcal$;
+%   \item $0\leq \tr{\mathfrak{I}(X)(T)} \leq 1$, $\forall X\in\fcal$ and $T\in\dops[\hcal]$;
+%   \item $\tr{\mathfrak{J}(\Omega)(T)} = \tr{T}$, $\forall T\in\trops[\hcal]$;
+%   \item $\mathfrak{J}(\bigcup_{i=1}^\infty X_i)(T) = \sum_{i=1}^\infty \mathfrak{J}(X_i)(T)$, $\forall T\in\dops[\hcal]$, and all disjoint sequences $(X_i)_{i=1}^\infty$ where the series converges in trace-norm.
+% \end{enumerate}
+% We associate $\mathfrak{I}$ with an observable $F$ by the formula
+% \begin{align}
+%   \tr{F(X)\rho} = \tr{\mathfrak{J}(X)(\rho)},
+% \end{align}
+% for all $\rho\in\dops[\hcal]$ and all $X\in\fcal$. Every instrument defines a unique observable by this formula, conversely any observable $F$ may be associated with infinitely many instruments. If an observable $F$ is measured via an instrument $\mathfrak{I}$, on state $\rho$ then the post measurement state, having observed outcome $X$ is given by the expression
+% \begin{align}
+%   \frac{\mathfrak{I}(X)(\rho)}{\tr{\mathfrak{I}(X)(\rho)}},
+% \end{align}
+% where we avoid division by zero by noting that the probability of observing an outcome $X$ with $\tr{\mathfrak{I}(X)(\rho)} = 0$ is $0$.
 
 \section{Comparing measures and distributions}
 \label{sec:comp-measures-and-dists}
@@ -518,19 +518,39 @@ where $\delta_{x_0}$ is a point measure supported at $x_0$. If $\mu$ is a probab
 \begin{align}
   \wsDev{\mu}[\alpha] = \inf_{x_0\in\mathsf{A}} \left(\int_{\mathsf{A}} d(x,x_0)^\alpha d\mu(x)\right)^\frac{1}{\alpha}.
 \end{align}
+The Wasserstein metric was used in the context of quantum uncertainty by Busch, Lahti and Werner in \cite{PhysRevLett.111.160405}, with a focus on the case of canonically covariant observables $\ope^Q$ and $\ope^P$, and restricted to $\alpha=2$. In \cite{blw-meas-uncertainty} the same authors generalised this to consider arbitrary $\alpha$. In these papers the authors considered both the $\sup$ of the Wasserstein metric over all states, called the metric error, and a quantity called the calibration error. For observables for which there are states which make the induced probability distributions deterministic the calibration error is given by the $\max$ over those states. In general an observable may not induce a deterministic probability distribution in any state, so the calibration error is given by a limiting procedure
+\begin{align}
+  \calibError{F}{E}{\alpha}[\varepsilon] &\defeq \sup_{\rho,x} \sbuild{\ws{F^\rho,\delta_{x}}[\alpha]}{\ws{E^\rho,\delta_{x}}[\alpha]}\\
+  \calibError{F}{E}{\alpha} &\defeq \lim_{\varepsilon\to 0} \calibError{F}{E}{\alpha}[\varepsilon]  
+\end{align}
+and obtained measurement uncertainty relations of the form 
+\begin{align}
+  \ws{\opm^Q, \ope^Q}[\alpha]\ws{\opm^P, \ope^P}[\beta] \geq c_{\alpha\beta} \hbar,
+\end{align}
+where $\opm$ is an observable with outcome set $\R\times\R$, $\opm^Q$ and $\opm^P$ are the first and second margins, respectively. The constant $c_{\alpha\beta}$ is related to the least eigenvalue $g_{\alpha\beta}$ of the Hamiltonian $H_{\alpha\beta} = \abs{\opq}^\alpha + \abs{\opp}^\beta$ by 
+\begin{align}
+  c_{\alpha\beta} = \alpha^{\frac{1}{\beta}} \beta^{\frac{1}{\alpha}} \left(\frac{g_{\alpha\beta}}{\alpha+\beta}\right)^{\frac{1}{\alpha} + \frac{1}{\beta}}.
+\end{align}
 
 The overall width is a natural measure of the broadness of a probability measure on the reals, given $\varepsilon\in (0,1)$ we define
 \begin{align}
   \width{\mu}{\varepsilon} \defeq \inf_{a,b\in\R} \sbuild{\abs{a-b}}{\mu([a,b])\geq 1-\varepsilon}, \label{eqn:overall-width-defn}
 \end{align}
-the set bounded below by zero, and non-empty since for any $\varepsilon$ there is an $n$ large enough such that $\mu([-n,n])\geq 1-\varepsilon$ so this quantity is a real number. The overall width has been studied in the context of timelimited and bandlimited functions in \cite{6773660} in the quantum mechanical literature by Uffink \cite{ufink-thesis}, Busch et. al. \cite{BUSCH2007155} and Miyadera\cite{doi:10.1063/1.3614503}. \coma{some stuff here about error bar width would be nice}
+the set bounded below by zero, and non-empty since for any $\varepsilon$ there is an $n$ large enough such that $\mu([-n,n])\geq 1-\varepsilon$ so this quantity is a real number. The overall width has been studied in the context of timelimited and bandlimited functions in \cite{6773660}, in the quantum mechanical literature by Uffink \cite{ufink-thesis}, Busch et. al.~\cite{BUSCH2007155} and Miyadera~\cite{doi:10.1063/1.3614503}.
 
-\coma{probably need to mention entropic uncertainty}
+Entropic quantities have also been used to study quantum uncertainty, although the set of quantities which are called ``entropies'' is large, for our purposes it suffices to consider the R\'enyi $\alpha$-entropies~\cite{renyi1961}. These are given, for a probability distribution on a finite set by
+\begin{align}
+  H_\alpha(P) = \frac{1}{1-\alpha} \log{\sum_i P(i)^\alpha}.
+\end{align}
+The R\'enyi entropies are \emph{Schur concave} as functions of the probability distribution. We write $P \prec Q$ if $P$ may be written as a convex combination of permutations of $Q$, and say $Q$ majorizes $P$ in this case. Schur concavity is the property that
+\begin{align}
+  P\prec Q \implies H_\alpha(P) \geq H_\alpha(Q).
+\end{align}
 
 
 \section{Quantum uncertainty}
-
-The textbook description of quantum uncertainty (see e.g. \cite{Nielsen-Chuang}) may be summarised as the claim that there exist pairs of quantum observables $\ope$, $\ope$ for which there does not exist any state $\rho$ which makes the induced probability measures $\ope^\rho$ and $\opf^\rho$ simultaneously sharply concentrated, often this is categorised by a lower bound on some functional of the variances or entropies \coma{citations here} of the two distributions, valid for all quantum states. A slightly broader view is to consider the set
+\coma{move this}
+The textbook description of quantum uncertainty (see e.g. \cite{Nielsen-Chuang}) may be summarised as the claim that there exist pairs of quantum observables $\ope$, $\ope$ for which there does not exist any state $\rho$ which makes the induced probability measures $\ope^\rho$ and $\opf^\rho$ simultaneously sharply concentrated, often this is categorised by a lower bound on some functional of the variances or entropies \cites{MaassenUffink1988}{Wehner_2010} of the two distributions, valid for all quantum states. A slightly broader view is to consider the set
 \begin{align}
   \sbuild{\left(\delta(\ope_1^\rho),...,\delta(\ope_n^\rho)\right)}{\rho\in\dops[\hcal]} \subseteq \R^n,
 \end{align}
@@ -551,21 +571,6 @@ of course the choice of the set $S$ is highly significant and the appropriate ch
   J: (A,B) \mapsto E^\rho(A) F^\rho(B) I.
 \end{align}
 In the application of measurement uncertainty in chapter \ref{chap:cov-meas-ur} the set $S$ will be the whole state-space, and the distance measure on probability distributions will be the  $\alpha$-deviation given in \eqref{eqn:wassersten-variance}. In general the choice of distance on the probability measures is also application dependent, but we note that if $\delta$ is a metric on the space of probability distributions, and $S$ spans $\dops{\hcal}$ then $\delta_S$ is a metric on the observables. Measuring differences between observables in terms of the outcome statistics was proposed by Ludwig \cite{ludwig-foundations-of-qm}.
-
-The Wasserstein metric was used in the context of quantum uncertainty by Busch, Lahti and Werner in \cite{PhysRevLett.111.160405}, with a focus on the case of canonically covariant observables $\ope^Q$ and $\ope^P$, and restricted to $\alpha=2$. In \cite{blw-meas-uncertainty} the same authors generalised this to consider arbitrary $\alpha$. In these papers the authors considered both the $\sup$ of the Wasserstein metric over all states, called the metric error, and a quantity called the calibration error. For observables for which there are states which make the induced probability distributions deterministic the calibration error is given by the $\max$ over those states. In general an observable may not induce a deterministic probability distribution in any state, so the calibration error is given by a limiting procedure
-\begin{align}
-  \calibError{F}{E}{\alpha}[\varepsilon] &\defeq \sup_{\rho,x} \sbuild{\ws{F^\rho,\delta_{x}}[\alpha]}{\ws{E^\rho,\delta_{x}}[\alpha]}\\
-  \calibError{F}{E}{\alpha} &\defeq \lim_{\varepsilon\to 0} \calibError{F}{E}{\alpha}[\varepsilon]  
-\end{align}
-
-and obtained measurement uncertainty relations of the form 
-\begin{align}
-  \ws{\opm^Q, \ope^Q}[\alpha]\ws{\opm^P, \ope^P}[\beta] \geq c_{\alpha\beta} \hbar,
-\end{align}
-where $\opm$ is an observable with outcome set $\R\times\R$, $\opm^Q$ and $\opm^P$ are the first and second margins, respectively. The constant $c_{\alpha\beta}$ is related to the least eigenvalue $g_{\alpha\beta}$ of the Hamiltonian $H_{\alpha\beta} = \abs{\opq}^\alpha + \abs{\opp}^\beta$ by 
-\begin{align}
-  c_{\alpha\beta} = \alpha^{\frac{1}{\beta}} \beta^{\frac{1}{\alpha}} \left(\frac{g_{\alpha\beta}}{\alpha+\beta}\right)^{\frac{1}{\alpha} + \frac{1}{\beta}}.
-\end{align}
 
 
 \begin{subappendices}

@@ -60,7 +60,8 @@ Those operators which may be written in the form $A = B^*B$, for some operator $
   \langle\psi | B^* B \psi \rangle &= \langle B \psi | B \psi\rangle \\
                                   &= \norm{B\psi}^2 \geq 0.
 \end{align}
-There is a natural a partial order on the $\saops[\hcal]$, defined via $\posops[\hcal]$, we will say $A\geq B$, if $A-B\geq 0$. Every positive operator $A$ has a square root, the unique positive operator $B$ such that $A = B^2$, this may be shown via the spectral theorem, although also independent proofs exist, including an adaptation of the so-called Babylonian method, known to Hero of Alexandria~\cite{hero-brill}. \coma{put this in an appendix}
+There is a natural a partial order on the $\saops[\hcal]$, defined via $\posops[\hcal]$, we will say $A\geq B$, if $A-B\geq 0$. Every positive operator $A$ has a square root, the unique positive operator $B$ such that $A = B^2$, this may be shown via the spectral theorem, although also independent proofs exist.
+
 
 We define the operator absolute value to be
 \begin{align}
@@ -247,20 +248,22 @@ This last example motivates the definition of a convex function
   A function from a real vector-space to the reals is \emph{convex} if its epigraph is a convex set.
 \end{defn}
 This definition of convexity for functions is slightly too restrictive, because it only covers functions defined on an entire vector space $V$. We will mainly be concerned with, for example, uncertainty measures which are non-negative, and so we are motivated to find a definition of convexity appropriate for more general domains.
-\begin{defn}\label{defn:extended reals}
-  We define the \emph{extended reals} as an extension of the ordered field of real numbers $\exR = \R \cup \{\infty, -\infty\}$ with the following axioms \coma{this is probably excessive}
-  \begin{enumerate}
-    \item $\forall x\in\R$, $\infty > x$ and $-\infty < x$,
-    \item $\forall x\in\R$, $x + \infty = \infty + x = \infty$,
-    \item $\forall x\in\R$, $x + \infty = \infty + x = \infty$,
-    \item $\infty + \infty = \infty$ and $-\infty - \infty = -\infty$,
-    \item $\forall x\in\R$, $x>0 \implies x\infty = \infty x =  \infty$ and $x(-\infty) = (-\infty)x = -\infty$,
-    \item $\forall x\in\R$, $x<0 \implies x\infty = \infty x = -\infty$ and $x(-\infty) = (-\infty)x = \infty$,
-    \item $0 \infty = \infty 0 = 0 = 0(-\infty) = (-\infty)0$,
-    \item $\inf\varnothing = \infty$ and $\sup\varnothing = -\infty$.
-  \end{enumerate}
-\end{defn}
-We can now consider functions defined on arbitrary convex subsets of real vector spaces, simply by extending the function to be $\infty$ outside. We note that strictly this recourse to the extended reals is unnecessary and one can consider convex functions defined on convex subsets of real vector spaces directly, but this leads to more tedious consideration of domains. In the present formulation one can recover the domain by considering the points where the extended function takes finite values. It is also important to note that the forms $\infty-\infty$ and $-\infty +\infty$ are left undefined. As Rockerfellar notes, it is important in principle to be cautious when these cases arise, but in practice they occur very rarely.
+
+It is convenient to use the define the extended reals $\exR = \R \cup \{\infty, -\infty\}$, with the obvious axioms for extending the order relation, addition and multiplication. We also define $\inf\varnothing = \infty$ and $\sup\varnothing = \infty$.
+% \begin{defn}\label{defn:extended reals}
+%   We define the \emph{extended reals} as an extension of the ordered field of real numbers $\exR = \R \cup \{\infty, -\infty\}$ with the following axioms
+%   \begin{enumerate}
+%     \item $\forall x\in\R$, $\infty > x$ and $-\infty < x$,
+%     \item $\forall x\in\R$, $x + \infty = \infty + x = \infty$,
+%     \item $\forall x\in\R$, $x + \infty = \infty + x = \infty$,
+%     \item $\infty + \infty = \infty$ and $-\infty - \infty = -\infty$,
+%     \item $\forall x\in\R$, $x>0 \implies x\infty = \infty x =  \infty$ and $x(-\infty) = (-\infty)x = -\infty$,
+%     \item $\forall x\in\R$, $x<0 \implies x\infty = \infty x = -\infty$ and $x(-\infty) = (-\infty)x = \infty$,
+%     \item $0 \infty = \infty 0 = 0 = 0(-\infty) = (-\infty)0$,
+%     \item $\inf\varnothing = \infty$ and $\sup\varnothing = -\infty$.
+%   \end{enumerate}
+% \end{defn}
+We can now consider functions defined on arbitrary convex subsets of real vector spaces, simply by extending the function to be $\infty$ outside. We note that strictly this recourse to the extended reals is unnecessary and one can consider convex functions defined on convex subsets of real vector spaces directly, but this leads to more tedious consideration of domains. In the present formulation one can recover the domain by considering the points where the extended function takes finite values. The forms $\infty-\infty$ and $-\infty +\infty$ are left undefined, in principle it is important to be cautious that these cases do not arise, but in practice they occur very rarely.
 
 For completeness we define the epigraph and convexity for extended real functions, although these are essentially identical to definitions given above.
 \begin{defn}\label{defn:extended-convex-function}
@@ -306,7 +309,7 @@ Where $f$ is a convex function $(f^*)^*$ (hereafter denoted $f^{**}$) is equal t
 
 \section{Semidefinite programming}
 
-The usual formulation \coma{e.g. cite} of semi-definite programming is in terms of $n\times n$ positive-semidefinite real matrices with real elements. Here, following the exposition given in \cite{w-semidefinite-prog-cb-norms}, we use a different but entirely equivalent formulation better adapted to problems in quantum mechanics. 
+The usual formulation~\cites{Vandenberghe:1996:SP:233104.233107} of semi-definite programming is in terms of $n\times n$ positive-semidefinite real matrices with real elements. Here, following the exposition given in \cite{w-semidefinite-prog-cb-norms}, we use a slightly different but entirely equivalent formulation better adapted to problems in quantum mechanics. 
 
 \begin{defn}\label{defn:complex-semidefinite-program}
   Let $\hcal$, $\kcal$ be finite dimensional Hilbert spaces, $\opc\in\saops[\hcal]$, $\opd\in\saops[\kcal]$ and let $\Psi:\saops[\hcal]\to\saops[\kcal]$ be a linear map. The \emph{primal semidefinite problem} and \emph{dual semidefinite problem}  associated to the triple $\left(\Psi, \opc, \opd\right)$ are
@@ -391,7 +394,12 @@ Maps of this form have a useful representation in terms of positive operator val
 % \end{proof}
 The proof of this theorem is essentially identical to the methods used in \cite{Neumann1927}, although with weaker assumptions on the observables. The converse is also true, each POVM gives rise to a linear map from the state-space to the space of probability measures. We denote the probability measure obtained by the pairing between a POVM $\ope$ and a state $\rho$ with $\ope_\rho:X\mapsto \tr{\ope(X)\rho}$.
 
-We henceforth consider POVMs and linear maps to be interchangeable, and use the term ``observable'' for both. Where the outcome set $\Omega$ is finite, and the set of events $\acal$ is the entire power set of $\Omega$ a simpler definition suffices, in this case a POVM is defined entirely by its action on the singleton sets, so we can equivalently consider a map $\ope:\Omega\to\posops$, such that $\sum_{\omega\in\Omega} \ope(\omega) = \opi$.
+We henceforth consider POVMs and linear maps to be interchangeable, and use the term ``observable'' for both. Where the outcome set $\Omega$ is finite, and the set of events $\acal$ is the entire power set of $\Omega$ a simpler definition suffices, in this case a POVM is defined entirely by its action on the singleton sets, so we can equivalently consider a map $\ope:\Omega\to\posops$, such that $\sum_{\omega\in\Omega} \ope(\omega) = \opi$. 
+We call \emph{sharp} those Borel observables on the real line whose range consists of orthogonal projections. An application of the spectral theorem shows that the sharp observables are the spectral measures of of self-adjoint operators. It is sometimes more convenient to consider the self-adjoint operator instead of the POVM, for example if $E$ is the spectral measure of the bounded operator $A$ then
+\begin{align}
+  \expe{E^\rho}{} = \tr{A\rho},
+\end{align}
+where the angle brackets denote the mean, or expected value of the probability distribution $E^\rho$.  
 
 Given two quantum observables, say $E_1:\fcal_1\to\posops[\hcal]$ and $E_2:\fcal_2\to\posops$, where $(\Omega_1, \fcal_1)$ and $(\Omega_2,\fcal_2)$ are measurable spaces there may exist a joint, an observable $J$ on the product measure space $(\Omega_1\times\Omega_2, \fcal_1\otimes\fcal_2)$ such that
 \begin{align}
@@ -450,7 +458,7 @@ The dynamics of a perfectly isolated quantum system are reversible, through Wign
   \Phi:\rho&\mapsto U\rho U^*\\
   \Phi^*:E(X)&\mapsto U^* E(X) U,
 \end{align}
-where $U:\hcal\to\hcal$ is a unitary or anti-unitary map, see \cite{wigner1960} for a translation of the original work \cite{wigner1931}, or \cite{bargmann1964-wigner} for a detailed proof. The time evolution of quantum mechanics is given by the unitary case, although the anti-unitary operators will be useful in section \ref{chap:cov-meas-ur} when we consider observables symmetric under the action of a group, represented by \coma{(anti-)unitary maps}.
+where $U:\hcal\to\hcal$ is a unitary or anti-unitary map, see \cite{wigner1960} for a translation of the original work \cite{wigner1931}, or \cite{bargmann1964-wigner} for a detailed proof. The time evolution of quantum mechanics is given by the unitary case, although the anti-unitary operators will be useful in section \ref{chap:cov-meas-ur} when we consider observables symmetric under the action of a group with a representation consisting of both unitary and anti-unitary maps.
 
 % We will occasionally be interested in the state of a system \emph{after} the measurement of an observable. This is formulated in the language of quantum instruments, we will use the Schr\"odinger picture of the evolution of states, although again, one can employ the dual map to obtain the Heisenberg picture. Given a  measurable set $(\Omega, \fcal)$ a \emph{quantum instrument} is map $\mathfrak{I}:\fcal\mapsto \bops[\trops[\hcal]][\trops[\kcal]]$ with the properties
 % \begin{enumerate}
@@ -483,7 +491,7 @@ Note here we are considering probability distributions as functions on the outco
 \begin{align}
   \lPVar{\mu}{\nu}[1] \defeq \sup_{S\in\fcal}\abs{\mu(S) - \nu(S)}.
 \end{align}
-The use of the total variation for measurement errors of continuous variables has been criticised in \cite{blw-meas-uncertainty}, on the basis that it is insensitive to any metric on the underlying space. Explicitly, every point measure is at distance $2$ from every other point measure, whereas in a physical context it is often natural to consider point measures corresponding to points which are close together to be similarly close. \coma{this could be nicer}
+The use of the total variation for measurement errors of continuous variables has been criticised in \cite{blw-meas-uncertainty}, on the basis that it is insensitive to any metric on the underlying space. Explicitly, every point measure is at distance $2$ from every other point measure, whereas in a physical context it is often natural to consider point measures corresponding to points which are close together to be similarly close.
 
 A key tool for comparing Borel measures on a metric space $(\mathsf{A}, d)$ is the Wasserstein $\alpha$-metric, where the real parameter $\alpha$ is greater than $1$,
 \begin{align}
@@ -544,9 +552,9 @@ Entropic quantities have also been used to study quantum uncertainty, although t
 \end{align}
 The R\'enyi entropies are \emph{Schur concave} as functions of the probability distribution. We write $P \prec Q$ if $P$ may be written as a convex combination of permutations of $Q$, and say $Q$ majorizes $P$ in this case. Schur concavity is the property that
 \begin{align}
-  P\prec Q \implies H_\alpha(P) \geq H_\alpha(Q).
+  P\prec Q \implies H_\alpha(P) \geq H_\alpha(Q),
 \end{align}
-
+roughly speaking the entropy will be larger for a more ``spread out'' distribution than a more concentrated one.
 
 \section{Quantum uncertainty}
 \coma{move this}
@@ -573,15 +581,15 @@ of course the choice of the set $S$ is highly significant and the appropriate ch
 In the application of measurement uncertainty in chapter \ref{chap:cov-meas-ur} the set $S$ will be the whole state-space, and the distance measure on probability distributions will be the  $\alpha$-deviation given in \eqref{eqn:wassersten-variance}. In general the choice of distance on the probability measures is also application dependent, but we note that if $\delta$ is a metric on the space of probability distributions, and $S$ spans $\dops{\hcal}$ then $\delta_S$ is a metric on the observables. Measuring differences between observables in terms of the outcome statistics was proposed by Ludwig \cite{ludwig-foundations-of-qm}.
 
 
-\begin{subappendices}
+% \begin{subappendices}
 
 
-\section{Square root of positive operator}
+% \section{Square root of positive operator}
 
-Let $A\in\posops[\hcal]$ be positive and bounded, without loss of generality we choose $A \leq \opi$, by multiplying by a positive real number if necessary. We choose $B_0 = \opi$, and note that if $X$ is a positive definite (hence invertible) operator, then
-\begin{align}
-  \frac{1}{2}\left( \frac{A}{X} + X \right),
-\end{align}
-is also positive definite
+% Let $A\in\posops[\hcal]$ be positive and bounded, without loss of generality we choose $A \leq \opi$, by multiplying by a positive real number if necessary. We choose $B_0 = \opi$, and note that if $X$ is a positive definite (hence invertible) operator, then
+% \begin{align}
+%   \frac{1}{2}\left( \frac{A}{X} + X \right),
+% \end{align}
+% is also positive definite
 
-\end{subappendices}
+% \end{subappendices}

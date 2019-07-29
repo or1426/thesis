@@ -10,7 +10,7 @@ We consider a (nonrelativistic) massive particle moving on a two-dimensional pla
 %\psi \mapsto Q_A\psi
 %$$
 %where $Q_A$ is the projection onto the whole infinite aperture $A= \cup_{n} (n+I)\subset \mathbb R$. The subset of particles passing through the aperture is described by the resulting conditional quantum state $Q_A\psi$, in general an arbitrary element of $L^2(A)$ (considered as a subspace of $L^2(\R)$). The particles then proceed freely until they encounter an (infinite) planar detector, where the interference pattern is measured.
-enough so that the Fraunhofer approximation becomes valid, that is, late-time position measurement asymptotically corresponds to a momentum measurement. An explicit calculation of the asymptotic form of the free evolution suitable for the present setup was included in \cite{BB2013}; for a more detailed proof, see e.g. \cite[Theorem IX.31]{RSII}. Hence, up to scaling of units (which we will not explicitly indicate), the free evolution between the two position detectors is simply approximated by the Fourier-Plancherel transform $\mathcal F$, and position observable in the second detector is essentially equal to momentum in the position space of the first detector.
+enough so that the Fraunhofer approximation becomes valid, that is, late-time position measurement asymptotically corresponds to a momentum measurement. An explicit calculation of the asymptotic form of the free evolution suitable for the present setup was included in \cite{BB2013}; for a more detailed proof, see e.g. \cite[Theorem IX.31]{RSII}. Hence, up to scaling of units (which we will not explicitly indicate), the free evolution between the two position detectors is simply approximated by the Fourier-Plancherel transform $\mathcal F$, and position observable at the second detector is essentially equal to momentum at the first detector.
 
 \subsection{Topology of the outcome sets for the interferometric observables}
 
@@ -106,7 +106,7 @@ where $Q_0\otimes \id$ acts $(Q_0\otimes \id)\hat\psi(p) = p\hat\psi(p)$. We now
 
 We begin with case (a), where position on the second detector is recorded periodically, that is, each point $(2n+1)\pi$ is consider equal, so that e.g. distance between $\pi-\epsilon$ and $-\pi+\epsilon$ approaches zero as $\epsilon\rightarrow 0$.
 
-Any observable satisfying the covariance condition \eqref{covA} can be dilated to $l^2(\mathbb Z, \mathcal K_0)$ where it acts as a canonical position on $\mathbb Z$ \cite{WERNER1990166} where the multiplicity space $\mathcal K_0$ must contain $\mathcal H_0$, that is, there is an isometry $\iota_0:\mathcal H_0\mapsto \mathcal K_0$. Of course, the only requirement for this is that $\mathcal K_0$ must be infinite-dimensional. In particular, the \emph{rank} of the observable is infinite \cite{JP}. Applying the discrete Fourier transform $l^2(\mathbb Z)\to L^2[-\pi,\pi]$ to map this back to the spectral representation of $\MOD P$, we get the following characterisation:
+Any observable satisfying the covariance condition \eqref{covA} can be dilated to $l^2(\mathbb Z, \mathcal K_0)$ where it acts as a canonical position on $\mathbb Z$ \cite{WERNER1990166} where the multiplicity space $\mathcal K_0$ must contain $\mathcal H_0$, that is, there is an isometry $\iota_0:\mathcal H_0\mapsto \mathcal K_0$. The only requirement for this is that $\mathcal K_0$ must be infinite-dimensional. In particular, the \emph{rank} of the observable is infinite. Applying the discrete Fourier transform $l^2(\mathbb Z)\to L^2[-\pi,\pi]$ to map this back to the spectral representation of $\MOD P$, we get the following characterisation:
 \newcommand{\Pc}{\mathsf P^c}
 \newcommand{\Qd}{Q_d}
 \begin{align}
@@ -135,7 +135,7 @@ where the indicated domains match exactly, and $P_c$ is the usual differential o
 \begin{align*}
 \delta(E,\psi)^2 &= \inf_{n_0\in \mathbb Z}(\|\Qd e^{in_0\MOD P}\psi\|^2 + N_{e^{in_0\MOD P}\psi}(E))
 \end{align*}
-where $$N_\psi(E) := \sum n^2 \langle \psi |E_n\psi\rangle - \|\Qd\psi\|^2\geq 0$$ is called the \emph{variance form} \cite{}, describing the intrinsic uncertainty of the observable. In order eliminate this, we restrict to \emph{variance-free} observables, for which $N_\psi$ is identically zero. Then 
+where $$N_\psi(E) := \sum n^2 \langle \psi |E_n\psi\rangle - \|\Qd\psi\|^2\geq 0$$ is called the \emph{variance form} \cites{werner-screen-obs}{akhiezer-glazman-lin-ops-hilb-space}{WOJCIK2015531}, describing the intrinsic uncertainty of the observable. In order eliminate this, we restrict to \emph{variance-free} observables, for which $N_\psi$ is identically zero. Then 
 \begin{align*}
 \delta(E,\psi)^2 &= \inf_{n_0\in \mathbb Z} \|\Qd e^{in_0\MOD P}\psi\|^2.
 \end{align*}
@@ -159,7 +159,7 @@ Since $e^{i\theta P_c}$ and $e^{in Q_0}$ satisfy the CCR relations
 $$
 e^{in Q_0}e^{-i\theta P_c} = e^{in\theta} e^{-in Q_0}e^{i\theta P_c},
 $$
-and $W$ commutes with $Q_0\otimes \id$, it follows that the pair $\Qd$ and $\MOD P$ also satisfy the relations. Hence $WU$ is the unitary operator that brings this reducible pair into the form of a direct sum of the standard irreducible representation as required by the Stone-von Neumann theorem \cite{}. We can introduce the Weyl operators 
+and $W$ commutes with $Q_0\otimes \id$, it follows that the pair $\Qd$ and $\MOD P$ also satisfy the relations. Hence $WU$ is the unitary operator that brings this reducible pair into the form of a direct sum of the standard irreducible representation as required by the Stone-von Neumann theorem \cites{10.2307/1968535}{hall-quantum-theory}. We can introduce the Weyl operators 
 $$
 W(m,\theta) := e^{-\frac 12 m\theta} e^{-im \MOD P}e^{i\theta \Qd}, \quad (m,\theta) \in \mathbb Z\times \mathbb T
 $$
@@ -184,7 +184,7 @@ where we have introduced the minus signs to make the Hamiltonian ground-state pr
 $$
 H_\alpha = U^*W^*((P_c^2+\alpha Q_0^2)\otimes \id)WU,
 $$
-so we can use the results of \cite{} to find $c(\alpha)$, and the corresponding eigenvector $\varphi_\alpha$ of the operator $P_c^2+\alpha Q_0^2$.
+so we can use the results of \cite{sharp-ur-num-angle} to find $c(\alpha)$, and the corresponding eigenvector $\varphi_\alpha$ of the operator $P_c^2+\alpha Q_0^2$.
 %For an arbitrary vector $\psi$ we have
 % \begin{align*}
 % &\delta(\Qd,\psi)^2+ \alpha \delta(\MOD P,\psi)^2\\
@@ -209,7 +209,7 @@ where the translates of $\eta$ are orthogonal by the property that they belong t
 
 Notice that this structure is completely fixed by the covariance condition. In order to connect it with a physical realisation of an interference experiment, we only need to require that $\Qd$ commute with the standard position of the first detector; then the eigenspaces must be of the form $L^2(A_n)$ with disjoint subsets $A_n\subset \mathbb R$ so that $A_n = n+ A_0$. These sets then describe the aperture mask through which the particles pass. If $A_0$ is an interval (i.e. a simple slit in the aperture), then up to the choice of the origin we have $A_0=[-\frac 12,\frac 12]$, and the above setting becomes concrete. The freedom in choosing $\xi$ reflects the fact that each point in the spectrum of $\MOD P$ has infinite multiplicity. 
 
-In this concrete case the states of the form \eqref{minURC} were considered in \cite{} as the ones appropriate for multislit interferometry. It is interesting to observe that this form is in fact \emph{implied} if we require (i) covariance and (ii) projectivity for the path observable, and (iii) minimal uncertainty for the state.
+In this concrete case the states of the form \eqref{minURC} were considered in \cite{BB2013} as the ones appropriate for multislit interferometry. It is interesting to observe that this form is in fact \emph{implied} if we require (i) covariance and (ii) projectivity for the path observable, and (iii) minimal uncertainty for the state.
 
 \subsubsection{Uncertainty diagrams}
 We now turn to the calculation of the bottom of the spectrum of $H_\alpha$, this may be solved numerically by noting that the eigenfunctions $(\phi_i)_{i\in\Z}$ of $\Qd$ are a core for $H_\alpha$. We may therefore approximate $c(\alpha)$ by calculating the least eigenvalue of the $(2n-1)\times (2n-1)$ matrix with entries
@@ -250,53 +250,53 @@ UE(X)U^* = V^* (E^P(X)\otimes \id_{\mathcal K_0})V,
 where $V:L^2([-\pi,\pi], \mathcal H_0)\to L^2(\mathbb R, \mathcal K_0)$ is an isometry for which $e^{ip Q\otimes \id}V=Ve^{ipQ_0\otimes \id}$, that is, $e^{ip Q\otimes \id}VI^* =VI^*e^{ipQ\otimes \id}$ where $I:L^2([-\pi,\pi], \mathcal H_0)\to L^2(\mathbb R, \mathcal K_0)$ is the isometry $(I\psi)(p) = \iota_0\psi_p$ for $p\in [-\pi,\pi]$ and zero elsewhere. Then $S:=VI^*$ commutes with $Q\otimes \id$ and hence must be decomposable in $L^2(\mathbb R,\mathcal K_0)$, that is, of the form $(S\psi)(p) = S_p\psi_p$, where $(S\psi)(p)=0$ for all $\psi$ for which $\psi_p$ vanishes on $[-\pi,\pi]$. The latter is only possible if $S_p=0$ outside $[-\pi,\pi]$, which implies that $V = VI^*I = SI$ has its range in $L^2([-\pi,\pi], \mathcal K_0)$, as in the periodic case. However, we now have $E^P(dp)=|e^{ipn}\rangle\langle e^{ipn}| dp$, that is, the spectral measure of the standard momentum with the continuum of ``eigenvectors'' $e^{ixp}$ respecting the Dirac delta normalisation, and since the outcome set is not equal to the dual group of $[-\pi,\pi]$, there are no spectral measure solutions - every possible path observable is a POVM with no projections in its range. Another way of saying this is that $VV^*$ cannot commute with all $E^P(X)$, which is explicit since $VV^*=SII^*S$ contains the spectral projection $II^*$ of $Q\otimes \id$.
 
 In this case the resulting uncertainty measure reads
-$$
-\delta(E,\psi)^2 = \inf_{x_0\in \mathbb R} \int (x-x_0)^2 E_\psi(dx) = \inf_{x_0}\int x^2 E_{e^{-ix_0\MOD P}\psi}(dx),
-$$
+\begin{align}
+  \delta(E,\psi)^2 = \inf_{x_0\in \mathbb R} \int (x-x_0)^2 E_\psi(dx) = \inf_{x_0}\int x^2 E_{e^{-ix_0\MOD P}\psi}(dx),
+\end{align}
 by covariance, and again this is finite exactly when $\psi$ is in the square integrability domain
-$$
-\{ \psi\mid \int x^2 E_{\psi}(dx) <\infty\},
-$$
+\begin{align}
+  \left\{ \psi\middle | \int x^2 E_{\psi}(dx) <\infty\right\},
+\end{align}
 and in this case
-$$
-\delta(E,\psi)^2 = \int x^2 E_\psi(dx) - \langle \psi| E[1]\psi\rangle^2 = \var{E_\psi},
-$$
+\begin{align}
+  \delta(E,\psi)^2 = \int x^2 E_\psi(dx) - \langle \psi| E[1]\psi\rangle^2 = \var{E_\psi},
+\end{align}
 where $E[1]$ is defined on the square integrability domain, provided the latter is dense. Now looking at the dilation we easily see that
-$$
-UE[1]U^* = V^*(P\otimes \id)V,
-$$
+\begin{align}
+  UE[1]U^* = V^*(P\otimes \id)V,
+\end{align}
 where $P\otimes \id$ is unique selfadjoint extension of the corresponding algebraic tensor product operator. Since $(V\psi)(p)= S_p\iota_0\psi_p$ vanishes outside $[-\pi,\pi]$, and nevertheless needs to be absolutely continuous to make the uncertainty quantity finite,  $S_p\iota_0\psi_p$ must be absolutely continuous and hence vanish at the boundaries. Since each $S_p\iota_0$ is an isometry, this implies that $\psi_{-\pi}=\psi_{\pi}=0$. Hence the \emph{finiteness of the uncertainty quantity forces the Dirichlet boundary conditions if covariance holds.}
 
 Now in general we can write 
-$$
-\delta(E,\psi)^2 = \|E[1]\psi\|^2 - \langle \psi| E[1]\psi\rangle^2 + N_E(\psi)
-$$
+\begin{align}
+  \delta(E,\psi)^2 = \|E[1]\psi\|^2 - \langle \psi| E[1]\psi\rangle^2 + N_E(\psi)
+\end{align}
 where $N_E(\psi) := \int x^2 E_\psi(dx) -\|E[1]\psi\|^2$ is called the \emph{variance form} \cite{werner-screen-obs-1986}. Since $E$ is not projection valued, $N_E$ is typically not zero, in which case the ``intrinsic noise'' of the observable adds to the uncertainty. Hence from the point of view of sharp uncertainty relations it makes sense to restrict to observables with $N_E(\psi)=0$, which are called \emph{variance free} \cite{}. In this case the uncertainty quantity reduces to the form identical to the projection valued case, namely
-$$
-\delta(E,\psi)^2 = \|E[1]\psi\|^2 - \langle \psi| E[1]\psi\rangle^2 = \inf_{x_0} \| E[1]e^{-ix_0\MOD P}\psi\|^2,
-$$
-where we note that the domain is obviously invariant under $e^{ix_0\MOD P}$.
+\begin{align}
+  \delta(E,\psi)^2 = \|E[1]\psi\|^2 - \langle \psi| E[1]\psi\rangle^2 = \inf_{x_0} \| E[1]e^{-ix_0\MOD P}\psi\|^2,
+\end{align}
+where we note that the domain is invariant under $e^{ix_0\MOD P}$.
 
 If we define $P_0\otimes \id$ as the operator with domain consisting of functions $\psi\in L^2(\mathbb R,\mathcal H_0)$ absolutely continuous in the strong sense of the existence of $\psi'\in L^2(\mathbb R,\mathcal H_0)$ for which $\psi_p = \int_{-\pi}^p \psi_p'dp'$ (where integral is Bochner, and we recall that $L^2$-functions are automatically integrable since the interval is bounded), and $\psi_{-\pi}=\psi_\pi=0$, we may also write
-$$
+\begin{align}
 E[1] = V^* (P_0\otimes \id) V.
-$$
+\end{align}
 One can then easily check that $P_0\otimes \id$ is closed (same standard proof as with $P_0$ itself), and hence the variance-free condition implies that $E[1]$ is also closed, so the von Neumann theorem implies that $E[1]^*E[1]$ is selfadjoint on its domain as long as the domain of $E[1]$ is dense. Moreover, $VV^*P_0\otimes \id V\psi=(P_0\otimes \id) V\psi$ for any $\psi$ in the domain (by the stated invariance), and hence 
-$$
-E[1]^*E[1]\supset V^*(P_0^*P_0\otimes \id)V = V^*(H_0\otimes \id)V
-$$
+\begin{align}
+  E[1]^*E[1]\supset V^*(P_0^*P_0\otimes \id)V = V^*(H_0\otimes \id)V
+\end{align}
 where $H_0$ is the usual ``particle in a box'' Hamiltonian. Consequently, for $\psi$ in this smaller domain, we obtain
-\begin{align*}
+\begin{align}
   \delta(E,\psi)^2 &= \inf_{x_0} \expe{H_0}{Ve^{i x_0\MOD P}\psi}\\
                    &= \inf_{x_0} \expe{H_0}{e^{i x_0 Q_0}V\psi}\\
   \delta(\MOD P,\psi)^2 &= \expe{Q_0^2}{V\psi} -\langle Q_0\rangle_{V\psi}^2.
-\end{align*}
+\end{align}
 The expectation term $\langle Q_0\rangle_{V\psi}$ reflects the fact that we do not have covariance for the other direction, that is, $P_0$ does not generate translations in the spectrum of $\MOD P$. Hence the uncertainty diagram will be more complicated in this case. However, if we restrict to the zero expectation subspace $\mathcal M := V^*(\xi_0\otimes \mathcal K_0)^\perp$ where
 $\xi_0(p) =p$, we obtain the family of uncertainty relations
 $$
 \delta(E,\psi)^2+\alpha\delta(\MOD P,\psi)^2\geq c(\alpha)
 $$
-where $c(\alpha)$ is the bottom eigenvalue of the "particle in the box Hamiltonian" $H_0+\alpha Q_0^2$. The corresponding minimum uncertainty states are of the form $\psi = V^*(\varphi_\alpha\otimes\xi)$, provided that the range of $V$ contains at least of such product state, which happens when $V_pV_p^*\xi =\xi$ for almost all $p$, that is, the intersection of the ranges of $V_p$ is nontrivial.
+where $c(\alpha)$ is the bottom eigenvalue of the particle in the box Hamiltonian $H_0+\alpha Q_0^2$. The corresponding minimum uncertainty states are of the form $\psi = V^*(\varphi_\alpha\otimes\xi)$, provided that the range of $V$ contains at least of such product state, which happens when $V_pV_p^*\xi =\xi$ for almost all $p$, that is, the intersection of the ranges of $V_p$ is nontrivial.
 
 Notice that there are easy examples where the domain is dense but does not contain any product vectors: for instance, if $V_p=V_-$ for $-\pi<p<0$ and $V_p=V_+$ for $0<p<\pi$ where the isometries $V_\pm$ have orthogonal ranges, then the domain consists of those vectors $\psi$ for which $\psi_p$ is absolutely continuous and vanishes at $-\pi$, $0$, and $\pi$. This case is variance-free since the derivative of $V_p\psi_p$ is just $V_p\psi_p'$, that is, is included in the range of $V$. It might be interesting to see if one can still get arbitrarily close to the minimum.
 
@@ -311,7 +311,7 @@ Hence in this case the form of the minimum uncertainty states is not so clearly 
 Here we consider the case of the ``particle in a box'' system, the subset of $L^2([-\pi,\pi])$, of absolutely continuous functions, with absolutely continuous first derivatives. As indicated above the uncertainty quantity may only be finite if  $\psi(-\pi) = \psi(\pi) = 0$ are imposed, so we restrict to the subspace that respects these boundary conditions. On this space the operators position and momentum operators are defined in the usual way
 \begin{align}
   (Q_0 \varphi)(x) &= x \varphi(x)\\
-  P_0\varphi &= \varphi^\prime.
+  P_0\varphi &= -i \varphi^\prime.
 \end{align}
 For any state in this space there is one with identical position and momentum variances, and momentum expectation value zero so, without loss of generality, we restrict our attention to the momentum expectation zero subspace. Obviously it is possible to construct states supported within $[-\varepsilon, \varepsilon]$ for any $\varepsilon>0$, similarly it is possible to construct states supported within $[-\pi, -\pi+\varepsilon]\cup [\pi-\varepsilon, \pi]$. We also note that given a state we can arbitrarily increase its ``momentum'' uncertainty, without changing the ``position'' uncertainty, for example by applying the operator $e^{i a Q_0^2}$ for some $a\in\R$. These considerations imply that the uncertainty region is entirely defined by the lower boundary function
 \begin{align}
@@ -337,7 +337,7 @@ rearranging, and noting that $\expe{Q_0}{\psi_\alpha} = 0$, we see
   \expe{P_0^2 + \alpha Q_0^2}{\rho} - \alpha\expe{Q_0}{\rho}^2 &< \expe{P_o^2 + \alpha Q_0^2}{\psi_\alpha}\\
   \implies \expe{P_o^2 + \alpha Q_0^2}{\rho} &< \expe{P_o^2 + \alpha Q_0^2}{\psi_\alpha},
 \end{align}
-contradicting the definition of $\psi_\alpha$. Note that the assumption that $\alpha < 0$, resulting from restricting our attention to the right hand side, is critical in the derivation. 
+contradicting the definition of $\psi_\alpha$. Note that the assumption that $\alpha < 0$, resulting from restricting our attention to the right hand side, is critical to the derivation. 
 
 We now turn out attention to the left hand side of \ref{fig:box-ur}, here we conjecture, but do not show, that the states with minimal uncertainty are once again the ground states of the Hamiltonian $P_0^2 + \alpha Q_0^2$, now with $\alpha >0$. If our conjecture is false then the curve we derive by solving the ground state problems will be an upper bound for the true boundary curve $b$. It is therefore interesting to look for a lower bound for $b$, an obvious choice is given by the isometry $I:L^2([-\pi,\pi])\to L^2(\R)$
 \begin{align}

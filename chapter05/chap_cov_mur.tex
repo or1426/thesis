@@ -26,18 +26,14 @@ is a smearing of $A$, the convolution of $A$ with a probability measure, and doe
 \begin{align}
   \tilde{C}:j\mapsto \sum_i A(i)C(j)A(i),
 \end{align}
-provides a better approximation to $B$ than $\tilde{B}$ does. We might also allow measuring an arbitrary observable instead of performing the L\"uders measurement of $A$, it may be the case that allowing a errors in the $A$ measurement allows a better approximation to $B$. In addition, rather than focusing on sequential measurements we instead allow any compatible approximations, and rather than restricting to only two observables we allow finitely many.  The general picture is then summarised in figure~\ref{fig:depict-meas-uncertainty}, where $E_i$ are the target observables, and $F_i$ are respective compatible approximations, and $J$ is a joint observable for the $F_i$. If supplied with a ``figure of merit'' $d$ indicating how well one observable approximates another we can explore the set
+provides a better approximation to $B$ than $\tilde{B}$ does. We might also allow measuring an arbitrary observable instead of performing the L{\"u}ders measurement of $A$, it may be the case that allowing a errors in the $A$ measurement allows a better approximation to $B$. In addition, rather than focusing on sequential measurements we instead allow any compatible approximations, and rather than restricting to only two observables we allow finitely many.  The general picture is then summarised in figure~\ref{fig:depict-meas-uncertainty}, where $E_i$ are the target observables, and $F_i$ are respective compatible approximations, and $J$ is a joint observable for the $F_i$. If supplied with a ``figure of merit'' $d$ indicating how well one observable approximates another we can explore the set
 \begin{equation}
   S(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d(\ope_1, \opf_1), d(\ope_2, \opf_2)\hdots d(\ope_n, \opf_n))}{\opf_i \text{ are compatible}},
   \label{eqn:general-ur-definition}
 \end{equation}
-which we call a \emph{measurement uncertainty region}. We refer to  \cite{quantum-measurement-busch-et-al}, chapter 13 for an introduction to this line of thinking. 
+which we call a \emph{measurement uncertainty region}. We refer to~\cite{quantum-measurement-busch-et-al}, chapter 13 for an introduction to this line of thinking, and~\cites{blw-meas-uncertainty}{srw-meas-uncertainty-finite} for representative results. 
 
-\coma{\cite{blw-meas-uncertainty}\cite{srw-meas-uncertainty-finite}}
-
-More concretely, given a family of $n$ target observables $\sbuild{\ope_i}{n\in1\hdots n}$, acting on the same Hilbert space, and a figure of merit $d$ assumed to take real values, we seek the \emph{error region}, defined to be the set
-
-Finding the uncertainty region for generic observables seems to be a difficult problem for interesting figures of merit, with exact results known only in cases with high symmetry or low dimension~\cites{yu-oh-qubit}{dsw-meas-ur-ang-mom}. Here we do not remedy this situation, but instead employ a systematic approach to exploiting available symmetries to simplify measurement uncertainty problems. 
+Finding the uncertainty region for generic observables is a difficult problem for interesting figures of merit, with exact results known only in cases with high symmetry or low dimension~\cites{yu-oh-qubit}{dsw-meas-ur-ang-mom}. Here we do not remedy this situation, but instead employ a systematic approach to exploiting available symmetries to simplify measurement uncertainty problems. 
 
 Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used throughout, \ref{sec:inc-error} contains some technical lemmas related to how we fill the uncertainty region. Section \ref{sec:invariant-mean} contains quite general results about the use of covariance to simplify measurement uncertainty problems, with the key result being that if the target observables are covariant, then for every family of jointly measurable approximators there exists a covariant family of joint approximators which is at least as good, according to the $d_p$ figure of merit. Finally sections \ref{sec:qubit-triple} and \ref{sec:fourier-pair} are case studies, applying the previous results to the three mutually unbiased qubit observables, and the pair of observables related by the quantum Fourier transform in dimension $n$, respectively. Exact results about measurement uncertainty in arbitrary dimension are rare, so the latter result is particularly interesting.
 
@@ -95,11 +91,11 @@ Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used 
 
 \section{Definitions and error measure}
 \label{sec:error-measure}
-Let $\hcal$ be a (finite dimensional) Hilbert space, $\saops[\hcal]$ the self-adjoint operators on $\hcal$, $\posops[\hcal]$ the cone of positive operators within $\saops[\hcal]$, and $\Omega$ a (finite) set.  A map $\ope:\Omega\to \posops[\hcal]$ is an \emph{observable} if it is normalised
+In this chapter we only consider finite dimensional complex Hilbert spaces and finite outcome observables. A map $\ope:\Omega\to \posops[\hcal]$ is an \emph{observable} if it is normalised
 \begin{align}
   \sum_{\omega\in\Omega} \ope(\omega) &= \opi,
 \end{align}
-where $\opi$ is the identity operator on $\hcal$. We call $\Omega$ the outcome set of $\ope$.
+where $\opi$ is the identity operator on $\hcal$.
 
 A set of $n$ observables on the Hilbert space $\hcal$, $\sbuild{\ope_i\,}{\,i=1\hdots n}$, with outcome sets $\Omega_i$ is \emph{compatible} if there exists a joint observable, $\opj: \Omega \to \posops[\hcal]$,
 \begin{align}
@@ -129,7 +125,7 @@ We can lift the distance measure on probability distributions with outcome set $
   d_p(\ope, \opf) &\defeq \sup_{\rho\in\dops[\hcal]} \delta_p(\ope^\rho, \opf^\rho)\\
                   &= \sup_{\rho\in\dops[\hcal]} \left(\sum_{\omega\in\Omega}\abs{\ope^\rho(\omega) - \opf^\rho(\omega)}^p\right)^{\frac{1}{p}},
 \end{align}
-where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\hcal]$. Note that $\dops[\hcal]$ is a compact set, so the $\sup$ is actually achieved by some $\rho^*$. We specialise the definition \eqref{eqn:general-ur-definition} of the uncertainty region to these error measures, where $\ope_i:\Omega_i\to\posops[\hcal]$ are the target observables
+where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\hcal]$. Note that $\dops[\hcal]$ is a compact set, so the $\sup$ is actually achieved by some $\rho$. We specialise the definition \eqref{eqn:general-ur-definition} of the uncertainty region to these error measures, where $\ope_i:\Omega_i\to\posops[\hcal]$ are the target observables
 \begin{equation}
   S_p(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d_p(\ope_1, \opf_1), d_p(\ope_2, \opf_2)\hdots d_p(\ope_n, \opf_n))}{\opf_i:\Omega_i\to\posops[\hcal] \text{ are compatible}},\quad p\in [1,\infty].
 \end{equation}

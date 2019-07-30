@@ -249,7 +249,7 @@ This last example motivates the definition of a convex function
 \end{defn}
 This definition of convexity for functions is slightly too restrictive, because it only covers functions defined on an entire vector space $V$. We will mainly be concerned with, for example, uncertainty measures which are non-negative, and so we are motivated to find a definition of convexity appropriate for more general domains.
 
-It is convenient to use the define the extended reals $\exR = \R \cup \{\infty, -\infty\}$, with the obvious axioms for extending the order relation, addition and multiplication. We also define $\inf\varnothing = \infty$ and $\sup\varnothing = \infty$.
+It is convenient to define the extended reals $\exR = \R \cup \{\infty, -\infty\}$, with the obvious axioms for extending the order relation, addition and multiplication. We also define $\inf\varnothing = \infty$ and $\sup\varnothing = \infty$.
 % \begin{defn}\label{defn:extended reals}
 %   We define the \emph{extended reals} as an extension of the ordered field of real numbers $\exR = \R \cup \{\infty, -\infty\}$ with the following axioms
 %   \begin{enumerate}
@@ -477,7 +477,7 @@ where $U:\hcal\to\hcal$ is a unitary or anti-unitary map, see \cite{wigner1960} 
 % \end{align}
 % where we avoid division by zero by noting that the probability of observing an outcome $X$ with $\tr{\mathfrak{I}(X)(\rho)} = 0$ is $0$.
 
-\section{Comparing measures and distributions}
+\section{Comparing measures and observables}
 \label{sec:comp-measures-and-dists}
 To develop the theory of uncertainty, and particularly measurement uncertainty, it is useful to be able to compare probability measures on some space, for example to make the claim that one distribution is ``broader'' than another, or that one of two distributions approximates a third, target distribution, more accurately than the other. Here we introduce the mathematical tools we will use to do this.
 
@@ -556,8 +556,6 @@ The R\'enyi entropies are \emph{Schur concave} as functions of the probability d
 \end{align}
 roughly speaking the entropy will be larger for a more ``spread out'' distribution than a more concentrated one.
 
-\section{Quantum uncertainty}
-\coma{move this}
 The textbook description of quantum uncertainty (see e.g. \cite{Nielsen-Chuang}) may be summarised as the claim that there exist pairs of quantum observables $\ope$, $\ope$ for which there does not exist any state $\rho$ which makes the induced probability measures $\ope^\rho$ and $\opf^\rho$ simultaneously sharply concentrated, often this is categorised by a lower bound on some functional of the variances or entropies \cites{MaassenUffink1988}{Wehner_2010} of the two distributions, valid for all quantum states. A slightly broader view is to consider the set
 \begin{align}
   \sbuild{\left(\delta(\ope_1^\rho),...,\delta(\ope_n^\rho)\right)}{\rho\in\dops[\hcal]} \subseteq \R^n,
@@ -568,7 +566,7 @@ An alternative facet of quantum uncertainty is called \emph{measurement uncertai
 \begin{align}
   \sbuild{\left(\delta(E_1, F_1),...,\delta(E_n, F_n)\right)}{F_i:\fcal_i\to\dops[\hcal]  \text{ are all compatible}}.
 \end{align}
-Loosely, we that the $E_i$ are a family of target observables that we would like to measure, incompatibility prohibits this, but we want to know how close we can come to approximating them all simultaneously, this situation is depicted in figure \ref{fig:depict-meas-uncertainty}.
+Loosely, the $E_i$ are a family of target observables that we would like to measure, incompatibility prohibits this, but we want to know how close we can come to approximating them all simultaneously, this situation is depicted in figure \ref{fig:depict-meas-uncertainty}.
 
 Given a distance measure $\delta$ on probability distribution one can define a distance measure on quantum observables by choosing a relevant set of states $S\subseteq \dops[\hcal]$ and setting
 \begin{align}
@@ -578,7 +576,7 @@ of course the choice of the set $S$ is highly significant and the appropriate ch
 \begin{align}
   J: (A,B) \mapsto E^\rho(A) F^\rho(B) I.
 \end{align}
-In the application of measurement uncertainty in chapter \ref{chap:cov-meas-ur} the set $S$ will be the whole state-space, and the distance measure on probability distributions will be the  $\alpha$-deviation given in \eqref{eqn:wassersten-variance}. In general the choice of distance on the probability measures is also application dependent, but we note that if $\delta$ is a metric on the space of probability distributions, and $S$ spans $\dops{\hcal}$ then $\delta_S$ is a metric on the observables. Measuring differences between observables in terms of the outcome statistics was proposed by Ludwig \cite{ludwig-foundations-of-qm}.
+In chapter \ref{chap:cov-meas-ur} the set $S$ will be the whole state-space, and the distance measure on probability distributions will be the  $\alpha$-deviation given in \eqref{eqn:wassersten-variance}. In general the choice of distance on the probability measures is also application dependent, but we note that if $\delta$ is a metric on the space of probability distributions, and $S$ spans $\dops{\hcal}$ then $\delta_S$ is a metric on the observables. Measuring differences between observables in terms of the outcome statistics was proposed by Ludwig \cite{ludwig-foundations-of-qm}, although the formulation of measurement uncertainty we are interested in in this thesis was introduced by Busch, Lahti and Werner \cite{blw-meas-uncertainty}.
 
 
 % \begin{subappendices}

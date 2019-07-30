@@ -91,7 +91,7 @@ Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used 
 
 \section{Definitions and error measure}
 \label{sec:error-measure}
-In this chapter we only consider finite dimensional complex Hilbert spaces and finite outcome observables. A map $\ope:\Omega\to \posops[\hcal]$ is an \emph{observable} if it is normalised
+In this chapter we consider separable complex Hilbert spaces and finite outcome observables. A map $\ope:\Omega\to \posops[\hcal]$ is an \emph{observable} if it is normalised
 \begin{align}
   \sum_{\omega\in\Omega} \ope(\omega) &= \opi,
 \end{align}
@@ -125,7 +125,7 @@ We can lift the distance measure on probability distributions with outcome set $
   d_p(\ope, \opf) &\defeq \sup_{\rho\in\dops[\hcal]} \delta_p(\ope^\rho, \opf^\rho)\\
                   &= \sup_{\rho\in\dops[\hcal]} \left(\sum_{\omega\in\Omega}\abs{\ope^\rho(\omega) - \opf^\rho(\omega)}^p\right)^{\frac{1}{p}},
 \end{align}
-where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\hcal]$. Note that $\dops[\hcal]$ is a compact set, so the $\sup$ is actually achieved by some $\rho$. We specialise the definition \eqref{eqn:general-ur-definition} of the uncertainty region to these error measures, where $\ope_i:\Omega_i\to\posops[\hcal]$ are the target observables
+where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\hcal]$. The supremum exists, because the expression is bounded. We specialise the definition \eqref{eqn:general-ur-definition} of the uncertainty region to these error measures, where $\ope_i:\Omega_i\to\posops[\hcal]$ are the target observables
 \begin{equation}
   S_p(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d_p(\ope_1, \opf_1), d_p(\ope_2, \opf_2)\hdots d_p(\ope_n, \opf_n))}{\opf_i:\Omega_i\to\posops[\hcal] \text{ are compatible}},\quad p\in [1,\infty].
 \end{equation}
@@ -141,7 +141,7 @@ for all $X\in\fcal$. The $f$, so defined, is unique up to a set of $\mu$-measure
   \nu(X) = \int_X \frac{d\nu}{d\mu} d\mu.
 \end{align}
 
-We define the $f$-divergence, introduced independently in refs. \cite{10.2307/2984279} and \cite{der1964informationstheoretische}. For two probability measures $\mu\gg\nu$, on a measurable space $(\Omega, \fcal)$, and convex function $f:\R\to\R$ such that $f(1) = 0$
+We define the $f$-divergence, introduced in refs. \cite{10.2307/2984279} and \cite{der1964informationstheoretische}. For two probability measures $\mu\gg\nu$, on a measurable space $(\Omega, \fcal)$, and convex function $f:\R\to\R$ such that $f(1) = 0$
 \begin{align}\label{eqn:f-div-defn}
   \fdiv{f}{\nu}{\mu} = \int_\Omega f\left(\frac{d\nu}{d\mu}\right) d\mu.
 \end{align}
@@ -163,17 +163,36 @@ We note that both the $f$-divergences and the $p$-norm based divergences above h
   \delta_p(\lambda\nu_1 + (1-\lambda)\nu_2, \lambda\mu_1 + (1-\lambda)\mu_2) &\leq \lambda \delta_p(\nu_1, \mu_1) + (1-\lambda)\delta_p(\nu_2, \mu_2)\\
   \fdiv{f}{\lambda\nu_1 + (1-\lambda)\nu_2}{\lambda\mu_1 + (1-\lambda)\mu_2} &\leq  \lambda\fdiv{f}{\nu_1}{\mu_1} + (1-\lambda)\fdiv{f}{\nu_2}{\mu_2}.
 \end{align}
-The theorems in this section \ref{sec:invariant-mean}, in particualar theorems \ref{thm:inv-mean-reduces-error} and \ref{thm:cov-obs-improve-approx}, hold for any jointly convex error measure.
+The theorems in this section \ref{sec:invariant-mean}, in particular theorems \ref{thm:inv-mean-reduces-error} and \ref{thm:cov-obs-improve-approx}, hold for any jointly convex error measure, although they may reduce to trivially stating $\infty \leq \infty$ unless the error measure is bounded.
 \section{Invariant Mean}
 \label{sec:invariant-mean}
 
-It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps $\Omega\to \saops[\hcal]$ which, for convenience, we denote $\ovms$. The set of such maps ranging in the positive operators is a convex cone in $\ovms$, and the constraint $\sum_\omega\ope(\omega) = \opi$ defines an affine space.
-
-Given such a $G$, $f_g$, and $R_g$ we can define the \emph{invariant mean}, $M_{R,f}:\ovms\to\ovms$
-\begin{equation}\label{eqn:inv-mean-defn}
-  M_{R,f}(\ope)(\omega) = \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]
-\end{equation}
+It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps from $\Omega$ to the bounded, self adjoint operators on $\hcal$  which, for convenience, we denote $\ovms$. The set of such maps ranging in the positive operators is a convex cone in $\ovms$, and the normalisation $\sum_\omega\ope(\omega) = \opi$ defines an affine space. We equip the space $\ovms$ with a norm via
+\begin{align}
+  \norm{\ope} = \sum_{\omega\in\Omega} \norm{\ope(\omega)}.
+\end{align}
+\begin{defn}\label{defn:inv-mean}
+  Given a finite group $G$, with action $f_g:\Omega\to\Omega$, and normal, completely positive, unital, linear representation $R_g$ acting on $\saops[\hcal]$ we define the \emph{invariant mean}, $M_{R,f}:\ovms\to\ovms$
+  \begin{equation}\label{eqn:inv-mean-defn}
+    M_{R,f}(\ope)(\omega) = \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]
+  \end{equation}
+\end{defn}
 This has some useful properties. 
+\begin{lem}\label{lem:inv-mean-contraction}
+  The invariant mean is a norm contraction.
+  \begin{proof}
+    \begin{align}
+      \norm{M_{R,f}(\ope)} &= \sum_{\omega\in\Omega} \norm{M_{R,f}(\ope)(\omega)}\\
+                           &= \sum_{\omega\in\Omega} \norm{\frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]}\\
+                           &\leq \sum_{\omega\in\Omega} \frac{1}{\abs{G}}\sum_{g\in G} \norm{ R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]}\\
+                           &=\frac{1}{\abs{G}}\sum_{g\in G} \sum_{\omega\in\Omega}  \norm{ R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]}\\
+                           &=\frac{1}{\abs{G}}\sum_{g\in G} \sum_{\omega\in\Omega}  \norm{ \ope(f_g(\omega))} \label{eqn:inv-mean-norm-contraction-remove-rep} \\ 
+                           &=\frac{1}{\abs{G}}\sum_{g\in G} \sum_{\omega\in\Omega}  \norm{ \ope(f_g(\omega))}\\
+                           &\leq \norm{\ope},
+    \end{align}
+    where \ref{eqn:inv-mean-norm-contraction-remove-rep} follows from Wigner's theorem, and noting that (anti-)unitaries are norm preserving.
+  \end{proof}
+\end{lem}
 
 \begin{lem}\label{lem:inv-mean-obs-to-obs}
   The invariant mean of an observable is an observable.
@@ -212,7 +231,7 @@ It follows that the space of $(R,f)$-covariant maps is a vector subspace of $\ov
 
 \begin{thm}
   \label{thm:inv-mean-reduces-error}
-  Let $G$ be a group, $f_g:\Omega\to\Omega$ an action and $R_g:\saops[\hcal]\to\saops[\hcal]$ a positive, unital, linear representation of $G$. Let $d$ be a jointly convex map from the probability distributions over $\Omega$ to $\R$, compatible with $f_g$ in the sense that
+  Let $G$, $f_g:\Omega\to\Omega$ and $R_g:\saops[\hcal]\to\saops[\hcal]$ satisfy the assumptions of definition~\ref{defn:inv-mean}. Let $d$ be a jointly convex map from the probability distributions over $\Omega$ to $\R$, compatible with $f_g$ in the sense that
   \begin{align}\label{eqn:group-rep-error-compat}
     d(P\circ f_g, Q\circ f_g) = d(P,Q),
   \end{align}
@@ -234,7 +253,6 @@ It follows that the space of $(R,f)$-covariant maps is a vector subspace of $\ov
     \end{align}
   \end{proof}
 \end{thm}
-
 The compatibility condition \eqref{eqn:group-rep-error-compat}, may arise for quite different reasons. The $p$-norm error measures defined in section \ref{sec:error-measure} is invariant under all bijective functions on the outcome set\footnote{Elements of a group action must be invertible, and hence bijective.}, as are entropic quantities such as the Kullback-Leiber divergence. On the other hand the Wasserstein metrics mentioned in section \ref{sec:comp-measures-and-dists} are only compatible with maps which leave the underlying metric on $\Omega$ invariant, for example where $\Omega = \R$ the standard metric on $\R$ is compatible with translations. In the proof of theorem \ref{thm:inv-mean-reduces-error} we only require that $d(P\circ f_g, Q\circ f_g) \leq d(P,Q)$, however this being true for all $g\in G$ implies equality.
 
 % \begin{lem}
@@ -342,19 +360,6 @@ The Haar measure $\mu$ may be normalised to a probability measure if, and only i
 
 \section{Increasing the error}
 \label{sec:inc-error}
-
-%\begin{align}
-%  \left( a \ope + b \opf\right)(\omega) = a\ope(\omega) + b\opf(\omega).
-%\end{align}
-This space can be equipped with the ``$\sup$-$p$'' norm
-\begin{equation}
-  \pnorm{\ope} =  \sup_{\rho\in\saops[\hcal]} \pnorm{\ope^\rho},
-\end{equation}
-allowing us to rewrite the distance
-\begin{align}
-  d_p(\ope, \opf) = \pnorm{\ope - \opf}.
-\end{align}
-
 Applying the techniques in section \ref{sec:invariant-mean} results in compatible approximations that are ``not worse than'' any other compatible approximations, in the sense that for any family of compatible approximations to the targets, there exists a covariant family of of compatible approximations with $d_p$ values less than or equal to the original family. It is therefore useful to know when we can \emph{increase} the $d_p$ values so we can cover the entire uncertainty region with convex combinations of covariant and trivial observables.
 
 \begin{lem}[Increasing the error - $\infty$-norm]
@@ -480,7 +485,7 @@ and marginal actions
   \mu^2_{h,i,j} \left(l\right) &= il\\
   \mu^3_{h,i,j} \left(m\right) &= jm
 \end{align}
-and may be represented by the following set of positive, unital, linear maps on $\mathcal{L}(\mathbb{C}^2)$
+and may be represented by the following set of positive, unital, linear maps on $\saops[\mathbb{C}^2]$
 \begin{align}
   \map{k}{l}{m}\left[\qbit[r_0]{\begin{pmatrix}r_1\\r_2\\r_3\end{pmatrix}}\right] &= \qbit[r_0]{\begin{pmatrix}k r_1\\l r_2\\m r_3\end{pmatrix}}.
 \end{align}
@@ -751,7 +756,7 @@ Alternatively
     & 0&\leq y_0 \ketbra{0}{0} + y_1 \sum_k \ketbra{k}{k} - \sum_{k,l} \ketbra{k}{l} = Z.
   \end{aligned}
 \end{equation}
-It is easy to see that we have \emph{strong duality} for these problems, since we can always choose $y_1$ large enough that $Z > 0$, by the Slater condition\cite{rtr-conv-anal-book} we therefore know that wherever the solution $d$ to the dual problem is finite we have that $\inf d=\sup p$.
+It is easy to see that we have \emph{strong duality} for these problems, since we can always choose $y_1$ large enough that $Z > 0$, by the Slater condition~\cite{rtr-conv-anal-book} we therefore know that wherever the solution $d$ to the dual problem is finite we have that $\inf d=\sup p$.
 
 % We can also choose $X = (1-d_a)\ketbra{0}{0} + \frac{d_a}{n-1}\left(\sum_{k>0} \ketbra{k}{k}\right) > 0$, for $d_a\in(0,1)$ as a strictly feasible solution to the primal problem. Thus the optimal set is non-empty, and the optimum finite in this range.
 
@@ -777,7 +782,7 @@ where $\operatorname{adj}$ denotes the adjudicate matrix, and we have employed t
 \begin{align}
   \chi_n(A_n,x) = (x-n)x^{n-1},
 \end{align}
-for $A_n$ the $n$ by $n$ matrix of ones \cite{matrix-analysis}.
+for $A_n$ the $n$ by $n$ matrix of ones~\cite{matrix-analysis}.
 We are seeking constraints on $y_0$ and $y_1$ which are necessary and sufficient for all of the roots of $x\mapsto \chi_n(Z,x)$ to be non-negative, we can read off from \eqref{eqn:char-poly} that $y_1 \geq 0$. We now need to examine the roots of 
 \begin{align}
   x\mapsto x^2 + x(n-y_0 -2y_1) + \left(y_1^2 + y_1(y_0-n) + y_0(1-n)\right),

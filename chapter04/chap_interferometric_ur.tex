@@ -2,7 +2,7 @@
 
 \section{Introduction} 
 
-In this section we seek to apply the concepts considered in section \ref{chap:low_dim_prep} to an infinite dimensional system. Although the setup we consider is reasonably simple, the generalisation requires attention so some mathematical subtleties which are not features of the finite dimensional case. One of these subtleties arises because we will be interested in cases for which it is not sufficient to consider the outcome set to be a simple subset of $\R$. In particular there are cases where there is not a natural definition for the ``mean'' of a probability distribution, nonetheless we may employ the methods of \ref{sec:comp-measures-and-dists} to categorise probability measures over arbitrary metric spaces.
+In this chapter we seek to apply the concepts considered in section \ref{chap:low_dim_prep} to an infinite dimensional system. Although the setup we consider is reasonably simple, the generalisation requires attention so some mathematical subtleties which are not features of the finite dimensional case. One of these subtleties arises because we will be interested in cases for which it is not sufficient to consider the outcome set to be a simple subset of $\R$. In particular there are cases where there is not a natural definition for the ``mean'' of a probability distribution, nonetheless we may employ the methods of \ref{sec:comp-measures-and-dists} to categorise probability measures over arbitrary metric spaces.
 
 We consider a (nonrelativistic) massive particle moving on a two-dimensional plane, perpendicularly incident on an infinite aperture $A$, capable of partially measuring the particle's transverse position (the ``path'' in an interference experiment), in the sense described below. Alternatively, we remove $A$ and instead place another position detector $B$ beyond $A$ at a distance large 
 %The beam is incident on the infinite aperture with identical slits placed at unit distance from each other, so that each interval $n + [-1/2, 1/2]$ contains one slit, described by the subinterval $n+ I$ where $I\subset [-1/2, 1/2]$ is a fixed interval. Passage of through the aperture mask is then modelled (up to normalisation) by the projection
@@ -38,65 +38,12 @@ The question is then what should be the corresponding path measurement. In order
 e^{-im \MOD P}E_ne^{im \MOD P} &= E_{n+m}, \,n,m\in \mathbb Z, \label{covA}\\
 e^{-ix \MOD P}E(X)e^{ix \MOD P} &= E(X+x), \,X\subset \mathbb R,\,x\in \mathbb R. \label{covB}
 \end{align}
-In both cases, there are plenty of observables satisfying the requirement. In order to find a suitable canonical choice it makes sense to require that the path measurement be optimal in some sense. There are various notions of optimality, most of which are related to having minimal amount of noise. For the present situation, a suggestive choice of is to restrict to \emph{variance-free} observables, that is, to those whose intrinsic noise is minimal. Below we consider this restriction in the two relevant cases.
-
-%$$
-%Q_A\psi \mapsto \widehat{Q_A\psi},
-%$$
-%Now prototypical states that respect the periodic structure of the aperture are of the form
-%\begin{equation}\label{basicstates}
-%\psi(x) = \sum_{n\in Z} c_n \phi(x-n),
-%\end{equation}
-%where $\phi\in L^2(I)\subset L^2[-1/2,1/2]$ and $(c_n)$ is such that $\sum_{n}|c_n|^2 = 1$. In other words, a direct sum of copies of one wave function supported in one periodicity interval of the aperture, modulated by the coefficients $c_n$. For such a wave function the result of the above two operations is
-%$$
-%\widehat{Q_A\psi}(p) = \eta(p)\widehat\phi,
-%$$
-%where $\eta$ is the Fourier series with coefficients $c_n$, that is, $\eta(p) = \frac{1}{\sqrt{2\pi}} \sum_{n\in \mathbb Z} c_n e^{inp}$, which is again periodic but with the inverse period $2\pi$.
-
-
-% \subsection{Measuring uncertainty}
-% \label{subsec:defining-uncertainty-measure}
-
-% We will measure the uncertainty using the $\alpha$-deviation defined in , although this is defined arbitrary $\alpha$ we will focus on the case $\alpha=2$, because this makes the link to the usual variance most apparent. Indeed, for probability measures where the variance exists the $2$-deviation is exactly the variance.
-
-% Explicitly we will characterise two preparation uncertainty regions, defined by the $2$-deviation
-
-% For the purpose of exposition we first consider the probability measures defined on the (unit) circle $\T \defeq \faktor{[-\pi,\pi]}{\sim}$, where $\sim$ identifies the points $-\pi$ and $\pi$. We give $\T$ the structure of a metric space, by defining
-% \begin{align}
-%   d(x_1,x_2) \defeq \min_{n\in \{-1,0,1\}} \abs{x_1 + 2n\pi - x_2},
-% \end{align}
-% where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We note that there can be no analogue of the first moment of a probability measure in this setting, for example because there is no natural way to assign a unique ``mean'' to the uniform measure. Nonetheless we can define a measure of uncertainty which generalises the variance. For a general metric space $(\mathsf A,d)$, real $\alpha\geq 1$, and Borel probability measure $\mu$ we define
-% \begin{align}
-%   \ws{\mu}[\alpha]^\alpha \defeq \inf_{x_0} \int_{\mathsf{A}} d(x,x_0)^\alpha d\mu(x),
-% \end{align}
-% noting that since the measure is Borel, and the integrand is non-negative, the integral exists, but may be infinite for some choices of $\alpha$ and $\mu$ if $(\mathsf{A}, d)$ is not bounded. We define the usual Wasserstein $\alpha$-distance between two probability measures on $(\mathsf A,d)$
-% \begin{align}
-%   \ws{\mu,\nu}[\alpha]^\alpha  \defeq \inf_{\gamma\in\Gamma(\mu,\nu)} \int_{\mathsf{A}\times\mathsf{A}} d(x,y)^\alpha d\gamma(dx,y),
-% \end{align}
-% where $\Gamma(\mu,\nu)$ denotes the set of probability measures on $\mathsf{A}\times\mathsf{A}$ with first marginal $\mu$, and second marginal $\nu$.
-
-
-% Given a probability measure $\mu$ on $\T$ we attempt to
-
-% Consider the probability measures defined on the (unit) circle. First the uniform probability distribution.   
-
-% The final ingredient is to specify the uncertainty measure. For a general metric space $(\mathsf A,d)$, and a Borel POVM $\mathsf E$ on some Hilbert space $\mathcal H$ with outcomes in $\mathsf A$, we set
-% \begin{align}
-% \ws{\mu,\nu}[2]^2 :=\inf_{a_0\in \mathsf A} \int_{\mathsf A} d_{\mathsf A}(a,a_0)^2 \mathsf E_\rho(da),\label{URmeasure}
-% \end{align}
-% where $\mathsf E_\rho$ denotes the probability measure $\tr{\rho \mathsf E(\cdot)}$.
-% %\begin{align*}
-% %\ws{Q_0,\varphi}&:=\inf_{z_0\in \mathbb T} D_2(\mathsf E^{Q_0}_\varphi,\delta_{z_0}), & \ws{P_0,\varphi}&:=\inf_{n_0\in \Z} D_2(\mathsf E^{P_0}_\varphi,\delta_{n_0})
-% %\end{align*}
-% %where
-% This is based on the so called \emph{Wasserstein-2 distance}. Other Wasserstein-$\alpha$ distances could also be used, see \cite{BLW}; however, with the quadratic distance we recover the usual standard deviation when $d$ is the Euclidean distance on a subset of $\mathbb R$: an easy argument shows that the infimum is attained at the mean $a_0=\int a \mathsf E_\rho(da)$, and $\ws{\mathsf E,\rho}^2$ is just the variance of the probability measure $\mathsf E_\rho$. The point of using the more general form \eqref{URmeasure} is that it neatly captures the topological distinction between the cases (a) and (b).
-
-% %In the case where $\mathsf A$ is a subset of $\R$, and $d$ is the standard Euclidean distance, $B$ is a selfadjoint operator, we simply denote $\ws{B,\rho}:=\ws{\mathsf E^B,\rho}$, where $\mathsf E^B$ is the spectral measure of $B$. 
+In both cases, there are plenty of observables satisfying the requirement. In order to find a suitable canonical choice it makes sense to require that the path measurement be optimal in some sense. There are various notions of optimality, most of which are related to having minimal amount of noise. Here we restrict to \emph{variance-free} observables, that is, to those whose intrinsic noise is minimal. Below we consider this restriction in the two relevant cases.
 
 \section{Characterisation of path measurements and uncertainty relations}
 The characterisation of covariant observables is based on the spectral representation of $\MOD P$: we let $\mathcal H_0$ be any infinite dimensional Hilbert space, fix a basis $|n\rangle$ of $\mathcal H_0$, and define a unitary operator
 $$U:L^2(\mathbb R) \to L^2([-\pi,\pi],\mathcal H_0)\simeq L^2[-\pi,\pi]\otimes \mathcal H_0=:\mathcal K$$
-by setting $(U\psi)(p) = \sum_{n} \hat\psi(p+n2\pi) \,|n\rangle\in \mathcal H_0$ for (almost all) $p\in [-\pi,\pi]$. Note that $\hat\psi(p+n2\pi)$ is square summable for almost all $p$ by Fubini's theorem. Now
+by setting $(U\psi)(p) = \sum_{n} \hat\psi(p+n2\pi) \,|n\rangle\in \mathcal H_0$ for almost all $p\in [-\pi,\pi]$. Note that $\hat\psi(p+n2\pi)$ is square summable for almost all $p$ by Fubini's theorem. Now
 $$
 U\MOD P U^* = Q_0\otimes \id,
 $$

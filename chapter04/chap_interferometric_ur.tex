@@ -14,12 +14,12 @@ enough so that the Fraunhofer approximation becomes valid, that is, late-time po
 
 \subsection{Topology of the outcome sets for the interferometric observables}
 
-Hence one is lead to the idea that position and momentum observables describe the path and interference measurements, respectively. However, interferometry does not yet feature in this setting in any way - we need to constrain the detectors in a suitable way. We do this by assuming a periodic structure on the \emph{second} detector, in accordance with the idea that it should display the interference pattern. A suitable way of formulating this assumption is to observe the transverse location of the particle modulo some fixed period, which (up to a choice of units) can be taken $[-\pi,\pi]$. Now the subsequent development depends crucially on the topology we choose on this interval - in fact, there are two natural choices:
+Hence one is led to the idea that position and momentum observables describe the path and interference measurements, respectively. However, interferometry does not yet feature in this setting in any way - we need to constrain the detectors in a suitable way. We do this by assuming a periodic structure on the \emph{second} detector, in accordance with the idea that it should display the interference pattern. A suitable way of formulating this assumption is to observe the transverse location of the particle modulo some fixed period, which (up to a choice of units) can be taken $[-\pi,\pi]$. Now the subsequent development depends crucially on the topology we choose on this interval - in fact, there are two natural choices:
 \begin{itemize}
 \item[(a)] the topology of a circle $\mathbb T$ (i.e. identify the endpoints), and
 \item[(b)] the relative topology coming from $\mathbb R$ (with endpoints distinct).
 \end{itemize}
-With this distinction in mind, we can now discuss the outcome sets of the ``path'' observable. In case (a) the natural choice is the topological dual group of $\mathbb T$, that is the set of integers $\mathbb Z$, while in case (a) one would take the dual of $\mathbb R$, which is just $\mathbb R$.
+With this distinction in mind, we can now discuss the outcome sets of the ``path'' observable. In case (a) the natural choice is the topological dual group of $\mathbb T$, that is the set of integers $\mathbb Z$, while in case (b) one would take the dual of $\mathbb R$, which is just $\mathbb R$.
 
 In order to quantify uncertainty in these outcome sets, we need to specify suitable metrics, which will then have to be compatible with the topologies in the two cases (a) and (b). For the circle there are two natural choices: distance across the disc and along the circle. Both can be written in the form $d(\theta,\theta')^2 = V(\theta-\theta')$ where $V$ is a periodic, symmetric and continuous function on $\mathbb R$, with periodicity interval $[-\pi,\pi]$. We will restrict to the case $V(\theta) = \theta^2$, extended periodically outside $[-\pi,\pi]$. For $\mathbb R$ and the interval $[-\pi,\pi]$ with the relative topology, we take the usual metric $d(x,y)^2=(x-y)^2$.
 
@@ -82,7 +82,7 @@ where the indicated domains match exactly, and $P_c$ is the usual differential o
 \begin{align*}
 \delta(E,\psi)^2 &= \inf_{n_0\in \mathbb Z}(\|\Qd e^{in_0\MOD P}\psi\|^2 + N_{e^{in_0\MOD P}\psi}(E))
 \end{align*}
-where $$N_\psi(E) := \sum n^2 \langle \psi |E_n\psi\rangle - \|\Qd\psi\|^2\geq 0$$ is called the \emph{variance form} \cites{werner-screen-obs}{akhiezer-glazman-lin-ops-hilb-space}{WOJCIK2015531}, describing the intrinsic uncertainty of the observable. In order eliminate this, we restrict to \emph{variance-free} observables, for which $N_\psi$ is identically zero. Then 
+where $$N_\psi(E) := \sum n^2 \langle \psi |E_n\psi\rangle - \|\Qd\psi\|^2\geq 0$$ is called the \emph{variance form} \cites{werner-screen-obs}{akhiezer-glazman-lin-ops-hilb-space}{WOJCIK2015531}, describing the intrinsic uncertainty of the observable. In order to eliminate this, we restrict to \emph{variance-free} observables, for which $N_\psi$ is identically zero. Then 
 \begin{align*}
 \delta(E,\psi)^2 &= \inf_{n_0\in \mathbb Z} \|\Qd e^{in_0\MOD P}\psi\|^2.
 \end{align*}

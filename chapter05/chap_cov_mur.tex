@@ -356,11 +356,19 @@ for a POVM $F:\fcal\to\posops[\hcal]$. Unfortunately there are significant techn
              &=\int_G d\mu(g) R_g[\opi]\\
              &=\opi\int_G d\mu(g).\label{eqn:inv-mean-identity-infinite-case}
 \end{align}
-The Haar measure $\mu$ may be normalised to a probability measure if, and only if, the group is compact. This excludes several physically relevant groups including the translation group of $\R$ or $\R^n$, the Galilei group and the Poincar{\'e} group. Compact groups relevant to physical applications include the finite groups covered above, the unitary, special unitary groups, orthogonal and special orthogonal groups in $n\in\N$ dimensions.
+The Haar measure $\mu$ may be normalised to a probability measure if, and only if, the group is compact. This excludes several physically relevant groups including the translation group of $\R$ or $\R^n$, the Galilei group and the Poincar{\'e} group. Compact groups relevant to physical applications include the finite groups covered above, the unitary, special unitary groups, orthogonal and special orthogonal groups in $n\in\N$ dimensions. 
+
+The generalised invariant mean will require additional regularity conditions on the observables it is applied to. To see why this is the case we recall that to be Bochner integrable the function $g\mapsto R_g[F(g.X)]$ must be the limit of piecewise constant functions, where the pieces are measurable sets. To take a concrete example we restrict our attention to probability measures on the circle. Let, $\Omega=[-\pi,\pi)$, $(\Omega, \tau)$ be the topologocal space of the unit circle, $X=(0,1)\subset\Omega$, $F:\borel{\Omega}[\tau]\to [0,1]$ be the point measure, assigning $1$ to sets if they contain the element $0$, and $0$ otherwise otherwise, finally take $G$ to be the circle group and $f_g:h\mapsto gh$ be the action of the circle group on itself. Consider a sequence $g_n$ of negative elements of $\Omega$, converging to zero, then
+\begin{align}
+  F(f_{g_n}(X)) &= F(g_n + X)\\
+                &= F( (g_n, 1+g_n))\\
+                &= 1,
+\end{align}
+whereas $F(X) = 0$. With a general observables it is difficult to control these discontinuities. We conjecture that a necessary and sufficient condition for measurability is the existence of a covariant observable dominating $F$.
 
 \section{Increasing the error}
 \label{sec:inc-error}
-Applying the techniques in section \ref{sec:invariant-mean} results in compatible approximations that are ``not worse than'' any other compatible approximations, in the sense that for any family of compatible approximations to the targets, there exists a covariant family of of compatible approximations with $d_p$ values less than or equal to the original family. It is therefore useful to know when we can \emph{increase} the $d_p$ values so we can cover the entire uncertainty region with convex combinations of covariant and trivial observables.
+Applying the techniques in section \ref{sec:invariant-mean} results in compatible approximations that are ``not worse than'' any other compatible approximations, in the sense that for any family of compatible approximations to the targets, there exists a covariant family of compatible approximations with $d_p$ values less than or equal to the original family. It is therefore useful to know when we can \emph{increase} the $d_p$ values so we can cover the entire uncertainty region with convex combinations of covariant and trivial observables.
 
 \begin{lem}[Increasing the error - $\infty$-norm]
   \label{lem:infty-increase-error}

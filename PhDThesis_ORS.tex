@@ -50,7 +50,7 @@
 %
 
 \usepackage{fouriernc}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 
 \frenchspacing
 
@@ -136,7 +136,7 @@
 \usepackage{graphicx}					%Calls figure environment
 
 \usepackage{longtable,rotating}			%Long tab environments including rotation. 
-\usepackage[utf8]{inputenc}			%Needed to encode non-english characters 
+%\usepackage[utf8]{inputenc}			%Needed to encode non-english characters 
 
 %sort out appendices
 \usepackage{appendix}
@@ -168,13 +168,20 @@
 \usepackage{upgreek}					%Calls other kind of greek alphabet
 \usepackage{latexsym}					%Extra symbols
 
+\usepackage{polyglossia}		%For languages characters and hyphenation
+\setdefaultlanguage{english}
+\setotherlanguages{polish,french,german,spanish,dutch}
+
+
 \usepackage[style=numeric-comp,maxbibnames=99,backend=biber]{biblatex}
 \bibliography{bib_PhDThesis_ORS}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
 
 \usepackage{url}						%Supports url commands
 %\usepackage{etex}						%eTeXÕs extended support for counters
 
-\usepackage[spanish,main=english,german,french]{babel}		%For languages characters and hyphenation
+
 \usepackage{subcaption} %apparently has to go after babel
 \usepackage{color}                    				%Creates coloured text and background
 \usepackage[colorlinks=true,

@@ -334,7 +334,6 @@ It is useful to define the \emph{convex conjugate} of a function, which we will 
 Where $f$ is a convex function $(f^*)^*$ (hereafter denoted $f^{**}$) is equal to $f$.
 
 \section{Semidefinite programming}
-
 The usual formulation~\cites{Vandenberghe-Boyd-semidefinite} of semi-definite programming is in terms of $n\times n$ positive-semidefinite real matrices with real elements. Here, following the exposition given in \cite{w-semidefinite-prog-cb-norms}, we use a slightly different but entirely equivalent formulation better adapted to problems in quantum mechanics. 
 
 \begin{defn}\label{defn:complex-semidefinite-program}
@@ -438,7 +437,7 @@ Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a represe
 \begin{equation}\label{eqn:general-covariance}
   E(f_g(X)) = R_g \left[E(X)\right], \quad \forall g\in G, X\in\fcal
 \end{equation}
-where $\fcal$ is the $\sigma$-algebra of measureable sets over $\Omega$. Note that the $R_g$ must be unital since
+where $\fcal$ is the $\sigma$-algebra of measurable sets over $\Omega$. Note that the $R_g$ must be unital since
 \begin{align}
   \opi =  \ope(f_g(\Omega)) = R_g\left[\Omega\right] = R_g\left[\opi\right].
 \end{align}
@@ -504,7 +503,7 @@ where $U:\hcal\to\hcal$ is a unitary or anti-unitary map, (see \cite{wigner1960}
 \section{Comparing measures and observables}
 \label{sec:comp-measures-and-dists}
 
-The textbook description of quantum uncertainty (see e.g. \cite{Nielsen-Chuang}) may be summarised as the claim that there exist pairs of quantum observables $\ope$, $\opf$ for which there does not exist any state $\rho$ which makes the induced probability measures $\ope^\rho$ and $\opf^\rho$ simultaneously sharply concentrated, often this is categorised by a lower bound on some functional of the variances or entropies \cites{MaassenUffink1988}{Wehner_2010} of the two distributions, valid for all quantum states. A slightly broader view is to consider the set
+The textbook description of quantum uncertainty (see e.g. \cite{Nielsen-Chuang}) may be summarised as the claim that there exist pairs of quantum observables $\ope$, $\opf$ for which there does not exist any state $\rho$ which makes the induced probability measures $\ope^\rho$ and $\opf^\rho$ simultaneously sharply concentrated. Often this is characterised by a lower bound on some functional of the variances or entropies \cites{MaassenUffink1988}{Wehner_2010} of the two distributions, valid for all quantum states. A slightly broader view is to consider the set
 \begin{align}
   \sbuild{\left(\delta(\ope_1^\rho),...,\delta(\ope_n^\rho)\right)}{\rho\in\dops[\hcal]} \subseteq \R^n,
 \end{align}
@@ -529,14 +528,13 @@ Note here we are considering probability distributions as functions on the outco
   \lPVar{\mu}{\nu}[1] \defeq \sup_{S\in\fcal}\abs{\mu(S) - \nu(S)}.
 \end{align}
 The use of the total variation for measurement errors of continuous variables has been criticised in \cite{blw-meas-uncertainty}, on the basis that it is insensitive to any metric on the underlying space. Explicitly, every point measure is at distance $2$ from every other point measure, whereas in a physical context it is often natural to consider point measures corresponding to points which are close together to be similarly close.
-
 A key tool for comparing Borel measures on a metric space $(\mathsf{A}, d)$ is the Wasserstein $\alpha$-metric, using a real parameter $\alpha$ greater than $1$,
 \begin{align}
   \ws{\mu,\nu}[\alpha]  \defeq \left(\inf_{\gamma\in\Gamma(\mu,\nu)} \int_{\mathsf{A}\times\mathsf{A}} d(x,y)^\alpha d\gamma(x,y)\right)^\frac{1}{\alpha}.\label{eq:wasserstein-prob-dists}
 \end{align}
 Here $\Gamma(\mu,\nu)$ is the set of ``couplings'' between $\mu$ and $\nu$, the probability measures on the product space $\mathsf{A}\times\mathsf{A}$, with first margin $\mu$ and second margin $\nu$.
 
-We provide a simple example, computing the Wasserstein distance between two probability distributions on the outcome set $\{-1,1\}$. We let 
+We provide a simple example, computing the Wasserstein $\alpha$distance between two probability distributions on the outcome set $\{-1,1\}$. We let 
 \begin{align}
   \mu(1) &= m\\
   \mu(-1) &= 1-m\\
@@ -574,17 +572,35 @@ Since $\mu$ and $\nu$ are discrete the integral in equation~\ref{eq:wasserstein-
                        &= 2 \left(\inf_a \left(m+v - 2a\right)\right)^\frac{1}{\alpha}\\
                        &= 2 \abs{m-v}^\frac{1}{\alpha}.
 \end{align}
+We take the formula for the moments from ref.~\cite{statistical-inference}.
+\begin{defn}[Moments]\label{defn:moments}
+  For $n\in\N$ the the $n^\text{th}$ moment of a probability measure $\mu:\mathcal{B}(\R)\to [0,1]$, on the reals is defined by the integral
+  \begin{align}
+    \mu[n] \defeq \int_\R x^n d\mu(x).
+  \end{align}
+\end{defn}
+In general the even moments may be real numbers or positive infinity, whereas the odd moments may be real, positive or negative infinity, or undefined, for example in the case of the Cauchy distribution. In the case where the probability measure is dominated by the familiar Lebesgue measure, that is where there exists a probability density function $p:\R\to[0,1]$ such that
+\begin{align}
+  \mu(X) = \int_X p(x) dx,
+\end{align}
+the formula for the moments becomes
+\begin{align}
+  \mu[n] \defeq \int_\R x^n p(x) dx.
+\end{align}
 
-If $\mu:\mathcal{B}(\R)\to [0,1]$ is a probability measure then we can compute the integrals
-\begin{align}
-  I^-(n) &= \int_{X^{-}(n)} (-x)^n d\mu(x),\\
-  I^+(n) &= \int_{X^{+}(n)} x^n d\mu(x),
-\end{align}
-where $X^{+}(n)$, (resp. $X^{-}(n)$) is the subset of $\R$ for which $x^n$ is non-negative, (resp. negative). Both integrands are non-negative and measurable on the regions of integration so both integrals exist, but may be equal to $+\infty$. If at least one integral is finite we define the $n^\text{th}$ moment of $\mu$
-\begin{align}
-  \mu[n] \defeq I^+(n) - I^-(n),
-\end{align}
-otherwise we will say the moment does not exist. Note that the even moments all exist, because $I^-(2n) = 0$. If the first and second moments of a probability measure exist and are finite then we can define the variance
+% The moments 
+% If $\mu:\mathcal{B}(\R)\to [0,1]$ is a probability measure then we define the 
+
+% can compute the integrals
+% \begin{align}
+%   I^-(n) &= \int_{X^{-}(n)} (-x)^n d\mu(x),\\
+%   I^+(n) &= \int_{X^{+}(n)} x^n d\mu(x),
+% \end{align}
+% where $X^{+}(n)$, (resp. $X^{-}(n)$) is the subset of $\R$ for which $x^n$ is non-negative, (resp. negative). Both integrands are non-negative and measurable on the regions of integration so both integrals exist, but may be equal to $+\infty$. If at least one integral is finite we define the $n^\text{th}$ moment of $\mu$
+% \begin{align}
+%   \mu[n] \defeq I^+(n) - I^-(n),
+% \end{align}
+If the first and second moments of a probability measure exist and are finite then we can define the variance
 \begin{align}
   \var{\mu} \defeq \mu[2] - \mu[1]^2, \label{eqn:prelim-def-variance}
 \end{align}
@@ -594,51 +610,40 @@ An application of the Wasserstein metric allows a generalisation of the variance
 \begin{align}
   d(x_1,x_2) \defeq \min_{n\in \{-1,0,1\}} \abs{x_1 + 2n\pi - x_2},
 \end{align}
-where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We show there is no way to define the variance of a probability distribution on the unit circle by considering the uniform distribution, to define the variance one first defines a mean, and there is no unique way to assign a mean to the uniform distribution over the circle. Nontheless there is a natural sense in which some distributions on $\T$ are more concentrated than others. For a metric space $(\mathsf{A}, d)$, and Borel probability measure $\mu$ we define
+where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We show there is no way to define the variance of a probability distribution on the unit circle by considering the uniform distribution, to define the variance one first needs to define a mean, and there is no unique way to assign a mean to the uniform distribution over the circle. Nonetheless, there is a natural sense in which some distributions on $\T$ are more concentrated than others. For a metric space $(\mathsf{A}, d)$, and Borel probability measure $\mu$ we define
 \begin{align}
   \wsDev{\mu}[\alpha] \defeq \inf_{x_0\in\mathsf{A}} \ws{\mu, \delta_{x_0}}[\alpha], \label{eqn:wassersten-variance}
 \end{align}
-where $\delta_{x_0}$ is a point measure supported at $x_0$. If $\mu$ is a probability measure on the Borel sets of $\R$, with the standard topology, for which the mean and variance exist, it is easy to see that when $\alpha=2$, the $\inf$ in \ref{eqn:wassersten-variance} is attained where $x_0$ equals the mean, and that $\wsDev{\mu}[2]$ equals the standard deviation of $\mu$. Similarly, $\wsDev{\mu}[1]$ is the absolute deviation, and the infimum is attained at the median. The $\alpha$-deviation appears in \cite{blw-meas-uncertainty}, and was applied in \cite{sharp-ur-num-angle} to the case of covariant number and phase observables. Note that the only coupling between a measure and a point measure is the product measure, so the formula \eqref{eq:wasserstein-prob-dists} simplifies substantially in this case
+where $\delta_{x_0}$ is a point measure supported at $x_0$. If $\mu$ is a probability measure on the Borel sets of $\R$, with the standard topology, for which the mean and variance exist, it is easy to see that when $\alpha=2$, the infimum in \eqref{eqn:wassersten-variance} is attained where $x_0$ equals the mean and that $\wsDev{\mu}[2]$ equals the standard deviation of $\mu$. Similarly, $\wsDev{\mu}[1]$ is the absolute deviation, and the infimum is attained at the median. The $\alpha$-deviation appears in \cite{blw-meas-uncertainty}, and was applied in \cite{sharp-ur-num-angle} to the case of covariant number and phase observables. Note that the only coupling between a measure and a point measure is the product measure, so the formula \eqref{eq:wasserstein-prob-dists} simplifies substantially in this case
 \begin{align}
   \wsDev{\mu}[\alpha] = \inf_{x_0\in\mathsf{A}} \left(\int_{\mathsf{A}} d(x,x_0)^\alpha d\mu(x)\right)^\frac{1}{\alpha}.
 \end{align}
-The Wasserstein metric was used in the context of quantum uncertainty by Busch, Lahti and Werner in \cite{PhysRevLett.111.160405}, with a focus on the case of canonically covariant observables $\ope^Q$ and $\ope^P$, and restricted to $\alpha=2$. In \cite{blw-meas-uncertainty} the same authors generalised this to consider arbitrary $\alpha$. In these papers the authors considered both the $\sup$ of the Wasserstein metric over all states, called the metric error, and a quantity called the calibration error. For observables for which there are states which make the induced probability distributions deterministic the calibration error is given by the $\max$ over those states. In general an observable may not induce a deterministic probability distribution in any state, so the calibration error is given by a limiting procedure
+The Wasserstein metric was used in the context of quantum uncertainty by Busch, Lahti and Werner in \cite{PhysRevLett.111.160405}, with a focus on the case of canonically covariant observables $\ope^Q$ and $\ope^P$, and restricted to $\alpha=2$. In \cite{blw-meas-uncertainty} the same authors generalised this approach to consider arbitrary $\alpha$. In these papers the authors considered both the supremum of the Wasserstein metric over all states, called the metric error, and a quantity called the calibration error. For observables for which there are states which make the induced probability distributions deterministic the calibration error is given by the maximum over those states. In general an observable may not induce a deterministic probability distribution in any state, so the calibration error is given by a limiting procedure
 \begin{align}
   \calibError{F}{E}{\alpha}[\varepsilon] &\defeq \sup_{\rho,x} \sbuild{\ws{F^\rho,\delta_{x}}[\alpha]}{\ws{E^\rho,\delta_{x}}[\alpha]}\\
   \calibError{F}{E}{\alpha} &\defeq \lim_{\varepsilon\to 0} \calibError{F}{E}{\alpha}[\varepsilon]  
 \end{align}
-and obtained measurement uncertainty relations of the form 
-\begin{align}
-  \ws{\opm^Q, \ope^Q}[\alpha]\ws{\opm^P, \ope^P}[\beta] \geq c_{\alpha\beta} \hbar,
-\end{align}
-where $\opm$ is an observable with outcome set $\R\times\R$, $\opm^Q$ and $\opm^P$ are the first and second margins, respectively. The constant $c_{\alpha\beta}$ is related to the least eigenvalue $g_{\alpha\beta}$ of the Hamiltonian $H_{\alpha\beta} = \abs{\opq}^\alpha + \abs{\opp}^\beta$ by 
-\begin{align}
-  c_{\alpha\beta} = \alpha^{\frac{1}{\beta}} \beta^{\frac{1}{\alpha}} \left(\frac{g_{\alpha\beta}}{\alpha+\beta}\right)^{\frac{1}{\alpha} + \frac{1}{\beta}}.
-\end{align}
-
-The overall width is a natural measure of the broadness of a probability measure on the reals, given $\varepsilon\in (0,1)$ we define
+The overall width is a natural measure of the broadness of a probability measure on the reals. Given $\varepsilon\in (0,1)$ we define
 \begin{align}
   \width{\mu}{\varepsilon} \defeq \inf_{a,b\in\R} \sbuild{\abs{a-b}}{\mu([a,b])\geq 1-\varepsilon}, \label{eqn:overall-width-defn}
 \end{align}
 the set bounded below by zero, and non-empty since for any $\varepsilon$ there is an $n$ large enough such that $\mu([-n,n])\geq 1-\varepsilon$ so this quantity is a real number. The overall width has been studied in the context of timelimited and bandlimited functions in \cite{6773660}, in the quantum mechanical literature by Uffink \cite{ufink-thesis}, Busch et. al.~\cite{BUSCH2007155} and Miyadera~\cite{doi:10.1063/1.3614503}.
 
-Entropic quantities have also been used to study quantum uncertainty, although the set of quantities which are called ``entropies'' is large, for our purposes it suffices to consider the R\'enyi $\alpha$-entropies~\cite{renyi1961}. These are given, for a probability distribution on a finite set by
+Entropic quantities have also been used to study quantum uncertainty, although the set of quantities which are called ``entropies'' is large, for our purposes it suffices to consider the R\'enyi $\alpha$-entropies~\cite{renyi1961}. For a probability distribution on a finite set, these are given by
 \begin{align}
   H_\alpha(P) = \frac{1}{1-\alpha} \log{\sum_i P(i)^\alpha}.
 \end{align}
-The R\'enyi entropies are \emph{Schur concave} as functions of the probability distribution. We write $P \prec Q$ if $P$ may be written as a convex combination of permutations of $Q$, and say $Q$ majorizes $P$ in this case. Schur concavity is the property that
+The R{\'e}nyi entropies are \emph{Schur concave} as functions of the probability distribution. We write $P \prec Q$ if $P$ may be written as a convex combination of permutations of $Q$, and say $Q$ majorizes $P$ in this case. Schur concavity is the property that
 \begin{align}
   P\prec Q \implies H_\alpha(P) \geq H_\alpha(Q),
 \end{align}
 roughly speaking the entropy will be larger for a more ``spread out'' distribution than a more concentrated one.
 
-%----------------------------------------------- FIXME
-
-Given a distance measure $\delta$ on probability distribution one can define a distance measure on quantum observables by choosing a relevant set of states $S\subseteq \dops[\hcal]$ and setting
+Given a distance measure $\delta$ on probability distributions one can define a distance measure on quantum observables by choosing a relevant set of states $S\subseteq \dops[\hcal]$ and setting
 \begin{align}
   \delta_S(E, F) \defeq \sup_{\rho\in S} \delta(E^\rho, F^\rho),
 \end{align}
-of course the choice of the set $S$ is highly significant and the appropriate choice will depend on the application. In general choosing a larger $S$ makes the test more stringent, to make a classical analogy one would be unconvinced by a clock sold as being able to tell one time (per day) highly accurately, but a clock sold as being able to tell \emph{all} times with error less than some bound is more convincing. Indeed this analogy can be made quite precise, given any two observables $E$ and $F$ one can perfectly reproduce the statistics $E^\rho$, and $F^\rho$ in a fixed state $\rho$ with the (trivial) observable
+of course the choice of the set $S$ is highly significant and the appropriate choice will depend on the application. In general choosing a larger $S$ makes the test more stringent. To make a classical analogy one would be unconvinced by a clock sold as being able to tell one time (per day) highly accurately, but a clock sold as being able to tell \emph{all} times with error less than some bound is more convincing. Indeed this analogy can be made quite precise, given any two observables $E$ and $F$ one can perfectly reproduce the statistics $E^\rho$, and $F^\rho$ in a fixed state $\rho$ with the (trivial) observable
 \begin{align}
   J: (A,B) \mapsto E^\rho(A) F^\rho(B) I.
 \end{align}

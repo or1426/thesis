@@ -34,7 +34,7 @@ The textbook expression of the uncertainty principle is given by the standard un
 \begin{equation}\label{eq:HUR}
   \sdev{\opa}\,\sdev{\opb}\ge \frac12\bigl| \expnr{\comm{\opa}{\opb}}\bigr|\,.
 \end{equation}
-Here $\opa,\opb$ are self-adjoint operators representing two observables, whose standard deviations $\sdev{\opa}$, $\sdev{\opb}$ are constrained by the (modulus of the) expectation value of the commutator of $\opa,\opb$. This relation was originally conceived for position and momentum by Heisenberg~\cite{Heisenberg1927-Wheeler+Zurek}, with formal proofs provided by Kennard~\cite{Kennard1927} and Weyl~\cite{Weyl1927}. The above general form is due to Robertson~\cite{Robertson1929}; it was soon strengthened by Schr\"odinger~\cites{Schrodinger1930}{Schrodinger1930Translation}, who deduced a tighter bound by including the so-called covariance term,
+Here $\opa,\opb$ are self-adjoint operators representing two observables whose standard deviations $\sdev{\opa}$, $\sdev{\opb}$ are constrained by the (modulus of the) expectation value of the commutator of $\opa,\opb$. This relation was originally conceived for position and momentum by Heisenberg~\cite{Heisenberg1927-Wheeler+Zurek}, with formal proofs provided by Kennard~\cite{Kennard1927} and Weyl~\cite{Weyl1927}. The above general form is due to Robertson~\cite{Robertson1929}; it was soon strengthened by Schr\"odinger~\cites{Schrodinger1930}{Schrodinger1930Translation}, who deduced a tighter bound by including the so-called covariance term,
 \begin{equation}\label{eq:SUR}
   \var{\opa}\,\var{\opb}\ge\frac14\bigl| \expnr{\comm{\opa}{\opb}} \bigr|^2 + \frac14\bigl(\expnr{\acom\opa\opb}-2\expnr{\opa}\expnr{\opb}\bigr)^2.
 \end{equation}
@@ -51,7 +51,7 @@ if $\opa,\opb$ do not commute, these regions cannot, in general, contain all poi
 An extensive study of uncertainty regions for spin components was undertaken by  Dammeier et al.~\cite{dsw-meas-ur-ang-mom}
 However, the features uncovered in these cases are not representative, as illustrated by the example we examine in section \ref{sec:qutrit}. In particular we note that if the point $(\sdev{\opa},\sdev{\opb} ) = (0,0)$ is in the uncertainty region, then the monotone-closure procedure, taking the set of points $\{(x,y) |\, \exists \rho \text{ s.t. } x\geq \sdevr{\opa},\, y\geq\sdevr{\opb}\}$, employed to great effect in the spin case, has the undesirable property that the closure defined is the \emph{entire} positive quadrant.
 
-A state dependent bound for the joint expectation values of an $n$-tuple of sharp, $\pm 1$-valued observables was given by Kaniewski, Tomamichel and Wehner~\cite{KaniewskiTomamichelWehner2015}. Since a binary probability distribution is entirely characterised by the expectation value this provides an implicit characterisation of the uncertainty region. A complete characterisation of the uncertainty region in terms of variances for pairs of observables on qubits was given by Li and Qiao~\cite{LiQiao2015}. However, their relation is an implicit rather than explicit one, with the expectation values and variances of each observable appearing on both sides of the inequality. Abbott et al~\cite{AbbottAlzieuHallBranciard2016}  then derived the full qubit uncertainty region in a way which more readily generalises to provide (not-necessarily tight) bounds in higher dimensional systems and for more than two observables.
+A state dependent bound for the joint expectation values of an $n$-tuple of sharp, $\pm 1$-valued observables was given by Kaniewski, Tomamichel and Wehner~\cite{KaniewskiTomamichelWehner2015}. Since a binary probability distribution is entirely characterised by the expectation value this provides an implicit characterisation of the uncertainty region. A complete characterisation of the uncertainty region in terms of variances for pairs of observables on qubits was given by Li and Qiao~\cite{LiQiao2015}. However, their relation is an implicit rather than explicit one, with the expectation values and variances of each observable appearing on both sides of the inequality. Abbott et al~\cite{AbbottAlzieuHallBranciard2016}  then derived the full qubit uncertainty region in a way which more readily generalises to provide (not necessarily tight) bounds in higher dimensional systems and for more than two observables.
 
 Some analytical, as well as some semianalytical bounds on uncertainty regions were recently given by Szymański and \.{Z}yczkowski~\cite{SzymanskiZyczkowski2018}, who also give a method for writing a saturated, state independent bound for a general ``sum of variances'' uncertainty relation as a polynomial root finding problem.
 
@@ -59,7 +59,7 @@ Here we review the case of qubit observables, providing yet another proof of a g
 
 The purpose of the present work is to give an accessible introduction of the subject of uncertainty regions, offering worked examples for pairs of observables in low-dimensional Hilbert spaces. We also explore the logical relation between characterisations of uncertainty regions and standard uncertainty relations.
 
-The section is organised as follows. After a brief review of the uncertainty region for the position and momentum of a particle in the line (Section \ref{sec:qp}), we give a general definition of the uncertainty region (Section \ref{sec:pur-def}) and proceed to consider the qubit case in some detail (Section \ref{sec:qubit}). We then proceed to determine uncertainty regions for some pairs of qutrit observables, noting interesting contrasts with the case of qubit observables (Section \ref{sec:qutrit}). We conclude with a summary and some general observations (Section \ref{sec:conclusion}).
+The section is organised as follows. After a brief review of the uncertainty region for the position and momentum of a particle on the line (Section \ref{sec:qp}), we give a general definition of the uncertainty region (Section \ref{sec:pur-def}) and proceed to consider the qubit case in some detail (Section \ref{sec:qubit}). We then proceed to determine uncertainty regions for some pairs of qutrit observables, noting interesting contrasts with the case of qubit observables (Section \ref{sec:qutrit}). We conclude with a summary and some general observations (Section \ref{sec:conclusion}).
 
 \section{Uncertainty regions}
 
@@ -72,11 +72,14 @@ The Heisenberg uncertainty relation for position $\operatorname{Q}$ and momentum
 valid for all states $\rho$ for which both variances are finite. This relation
 is tight  in the following sense: for any pair of numbers $(\sdev{\opq}$, $\sdev{\opp})$ with $\sdev{\opq}\,\sdev{\opp}\ge \hbar/2$, there exists a state $\rho$ such that $\sdev{\opq} =\sdevr{\opq}$ and $\sdev{\opp}=\sdevr{\opp}$.  In particular, points of the lower bounding hyperbola branch in the positive quadrant of the $\sdev{\opq}$-$\sdev{\opp}$-plane are realized by pure states, $\rho=|\psi\rangle\langle\psi|$, where the unit vector $\psi$ represents a Gaussian wave function. Moreover, it is not hard to show that every point in the area above the hyperbola can be realized by some quantum state, so that the whole uncertainty region for position and momentum is described by the uncertainty relation \eqref{eq:qp-ur} (Fig. \ref{fig:QP-UR}).
 
-It is interesting to note that the inequality \eqref{eq:qp-ur}  can be equivalently recast  in the form of {\em additive} uncertainty relations: let $\ell>0$ be an arbitrary fixed parameter with the  dimension of length, then
+It is interesting to note that the inequality \eqref{eq:qp-ur}  can be equivalently recast in the form of {\em additive} uncertainty relations (Paul Busch, personal communication).
+\begin{thm}
+Let $\ell>0$ be an arbitrary fixed parameter with the  dimension of length, then
 \begin{align}
   \frac{\sdevr{\opq}}{\ell}+\frac{\ell\sdevr{\opp}}{\hbar}&\ge \sqrt2,\label{eq:qp-add-lin}\\
   \frac{\varr{\opq}}{\ell^2}+\frac{\ell^2\varr{\opp}}{\hbar^2}&\ge 1.\label{eq:qp-add-quadr}
 \end{align}
+\begin{proof}
 The proof of this equivalence follows from an elementary algebraic observation: given arbitrary $\xi,\eta>0$ we have the simple identity
 \begin{align}%\label{eq:alg}
   \frac \xi x+x \eta=\left(\sqrt{\frac \xi x}-\sqrt{x \eta}\right)^2&+2\sqrt{\xi \eta},
@@ -98,8 +101,9 @@ we have $U_\tau^* \opq U_\tau=\opq/x\equiv \opq_x$, $U_\tau^* \opp U_\tau=x\opp\
   \frac{\sdevr{\opq_x}}{\ell}+\frac{\ell\sdevr{\opp_x}}{\hbar}
   =\frac{\sdev[\rho_x]{\opq} }{\ell}+\frac{\ell\sdev[\rho_x]{\opp}}{\hbar}\ge \sqrt{2}.
 \end{align}
-Therefore, using \eqref{eq:equiv}, we conclude that \eqref{eq:qp-ur} follows from \eqref{eq:qp-add-lin} (and similarly from \eqref{eq:qp-add-quadr}). This completes the proof.
-
+Therefore, using \eqref{eq:equiv}, we conclude that \eqref{eq:qp-ur} follows from \eqref{eq:qp-add-lin} (and similarly from \eqref{eq:qp-add-quadr}).
+\end{proof}
+\end{thm}
 Geometrically, the limiting case of equality in \eqref{eq:qp-add-lin} represents a family of straight lines tangent to the hyperbola plotted in a $\sdev{\opq}-\sdev{\opp}$-diagram given by $\sdev{\opq}\sdev{\opp}=\hbar/2$; the totality of these tangents defines the hyperbola. Similarly, the second additive inequality bound \eqref{eq:qp-add-quadr} gives a family of ellipses (with axes given by the coordinate axes) tangent to the hyperbola, again defining it (see Fig. \ref{fig:QP-UR}). We conclude that Heisenberg's uncertainty relation or any of its additive equivalents completely determine the position-momentum uncertainty region.
 
 
@@ -113,7 +117,7 @@ Geometrically, the limiting case of equality in \eqref{eq:qp-add-lin} represents
 
 \subsection{Uncertainty region: general definition}\label{sec:pur-def}
 We seek to explore further the feature of tightness of an uncertainty relation  and so adopt the following definitions (see, e.g., Ref.~\cite{AbbottAlzieuHallBranciard2016}).
-We will understand tightness in the sense that the given uncertainty relation fully characterizes the set of admissible uncertainty pairs. In order for an inequality for the uncertainties to achieve this, it is necessary that the only state-dependent terms are the uncertainties themselves; hence such inequalities are of the form $f(\sdev{\opa},\sdev{\opb}, \opa,\opb)\ge 0$. As the reference to $\rho$ can then be dropped, we refer to such uncertainty relations as {\em state-independent}, in line with the terminology introduced in  Ref.~\cite{AbbottAlzieuHallBranciard2016}.
+We will understand tightness in the sense that the given uncertainty relation fully characterises the set of admissible uncertainty pairs. In order for an inequality for the uncertainties to achieve this, it is necessary that the only state-dependent terms are the uncertainties themselves; hence such inequalities are of the form $f(\sdev{\opa},\sdev{\opb}, \opa,\opb)\ge 0$. As the reference to $\rho$ can then be dropped, we refer to such uncertainty relations as {\em state-independent}, in line with the terminology introduced in  Ref.~\cite{AbbottAlzieuHallBranciard2016}.
 The term {\em tight} is sometimes used to describe an inequality for a set of variables where the limiting case of equality can be reached for some values; here instead we refer to this situation as {\em saturation} of the inequality. 
 
 \begin{dfn}
@@ -133,7 +137,7 @@ For the purposes of finding expressions of the uncertainty principle, it is suff
 \begin{equation}\label{eq:minuAB}
   \sdevmin{\opb}\equiv\min\left\{\sdevr{\opb}\,|\,\rho \in\si(\sdev{\opa}) \right\}.
 \end{equation}
-Assuming (as we do henceforth) that the underlying Hilbert space is finite-dimensional, then the set of states $\si(\hi)$ is compact in any norm topology (trace norm, operator norm, etc.). Therefore, the continuity of the map $\rho\mapsto (\sdevr{\opa},\sdevr{\opb})$ ensures that the preparation uncertainty region and the subset of states $\si(\sdev{\opa})$ are  compact. It follows that the minimum in \eqref{eq:minuAB} exists. Hence the uncertainty region has a well-defined  lower boundary curve (and similarly upper and side boundary curves).
+Assuming (as we do henceforth) that the underlying Hilbert space is finite-dimensional, the set of states $\si(\hi)$ is compact in any norm topology (trace norm, operator norm, etc.). Therefore, the continuity of the map $\rho\mapsto (\sdevr{\opa},\sdevr{\opb})$ ensures that the preparation uncertainty region and the subset of states $\si(\sdev{\opa})$ are  compact. It follows that the minimum in \eqref{eq:minuAB} exists. Hence the uncertainty region has a well-defined  lower boundary curve (and similarly upper and side boundary curves).
 
 We illustrate cases where there are non-trivial \emph{upper} bounds for $\sdevr{\opb}$ for some values of $\sdevr{\opa}$. Additionally, when examining qutrit observables in section \ref{sec:qutrit}, we discover that the uncertainty region is not necessarily of a `simple' shape, such as a convex set. In these cases the uncertainty region is too complicated to be conveniently described by a single inequality, but may be given, for example, in terms of its bounding curves.
 
@@ -155,7 +159,7 @@ We also note  the operator norm of the commutator of $\opa,\opb$ is given by
 \begin{equation}
   \bigl\|[\opa,\opb]\bigr\| = 2\|\boa\times\bob\|,
 \end{equation}
-which suggests that $\sin\theta=\|\boa\times\bob\|$ is the relevant quantity to measure the degree of noncommutativity (incompatibility) of $\opa$ and $\opb$.
+which suggests that $\|\boa\times\bob\|$, area of the parallelogram spanned by $\boa$ and $\bob$, is the relevant quantity to measure the degree of noncommutativity (incompatibility) of $\opa$ and $\opb$. It is interesting to note that uncertainty relations have been derived for $n$ observables obtained from the position and momentum of the particle on a line where the lower bound is given by the volume of an $n$ dimensional parallelepiped~\cite{stefan-spiros-2017}.
 
 
 \subsection{Uncertainty bounds for $\sigma_x,\sigma_y,\sigma_z$}\label{sec:xyz}
@@ -196,7 +200,7 @@ From this, we can straightforwardly obtain the minimum \eqref{eq:minuAB} for $\v
 In fact, $\varr{\sigma_y}$ is minimized  when $\varr{\sigma_y}=1-\varr{\sigma_x}$. This is equivalent to $r_x^2+r_y^2=1$, which entails $r_z=0$, that is, $\varr{\sigma_z}=1$. This means, in particular, that  the bound given by \eqref{eq:HUR-sig} becomes trivial and that given by \eqref{eq:SUR} is tight.
 
 It is instructive to consider the conditions under which the Heisenberg inequality \eqref{eq:HUR-sig} is saturated. This gives
-$(1-r_x^2)(1-r_y^2)=r_z^2$, or $1+r_x^2r_y^2=r_x^2+r_y^2+r_z^2$. Since the right-hand side is never greater than $1$ and the left hand side never less, both sides must be equal to $1$ and, therefore either $r_x=0$ or $r_y=0$. If $r_x$ is fixed and  non-zero, then $r_y=0$, which is to say that $\varr{\sigma_y}=1$.
+$(1-r_x^2)(1-r_y^2)=r_z^2$, or $1+r_x^2r_y^2=r_x^2+r_y^2+r_z^2$. Since the right-hand side is never greater than $1$ and the left hand side never less than $1$, both sides must be equal to $1$ and, therefore either $r_x=0$ or $r_y=0$. If $r_x$ is fixed and  non-zero, then $r_y=0$, which is to say that $\varr{\sigma_y}=1$.
 
 Note that here $\varr{\sigma_y}$  is maximal rather than minimal. Saturation of the standard uncertainty relation for these observables thus leads to maximising the uncertainty product instead of minimising it, as one might, naively, have expected. In contrast, equality in \eqref{eq:urxy} forces minimality of the uncertainty product. We also see that \eqref{eq:HUR-sig} forces maximality $\varr{\sigma_x}=\varr{\sigma_y}=1$ by requiring minimal uncertainty for $\sigma_z$, whereas \eqref{eq:urxy} does not stipulate this.
 
@@ -211,7 +215,7 @@ where the latter inequality is obtained from $\|\bor \|^2\le 1$ or the equivalen
 
 The fact that \eqref{eq:urxyz} implies \eqref{eq:HUR-sig} should not be surprising once one realises that the former inequality  is indeed equivalent to the Schr\"odinger relation \eqref{eq:SUR}, which takes the following form in the present case
 % \begin{equation}\label{eq:SURxy}
-\begin{equation}
+\begin{equation}\label{eq:SURxy}
   \varr{\sigma_x}\,\varr{\sigma_y}\geq \langle\sigma_z\rangle_\rho^2+\langle\sigma_x\rangle_\rho^2\langle\sigma_y\rangle_\rho^2=\bigl(1-\varr{\sigma_z}\bigr)+
   \bigl(1-\varr{\sigma_x}\bigr)\bigl(1-\varr{\sigma_y}\bigr).
 \end{equation}
@@ -221,29 +225,22 @@ This is equivalent to
   \varr{\sigma_x}\,\varr{\sigma_y}\geq 2-\bigl(\varr{\sigma_x}+\varr{\sigma_y}+\varr{\sigma_z} \bigr) +\varr{\sigma_x}\,\varr{\sigma_y},
 \end{equation}
 and hence to \eqref{eq:urxyz}, and ultimately to $\|\bor\|^2\le 1$, anticipating the results of section \ref{sec:sch-uncertainty-relation}.
-
-We summarise:
+We summarise in proposition \ref{prop:low-dim-pauli-summary}
+\begin{prop}[Summary of uncertainty bounds for orthogonal Pauli observables]\label{prop:low-dim-pauli-summary}
+~\\
 \begin{enumerate}
-  \setlength\itemsep{0pt}
-\item[(1)]
-  The Schr\"odinger inequality (but not the Heisenberg inequality) for $\sigma_x,\sigma_y$ determines their uncertainty region.
+  %\setlength\itemsep{0pt}
+\item The Schr{\"o}dinger inequality~\eqref{eq:SURxy} (but not the Heisenberg inequality~\eqref{eq:HUR-sig}) for $\sigma_x,\sigma_y$ determines their uncertainty region.
   
-\item[(2)]
-  Saturation of the Heisenberg inequality does not entail minimal, but instead maximal, uncertainty  (i.e., maximal $\sdev{\sigma_y}$ given $\sdev{\sigma_x}\not\in\{0,1\}$).
+\item Saturation of the Heisenberg inequality does not entail minimal, but instead maximal, uncertainty  (i.e., maximal $\sdev{\sigma_y}$ given $\sdev{\sigma_x}\not\in\{0,1\}$).
 
-
-
-\item[(3)]
-  The uncertainty region for $\sigma_x,\sigma_y$ is the intersection of the unit square $[0,1]\times[0,1]$ with the complement of the open unit ball $\var{\sigma_x}+\var{\sigma_y}< 1$. The lower boundary is reached exactly for pure states with $\sdev{\sigma_z}=1$, which entails the vanishing of the commutator term in the Heisenberg inequality \eqref{eq:urxy} (which therefore becomes trivial at minimum uncertainty). In this case, one has equality in the Schr\"odinger relation, and the uncertainty bound is found to be entirely due to the covariance term.
+\item The uncertainty region for $\sigma_x,\sigma_y$ is the intersection of the unit square $[0,1]\times[0,1]$ with the complement of the open unit ball $\var{\sigma_x}+\var{\sigma_y}< 1$. The lower boundary is reached exactly for pure states with $\sdev{\sigma_z}=1$, which entails the vanishing of the commutator term in the Heisenberg inequality \eqref{eq:urxy} (which therefore becomes trivial at minimum uncertainty). In this case, one has equality in the Schr\"odinger relation, and the uncertainty bound is found to be entirely due to the covariance term.
   
-  \item[(4)] The Schr\"odinger inequality, due to its equivalence with \eqref{eq:urxyz}, also determines the triple uncertainty region for $\sigma_x,\sigma_y,\sigma_z$, Fig.~\ref{fig:orth-triple}. 
+\item The Schr\"odinger inequality, due to its equivalence with \eqref{eq:urxyz}, also determines the triple uncertainty region for $\sigma_x,\sigma_y,\sigma_z$, Fig.~\ref{fig:orth-triple}. 
   
-  \item[(5)]
-  Saturation of the Schr\"odinger inequality and  the equivalent triple uncertainty relation \eqref{eq:urxyz} is given exactly on the set of pure states. Hence, all pure states are minimum uncertainty states for the triple $\sigma_x,\sigma_y,\sigma_z$.
-
-
+\item Saturation of the Schr\"odinger inequality and  the equivalent triple uncertainty relation \eqref{eq:urxyz} is given exactly on the set of pure states. Hence, all pure states are minimum uncertainty states for the sum uncertainty relation for the triple $\sigma_x,\sigma_y,\sigma_z$.
 \end{enumerate}
-
+\end{prop}
 \subsection{Uncertainty region for pairs of $\pm 1$-valued qubit observables}
 \label{sec:qubit-uncertainty}
 %\subsubsection{Defining the uncertainty region}
@@ -257,6 +254,54 @@ We begin by noting some simple known examples of state-independent uncertainty r
   \var{\opa}+\var{\opb}\ &\ge \ 1-\sqrt{1-\tfrac14\bigl\|[\opa,\opb]\bigr\|^2}.
 \end{align}
 While these are easily proven by elementary means, it is equally easy to see that they are not tight; they only touch the actual lower boundary curve of the uncertainty region at isolated points. Nevertheless they are of a simple form and illustrate the concept of a state-independent uncertainty bound.
+In the remainder of this subsection we will derive the exact uncertainty region, given in theorem \ref{thm:ab-pur}.
+\begin{thm}\label{thm:ab-pur}
+  Given a pair of qubit observables  $\opa=\boa\cdot\bosig$, $\opb=\bob\cdot\bosig$ as well as a fixed uncertainty $\sdevr{\opa}=\sdev{\opa}$ we have
+  \begin{align}\label{eqn:full-qubit-uncertainty region}
+    \left|\sdev{\opa} (\boa\cdot\bob) - \|\boa\times\bob\|\sqrt{1-\var \opa}\right|
+    \leq \sdevr{\opb} %\\ &
+                            \leq\begin{cases}
+                              \sdev{\opa} (\boa\cdot\bob) + \|\boa\times\bob\|\sqrt{1-\var \opa} & \text{\normalfont if } \sdev{\opa} < \boa\cdot\bob\\
+                              1 & \text{\normalfont otherwise}
+                            \end{cases}.%\nonumber
+  \end{align}
+\end{thm}
+The resulting uncertainty region is plotted in Fig.~\ref{fig:top-level-err-region}.
+
+\begin{figure}[H]
+  \begin{subfigure}[t]{0.38\textwidth}\centering
+    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-pi-by-16-bw}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
+    \label{fig:err-region-pi-by-16}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.38\textwidth}\centering
+    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-pi-by-8-bw}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{8}$.}
+    \label{fig:err-region-pi-by-8}
+  \end{subfigure}\\
+  \begin{subfigure}[t]{0.38\textwidth}\centering
+    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-pi-by-4-bw}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{4}$.}
+    \label{fig:err-region-pi-by-4}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.38\textwidth}\centering
+    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-3-pi-by-8-bw}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{3\pi}{8}$.}
+    \label{fig:err-region-3pi-by-8}
+  \end{subfigure}\\
+  \begin{subfigure}[t]{0.38\textwidth}\centering
+    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-7-pi-by-16-bw}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{7\pi}{16}$.}
+    \label{fig:err-region-7pi-by-16}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.38\textwidth}\centering
+    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-pi-by-2-bw}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{2}$.}
+    \label{fig:err-region-pi-by-2}
+  \end{subfigure}\\
+  \caption[Plots of the uncertainty region for sharp, $\pm1$-valued qubit observables.]{Plots of the uncertainty region for sharp, $\pm1$-valued qubit observables. The straight and curved dot-dashed lines are the previously known lower bounds \eqref{eqn:straight-lower-bound-blw} and \eqref{eqn:curved-lower-bound-blw}, respectively.}
+  \label{fig:top-level-err-region}
+\end{figure}
 
 In the following considerations we will make use of the identity
 \begin{equation}\label{eq:r2-id}
@@ -273,7 +318,6 @@ We obtain the following Lemma.
     \bigl\|\boa\times\bob\bigr\| = \|\boa^*-\bob^*\|=\|\boex-\boy\|.
   \end{equation}
 \end{lem}
-
 
 \begin{figure}[h]
   \centering
@@ -300,7 +344,7 @@ We obtain the following Lemma.
 
 
 To describe the uncertainty region, we set out to determine the maximum and minimum values of $\varr{\opb}$ given a fixed value $\var{\opa}$ of $\varr{\opa}$.
-Minimality (maximality) of $\varr{\opb}$   is equivalent to maximality (minimality) of $(\bor\cdot\bob)^2$ whilst keeping $(\bor\cdot\boa)^2=1-\var{\opa}$ constant. Hence we are looking for the optimisers within the disks that are the intersections of the planes $\bor\cdot\boa=\pm\sqrt{1-\var{\opa}}$ with the Bloch sphere. We may assume $\boa\cdot\bob\ge0$. For the determination of minimal and maximal $\sdevr{\opb}$  it will be sufficient to focus on the disks of constant $\sdev{\opa}$ with $\bor\cdot\boa\ge0$, and look for the two disks of constant  $\bor\cdot\bob$ which intersect the former disk in just one point. The resulting vectors $\bor_0,\bor_1$ (which are or can be chosen to lie in the plane spanned by $\boa,\bob$) are those giving the largest, resp. smallest, non-negative value of $\bob\cdot\bor$ within the disk of vectors satisfying $\bor\cdot\boa=\sqrt{1-\var{\opa}}$.
+Minimality (maximality) of $\varr{\opb}$  is equivalent to maximality (minimality) of $(\bor\cdot\bob)^2$ whilst keeping $(\bor\cdot\boa)^2=1-\var{\opa}$ constant. Fixing the variance of $\opa$ restricts the state to be within the two disks that are the intersections of the planes $\bor\cdot\boa=\pm\sqrt{1-\var{\opa}}$ with the Bloch sphere. We may assume $\boa\cdot\bob\ge0$. For the determination of minimal and maximal $\sdevr{\opb}$  it will be sufficient to focus on the disks of constant $\sdev{\opa}$ with $\bor\cdot\boa\ge0$, and look for the two disks of constant  $\bor\cdot\bob$ which intersect the former disk in just one point. The resulting vectors $\bor_0,\bor_1$ (which are or can be chosen to lie in the plane spanned by $\boa,\bob$) are those giving the largest, resp. smallest, non-negative value of $\bob\cdot\bor$ within the disk of vectors satisfying $\bor\cdot\boa=\sqrt{1-\var{\opa}}$.
 
 % \begin{figure}[ht]
 %   \centering
@@ -344,8 +388,6 @@ Minimality (maximality) of $\varr{\opb}$   is equivalent to maximality (minimali
   \label{fig:semicircle-max-plane}
 \end{figure}
 
-
-
 Figure \ref{fig:min-max}  shows the Bloch vectors $\bor_0,\bor_1$ corresponding to the states that minimize, resp. maximize $\sdevr{\opb}$. These are unit vectors in the plane spanned by $\boa,\bob$ (except for the cases where the maximum $\sdevr{\opb}=1$ and $\sdev{\opa} > \boa\cdot\bob$). There are four constellations of interest according to distinct regions of increasing values of $\sdev{\opa}$. We determine the minimal and maximal values $\sdevmin{\opb},\sdevmax{\opb}$ in each case. To be specific, we assume $\boa\cdot\bob\ge\|\boa\times\bob\|$, that is, $\theta\le\pi/4$; the case $\theta>\pi/4$ is treated similarly. As evident from Figures \ref{fig:semicircle-min-plane} and \ref{fig:semicircle-max-plane}, we have $\|\boex\|=\sdev{\opa}$, and $\|\boy\|=\sdevmin{\opb}$, resp. $\|\boy\|=\sdevmax{\opb}$. Then repeated application of Eq.~\ref{eq:axb} and using the relation $\boex\cdot\boy=\pm\boa\cdot\bob\|\boex\|\|\boy\|$ with the appropriate choice of sign gives the following equations for $\sdevmin{\opb}$, $\sdevmax{\opb}$
 \begin{align}
   \label{eqn:qubit-bounds-1}
@@ -361,67 +403,18 @@ Figure \ref{fig:min-max}  shows the Bloch vectors $\bor_0,\bor_1$ corresponding 
   \sdev{\opa}\geq\boa\cdot\bob\iff&\boa\cdot\bor\leq\|\boa\times\bob\|\\
   \implies&\sdevmax{\opb}=1\quad\text{at }\bor=\bor_1\ (\text{in the direction of }\bob').
 \end{align}
-The presence of an upper bound less than 1 for $\sdev{\opb}$ in the cases shown in \eqref{eqn:qubit-bounds-1} and \eqref{eqn:qubit-bounds-2}(i.e., $\sdev{\opa}< \boa\cdot\bob$) can be interpreted in terms of another observable $\opb^\prime = \bob^\prime\cdot\bosig$ where $\bob^\prime$ is the unit vector, in the plane spanned by $\boa$ and $\bob$, orthogonal to $\bob$. With this definition we have $\varr\opb = 1-\varr{\opb^\prime}$ so the lower bound on the uncertainty  $\sdev{\opb^\prime}$ (due to its trade-off with $\sdev{\opa}$) imposes an upper bound on $\sdev{\opb}$.
+The presence of an upper bound less than 1 for $\sdev{\opb}$ in the cases shown in \eqref{eqn:qubit-bounds-1} and \eqref{eqn:qubit-bounds-2} (i.e., $\sdev{\opa}< \boa\cdot\bob$) can be interpreted in terms of another observable $\opb^\prime = \bob^\prime\cdot\bosig$ where $\bob^\prime$ is the unit vector, in the plane spanned by $\boa$ and $\bob$, orthogonal to $\bob$. With this definition we have $\varr\opb = 1-\varr{\opb^\prime}$ so the lower bound on the uncertainty  $\sdev{\opb^\prime}$ (due to its trade-off with $\sdev{\opa}$) imposes an upper bound on $\sdev{\opb}$.
 
-By solving the various quadratic equations  we obtain the following relation which defines, exactly, the allowed uncertainty region. In particular we can achieve our aim of giving a closed form for the minimum and maximum values of $\sdevr{\opb}$  given a fixed $\sdev{\opa}$. Note that the resulting tight uncertainty relation is state-independent in the sense described above: the bounds for $\varr{\opb}$ depend only on the chosen $\var{\opa}$ and the observables $\opa$ and $\opb$.
-\begin{thm}\label{thm:ab-pur}
-  Given a pair of qubit observables  $\opa=\boa\cdot\bosig$, $\opb=\bob\cdot\bosig$ as well as a fixed uncertainty $\sdevr{\opa}=\sdev{\opa}$ we have
-  \begin{align}%\label{eqn:full-qubit-uncertainty region}
-    \left|\sdev{\opa} (\boa\cdot\bob) - \|\boa\times\bob\|\sqrt{1-\var \opa}\right|
-    \leq \sdevr{\opb} %\\ &
-                            \leq\begin{cases}
-                              \sdev{\opa} (\boa\cdot\bob) + \|\boa\times\bob\|\sqrt{1-\var \opa} & \text{\normalfont if } \sdev{\opa} < \boa\cdot\bob\\
-                              1 & \text{\normalfont otherwise}
-                            \end{cases}.%\nonumber
-  \end{align}
-\end{thm}
-The resulting uncertainty region is plotted in Fig.~\ref{fig:top-level-err-region}.
-
-
-\begin{figure*}[ht]
-  \begin{subfigure}[b]{0.4\textwidth}\centering
-    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-pi-by-16-bw}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
-    \label{fig:err-region-pi-by-16}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.4\textwidth}\centering
-    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-pi-by-8-bw}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{8}$.}
-    \label{fig:err-region-pi-by-8}
-  \end{subfigure}\\
-  \begin{subfigure}[b]{0.4\textwidth}\centering
-    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-pi-by-4-bw}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{4}$.}
-    \label{fig:err-region-pi-by-4}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.4\textwidth}\centering
-    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-3-pi-by-8-bw}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{3\pi}{8}$.}
-    \label{fig:err-region-3pi-by-8}
-  \end{subfigure}\\
-  \begin{subfigure}[b]{0.4\textwidth}\centering
-    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-7-pi-by-16-bw}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{7\pi}{16}$.}
-    \label{fig:err-region-7pi-by-16}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.4\textwidth}\centering
-    \includegraphics[width=\textwidth]{figs/new-qubit-error-region-with-upper-and-lower-bounds-pi-by-2-bw}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{2}$.}
-    \label{fig:err-region-pi-by-2}
-  \end{subfigure}\\
-  \caption[Plots of the uncertainty region for sharp, $\pm1$-valued qubit observables.]{Plots of the uncertainty region for sharp, $\pm1$-valued qubit observables. The straight and curved dot-dashed lines are the previously known lower bounds \eqref{eqn:straight-lower-bound-blw} and \eqref{eqn:curved-lower-bound-blw}, respectively.}
-  \label{fig:top-level-err-region}
-\end{figure*}
-
+By solving the various quadratic equations  we obtain the following relation which defines, exactly, the allowed uncertainty region. In particular we can achieve our aim of giving a closed form for the minimum and maximum values of $\sdevr{\opb}$  given a fixed $\sdev{\opa}$. Note that the resulting tight uncertainty relation~\eqref{eqn:full-qubit-uncertainty region} is state-independent in the sense described above: the bounds for $\varr{\opb}$ depend only on the chosen $\var{\opa}$ and the observables $\opa$ and $\opb$.
 
 \subsection{Schr\"odinger uncertainty relation}\label{sec:sch-uncertainty-relation}
 
 
 We now turn to a brief analysis of the Schr\"odinger inequality, beginning with the following observation.
 \begin{lem}
-The identity \eqref{eq:r2-id} for unit vectors $\boa,\bob\in\mathbb{R}^3$ and any vector $\bor\in\mathbb{R}^3$can be rewritten in the following two equivalent forms:
+The identity \eqref{eq:r2-id} for unit vectors $\boa,\bob\in\mathbb{R}^3$ and any vector $\bor\in\mathbb{R}^3$ can be rewritten in the following two equivalent forms:
 \begin{align}
- & \left\|\boa\times\bob\right\|^2 \left\|\bor\right\|^2 = \bigl((\boa\times\bob)\cdot\bor\bigr)^2 + \bigl\|(\boa\times\bob)\times\bor\bigr\|^2\tag{17}\\
+ & \left\|\boa\times\bob\right\|^2 \left\|\bor\right\|^2 = \bigl((\boa\times\bob)\cdot\bor\bigr)^2 + \bigl\|(\boa\times\bob)\times\bor\bigr\|^2\\
  &\iff  \left(1-(\boa\cdot\bor)^2\right)+\left(1-(\bob\cdot\bor)^2\right)+\left(\|\boa\times\bob\|^2-(\boa\times\bob\cdot\bor)^2\right)=\|\boa\times\bob\|^2\bigl(1-\|\bor\|^2\bigr)+2(1-\boa\cdot\bob\,\boa\cdot\bor\,\bob\cdot\bor)\label{eq:r2-id2}\\
  &\iff \bigl(1-(\boa\cdot\bor)^2\bigr)\bigl(1-(\bob\cdot\bor)^2\bigr)-
     \left((\boa\times\bob\cdot\bor)^2+(\boa\cdot\bob-\boa\cdot\bor\,\bob\cdot\bor)^2\right)=\|\boa\times\bob\|^2\bigl(1-\|\bor\|^2\bigr).\label{eq:r2-id3}
@@ -434,23 +427,23 @@ Recall the identity based on the Lagrange formula for the double vector product,
     = (\boa\cdot\bor)^2 + (\bob\cdot\bor)^2 - 2(\boa\cdot\bob)\,(\boa\cdot\bor)\,(\bob\cdot\bor).
   \end{align}
   We use this to rewrite \eqref{eq:r2-id} as follows:
-  \begin{align*}
+  \begin{align}
     \|\boa\times\bob\|^2\|\bor\|^2&=(\boa\times\bob\cdot\bor)^2+(\boa\cdot\bor)^2 + (\bob\cdot\bor)^2 - 2\boa\cdot\bob\,\boa\cdot\bor\,\bob\cdot\bor)\\
-                                  &=\|\boa\times\bob\|^2-\left(\|\boa\times\bob\|^2-(\boa\times\bob\cdot\bor)^2\right)+1-\left(1-(\boa\cdot\bor)^2\right)+1-\left(1-(\bob\cdot\bor)^2\right)-2 (\boa\cdot\bob)\,(\boa\cdot\bor)\,(\bob\cdot\bor)                                    
-  \end{align*}
+                                  &=\|\boa\times\bob\|^2-\left(\|\boa\times\bob\|^2-(\boa\times\bob\cdot\bor)^2\right)+\\&\qquad 1-\left(1-(\boa\cdot\bor)^2\right)+1-\left(1-(\bob\cdot\bor)^2\right)-2 (\boa\cdot\bob)\,(\boa\cdot\bor)\,(\bob\cdot\bor)\nonumber                                  
+  \end{align}
   Upon rearranging terms, we obtain \eqref{eq:r2-id2}, showing at once its equivalence with \eqref{eq:r2-id}.
   
   Next, working on the left hand side of \eqref{eq:r2-id3}, we obtain:
  \begin{align}
- &\bigl(1-(\boa\cdot\bor)^2\bigr)\bigl(1-(\bob\cdot\bor)^2\bigr)-
-    \left((\boa\times\bob\cdot\bor)^2+(\boa\cdot\bob-\boa\cdot\bor\,\bob\cdot\bor)^2\right)\\
-    &\quad=1-(\boa\cdot\bor)^2-(\bob\cdot\bor)^2+(\boa\cdot\bor)^2(\bob\cdot\bor)^2-(\boa\times\bob\cdot\bor)^2-(\boa\cdot\bob)^2-(\boa\cdot\bor)^2(\bob\cdot\bor)^2
-    +2\boa\cdot\bob\,\boa\cdot\bor\,\bob\cdot\bor\\
-    &\quad=\left(1-(\boa\cdot\bor)^2\right)+\left(1-(\bob\cdot\bor)^2\right)-1+\left(\|\boa\times\bob\|^2-(\boa\times\bob\cdot\bor)^2\right)-\left(\|\boa\times\bob\|^2+(\boa\cdot\bob)^2\right)
-    +2\boa\cdot\bob\,\boa\cdot\bor\,\bob\cdot\bor\\
-    &\quad=\left(1-(\boa\cdot\bor)^2\right)+\left(1-(\bob\cdot\bor)^2\right)+\left(\|\boa\times\bob\|^2-(\boa\times\bob\cdot\bor)^2\right)-2(1-\boa\cdot\bob\,\boa\cdot\bor\,\bob\cdot\bor)=: g(\boa,\bob,\bor)
+ \bigl(1-(\boa\cdot\bor)^2\bigr)\bigl(1-(\bob\cdot\bor)^2\bigr)&-
+   \left((\boa\times\bob\cdot\bor)^2+(\boa\cdot\bob-\boa\cdot\bor\,\bob\cdot\bor)^2\right)\\
+ &=1-(\boa\cdot\bor)^2-(\bob\cdot\bor)^2+(\boa\cdot\bor)^2(\bob\cdot\bor)^2-(\boa\times\bob\cdot\bor)^2\\ \nonumber&\qquad - (\boa\cdot\bob)^2-(\boa\cdot\bor)^2(\bob\cdot\bor)^2
+   +2\boa\cdot\bob\,\boa\cdot\bor\,\bob\cdot\bor\\
+ &=\left(1-(\boa\cdot\bor)^2\right)+\left(1-(\bob\cdot\bor)^2\right)-1+\left(\|\boa\times\bob\|^2-(\boa\times\bob\cdot\bor)^2\right)\\ \nonumber&\qquad - \left(\|\boa\times\bob\|^2+(\boa\cdot\bob)^2\right)
+   +2\boa\cdot\bob\,\boa\cdot\bor\,\bob\cdot\bor\\
+ &=\left(1-(\boa\cdot\bor)^2\right)+\left(1-(\bob\cdot\bor)^2\right)+\left(\|\boa\times\bob\|^2-(\boa\times\bob\cdot\bor)^2\right)\\ \nonumber &\qquad - 2(1-\boa\cdot\bob\,\boa\cdot\bor\,\bob\cdot\bor)=: g(\boa,\bob,\bor)
  \end{align}
- Equating this with the right hand side, we see that \eqref{eq:r2-id3} implies \eqref{eq:r2-id2}.
+ Equating this with the right hand side of \eqref{eq:r2-id3}, we see that \eqref{eq:r2-id3} implies \eqref{eq:r2-id2}.
  
  Conversely, we may use \eqref{eq:r2-id2} to see that $g(\boa,\bob,\bor)$ is actually equal $\|\boa\times\bob\|^2\bigl(1-\|\bor\|^2\bigr)$, which shows that \eqref{eq:r2-id2} implies
  \eqref{eq:r2-id3}.
@@ -464,8 +457,6 @@ for any qubit state $\rho = \frac{1}{2}\left(\operatorname{I} + \bor\cdot\bosig\
 \end{align}
 Further, we note that the variance of the observable $\opc=\boa\times\bob\cdot\bosig$ is $\varr\opc=\|\boa\times\bob\|^2-(\boa\times\bob\cdot\bor)^2$.
 This can be used to translate the above identities into two equivalent forms of uncertainty equations.
-
-
 \begin{thm}\label{thm:3ur}
   The observables $\opa=\boa\cdot\bosig$, $\opb=\bob\cdot\bosig$, and $\opc=\boa\times\bob\cdot\bosig$ obey the following equivalent uncertainty equations for all states $\rho=\frac12(I+\bor\cdot\bosig)$:
   \begin{equation}\label{eq:triple-ur}
@@ -475,8 +466,7 @@ This can be used to translate the above identities into two equivalent forms of 
   \varr\opa\,\varr\opb-\left[\frac14 \bigl|\expr{\com{\opa}{\opb}}\bigr|^2+\frac14 \bigl(\expr{\acom{\opa}{\opb}}-2\expr{\opa}\expr{\opb}\bigr)^2\right]=\|\boa\times\bob\|^2\bigl(1-\|\bor\|^2\bigr).
 \end{equation}
 \end{thm}
-
-This yields, in particular, the Schr\"odinger inequality \eqref{eq:SUR}.
+\noindent This yields, in particular, the Schr\"odinger inequality \eqref{eq:SUR}.
 
 The Schr\"odinger inequality does not have the form of a  state-independent uncertainty relation, except in the case $\boa\cdot\bob=0$ (treated in Subsection \ref{sec:xyz}).
 Nevertheless, it does provide a specification of the lower boundary of the uncertainty relation. The upper boundary is obtained  by appliciation of the full equation \eqref{eq:S-eq}.
@@ -501,11 +491,7 @@ This term is analogous in form to the classical covariance; however, in the quan
 
 \subsection{Uncertainty region for triples of $\pm 1$-valued qubit observables}
 \label{sec:qubit-triple-uncertainty}
-Here, as before, $\opa = \boa\cdot\bosig$ and $\opb = \bob\cdot\bosig$, for $\boa, \bob$ non-collinear 3-vectors of unit norm, however we now consider the uncertainty region
-\begin{equation}
-  {\mathrm MUR}_\Delta(\opa,\opb,\opc),
-\end{equation}
-where $\opc = \boc\cdot\bosig$, for $\boc = \frac{\boa\times\bob}{\|\boa\times\bob\|}$.
+Here, as before, $\opa = \boa\cdot\bosig$ and $\opb = \bob\cdot\bosig$, for $\boa, \bob$ non-collinear 3-vectors of unit norm, however we now consider the uncertainty region ${\mathrm{ PUR}}_\Delta(\opa,\opb,\opc)$, where $\opc = \boc\cdot\bosig$, for $\boc = \frac{\boa\times\bob}{\|\boa\times\bob\|}$.
 
 Consider a circular slice $C_Z$ through the Bloch sphere, made up of the vectors $\bor$, such that $\bor\cdot\boc = \sqrt{1-Z^2}$, for a fixed $Z\in[0,1]$. Each of these vectors may be projected into the plane spanned by $\boa$ and $\bob$, and a vector $\bou$ in the $\opa$, $\opb$ plane is in the image of this projection if and only if, $\|\bou\| \leq Z$
 \begin{align}
@@ -524,12 +510,12 @@ where
   \xi_\pm = (\boa\cdot\bob)^2 \var{\opa} + \|\boa\times\bob\|^2(1-\var{\opa} + 1-\var{\opc}) \pm 2(\boa\cdot\bob)\sqrt{1-\var{\opa}}\|\boa\times\bob\|\sqrt{\var{\opa} + \var{\opc} -1}
 \end{align}
 
-To prove this we let $\boa$, $\bob$ and $\boc$ be unit three vectors, and, without loss of generality, assume the following
+To prove this we let $\boa$, $\bob$ and $\boc$ be unit three-vectors, and, without loss of generality, assume the following
 \begin{align}
   \boa &= \begin{pmatrix}1\\0\\0\end{pmatrix} &&
                                                 \bob = \begin{pmatrix}b_1\\b_2\\0\end{pmatrix} &&
   \boc = \begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}\\
-  1 &> b_1, b_2, > 0\\
+  1 &> b_1, b_2 > 0,\\
   1 &> c_1, c_3 > 0,
 \end{align}
 where we have exploited our freedom to choose coordinates to fix $\boa$, $b_3$ and $c_3$ and the equivalence of the observables $\boe\cdot\bosig$ and $-\boe\cdot\bosig$ to choose $b_1, b_2$ and $c_1$ $>$ 0. We now choose a $Z\in (0,1)$ and consider the disk formed by the intersection of the Bloch sphere with plane $\{\bor\in\mathbb{R}^3\,|\,\bor\cdot\boc = Z\}$. This disk is perpendicular to the vector $\boc$, has centre $Z \boc$ and radius $\sqrt{1-Z^2}$. The projection of this disk onto the plane spanned by $\boa$ and $\bob$ is an ellipse and may be characterised with the parameters
@@ -568,40 +554,40 @@ There are two cases, which may be distinguished using the discriminant of \eqref
   Z^2 \leq \|\bob\times\boc\|^2 &\iff \text{ $\var{\opb} = 1$ is attained if $\boa\cdot\bor$ is in the interval } \\ & \left[\frac{b_2(Z(\boc\times\bob)_3 - \sqrt{c_3^2 (\|\boc\times\bob\|^2 - Z^2)})}{\|\boc\times\bob\|^2},\frac{b_2(Z(\boc\times\bob)_3 + \sqrt{c_3^2 (\|\boc\times\bob\|^2 - Z^2)})}{\|\boc\times\bob\|^2}\right].
 \end{align}
 
-\begin{figure*}[ht]
+\begin{figure*}[t]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.38\textwidth}
     \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-1}
     \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
     \label{fig:err-region-pi-by-16}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.38\textwidth}
     \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-2}
     \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
     \label{fig:err-region-pi-by-8}
   \end{subfigure}\\
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.38\textwidth}
     \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-4-16-1}
     \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{4\pi}{16}$.}
     \label{fig:err-region-pi-by-16}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.38\textwidth}
     \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-4-16-2}
     \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{4\pi}{16}$.}
     \label{fig:err-region-pi-by-8}
   \end{subfigure}\\
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.38\textwidth}
     \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-8-16-1}
     \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{8\pi}{16}$.}
     \label{fig:err-region-pi-by-16}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.38\textwidth}
     \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-8-16-2}
     \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{8\pi}{16}$.}
     \label{fig:err-region-pi-by-8}
   \end{subfigure}
   \caption{Plots of the uncertainty region for $3$ sharp, $\pm1$-valued qubit observables where the Bloch vector of one observable is orthogonal to the other two.}
-  \label{fig:top-level-err-region}
+  \label{fig:top-level-triple-err-region}
 \end{figure*}
 
 

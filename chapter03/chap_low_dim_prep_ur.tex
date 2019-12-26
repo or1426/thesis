@@ -492,25 +492,64 @@ This term is analogous in form to the classical covariance; however, in the quan
 \subsection{Uncertainty region for triples of $\pm 1$-valued qubit observables}
 \label{sec:qubit-triple-uncertainty}
 Here, as before, $\opa = \boa\cdot\bosig$ and $\opb = \bob\cdot\bosig$, for $\boa, \bob$ non-collinear 3-vectors of unit norm, however we now consider the uncertainty region ${\mathrm{ PUR}}_\Delta(\opa,\opb,\opc)$, where $\opc = \boc\cdot\bosig$, for $\boc = \frac{\boa\times\bob}{\|\boa\times\bob\|}$.
-
-Consider a circular slice $C_Z$ through the Bloch sphere, made up of the vectors $\bor$, such that $\bor\cdot\boc = \sqrt{1-Z^2}$, for a fixed $Z\in[0,1]$. Each of these vectors may be projected into the plane spanned by $\boa$ and $\bob$, and a vector $\bou$ in the $\opa$, $\opb$ plane is in the image of this projection if and only if, $\|\bou\| \leq Z$
-\begin{align}
-  \oppi_{\boa\bob} C_Z = \left\{\bou\in \operatorname{span}(\boa,\bob)\,\middle|\,\|\bou\| \leq Z\right\}.
-\end{align}
-We note that the variances of $\opa$ and $\opb$ are unchanged by this projection so
-\begin{align}
-  \left\{(\varr{\opa}, \varr{\opb})\middle|\,\varr{\opc} = Z\right\} = \left\{(\varr{\opa}, \varr{\opb})\middle|\, \rho = \frac{1}{2}\left(1 + \bou\cdot\bosig\right),\, \bou\in\oppi_{\boa\bob}C_Z\right\}.
-\end{align}
-This may be characterised with the following procedure, first choose a $\var{\opc}\in[0,1]$, then fix a $\var{\opa}\in[\sqrt{1-\var{\opc}}, 1]$, then the variances for $\opb$ realised by states with these fixed standard deviations for $\opa$ and $\opc$ are exactly those which satisfy the inequality
+We summarise this uncertainty region in theorem~\ref{thm:qubit-triple-ur}.
+\begin{thm}\label{thm:qubit-triple-ur}
+  Given $\var{\opc}\in[0,1]$, then $\var{\opa}$ must be in the range $[\sqrt{1-\var{\opc}}, 1]$. We then have the restriction
 \begin{align}
   \xi_- \leq \var{\opb}   \leq\begin{cases}\xi_+ & \var{\opa} \leq 1-\var{\opc}\|\boa\times\bob\|^2\\1&\text{otherwise}\end{cases}
 \end{align}
 where
 \begin{align}
-  \xi_\pm = (\boa\cdot\bob)^2 \var{\opa} + \|\boa\times\bob\|^2(1-\var{\opa} + 1-\var{\opc}) \pm 2(\boa\cdot\bob)\sqrt{1-\var{\opa}}\|\boa\times\bob\|\sqrt{\var{\opa} + \var{\opc} -1}
+  \xi_\pm = (\boa\cdot\bob)^2 \var{\opa} + \|\boa\times\bob\|^2(1-\var{\opa} + 1-\var{\opc}) \pm 2(\boa\cdot\bob)\sqrt{1-\var{\opa}}\|\boa\times\bob\|\sqrt{\var{\opa} + \var{\opc} -1}.
 \end{align}
+Furthermore this inequality is tight, that is it determines exactly the set of variances that make up the uncertainty region.
+\end{thm}
 
-To prove this we let $\boa$, $\bob$ and $\boc$ be unit three-vectors, and, without loss of generality, assume the following
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.38\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-1}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
+    \label{fig:err-region-pi-by-16}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.38\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-2}
+    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
+    \label{fig:err-region-pi-by-8}
+  \end{subfigure}\\
+  \begin{subfigure}[b]{0.38\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-4-16-1}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{4\pi}{16}$.}
+    \label{fig:err-region-pi-by-16}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.38\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-4-16-2}
+    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{4\pi}{16}$.}
+    \label{fig:err-region-pi-by-8}
+  \end{subfigure}\\
+  \begin{subfigure}[b]{0.38\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-8-16-1}
+    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{8\pi}{16}$.}
+    \label{fig:err-region-pi-by-16}
+  \end{subfigure}\hfill
+  \begin{subfigure}[b]{0.38\textwidth}
+    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-8-16-2}
+    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{8\pi}{16}$.}
+    \label{fig:err-region-pi-by-8}
+  \end{subfigure}
+  \caption{Plots of the uncertainty region for $3$ sharp, $\pm1$-valued qubit observables where the Bloch vector of one observable is orthogonal to the other two.}
+  \label{fig:top-level-triple-err-region}
+\end{figure}
+% This may be characterised with the following procedure, first choose a $\var{\opc}\in[0,1]$, then fix a $\var{\opa}\in[\sqrt{1-\var{\opc}}, 1]$, then the variances for $\opb$ realised by states with these fixed standard deviations for $\opa$ and $\opc$ are exactly those which satisfy the inequality
+% \begin{align}
+%   \xi_- \leq \var{\opb}   \leq\begin{cases}\xi_+ & \var{\opa} \leq 1-\var{\opc}\|\boa\times\bob\|^2\\1&\text{otherwise}\end{cases}
+% \end{align}
+% where
+% \begin{align}
+%   \xi_\pm = (\boa\cdot\bob)^2 \var{\opa} + \|\boa\times\bob\|^2(1-\var{\opa} + 1-\var{\opc}) \pm 2(\boa\cdot\bob)\sqrt{1-\var{\opa}}\|\boa\times\bob\|\sqrt{\var{\opa} + \var{\opc} -1}
+% \end{align}
+\begin{proof}
+Without loss of generality, we assume the following
 \begin{align}
   \boa &= \begin{pmatrix}1\\0\\0\end{pmatrix} &&
                                                 \bob = \begin{pmatrix}b_1\\b_2\\0\end{pmatrix} &&
@@ -518,7 +557,7 @@ To prove this we let $\boa$, $\bob$ and $\boc$ be unit three-vectors, and, witho
   1 &> b_1, b_2 > 0,\\
   1 &> c_1, c_3 > 0,
 \end{align}
-where we have exploited our freedom to choose coordinates to fix $\boa$, $b_3$ and $c_3$ and the equivalence of the observables $\boe\cdot\bosig$ and $-\boe\cdot\bosig$ to choose $b_1, b_2$ and $c_1$ $>$ 0. We now choose a $Z\in (0,1)$ and consider the disk formed by the intersection of the Bloch sphere with plane $\{\bor\in\mathbb{R}^3\,|\,\bor\cdot\boc = Z\}$. This disk is perpendicular to the vector $\boc$, has centre $Z \boc$ and radius $\sqrt{1-Z^2}$. The projection of this disk onto the plane spanned by $\boa$ and $\bob$ is an ellipse and may be characterised with the parameters
+where we have exploited our freedom to choose coordinates to fix $\boa$, $b_3$ and $c_3$ and the equivalence of the observables $\boe\cdot\bosig$ and $-\boe\cdot\bosig$ to choose $b_1, b_2$ and $c_1$ $>$ 0. We now choose a $Z\in (0,1)$ and consider the disk formed by the intersection of the Bloch sphere with plane $\{\bor\in\mathbb{R}^3\,|\,\bor\cdot\boc = Z\}$. This disk is perpendicular to the vector $\boc$, has centre $Z \boc$ and radius $\sqrt{1-Z^2}$. We note that changing the component of the Bloch vector $\bor$ in the direction of $\boc$ does not change the variances $\varr{\opa}$ and $\varr{\opb}$. We therefore consider the image of the disk under the projection onto the plane spanned by $\boa$ and $\bob$. The image of the disk forms an ellipse and may be characterised with the parameters
 \begin{align}
   a &= \sqrt{1-Z^2}\\
   b &= c_3\sqrt{1-Z^2}\\
@@ -553,43 +592,7 @@ There are two cases, which may be distinguished using the discriminant of \eqref
   Z^2 > \|\bob\times\boc\|^2 &\iff \text{ $\var{\opb} = 1$ may not be attained}\\
   Z^2 \leq \|\bob\times\boc\|^2 &\iff \text{ $\var{\opb} = 1$ is attained if $\boa\cdot\bor$ is in the interval } \\ & \left[\frac{b_2(Z(\boc\times\bob)_3 - \sqrt{c_3^2 (\|\boc\times\bob\|^2 - Z^2)})}{\|\boc\times\bob\|^2},\frac{b_2(Z(\boc\times\bob)_3 + \sqrt{c_3^2 (\|\boc\times\bob\|^2 - Z^2)})}{\|\boc\times\bob\|^2}\right].
 \end{align}
-
-\begin{figure*}[t]
-  \centering
-  \begin{subfigure}[b]{0.38\textwidth}
-    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-1}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
-    \label{fig:err-region-pi-by-16}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.38\textwidth}
-    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-1-16-2}
-    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{\pi}{16}$.}
-    \label{fig:err-region-pi-by-8}
-  \end{subfigure}\\
-  \begin{subfigure}[b]{0.38\textwidth}
-    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-4-16-1}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{4\pi}{16}$.}
-    \label{fig:err-region-pi-by-16}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.38\textwidth}
-    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-4-16-2}
-    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{4\pi}{16}$.}
-    \label{fig:err-region-pi-by-8}
-  \end{subfigure}\\
-  \begin{subfigure}[b]{0.38\textwidth}
-    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-8-16-1}
-    \caption{The uncertainty region with $\boa\cdot\bob = \cos\frac{8\pi}{16}$.}
-    \label{fig:err-region-pi-by-16}
-  \end{subfigure}\hfill
-  \begin{subfigure}[b]{0.38\textwidth}
-    \includegraphics[clip,width=\textwidth]{figs/qubit-abc-triple-pur-8-16-2}
-    \caption{Another view of the uncertainty region with $\boa\cdot\bob = \cos\frac{8\pi}{16}$.}
-    \label{fig:err-region-pi-by-8}
-  \end{subfigure}
-  \caption{Plots of the uncertainty region for $3$ sharp, $\pm1$-valued qubit observables where the Bloch vector of one observable is orthogonal to the other two.}
-  \label{fig:top-level-triple-err-region}
-\end{figure*}
-
+\end{proof}
 
 % Here we use similar methods to those employed for pairs of general qubit observables. We consider three observables defined by unit Bloch vectors $\opa = \boa\cdot\bosig$, $\opb = \bob\cdot\bosig$ and $\opc = \boc\cdot\bosig$, and a state $\rho = \qbit{\bor}$. By relabelling $\pm 1 \mapsto \mp 1$, if necessary we can ensure $\boa\cdot\bob, \bob\cdot\boc, \boc\cdot\boa \geq 0$. Requiring that $\varr{\opc} = z^2$, for some fixed $z\in [0,1]$ constrains $\bor$, in particular to be in one of two planes, $\bor\cdot\boc = \pm\sqrt{1-z^2}$, the state $\rho = \qbit[][-]{\bor}$ has exactly the same variance triple $(\varr{\opa}, \var{\opb}, \var{\opc})$ as $\rho$, so we only consider the positive plane $\bor\cdot\boc = \sqrt{1-z^2}$. The intersection of this plane with the Bloch sphere is a disk of radius $z$ centered at $\sqrt{1-z^2}\boc$, we will denote this disk $D(\boc,z)$. The variances of $\opa$ and $\opb$, respectively are not sensitive to the full vector $\bor$, but instead the quantities $\bor\cdot\boa$ and $\bor\cdot\bob$, respectively. We therefore seek the projection of the $D(\boc,z)$, onto the plane spanned by $\boa$ and $\bob$. It is well known that the orthogonal projection of a circle is an ellipse, and so the orthogonal projection of a disk must be the region bounded by an ellipse. We choose a basis for the $\boa,\bob$ plane $\boa, \boap$, where $\boa\cdot\boap=0$ and $\boap\cdot\bob \geq 0$. If $\vproj{\boa}{\bob}:\R^2\to\R^2$ is the orthogonal projection onto the $\boa,\bob$ plane the ellipse is centered at $\sqrt{1-z^2}\vproj{\boa}{\bob}\boc = \sqrt{1-z^2}(\boc\cdot\boa,\boc\cdot\boap)$, has semi-minor axis parallel to $(\boc\cdot\boa,\boc\cdot\boap)$ of length $z\sqrt{ 1 - \norm{\vproj{\boa}{\bob}\boc}^2}$, and semi-major axis of length $z$. We can give an explicit description of the ellipse as the set of points $(r_1, r_2)$, satisfying
 % % \begin{align} %opposite convention for z <-> sqrt{1-z^2}
@@ -614,7 +617,7 @@ where $\boa$ and $\bob$ are normalised, and $\bosig$ is the usual vector of qubi
 \begin{align}
   \rho =\frac{w}{2}\left(\opi_2 + \bor\cdot\bosig\right) \oplus (1-w)=\begin{pmatrix}\frac{w}{2}\left(\opi_2 + \bor\cdot\bosig\right) & 0 \\ 0& (1-w)\end{pmatrix},
 \end{align}
-where $\frac{1}{2}\left(\opi_2 + \bor\cdot\bosig\right)$ is a qubit density matrix, and $w$ is a real parameter between $0$ and $1$ (inclusive). We can compute the variances of $\opa$ and $\opb$ for a state of this form directly from the definition
+where $\frac{1}{2}\left(\opi_2 + \bor\cdot\bosig\right)$ is a qubit density matrix, and $w$ is a real parameter between $0$ and $1$ (inclusive). We can compute the variances of $\opa$ and $\opb$ for a state of this form directly from the definition, to find
 \begin{align}
   \varr{\opa} &= w - w^2 (\boa\cdot\bor)^2\\
   \varr{\opb} &= w - w^2 (\bob\cdot\bor)^2.
@@ -657,14 +660,14 @@ We then differentiate $Y_-(u)$
 so that $Y_-(r_a^2) - Y_-(0)\ge 0$ always.
 Hence we  take $r_a^2 = 0$ to find the minimum $\varmin{\opb}=X(1-X)$ at a fixed $\var{\opa}=X$. The lower boundary of the uncertainty region is therefore given by the curve $\sdev{\opb} = \sdev{\opa}\sqrt{1-\var{\opa}}$. Since the region is symmetric under reflection on the axis $\sdev\opa=\sdev\opb$ and in the present case must contain the uncertainty region for orthogonal qubit observables, it is given by the set
 \begin{align}
-  \PUR{\Delta}{\opa,\opb} = \left\{(\sdev{\opa},\sdev{\opb})\in [0,1]\times[0,1]\, \middle|\, \sdev{\opb} \geq \sdev{\opa}\sqrt{1-\var{\opa}} \text{ and } \sdev{\opa} \geq \sdev{\opb}\sqrt{1-\var{\opb}}  \right\},% {\rm PUR}_\Delta(\opa,\opb)
+  \PUR{\Delta}{\opa}{\opb} = \left\{(\sdev{\opa},\sdev{\opb})\in [0,1]\times[0,1]\, \middle|\, \sdev{\opb} \geq \sdev{\opa}\sqrt{1-\var{\opa}} \text{ and } \sdev{\opa} \geq \sdev{\opb}\sqrt{1-\var{\opb}}  \right\},% {\rm PUR}_\Delta(\opa,\opb)
 \end{align}
 shown in Figure \ref{fig:extended-qubit-uncertainty-region}.
 
 \begin{center}
   \begin{figure}[ht]
     \includegraphics[width=\textwidth]{figs/extended-qubit-error-region-bw}
-    \caption[The uncertainty region for the qutrit observables defined in equation \eqref{eqn:extended-qubit-obs-defn}]{The uncertainty region for the qutrit observables defined in equation \eqref{eqn:extended-qubit-obs-defn}. The dashed line indicates the lower boundary of the set of standard deviation pairs achievable by states of the form $\rho_2 \oplus 0$, where $\rho_2$ is a qubit density matrix. The points $(0,1)$, $(0,0)$ and $(1,0)$ are attained by the states $\frac{1}{2}(\opi_2+\bob\cdot\bosig)\oplus 0$, $0\oplus 1$, and $\frac{1}{2}(\opi_2+\boa\cdot\bosig)\oplus 0$ respectively.}
+    \caption[The uncertainty region for the qutrit observables defined in equation \eqref{eqn:extended-qubit-obs-defn}]{The uncertainty region for the qutrit observables defined in equation \eqref{eqn:extended-qubit-obs-defn}. The dashed line indicates the lower boundary of the set of standard deviation pairs achievable by states of the form $\rho_2 \oplus 0$, where $\rho_2$ is a qubit density matrix. The points $(0,1)$, $(0,0)$ and $(1,0)$ are attained by the states $\frac{1}{2}(\opi_2+\bob\cdot\bosig)\oplus 0$, $0\oplus 1$, and $\frac{1}{2}(\opi_2+\boa\cdot\bosig)\oplus 0$ respectively. The ``spike'' towards the origin is formed by putting increasingly more of the weight of the state in the shared eigenspace of the two operators.}
     \label{fig:extended-qubit-uncertainty-region}
   \end{figure}
 \end{center}
@@ -736,14 +739,14 @@ We can set $\rho_{12}$ and $\rho_{23}$ equal to zero without changing the uncert
 
 By elementary methods (differentiating, finding local extrema and comparing them) we can find the minimum and maximum values of $\varr{\opb}$ as a function of $\varr{\opa}$. Because of the way the various constraints change with $\varr{\opa}$ the functional form of the minima and maxima also change. In all there are ten distinct bounding curve segments, given in equation \eqref{eqn:gellmann-bounding-curves} and shown in Figure \ref{fig:qutrit-uncertainty-region}. We give a derivation of these curves in Appendix \ref{app:gellmann-ur}.
 
-\begin{figure*}[ht]\centering
+\begin{figure}[t]\centering
   \includegraphics[width=\textwidth]{figs/full-gellmann-ur-square}
   \caption[The uncertainty region for the qutrit observables defined in equation \eqref{eq:qutrit-observables-def}]{The uncertainty region for the qutrit observables defined in equation \eqref{eq:qutrit-observables-def}. The region contained in the solid curves is the allowed uncertainty region.}
   \label{fig:qutrit-uncertainty-region}
-\end{figure*}
+\end{figure}
 
 
-Similar to the qubit case, the uncertainty region contains nontrivial upper bounds, and it is not of a simple convex shape; however, there are fundamental differences. The region shown in Fig.~\ref{fig:qutrit-uncertainty-region} does touch and include the origin (0,0), reflecting the fact that the two observables have a common eigenstate. The shape of the region is also quite asymmetrical; in particular, it is not possible for both uncertainties to get large simultaneously. It is possible that these features can be connected to trade-off relations involving other observables, as we indicated in the qubit case. However, this may require the acquisition of a host of further case studies.
+Similar to the qubit case, the uncertainty region contains nontrivial upper bounds, and it is not of a simple (e.g. convex shape); however, there are fundamental differences. The region shown in Fig.~\ref{fig:qutrit-uncertainty-region} does touch and include the origin (0,0), reflecting the fact that the two observables have a common eigenstate. The shape of the region is also quite asymmetrical; in particular, it is not possible for both uncertainties to get large simultaneously. It is possible that these features can be connected to trade-off relations involving other observables, as we indicated in the qubit case. However, this may require the acquisition of a host of further case studies.
 The Schr\"odinger relation does not entail the lower bound of the uncertainty region in this case. 
 
 We show this by determining the maximum value in the interval of possible values of the Schr\"odinger bound,
@@ -778,8 +781,8 @@ Finally we described the uncertainty region for two pairs of qutrit observables,
 
 The examples studied here reinforce the qualitative understanding of  the uncertainty principle  as the statement that the incompatibility (non-commutativity) of a pair of observables generally enforces a state-independent lower bound to their uncertainty region. Where incompatible observables do have joint eigenstates, allowing the uncertainty region to include the origin, one must still expect that parts of some neighbourhood of (0,0) will remain excluded from the uncertainty region. 
 
-The general theory of the structure of uncertainty regions is still unknown. It seems likely that an expanding library of case studies, like those described above, will help point the way for future investigations of this theory. A notable feature of these investigations is how rapidly the computations become more difficult as the Hilbert space dimension increases, for example attempting to generalise the results of sections \ref{sec:qubit-uncertainty} and \ref{sec:qubit-extended-uncertainty} to the case of extended qubit observables with non-orthogonal Bloch vectors requires computing the roots of fifth order polynomials. One avenue for further investigation could be the use of numerical methods in the analysis; since the variance is quadratic in the state the problem may be reduced to polynomial root finding, which may be efficiently solved using well known numerical techniques.
-To conclude, we expect that much can be learned about the uncertainty principle through the study of uncertainty regions, and hope our investigation will encourage some readers to undertake further case studies.
+The  structure of uncertainty regions is still unknown. It seems likely that an expanding library of case studies, like those described above, will help point the way for future investigations of this theory. A notable feature of these investigations is how rapidly the computations become more difficult as the Hilbert space dimension increases, for example attempting to generalise the results of sections \ref{sec:qubit-uncertainty} and \ref{sec:qubit-extended-uncertainty} to the case of extended qubit observables with non-orthogonal Bloch vectors requires computing the roots of fifth order polynomials. One avenue for further investigation could be the use of numerical methods in the analysis; since the variance is quadratic in the state the problem may be reduced to polynomial root finding, which may be efficiently solved using well known numerical techniques.
+To conclude, we expect that much can be learned about the uncertainty principle through the study of uncertainty regions and hope our investigation will encourage some readers to undertake further case studies.
 
 \begin{subappendices}
 

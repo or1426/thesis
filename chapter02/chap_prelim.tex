@@ -441,7 +441,100 @@ where $\fcal$ is the $\sigma$-algebra of measurable sets over $\Omega$. Note tha
 \begin{align}
   \opi =  \ope(f_g(\Omega)) = R_g\left[\Omega\right] = R_g\left[\opi\right].
 \end{align}
-A group, representation, action and observable satisfying equation \eqref{eqn:general-covariance} are called a \emph{system of covariance}.
+A group, representation, action and observable satisfying equation \eqref{eqn:general-covariance} are called a \emph{system of covariance}, where the observable $\ope$ is projection-valued this is equivalent to a system of imprimitivity, well known in the representation theory literature (see, e.g. \cite{mackey-1976}, for an introduction). Figure \ref{fig:simple-system-of-covariance} describes a simple system of covariance.
+
+% Command to draw a device at some origin point specified as a 2d argument
+\newcommand{\drawDevice}[3]{%
+% We make take the inputs and make an origin shift vector
+\begin{tikzpicture}[line join=round, overlay, remember picture, scale = #3]%
+\begin{scope}[shift={#1}]%
+\draw[thick, rounded corners = 0, draw=magenta,fill = magenta, opacity=0.3] (0,0,1) rectangle (1,1,1);
+\draw[thick, rounded corners = 0, draw=magenta,fill =  magenta, opacity=0.3] (0,1,1) -- (0,1,0) -- (1,1,0) -- (1,1,1) -- cycle;
+\draw[thick, rounded corners = 0, draw=magenta,fill = magenta, opacity=0.3] (1,1,0) -- (1,0,0) -- (1,0,1) -- (1,1,1) -- cycle;
+\node[] at (0.5,0.5,1) {{#2}};
+\end{scope}
+\end{tikzpicture}%
+}
+\newcommand{\drawDeviceUpsideDown}[3]{%
+% We make take the inputs and make an origin shift vector
+\begin{tikzpicture}[line join=round, overlay, remember picture, scale = #3]%
+\begin{scope}[shift={#1}]%
+\draw[thick, rounded corners = 0, draw=magenta,fill = magenta, opacity=0.3] (0,0,1) rectangle (1,1,1);
+\draw[thick, rounded corners = 0, draw=magenta,fill = magenta, opacity=0.3] (0,1,1) -- (0,1,0) -- (1,1,0) -- (1,1,1) -- cycle;
+\draw[thick, rounded corners = 0, draw=magenta,fill = magenta, opacity=0.3] (1,1,0) -- (1,0,0) -- (1,0,1) -- (1,1,1) -- cycle;
+\node[] at (0.5,0.5,1) {\rotatebox[origin=c]{180}{{#2}}};
+\end{scope}
+\end{tikzpicture}%
+}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.7\textwidth}    
+    \drawDevice{(-4.3+9.5,0.75-0.5)}{$\mathrm{\sigma_z}$}{0.8}
+    \begin{tikzpicture}[scale=1]      
+      \def\x{-4.3}
+      \def\y{0.75}
+      
+      \fill (\x+0.25,\y-0.5) circle [radius=0.125];
+      \draw[->, thick] (\x+0.25,\y-0.75) -- (\x+0.25, \y-0.25);
+      
+      \fill (\x+1,\y-0.5) circle [radius=0.125];
+      \draw[<-, thick] (\x+1,\y-0.75) -- (\x+1, \y-0.25);
+      
+      \fill (\x+1.75,\y-0.5) circle [radius=0.125];
+      \draw[->, thick] (\x+1.75,\y-0.75) -- (\x+1.75, \y-0.25);
+      
+      % \node at (\x+1.75, \y-0.5) {\dots};
+      \fill (\x+2.5,\y-0.5) circle [radius=0.125];
+      \draw[->, thick] (\x+2.5,\y-0.75) -- (\x+2.5, \y-0.25);
+      
+      
+      \draw[->, thick] (\x+3, \y-0.5) -- (\x+3.5, \y-0.5);
+      
+      % Outputs
+      \draw[->, thick] (\x+5.25, \y-0.5) -- (\x+5.75, \y-0.5);
+    \node[right] at (\x+5.75, \y-0.5)  {\text{``up''},\text{``down''},\text{``up''},\text{``up''}};
+  \end{tikzpicture}
+  \caption{A Stern-Gerlach type device correctly measures the $\mathrm{\sigma_z}$ observable on some input qubits, each in a $\mathrm{\sigma_z}$ eigenstate.}
+\end{subfigure}\label{subfig:stern-gerlach-right-way}\\~\\~\\
+\begin{subfigure}{0.7\textwidth}
+  \drawDeviceUpsideDown{(-4.3+9.5, 0.75-0.5)}{$\mathrm{\sigma_z}$}{0.8}
+  \begin{tikzpicture}[scale=1]    
+    \def\x{-4.3}
+    \def\y{-0.75}
+    
+    \fill (\x+0.25,\y-0.5) circle [radius=0.125];
+    \draw[->, thick] (\x+0.25,\y-0.75) -- (\x+0.25, \y-0.25);
+    
+    \fill (\x+1,\y-0.5) circle [radius=0.125];
+    \draw[<-, thick] (\x+1.,\y-0.75) -- (\x+1., \y-0.25);
+    
+    \fill (\x+1.75,\y-0.5) circle [radius=0.125];
+    \draw[->, thick] (\x+1.75,\y-0.75) -- (\x+1.75, \y-0.25);
+      
+    % \node at (\x+1.75, \y-0.5) {\dots};
+    
+    \fill (\x+2.5,\y-0.5) circle [radius=0.125];
+    \draw[->, thick] (\x+2.5,\y-0.75) -- (\x+2.5, \y-0.25);
+    
+    
+    \draw[->, thick] (\x+3, \y-0.5) -- (\x+3.5, \y-0.5);
+    
+    % Outputs
+    \draw[->, thick] (\x+5.1, \y-0.5) -- (\x+5.6, \y-0.5);
+    \node[right] at (\x+5.65, \y-0.5)  {\text{``down''},\text{``up''},\text{``down''},\text{``down''}};
+    %}
+    %\only<3>{
+    %  \draw[->,black,thick, font=\bfseries] (\x+2.5, \y+0.75) node[left] {$R_g$} -- (\x+3.5,\y-0.05);
+    %  \draw[->,black,thick, font=\bfseries] (\x+8, \y+0.75) node[right] {$f_g$} -- (\x+7,\y-0.05);
+    %}
+    
+  \end{tikzpicture}
+  \caption{Rotating the device 180 degrees reverses the output.}
+  \end{subfigure}
+  \caption{The group $\{0,1\}$ with addition modulo $2$, with the group representation implementing ``flipping the measuring upside-down'', action $f_g:h\mapsto gh$, and the observable $\mathrm{\sigma_z}$ form a system of covariance.}\label{fig:simple-system-of-covariance}
+\end{figure}
+
 
 An application of Wigner's theorem~\cites{wigner1931}{wigner1960} shows that the representation must be of the form
 \begin{align}

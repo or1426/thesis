@@ -1,37 +1,17 @@
 
+
 \chapter{Measurement uncertainty and covariance - finite dimensional case studies}
 \label{chap:cov-meas-ur}
 \section{Introduction}
 
-We first consider a restricted, but illustrative example, reminiscent of Heisenberg's $\gamma$-ray microscope thought experiment. Let $\hcal$ be a finite dimensional complex Hilbert space, $A, B:\{0\hdots n-1\}\to\posops[\hcal]$ be finite outcome, sharp (i.e. projection valued) observables. We first measure $A$ by means of the L\"uders measurement \cites{doi:10.1063/1.528831}{Busch2009-compendium-of-physics-luders}, and subsequently measure $B$. If the initial state of the system is $\rho\in\hcal$, and we observe outcome $k\in\{0\hdots n-1\}$ then after the L\"uders measurement the system will be in state
-\begin{align}
-  \rho_i = \frac{A(i)\rho A(i)}{\tr{A(i)\rho A(i)}}.
-\end{align}
-This state change is the analogue of the ``kick'' Heisenberg's particle receives from the position measurement. Note that we avoid division by zero since outcomes with $\tr{A(i)\rho A(i)} = 0$ have zero probability to be observed. 
-On measuring $B$ on the state $\rho_i$ the outcomes are distributed according to
-\begin{align}
-  P(j|i) &= \tr{\rho_i B(j)}\\
-         &= \frac{\tr{A(i)\rho A(i) B(j)}}{\tr{A(i)\rho A(i)}}\\
-         &= \frac{\tr{\rho A(i) B(j)A(i)}}{\tr{A(i)\rho A(i)}},
-\end{align}
-and there is a joint distribution
-\begin{align}
-  P(i,j) = \tr{\rho A(i) B(j)A(i)}.
-\end{align}
-It is natural to wonder how good an approximation the marginal distribution $P(j) = \sum_i P(i,j)$ is to the outcome distribution of a direct measurement of $B$ on the state $\rho$. For example if $A$ is trivial, with each effect proportional to the identity, then the observed statistics of $P(j)$ will be exactly those for direct measurement of $B$, for all states. Conversely if every effect of $A$ is rank-$1$ then the effective observable
-\begin{align}
-  \tilde{B}:j\mapsto \sum_i A(i)B(j)A(i),
-\end{align}
-is a smearing of $A$, the convolution of $A$ with a probability measure, and doesn't necessarily approximate $B$, in a useful way. We generalise this picture by noting that instead of measuring $B$ after $A$ one could instead measure another observable $D$, and it may be that
-\begin{align}
-  \tilde{C}:j\mapsto \sum_i A(i)C(j)A(i),
-\end{align}
-provides a better approximation to $B$ than $\tilde{B}$ does. We might also allow measuring an arbitrary observable instead of performing the L{\"u}ders measurement of $A$, it may be the case that allowing a errors in the $A$ measurement allows a better approximation to $B$. In addition, rather than focusing on sequential measurements we instead allow any compatible approximations, and rather than restricting to only two observables we allow finitely many.  The general picture is then summarised in figure~\ref{fig:depict-meas-uncertainty}, where $E_i$ are the target observables, and $F_i$ are respective compatible approximations, and $J$ is a joint observable for the $F_i$. If supplied with a ``figure of merit'' $d$ indicating how well one observable approximates another we can explore the set
+Here we are interested in a scenario where we would like to measure several observables, denoted $\ope_i$, to achieve some practical goal. Unfortunately it may be that these observables are not compatible, that is there is no way to measure them on the same state. We therefore need to measure some compatible observables which are ``close'', in an appropriate sense, to the targets. The distance measure we use to quantify this closeness will depend on the application, but we will explore methods based based on the $p$-norm of finite dimensional real vectors below. 
+
+The general picture is then summarised in figure~\ref{fig:depict-meas-uncertainty}, where $E_i$ are the target observables, and $F_i$ are respective compatible approximations, and $J$ is a joint observable for the $F_i$. If supplied with a ``figure of merit'' $d$ indicating how well one observable approximates another we can explore the set
 \begin{equation}
   S(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d(\ope_1, \opf_1), d(\ope_2, \opf_2)\hdots d(\ope_n, \opf_n))}{\opf_i \text{ are compatible}},
   \label{eqn:general-ur-definition}
 \end{equation}
-which we call a \emph{measurement uncertainty region}. We refer to~\cite{quantum-measurement-busch-et-al}, chapter 13 for an introduction to this line of thinking, and~\cites{blw-meas-uncertainty}{srw-meas-uncertainty-finite} for representative results. 
+which we call a \emph{measurement uncertainty region}. We refer to chapter 13 of \cite{quantum-measurement-busch-et-al} for an introduction to this line of thinking, and~\cites{blw-meas-uncertainty}{srw-meas-uncertainty-finite} for representative results. 
 
 Finding the uncertainty region for generic observables is a difficult problem for interesting figures of merit, with exact results known only in cases with high symmetry or low dimension~\cites{yu-oh-qubit}{dsw-meas-ur-ang-mom}. Here we do not remedy this situation, but instead employ a systematic approach to exploiting available symmetries to simplify measurement uncertainty problems. 
 
@@ -100,9 +80,9 @@ where $\opi$ is the identity operator on $\hcal$.
 A set of $n$ observables on the Hilbert space $\hcal$, $\sbuild{\ope_i\,}{\,i=1\hdots n}$, with outcome sets $\Omega_i$ is \emph{compatible} if there exists a joint observable, $\opj: \Omega \to \posops[\hcal]$,
 \begin{align}
   \label{eqn:cart-joint}
-  \sum_{\substack{\bm{\omega}\in\Omega\\\bm{\omega}_i = \omega^*}}\opj(\bm{\omega}) = \ope_i(\omega^*), \quad \forall i\in 1\hdots n,\ \forall \omega^*\in\Omega_i,
+  \sum_{\substack{\bm{\omega}\in\Omega\\ \\omega_i = \omega^*}}\opj(\bm{\omega}) = \ope_i(\omega^*), \quad \forall i\in 1\hdots n,\ \forall \omega^*\in\Omega_i,
 \end{align}
-where $\Omega = \prod_i \Omega_i$ is the Cartesian product and $\bm{\omega}_i$ is the $i^\text{th}$ component of $\bm{\omega}$. Such an observable is called a Cartesian joint for the observables $\sbuild{\ope_i}{i\in 1\hdots n}$.
+where $\Omega = \prod_i \Omega_i$ is the Cartesian product and $\bm{\omega}_i$ is the $i^\text{th}$ component of $\bm{\omega} = (\omega_1,\omega_2\hdots\omega_n)$. Such an observable is called a Cartesian joint observable for the observables $\sbuild{\ope_i}{i\in 1\hdots n}$. In other words, $\opj$ is a Cartesian joint for the $\ope_i$ iff, for each $i$, $\ope_i$ is the $i^\text{th}$ Cartesian marginal of $\opj$.
 
 Given a pair of probability distributions, $S$ and $T$  over the same (finite) set $\Omega$, we can compute the $p$-norm of their (pointwise) difference. The resulting quantity is a metric on the space of probability distributions over $\Omega$,
 \begin{align}
@@ -125,7 +105,7 @@ We can lift the distance measure on probability distributions with outcome set $
   d_p(\ope, \opf) &\defeq \sup_{\rho\in\dops[\hcal]} \delta_p(\ope^\rho, \opf^\rho)\\
                   &= \sup_{\rho\in\dops[\hcal]} \left(\sum_{\omega\in\Omega}\abs{\ope^\rho(\omega) - \opf^\rho(\omega)}^p\right)^{\frac{1}{p}},
 \end{align}
-where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\hcal]$. The supremum exists, because the expression is bounded. We specialise the definition \eqref{eqn:general-ur-definition} of the uncertainty region to these error measures, where $\ope_i:\Omega_i\to\posops[\hcal]$ are the target observables
+where $\dops[\hcal]$ is the set of trace $1$ density operators within $\posops[\hcal]$. The supremum is finite, because the expression is bounded. We specialise the definition \eqref{eqn:general-ur-definition} of the uncertainty region to these error measures, where $\ope_i:\Omega_i\to\posops[\hcal]$ are the target observables
 \begin{equation}
   S_p(\ope_1, \ope_2\hdots \ope_n) = \sbuild{(d_p(\ope_1, \opf_1), d_p(\ope_2, \opf_2)\hdots d_p(\ope_n, \opf_n))}{\opf_i:\Omega_i\to\posops[\hcal] \text{ are compatible}},\quad p\in [1,\infty].
 \end{equation}
@@ -163,21 +143,21 @@ We note that both the $f$-divergences and the $p$-norm based divergences above h
   \delta_p(\lambda\nu_1 + (1-\lambda)\nu_2, \lambda\mu_1 + (1-\lambda)\mu_2) &\leq \lambda \delta_p(\nu_1, \mu_1) + (1-\lambda)\delta_p(\nu_2, \mu_2)\\
   \fdiv{f}{\lambda\nu_1 + (1-\lambda)\nu_2}{\lambda\mu_1 + (1-\lambda)\mu_2} &\leq  \lambda\fdiv{f}{\nu_1}{\mu_1} + (1-\lambda)\fdiv{f}{\nu_2}{\mu_2}.
 \end{align}
-The theorems in this section \ref{sec:invariant-mean}, in particular theorems \ref{thm:inv-mean-reduces-error} and \ref{thm:cov-obs-improve-approx}, hold for any jointly convex error measure, although they may reduce to trivially stating $\infty \leq \infty$ unless the error measure is bounded.
+The theorems in section \ref{sec:invariant-mean}, in particular theorems \ref{thm:inv-mean-reduces-error} and \ref{thm:cov-obs-improve-approx}, hold for any jointly convex error measure, although they may reduce to trivially stating $\infty \leq \infty$ unless the error measure is bounded.
 \section{Invariant Mean}
 \label{sec:invariant-mean}
 
-It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps from $\Omega$ to the bounded, self adjoint operators on $\hcal$  which, for convenience, we denote $\ovms$. The set of such maps ranging in the positive operators is a convex cone in $\ovms$, and the normalisation $\sum_\omega\ope(\omega) = \opi$ defines an affine space. We equip the space $\ovms$ with a norm via
+It is useful to embed the set of observables with a fixed outcome set $\Omega$ in the real vector space of all maps from $\Omega$ to the bounded, self adjoint operators on $\hcal$  which, for convenience, we denote by $\ovms$. The set of such maps ranging in the positive operators is a convex cone in $\ovms$, and the normalisation $\sum_\omega\ope(\omega) = \opi$ defines an affine space. We equip the space $\ovms$ with a norm via
 \begin{align}
   \norm{\ope} = \sum_{\omega\in\Omega} \norm{\ope(\omega)}.
 \end{align}
 \begin{defn}\label{defn:inv-mean}
-  Given a finite group $G$, with action $f_g:\Omega\to\Omega$, and normal, completely positive, unital, linear representation $R_g$ acting on $\saops[\hcal]$ we define the \emph{invariant mean}, $M_{R,f}:\ovms\to\ovms$
+  Given a finite group $G$, with action $f_g:\Omega\to\Omega$, and normal, completely positive, unital, linear representation $R_g$ acting on $\saops[\hcal]$ we define the \emph{invariant mean}, $M_{R,f}:\ovms\to\ovms$ by
   \begin{equation}\label{eqn:inv-mean-defn}
     M_{R,f}(\ope)(\omega) = \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]
   \end{equation}
 \end{defn}
-This has some useful properties. 
+which has some useful properties summarised in \cref{lem:inv-mean-contraction,lem:inv-mean-obs-to-obs,lem:inv-mean-proj}. The invariant mean is motivated by the concept of a group-twirling map, introduced in \cite{emerson-2005}, but the addition of the group action on the outcome set means that the invariant mean of an observable is, in general, different to the observable obtained by acting the twirling map on each of the effects.
 \begin{lem}\label{lem:inv-mean-contraction}
   The invariant mean is a norm contraction.
   \begin{proof}
@@ -253,7 +233,7 @@ It follows that the space of $(R,f)$-covariant maps is a vector subspace of $\ov
     \end{align}
   \end{proof}
 \end{thm}
-The compatibility condition \eqref{eqn:group-rep-error-compat}, may arise for quite different reasons. The $p$-norm error measures defined in section \ref{sec:error-measure} is invariant under all bijective functions on the outcome set\footnote{Elements of a group action must be invertible, and hence bijective.}, as are entropic quantities such as the Kullback-Leiber divergence. On the other hand the Wasserstein metrics mentioned in section \ref{sec:comp-measures-and-dists} are only compatible with maps which leave the underlying metric on $\Omega$ invariant, for example where $\Omega = \R$ the standard metric on $\R$ is compatible with translations. In the proof of theorem \ref{thm:inv-mean-reduces-error} we only require that $d(P\circ f_g, Q\circ f_g) \leq d(P,Q)$, however this being true for all $g\in G$ implies equality.
+The compatibility condition \eqref{eqn:group-rep-error-compat} may arise for quite different reasons. The $p$-norm error measures defined in section \ref{sec:error-measure} are invariant under all bijective functions on the outcome set\footnote{Elements of a group action must be invertible, and hence bijective.}, as are entropic quantities such as the Kullback-Leiber divergence. On the other hand the Wasserstein metrics mentioned in section \ref{sec:comp-measures-and-dists} are only compatible with maps which leave the underlying metric on $\Omega$ invariant, for example where $\Omega = \R$ the standard metric on $\R$ is compatible with translations. In the proof of theorem \ref{thm:inv-mean-reduces-error} we only require that $d(P\circ f_g, Q\circ f_g) \leq d(P,Q)$, however this being true for all $g\in G$ implies equality.
 
 % \begin{lem}
 %   \label{lem:cov-reduces-p-norm}

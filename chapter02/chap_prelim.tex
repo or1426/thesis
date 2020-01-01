@@ -432,17 +432,18 @@ Given two quantum observables, say $E_1:\fcal_1\to\posops[\hcal]$ and $E_2:\fcal
   J(\Omega_1\times A) &= E_2(A), \quad \forall A\in\fcal_2.
 \end{align}
 When such a joint observable exists we call the $E_1$ and $E_2$ \emph{compatible}, two observables will generally be incompatible.
-
-Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive, unital, linear maps acting on $\saops[\hcal]$, we say that an observable $E:\fcal\to\saops[\hcal]$ is \emph{covariant} if
+\begin{defn}\label{defn:grf-cov-obs}
+Given a group $G$, with an action $f_g:\Omega\to\Omega$, $g\in G$, and a representation $\{R_g\, | \, g\in G\}$ as positive, unital, linear maps acting on $\saops[\hcal]$, we say that an observable $E:\fcal\to\saops[\hcal]$ is $(G,R,f)-$\emph{covariant} if
 \begin{equation}\label{eqn:general-covariance}
   E(f_g(X)) = R_g \left[E(X)\right], \quad \forall g\in G, X\in\fcal
 \end{equation}
-where $\fcal$ is the $\sigma$-algebra of measurable sets over $\Omega$. Note that the $R_g$ must be unital since
+where $\fcal$ is the $\sigma$-algebra of measurable sets over $\Omega$. Where there is no possibility of confusion we will simply call these observables \emph{covariant}. 
+\end{defn}
+\noindent Note that the $R_g$ must be unital since
 \begin{align}
   \opi =  \ope(f_g(\Omega)) = R_g\left[\Omega\right] = R_g\left[\opi\right].
 \end{align}
 A group, representation, action and observable satisfying equation \eqref{eqn:general-covariance} are called a \emph{system of covariance}, where the observable $\ope$ is projection-valued this is equivalent to a system of imprimitivity, well known in the representation theory literature (see, e.g. \cite{mackey-1976}, for an introduction). Figure \ref{fig:simple-system-of-covariance} describes a simple system of covariance.
-
 % Command to draw a device at some origin point specified as a 2d argument
 \newcommand{\drawDevice}[3]{%
 % We make take the inputs and make an origin shift vector
@@ -466,7 +467,6 @@ A group, representation, action and observable satisfying equation \eqref{eqn:ge
 \end{scope}
 \end{tikzpicture}%
 }
-
 \begin{figure}
   \centering
   \begin{subfigure}{0.7\textwidth}    
@@ -534,7 +534,6 @@ A group, representation, action and observable satisfying equation \eqref{eqn:ge
   \end{subfigure}
   \caption{The group $\{0,1\}$ with addition modulo $2$, with the group representation implementing ``flipping the measuring upside-down'', action $f_g:h\mapsto gh$, and the observable $\mathrm{\sigma_z}$ form a system of covariance.}\label{fig:simple-system-of-covariance}
 \end{figure}
-
 
 An application of Wigner's theorem~\cites{wigner1931}{wigner1960} shows that the representation must be of the form
 \begin{align}

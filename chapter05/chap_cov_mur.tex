@@ -1,5 +1,3 @@
-
-
 \chapter{Measurement uncertainty and covariance - finite dimensional case studies}
 \label{chap:cov-meas-ur}
 \section{Introduction}
@@ -187,7 +185,8 @@ which has some useful properties summarised in \cref{lem:inv-mean-contraction,le
   \end{proof}
 \end{lem}
 \begin{lem}\label{lem:inv-mean-proj}
-  The invariant mean is the projection from $\ovms$ onto the subspace of $(R,f)$-covariant maps.
+  The invariant mean is the projection from $\ovms$ onto the subspace of $(G,R,f)$-covariant (in the sense of definition~\ref{defn:grf-cov-obs})
+ maps.
   \begin{proof}
     First note that $M_{R,f}$ is linear, since the $R_g$ are linear. For any $\ope\in\ovms$, $M_{R,f}(\ope)$ is covariant since
     \begin{align}
@@ -197,7 +196,7 @@ which has some useful properties summarised in \cref{lem:inv-mean-contraction,le
                                  &= R_h\!\left[\frac{1}{\abs{G}} \sum_{g^\prime\in G} R_{{g^\prime}^{-1}} \! \left[\ope(f_{g^\prime}(\omega))\right]\right]\\
                                  &= R_h\!\left[M_{R,f}(\ope)(\omega)\right].
     \end{align}
-    Now $(R,f)$-covariant maps are invariant under $M_{R,f}$
+    Now $(G, R,f)$-covariant maps are invariant under $M_{R,f}$
     \begin{align}
       M_{R,f}(\ope)(\omega) &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[\ope(f_g(\omega))\right]\\
                             &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\! \left[R_{g}\!\left[\ope(\omega)\right]\right]\\
@@ -207,7 +206,7 @@ which has some useful properties summarised in \cref{lem:inv-mean-contraction,le
     so $M_{R,f}$ is idempotent.
   \end{proof}
 \end{lem}
-It follows that the space of $(R,f)$-covariant maps is a vector subspace of $\ovms$, and that $\ope=M_{R,f}(\ope)$ if, and only if, $\ope$ is $(R,f)$-covariant.
+It follows that the space of $(G, R,f)$-covariant maps is a vector subspace of $\ovms$, and that $\ope=M_{R,f}(\ope)$ if, and only if, $\ope$ is $(G, R,f)$-covariant.
 
 \begin{thm}
   \label{thm:inv-mean-reduces-error}
@@ -219,7 +218,7 @@ It follows that the space of $(R,f)$-covariant maps is a vector subspace of $\ov
   \begin{align}
     \sup_\rho d\left(M_{R,f}(\ope)^\rho, M_{R,f}(\opf)^\rho\right) \leq \sup_\rho d\left(\ope^\rho,\opf^\rho\right),
   \end{align}
-  For all observables $\ope, \opf:\Omega\to\posops[\hcal]$.
+  for all observables $\ope, \opf:\Omega\to\posops[\hcal]$.
   \begin{proof}
     \begin{align}
       \sup_\rho d\left(M_{R,f}(\ope)^\rho, M_{R,f}(\opf)^\rho\right) &= \sup_\rho d\left( \frac{1}{\abs{G}}\sum_{g\in G} \left(R_{g^{-1}} \circ \ope\circ f_g\right)^\rho , \frac{1}{\abs{G}}\sum_{g\in G}\left(R_{g^{-1}} \circ \opf\circ f_g\right)^\rho \right)\\
@@ -279,19 +278,19 @@ there is also a marginal action $\mu^i$ of the direct product group on each $\Om
   For $i\in 1\hdots n$ let $\ope_i:\Omega_i \to \posops[\hcal]$ be a compatible family of observables, and $\sbuild{G_i}{i\in 1\hdots n}$ be a set of groups, such that $G_i$ has action $f_g^i$ on $\Omega_i$. Let $\Omega = \prod_i \Omega_i$ be the Cartesian product, $G = \prod_i G_i$ the direct product, and $\pi$, $\mu^i$ the product and marginal actions of $G$ respectively. Let $\sbuild{R_g}{g\in G}$ be a representation of $G$ as positive, unital, linear maps acting on $\saops[\hcal]$. If $\opj$ is any Cartesian joint observable for the $\ope_i$, and $\tilde{\opj}_i$ the $i^\text{th}$ margin of $M_{R,\pi}(\opj)$,
   \begin{align}
     \tilde{\opj}_i&: \Omega_i \to \posops[\hcal]\\
-    \tilde{\opj}_i &: \omega^* \mapsto \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}}M_{R,\pi}(\opj)(\underline{\omega}),
+    \tilde{\opj}_i &: \omega^* \mapsto \sum_{\substack{\bm{\omega} \in \Omega\\ \omega_i = \omega^*}}M_{R,\pi}(\opj)(\bm{\omega}),
   \end{align}
-  where $\underline{\omega}_i$ denotes the $i^\text{th}$ element of the tuple $\underline{\omega}$, then
+  where $\omega_i$ denotes the $i^\text{th}$ element of the tuple $\bm{\omega}$, then
   \begin{align}
     \tilde{\opj}_i(\omega) &= M_{R,\mu^i}(\ope_i)(\omega), \quad \forall \omega \in \Omega_i.
   \end{align} %\frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\ope_i(\phi_g^i(\omega^*))\right],
   \begin{proof}
     \begin{align}
-      \tilde{\opj}_i(\omega^*) &= \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}}M_{R,\pi}(\opj)(\underline{\omega})\\
-                               &= \sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}} \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\opj(\pi_g(\underline{\omega}))\right]\\
-                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \omega^*}} \opj(\pi_g(\underline{\omega}))\right]\\
-                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \pi_{g^{-1}}(\underline{\omega})_i = \omega^*}} \opj(\underline{\omega})\right]\\
-                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\underline{\omega} \in \Omega\\ \underline{\omega}_i = \mu^i_{g}(\omega^*)}} \opj(\underline{\omega})\right]\\
+      \tilde{\opj}_i(\omega^*) &= \sum_{\substack{\bm{\omega} \in \Omega\\ \bm{\omega}_i = \omega^*}}M_{R,\pi}(\opj)(\bm{\omega})\\
+                               &= \sum_{\substack{\bm{\omega} \in \Omega\\ \bm{\omega}_i = \omega^*}} \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\opj(\pi_g(\bm{\omega}))\right]\\
+                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\bm{\omega} \in \Omega\\ \bm{\omega}_i = \omega^*}} \opj(\pi_g(\bm{\omega}))\right]\\
+                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\bm{\omega} \in \Omega\\ \pi_{g^{-1}}(\bm{\omega})_i = \omega^*}} \opj(\bm{\omega})\right]\\
+                               &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\sum_{\substack{\bm{\omega} \in \Omega\\ \omega_i = \mu^i_{g}(\omega^*)}} \opj(\bm{\omega})\right]\\
                                &= \frac{1}{\abs{G}}\sum_{g\in G} R_{g^{-1}}\left[\ope\left(\mu^i_{g}(\omega^*)\right)\right]\\
                                &= M_{R, \mu^i}(\ope_i)(\omega^*).
     \end{align}
@@ -322,11 +321,11 @@ there is also a marginal action $\mu^i$ of the direct product group on each $\Om
       \label{eqn:line-inv-mean-contraction}
                                            &\leq d(\opf_i, \ope_i).
     \end{align}
-    line \eqref{eqn:line-target-inv} is a consequence of assuming the target observables are unchanged by the invariant mean, and \eqref{eqn:line-inv-mean-contraction} is the result of theorem \ref{thm:inv-mean-reduces-error}.
+    where \eqref{eqn:line-target-inv} is a consequence of assuming the target observables are unchanged by the invariant mean, and \eqref{eqn:line-inv-mean-contraction} is the result of theorem \ref{thm:inv-mean-reduces-error}.
   \end{proof}
 \end{thm}
 
-It is tempting to attempt to generalise equation \ref{eqn:inv-mean-defn}, and, for a locally compact group $G$, with (left) Haar measure $\mu$, continuous action $\alpha: (g,\omega)\mapsto g\cdot\omega$ on a Borel measurable, locally compact space $(\Omega, \fcal)$, and continuous representation $R_g$, on $\posops[\hcal]$ define
+It is tempting to attempt to generalise equation \eqref{eqn:inv-mean-defn}, and, for a locally compact group $G$, with (left) Haar measure $\mu$, continuous action $\alpha: (g,\omega)\mapsto g\cdot\omega$ on a Borel measurable, locally compact space $(\Omega, \fcal)$, and continuous representation $R_g$, on $\posops[\hcal]$ define
 \begin{align}
   M[F]: X\mapsto\int_G d\mu(g) R_g[F(g.X)],
 \end{align}
@@ -338,23 +337,23 @@ for a POVM $F:\fcal\to\posops[\hcal]$. Unfortunately there are significant techn
 \end{align}
 The Haar measure $\mu$ may be normalised to a probability measure if, and only if, the group is compact. This excludes several physically relevant groups including the translation group of $\R$ or $\R^n$, the Galilei group and the Poincar{\'e} group. Compact groups relevant to physical applications include the finite groups covered above, the unitary, special unitary groups, orthogonal and special orthogonal groups in $n\in\N$ dimensions. 
 
-The generalised invariant mean will require additional regularity conditions on the observables it is applied to. To see why this is the case we recall that to be Bochner integrable the function $g\mapsto R_g[F(g.X)]$ must be the limit of piecewise constant functions, where the pieces are measurable sets. To take a concrete example we restrict our attention to probability measures on the circle. Let, $\Omega=[-\pi,\pi)$, $(\Omega, \tau)$ be the topologocal space of the unit circle, $X=(0,1)\subset\Omega$, $F:\borel{\Omega}[\tau]\to [0,1]$ be the point measure, assigning $1$ to sets if they contain the element $0$, and $0$ otherwise otherwise, finally take $G$ to be the circle group and $f_g:h\mapsto gh$ be the action of the circle group on itself. Consider a sequence $g_n$ of negative elements of $\Omega$, converging to zero, then
+The generalised invariant mean will require additional regularity conditions on the observables it is applied to. To see why this is the case we recall that to be Bochner integrable the function $g\mapsto R_g[F(g.X)]$ must be the limit of piecewise constant functions, where the pieces are measurable sets. To take a concrete example we restrict our attention to probability measures on the circle. Let $\Omega=[-\pi,\pi)$, $(\Omega, \tau)$ be the topological space of the unit circle, $X=(0,1)\subset\Omega$, $F:\borel{\Omega}[\tau]\to [0,1]$ be the point measure, assigning $1$ to sets if they contain the element $0$, and $0$ otherwise otherwise, finally take $G$ to be the circle group and $f_g:h\mapsto gh$ be the action of the circle group on itself. Consider a sequence $g_n$ of negative elements of $\Omega$, converging to zero, then
 \begin{align}
   F(f_{g_n}(X)) &= F(g_n + X)\\
                 &= F( (g_n, 1+g_n))\\
                 &= 1,
 \end{align}
-whereas $F(X) = 0$. With a general observables it is difficult to control these discontinuities. We conjecture that a necessary and sufficient condition for measurability is the existence of a covariant observable dominating $F$.
+whereas $F(X) = 0$. With general observables it is difficult to control these discontinuities. We conjecture that a necessary and sufficient condition for measurability is the existence of a covariant observable dominating $F$.
 
 \section{Increasing the error}
 \label{sec:inc-error}
-Applying the techniques in section \ref{sec:invariant-mean} results in compatible approximations that are ``not worse than'' any other compatible approximations, in the sense that for any family of compatible approximations to the targets, there exists a covariant family of compatible approximations with $d_p$ values less than or equal to the original family. It is therefore useful to know when we can \emph{increase} the $d_p$ values so we can cover the entire uncertainty region with convex combinations of covariant and trivial observables.
+Applying the techniques in section \ref{sec:invariant-mean} results leads to compatible approximations that are ``not worse than'' any other compatible approximations, in the sense that for any family of compatible approximations to the targets, there exists a covariant family of compatible approximations with $d_p$ values less than or equal to the original family. It is therefore useful to know when we can \emph{increase} the $d_p$ values so we can cover the entire uncertainty region with convex combinations of covariant and trivial observables.
 
 \begin{lem}[Increasing the error - $\infty$-norm]
   \label{lem:infty-increase-error}
   Let $\{\ope_i\}$ be a family of observables with outcome sets $\Omega_i$. Choose $i\in 1\hdots n$ and $\bov = (v_1\hdots v_i\hdots v_n) \in S_\infty(\ope_1\hdots\ope_n)$, such that there exists some $\omega^*\in\Omega_i$ where $\ope_i(\omega^*)$ is not of full rank, then $v_i \leq v_i^\prime \leq 1 \implies \bov^\prime = (v_1\hdots v_i^\prime\hdots v_n) \in S_\infty(\ope_1\hdots\ope_n)$.
   \begin{proof}
-    Let $\Omega = \prod_i \Omega_i$ be the Cartesian product of the outcome sets, since $\bov\in S_\infty(\ope_1\hdots\ope_n)$ there exists a compatible family of observabless $\opf_i$ with joint $\opj:\Omega\to\saops[\hcal]$ such that
+    Let $\Omega = \prod_i \Omega_i$ be the Cartesian product of the outcome sets, since $\bov\in S_\infty(\ope_1\hdots\ope_n)$ there exists a compatible family of observables $\opf_i$ with joint $\opj:\Omega\to\saops[\hcal]$ such that
     \begin{align}
       d_\infty(\ope_i, \opf_i) = v_i
     \end{align}
@@ -406,7 +405,7 @@ Applying the techniques in section \ref{sec:invariant-mean} results in compatibl
 
 \section{The qubit triple}
 \label{sec:qubit-triple}
-Let $\boa$, $\bob$ and $\boc$ be three orthonormal vectors in $\mathbb{R}^3$, and consider the three, two outcome qubit observables
+Let $\boa$, $\bob$ and $\boc$ be three orthonormal vectors in $\mathbb{R}^3$, and consider the three, two-outcome qubit observables
 \begin{align}
   \opa&:\{+1, -1\} \to \mathcal{L}\left(\mathbb{C}^2\right), & \opb&:\{+1, -1\} \to \mathcal{L}\left(\mathbb{C}^2\right), & \opc&:\{+1, -1\} \to \mathcal{L}\left(\mathbb{C}^2\right)\\
   \opa&:k\mapsto \qbit{k\boa}, &\opb&:l\mapsto \qbit{l\bob}, &\opc&:m\mapsto \qbit{m\boc}.
@@ -422,43 +421,7 @@ The condition $\opd$, $\ope$, $\opf$ are compatible is equivalent to the existen
   \sum_{k,l}\opj(k,l,m) &= \opf(m).
 \end{align}
 
-\tdplotsetmaincoords{70}{130}
-\begin{figure}[ht]
-  \centering
-  \begin{tikzpicture}[tdplot_main_coords]
-    \def\R{2.5} % sphere radius
-    % \def\angEl{15} % elevation angle
-
-    % \pgfsetxvec{\pgfpoint{.866cm}{.5cm}}
-    % \pgfsetyvec{\pgfpoint{0cm}{1cm}}
-    % \pgfsetzvec{\pgfpoint{.866cm}{-.5cm}}
-
-    % \def\angAz{10} % azimuth angle
-    \def\rangleRatio{0.15}
-    % \pgfmathsetmacro\X{\R*cos(\angEl)}
-    % \pgfmathsetmacro\Z{\R*cos(\angEl)}
-    \filldraw[tdplot_screen_coords, ball color=white!10] (0,0) circle (\R);
-    % \DrawLatitudeCircle[\R]{0} % equator
-    \coordinate (O) at (0,0,0);
-    \coordinate (X) at (\R,0,0);
-    \coordinate (Y) at (0,\R,0);
-    \coordinate (Z) at (0,0,\R);
-    \draw[thick,->, >=latex] (O) -- (X) node[anchor=north east]{$\boa$};
-    \draw[thick,->, >=latex] (O) -- (Y) node[anchor=north west]{$\bob$};
-    \draw[thick,->, >=latex] (O) -- (Z) node[anchor=west]{$\boc$};
-
-    \draw[thin] ({\rangleRatio*\R},0,0) -- ({\rangleRatio*\R},0,{\rangleRatio*\R}) -- (0,0,{\rangleRatio*\R});
-    \draw[thin] (0,{\rangleRatio*\R},0) -- (0,{\rangleRatio*\R},{\rangleRatio*\R}) -- (0,0,{\rangleRatio*\R});
-    \draw[thin] (0,{\rangleRatio*\R},0) -- ({\rangleRatio*\R},{\rangleRatio*\R},0) -- ({\rangleRatio*\R},0,0);
-
-    \tdplotdrawarc[tdplot_main_coords, dashed]{(0,0,0)}{\R}{130}{310}{color=black}{};
-    \tdplotdrawarc[tdplot_main_coords]{(0,0,0)}{\R}{-50}{130}{color=black}{};
-    % \coordinate[] (S) at (0,-\H);
-  \end{tikzpicture}
-  \caption{The Bloch sphere, with orthonormal vectors $\boa$, $\bob$ and $\boc$.}
-\end{figure}
-
-Since we have three, two outcome target observables we take as our product group the elementary Abelian group of order $8$, the additive group of the vector space $\left(\mathbb{Z}/2\mathbb{Z}\right)^3$
+Since we have three, two-outcome target observables we take as our product group the elementary Abelian group of order $8$, the additive group of the vector space $\left(\mathbb{Z}/2\mathbb{Z}\right)^3$
 \begin{align}
   G &= \sbuild{\grp{k}{l}{m}}{(k,l,m)\in \{+1, -1\}^3}\\
   \grp{h}{i}{j} \grp{k}{l}{m} &= \grp{hk}{il}{jm},
@@ -478,7 +441,7 @@ and may be represented by the following set of positive, unital, linear maps on 
   \map{k}{l}{m}\left[\qbit[r_0]{\begin{pmatrix}r_1\\r_2\\r_3\end{pmatrix}}\right] &= \qbit[r_0]{\begin{pmatrix}k r_1\\l r_2\\m r_3\end{pmatrix}}.
 \end{align}
 
-Given any compatible, two outcome qubit observables, $\opd$, $\ope$ and $\opf$, we can apply the invariant mean with respect to this group, action and representation to the joint $\opj$
+Given any compatible two-outcome qubit observables, $\opd$, $\ope$ and $\opf$, we can apply the invariant mean with respect to this group, action and representation to the joint $\opj$
 \begin{equation}
   \tilde{\opj}(k,l,m) = \frac{1}{8}\sum_{(h,i,j)\in\{+1,-1\}^3} \map{h}{i}{j}\left[\opj(hk, il, jm) \right],
 \end{equation}
@@ -492,30 +455,30 @@ By lemma \ref{lem:margins-inv-mean-same} this is equivalent to taking the invari
 \begin{align}
   \tilde{\opd}(k) &= M_{R,f^1}(\opd)(k) & \tilde{\ope}(l) &= M_{R,f^2}(\ope)(l) & \tilde{\opf}(m) &= M_{R,f^3}(\opf)(m)
 \end{align}
-These margin groups, actions and representations satisfy all of the requirements of lemma \ref{thm:cov-obs-improve-approx} above, so the group averaging maps reduce the error. We also have that $M_{R,\mu^1}(\opa) = \opa$ etc. so we can apply theorem \ref{thm:cov-obs-improve-approx} implying that for every compatible triple $\opd$, $\ope$, $\opf$ there exists a \emph{covariant} compatible triple with lower distances. Since we can also increase the distances \ref{lem:infty-increase-error} as needed we can fill the set $S(\opa, \opb, \opc)$ by searching over the covariant observables, and then increasing the distances up to the trivial maximum of $2^{\frac{1}{p}}$.
+These margin groups, actions and representations satisfy all of the requirements of lemma \ref{thm:cov-obs-improve-approx} above, so the group averaging maps reduce the error. We also have that $M_{R,\mu^1}(\opa) = \opa$ etc. so we can apply theorem \ref{thm:cov-obs-improve-approx} implying that for every compatible triple $\opd$, $\ope$, $\opf$ there exists a \emph{covariant} compatible triple with lower distances to the targets. Since we can also increase the distances using lemma \ref{lem:infty-increase-error} as needed we can fill the set $S(\opa, \opb, \opc)$ by searching over the covariant observables, and then increasing the distances up to the trivial maximum of $2^{\frac{1}{p}}$.
 The covariant joints have the form
 \begin{align}
   \opj(k,l,m) = \qbit[][+][\frac{1}{8}]{\begin{pmatrix}k j_1\\ l j_2 \\ m j_3\end{pmatrix}},
 \end{align}
 for $\norm{\boj}\leq 1$. The margins have the form
 \begin{align}
-  \opd(k) &= \qbit{j_1 \boa} &
-                               \ope(l) &= \qbit{j_2 \bob}&
-                                                           \opf(m) &= \qbit{j_3 \boc},
+  \opd(k) &= \qbit{k j_1 \boa} &
+                               \ope(l) &= \qbit{l j_2 \bob}&
+                                                           \opf(m) &= \qbit{m j_3 \boc},
 \end{align}
 which have distances
 \begin{align}
   d_p(\opa, \opd) &= 2^{\frac{1}{p} -1}\left(1-j_1\right)&
                                                            d_p(\opb, \ope) &= 2^{\frac{1}{p} -1}\left(1-j_2\right)&
-                                                                                                                    d_p(\opc, \opf) &= 2^{\frac{1}{p} -1}\left(1-j_3\right)
-\end{align}.
+                                                                                                                    d_p(\opc, \opf) &= 2^{\frac{1}{p} -1}\left(1-j_3\right).
+\end{align}
 Hence the positivity constraint $\norm{\boj}\leq 1$ becomes
 \begin{equation}
   \left(d(\opa, \opd) - 2^{\frac{1}{p}-1}\right)^2 + \left(d(\opb, \ope) - 2^{\frac{1}{p}-1}\right)^2 +\left(d(\opc, \opf) - 2^{\frac{1}{p}-1}\right)^2 \leq 2^{\frac{2}{p}-2}.
 \end{equation}
-The subset of $S_p$ covered by covariant observables is a sphere of radius $2^{\frac{1}{p}-1}$ centered at $\left(2^{\frac{1}{p}-1},2^{\frac{1}{p}-1},2^{\frac{1}{p}-1}\right)$, the full region is the monotone closure of this within the cube $[0, 2^{\frac{1}{p}}]^3$.
+The subset of $S_p$ covered by covariant observables is a sphere of radius $2^{\frac{1}{p}-1}$ centered at $\left(2^{\frac{1}{p}-1},2^{\frac{1}{p}-1},2^{\frac{1}{p}-1}\right)$, the full region is the monotone closure of this within the cube $[0, 2^{\frac{1}{p}}]^3$ and is plotted in figure~\ref{fig:qubit-triple-meas-ur-full}. We compare this to the work of Busch and Heinosaari~\cite{BuschHeinosaari2008} and Heinosaari, Stano and Reitzner~\cite{HEINOSAARI-STANO-REITZNER-2008}, the authors consider measurement uncertainty regions for pairs of sharp, two-outcome qubit observables with a measure of statistical distance that is equivalent to ours (identical up to a multiplicative constant). They determine semi-analytical bounds for arbitrary pairs of such observables and tight, analytical bounds for the case where the two observables are mututually unbiased (i.e. the Bloch vectors are orthogonal). This latter case is contained as a two-dimensional slice through the uncertainty region for three observables which we have determined in this section. More precisely the uncertainty region determined in those papers is the slice through the region plotted in figure \ref{fig:qubit-triple-meas-ur-full} where $d_\infty(\opc, \opf) = 1$.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \subfloat{
     \includegraphics[width=0.35\textwidth]{ur1triple2.pdf}
@@ -529,7 +492,7 @@ The subset of $S_p$ covered by covariant observables is a sphere of radius $2^{\
   \subfloat{
     \includegraphics[width=0.35\textwidth]{ur4triple2.pdf}
   }
-  \caption{Various views of the uncertainty region $S_\infty(\opa.\opb,\opc)$ covered by compatible approximations $\opd$, $\ope$ and $\opf$.}
+  \caption{Various views of the uncertainty region for three mutually unbiased qubit observables $S_\infty(\opa,\opb,\opc)$ covered by compatible approximations $\opd$, $\ope$ and $\opf$.}\label{fig:qubit-triple-meas-ur-full}
 \end{figure}
 
 \section{The Fourier pair}
@@ -564,16 +527,16 @@ It is easy to verify the commutation relations
 \begin{align}
   U_k V_q  &= e^{\frac{2\pi i}{n} kq}  V_q U_k,
 \end{align}
-by, for example, applying the operator on each side of the equality to the states in the Fourier basis. Therefore
+by, for example, applying the operator on each side of the equality to the states in the Fourier basis. These are exactly the Weyl commutation relations for the discrete Heisenberg (or Heisenberg-Weyl) group~\cite{hall-quantum-theory}. It follows that
 \begin{align}
-  U_k V_q \rho\, V_q^\dagger U^\dagger_k = V_q U_k \rho\,  U^\dagger_k V_q^\dagger, \quad \forall \rho\in\saops[\hcal].
+  U_k V_q \rho\, V_q^\dagger U^\dagger_k = V_q U_k \rho\,  U^\dagger_k V_q^\dagger, \quad \forall \rho\in\saops[\hcal],k,q\in\Z_n.
 \end{align}
 We therefore consider the linear maps
 \begin{align}
   R_{k,q}&:\saops[\hcal]\to \saops[\hcal]\\
   R_{k,q}&:\rho \mapsto U_k V_q \rho\, V^\dagger_q U^\dagger_k =  V_q U_k  \rho\,  U^\dagger_k V^\dagger_q,
 \end{align}
-and note that they form a representation of the direct product group $\cyc[n]\times\cyc[n]$, with the group operation given by operator composition
+and note that they form a representation of the direct product group $G=\cyc[n]\times\cyc[n]$, with the group operation given by operator composition
 \begin{align}
   R_{k,q} \circ R_{l,r} = R_{k+l, p+r}, \quad \forall k,l,q,r\in \cyc[n].
 \end{align}
@@ -670,7 +633,7 @@ then
   d_\infty(\opb,\opd) = 1-d_0.
 \end{align}
 \subsection{Semidefinite program}
-We can use relations \eqref{eqn:comp-constraint} and \eqref{eqn:four-constraint}, along with \eqref{eqn:write-down-margins} to put constraints on the operator $\tau$ we used to define the joint
+We can use relations \eqref{eqn:comp-constraint} and \eqref{eqn:four-constraint}, along with \eqref{eqn:write-down-margins} to put constraints on the operator $\tau$ we used to define the joint observable
 \begin{align}
   \sum_h \opj(g,h) &= \opc(g) = U_g \opc(0) U_g^\dagger\\
   \frac{1}{n} \sum_h U_gV_h \tau V_h^\dagger U_g^\dagger &= U_g \opc(0) U_g^\dagger\\
@@ -847,21 +810,27 @@ which has center $\left(\frac{1}{2}, \frac{1}{2}\right)$, and touches the coordi
   \centering
   \begin{subfigure}[t]{0.4\textwidth}
     \includegraphics[width=\textwidth]{fourier-ur-2}
+    \caption{Hilbert space $\hcal = \Cx^2$}
   \end{subfigure}\quad
   \begin{subfigure}[t]{0.4\textwidth}
     \includegraphics[width=\textwidth]{fourier-ur-3}
+    \caption{Hilbert space $\hcal = \Cx^3$}
   \end{subfigure}\\
   \begin{subfigure}[t]{0.4\textwidth}
     \includegraphics[width=\textwidth]{fourier-ur-4}
+    \caption{Hilbert space $\hcal = \Cx^4$}
   \end{subfigure}\quad
   \begin{subfigure}[t]{0.4\textwidth}
     \includegraphics[width=\textwidth]{fourier-ur-6}
+    \caption{Hilbert space $\hcal = \Cx^6$}
   \end{subfigure}\\
   \begin{subfigure}[t]{0.4\textwidth}
     \includegraphics[width=\textwidth]{fourier-ur-8}
+    \caption{Hilbert space $\hcal = \Cx^8$}
   \end{subfigure}\quad
   \begin{subfigure}[t]{0.4\textwidth}
     \includegraphics[width=\textwidth]{fourier-ur-10}
+    \caption{Hilbert space $\hcal = \Cx^{10}$}
   \end{subfigure}\\
   \caption{The measurement uncertainty region for quantum Fourier pair observables in several dimensions.}
 \end{figure}

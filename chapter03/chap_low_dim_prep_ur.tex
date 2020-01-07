@@ -494,15 +494,19 @@ This term is analogous in form to the classical covariance; however, in the quan
 Here, as before, $\opa = \boa\cdot\bosig$ and $\opb = \bob\cdot\bosig$, for $\boa, \bob$ non-collinear 3-vectors of unit norm, however we now consider the uncertainty region ${\mathrm{ PUR}}_\Delta(\opa,\opb,\opc)$, where $\opc = \boc\cdot\bosig$, for $\boc = \frac{\boa\times\bob}{\|\boa\times\bob\|}$.
 We summarise this uncertainty region in theorem~\ref{thm:qubit-triple-ur}.
 \begin{thm}\label{thm:qubit-triple-ur}
-  Given $\var{\opc}\in[0,1]$, then $\var{\opa}$ must be in the range $[\sqrt{1-\var{\opc}}, 1]$. We then have the restriction
-\begin{align}
-  \xi_- \leq \var{\opb}   \leq\begin{cases}\xi_+ & \var{\opa} \leq 1-\var{\opc}\|\boa\times\bob\|^2\\1&\text{otherwise}\end{cases}
-\end{align}
-where
-\begin{align}
-  \xi_\pm = (\boa\cdot\bob)^2 \var{\opa} + \|\boa\times\bob\|^2(1-\var{\opa} + 1-\var{\opc}) \pm 2(\boa\cdot\bob)\sqrt{1-\var{\opa}}\|\boa\times\bob\|\sqrt{\var{\opa} + \var{\opc} -1}.
-\end{align}
-Furthermore this inequality is tight, that is it determines exactly the set of variances that make up the uncertainty region.
+  Given $\var{\opc}\in[0,1]$, then 
+  \begin{align}\label{eqn:qubit-triple-ur-1}
+    \sqrt{1-\var{\opc}} \leq \var{\opa} \leq 1,
+  \end{align}
+  and
+  \begin{align}\label{eqn:qubit-triple-ur-2}
+    \xi_- \leq \var{\opb}   \leq\begin{cases}\xi_+ & \var{\opa} \leq 1-\var{\opc}\|\boa\times\bob\|^2\\1&\text{otherwise}\end{cases}
+  \end{align}
+  where
+  \begin{align}\label{eqn:qubit-triple-ur-3}
+    \xi_\pm = (\boa\cdot\bob)^2 \var{\opa} + \|\boa\times\bob\|^2(1-\var{\opa} + 1-\var{\opc}) \pm 2(\boa\cdot\bob)\sqrt{1-\var{\opa}}\|\boa\times\bob\|\sqrt{\var{\opa} + \var{\opc} -1}.
+  \end{align}
+  Furthermore this inequality is tight, that is it determines exactly the set of variances that make up the uncertainty region.
 \end{thm}
 
 \begin{figure}[H]
@@ -552,56 +556,31 @@ Furthermore this inequality is tight, that is it determines exactly the set of v
 Without loss of generality, we assume the following
 \begin{align}
   \boa &= \begin{pmatrix}1\\0\\0\end{pmatrix} &&
-                                                \bob = \begin{pmatrix}b_1\\b_2\\0\end{pmatrix} &&
-  \boc = \begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}\\
-  1 &> b_1, b_2 > 0,\\
-  1 &> c_1, c_3 > 0,
+                                                 \bob = \begin{pmatrix}b_1\\b_2\\0\end{pmatrix} &&
+  \boc = \begin{pmatrix}0\\0\\1\end{pmatrix}\\
+  1 &> b_1, b_2 > 0,
 \end{align}
-where we have exploited our freedom to choose coordinates to fix $\boa$, $b_3$ and $c_3$ and the equivalence of the observables $\boe\cdot\bosig$ and $-\boe\cdot\bosig$ to choose $b_1, b_2$ and $c_1$ $>$ 0. We now choose a $Z\in (0,1)$ and consider the disk formed by the intersection of the Bloch sphere with plane $\{\bor\in\mathbb{R}^3\,|\,\bor\cdot\boc = Z\}$. This disk is perpendicular to the vector $\boc$, has centre $Z \boc$ and radius $\sqrt{1-Z^2}$. We note that changing the component of the Bloch vector $\bor$ in the direction of $\boc$ does not change the variances $\varr{\opa}$ and $\varr{\opb}$. We therefore consider the image of the disk under the projection onto the plane spanned by $\boa$ and $\bob$. The image of the disk forms an ellipse and may be characterised with the parameters
-\begin{align}
-  a &= \sqrt{1-Z^2}\\
-  b &= c_3\sqrt{1-Z^2}\\
-  \bogam &= Z \begin{pmatrix}c_1\\c_2\\0\end{pmatrix}\\
-  \tan\theta &= -\frac{c_1}{c_2},
-\end{align}
-where $a$, $b$ are the lengths of the semi-major and minor axes respectively, $\bogam$ is the center and $\theta$ is the angle the semi-major axis makes with $\boa$. Alternatively, the boundary of the ellipse has the characterisation
-\begin{align}
-  \label{eqn:ellipse-quadratic}
-  0 = r_1^2(c_3^2 + c_1^2) + r_2^2(c_3^2 + c_2^2) + 2 r_2 r_1 c_1 c_2 - 2 Z (r_1 c_1 + r_2 c_2) + (z^2 - c_3^2).
-\end{align}
-We can compute the range of $r_1$ values realisable by points in the ellipse by considering the discriminant of \eqref{eqn:ellipse-quadratic} viewed as a quadratic in $r_2$
-\begin{align}
-  X_\pm &= c_1 Z \pm \sqrt{(1-c_1^2)(1-Z^2)}\\
-  r_1 &\in [X_- , X_+].
-\end{align}
-Recalling that $b_1$ and $b_2$ are have been chosen to be positive, we see that the minimum $\varr{\opb}$ with a fixed $\varr{\opc} = Z\in (0,1)$ and $\varr{\opa} = X\in [X_-(Z), X_+(Z)]$ will be realised by the largest value $r_2$ such that $(X, r_2)$ is in the ellipse. This may be obtained by solving the quadratic \eqref{eqn:ellipse-quadratic}
-\begin{align}
-Y_\text{max}(X,Z) &= \frac{c_2( Z - c_1 X) + \sqrt{1-c_1^2 - X^2 + Z(2c_1 X - Z)}\sqrt{1-c_1^2 - c_2^2}}{1-c_1^2}.
-\end{align}
+where we have exploited our freedom to choose coordinates to fix $\boa$, $b_3$ and the equivalence of the observables $\boe\cdot\bosig$ and $-\boe\cdot\bosig$ to choose $b_1, b_2$ and $c_3$ $>$ 0. We now choose a $Z\in (0,1)$ and consider the disk formed by the intersection of the Bloch sphere with plane $\{\bor\in\mathbb{R}^3\,|\,\bor\cdot\boc = Z\}$. This disk is perpendicular to the vector $\boc$, has centre $Z \boc$ and radius $\sqrt{1-Z^2}$. The largest value of $r_1$ realisable in this disk is $\sqrt{1-Z^2}$ which, since $\varr{\opc} = 1-Z^2$ and $\varr{\opa} = 1-r_1^2$ implies \eqref{eqn:qubit-triple-ur-1}.
 
-Finding the maximum for $\var{\opb}$ with a fixed $\var{\opc}$ and $\var{\opa}$ first requires finding when we can attain the trivial upper bound $\var{\opb} = 1$. We search for solutions to \eqref{eqn:ellipse-quadratic} with $\bob\cdot\bor = 0$
+Fixing $\varr{\opc}$ in the allowed range defines two lines through the disk, since it implies $\abs{\boa\cdot\bor} = \sqrt{1-\varr{\opa}}$. We compute the extreme values of $r_2$ allowed given the constraint that $\abs{\bor}^2\leq 1$
 \begin{align}
-  0 &= \bob\cdot\bor \implies r_2 = -r_1 \frac{b_1}{b_2}\\
-  0 &= r_1^2(c_3^2 + c_1^2) + r_2^2(c_3^2 + c_2^2) + 2 r_2 r_1 c_1 c_2 - 2 Z (r_1 c_1 + r_2 c_2) + (z^2 - c_3^2)\\
-  0 &= r_1^2b_2^2(c_3^2 + c_1^2) + r_1^2 b_1^2(c_3^2 + c_2^2) - 2 r_1^2 b_1 b_2  c_1 c_2 - 2 Z b_2 r_1 ( b_2 c_1 - b_1 c_2) + b_2^2(z^2 - c_3^2)\\
-  0 &= r_1^2 (c_3^2 + (b_2 c_1 - b_1 c_2)^2 ) - 2 Z b_2 r_1 ( b_2 c_1 - b_1 c_2) + b_2^2(z^2 - c_3^2).
-      \label{eqn:abc-upper-bound-quadratic}
+  Z^2 + (1-\varr{\opa}) + r_2^2 &= 1\\
+  r_2^2 &= \varr{\opa} - Z^2\\
+  r_2 &= \pm\sqrt{\varr{\opa}^2 + \varr{\opc}^2 - 1},\label{eqn:qubit-triple-extreme-r2}
 \end{align}
-There are two cases, which may be distinguished using the discriminant of \eqref{eqn:abc-upper-bound-quadratic}
+where we note that the constraint \eqref{eqn:qubit-triple-ur-1} implies that $\varr{\opa}^2 + \varr{\opc}^2 \geq 1$. We now seek the values of $\varr{\opa}$ for which the trivial upper bound $\varr{\opb} = 1$ is attainable. For this we require
 \begin{align}
-  Z^2 > \|\bob\times\boc\|^2 &\iff \text{ $\var{\opb} = 1$ may not be attained}\\
-  Z^2 \leq \|\bob\times\boc\|^2 &\iff \text{ $\var{\opb} = 1$ is attained if $\boa\cdot\bor$ is in the interval } \\ & \left[\frac{b_2(Z(\boc\times\bob)_3 - \sqrt{c_3^2 (\|\boc\times\bob\|^2 - Z^2)})}{\|\boc\times\bob\|^2},\frac{b_2(Z(\boc\times\bob)_3 + \sqrt{c_3^2 (\|\boc\times\bob\|^2 - Z^2)})}{\|\boc\times\bob\|^2}\right].
+  \bob\cdot\bor &= 0\\
+                &= b_1 r_1 + b_2 r_2 \\
+                &= (\boa\cdot\bob) \sqrt{1-\varr{\opa}} + \norm{\boa\times\boc}{} r_2.\label{eqn:qubit-triple-r-orth-b}
 \end{align}
-\end{proof}
-
-% Here we use similar methods to those employed for pairs of general qubit observables. We consider three observables defined by unit Bloch vectors $\opa = \boa\cdot\bosig$, $\opb = \bob\cdot\bosig$ and $\opc = \boc\cdot\bosig$, and a state $\rho = \qbit{\bor}$. By relabelling $\pm 1 \mapsto \mp 1$, if necessary we can ensure $\boa\cdot\bob, \bob\cdot\boc, \boc\cdot\boa \geq 0$. Requiring that $\varr{\opc} = z^2$, for some fixed $z\in [0,1]$ constrains $\bor$, in particular to be in one of two planes, $\bor\cdot\boc = \pm\sqrt{1-z^2}$, the state $\rho = \qbit[][-]{\bor}$ has exactly the same variance triple $(\varr{\opa}, \var{\opb}, \var{\opc})$ as $\rho$, so we only consider the positive plane $\bor\cdot\boc = \sqrt{1-z^2}$. The intersection of this plane with the Bloch sphere is a disk of radius $z$ centered at $\sqrt{1-z^2}\boc$, we will denote this disk $D(\boc,z)$. The variances of $\opa$ and $\opb$, respectively are not sensitive to the full vector $\bor$, but instead the quantities $\bor\cdot\boa$ and $\bor\cdot\bob$, respectively. We therefore seek the projection of the $D(\boc,z)$, onto the plane spanned by $\boa$ and $\bob$. It is well known that the orthogonal projection of a circle is an ellipse, and so the orthogonal projection of a disk must be the region bounded by an ellipse. We choose a basis for the $\boa,\bob$ plane $\boa, \boap$, where $\boa\cdot\boap=0$ and $\boap\cdot\bob \geq 0$. If $\vproj{\boa}{\bob}:\R^2\to\R^2$ is the orthogonal projection onto the $\boa,\bob$ plane the ellipse is centered at $\sqrt{1-z^2}\vproj{\boa}{\bob}\boc = \sqrt{1-z^2}(\boc\cdot\boa,\boc\cdot\boap)$, has semi-minor axis parallel to $(\boc\cdot\boa,\boc\cdot\boap)$ of length $z\sqrt{ 1 - \norm{\vproj{\boa}{\bob}\boc}^2}$, and semi-major axis of length $z$. We can give an explicit description of the ellipse as the set of points $(r_1, r_2)$, satisfying
-% % \begin{align} %opposite convention for z <-> sqrt{1-z^2}
-% %   \left(1-\text{c1}^2\right) y^2+\text{c1}^2+2 \text{c1} \text{c2} x y-2 \text{c1} x z+\left(1-\text{c2}^2\right) x^2+\text{c2}^2-2 \text{c2} y z+z^2-1=0
-% % \end{align}
-% \begin{align}
-%   (r_1, r_2, 1) \begin{pmatrix} 1 - c_2^2& c_1 c_2 & -c_1 \sqrt{1-z^2} \\c_1 c_2 & 1 - c_1^2& -c_2z \\-c_1 \sqrt{1-z^2} & -c_2 z & c_1^2 + c_2^2 -z^2\end{pmatrix} \begin{pmatrix}r_1\\r_2\\1\end{pmatrix} = 0.
-% \end{align}
-% To determine the uncertainty region we first seek the minimum and maximum values of the variance $\varr{\opb}$ achievable with $\vproj{\opa}{\opb}\bor\in \vproj{\opa}{\opb}D(\boc,z)$. We consider separately the cases where there exists a vector in the interior of the ellipse orthogonal to $\bob$, in this case the maximum variance $\varr{\opb} = 1$ is achieved. Where no such vectors exist it is easy to see that the extrema are attained by vectors on the ellipse and, by differentiating and comparing stationary points the 
+Combining \eqref{eqn:qubit-triple-extreme-r2} and \eqref{eqn:qubit-triple-r-orth-b}, shows that the least value of $\varr{\opa}$ for which it is possible to attain $\varr{\opb}=1$ is given by
+\begin{align}
+  0 &= (\boa\cdot\bob) \sqrt{1-\varr{\opa}} - \norm{\boa\times\bob}{}\sqrt{\varr{\opa}^2 + \varr{\opc}^2 - 1}\\
+  \norm{\boa\times\bob}{}^2\left(\varr{\opa}^2 + \varr{\opc}^2 - 1\right) &= (\boa\cdot\bob)^2 \left(1-\varr{\opa}\right)\\
+  \varr{\opa} &= 1-\norm{\boa\times\bob}{}^2\varr{\opc}^2.
+\end{align}
+The minimum attainable value of $\varr{\opb}$, as well as the maximum attainable in the in the region where $\varr{\opa} < 1-\norm{\boa\times\bob}{}^2\varr{\opc}^2$ are then obtained by substituting the positive and negative extreme values of $b_2$, respectively into the variance formula $\varr{\opb} = 1- (\bob\cdot\bor)^2$.
 
 \section{Qutrit uncertainty}
 \label{sec:qutrit}

@@ -698,11 +698,11 @@ If the first and second moments of a probability measure exist and are finite th
 \end{align}
 which we will use extensively in chapter \ref{chap:low_dim_prep}.
 
-An application of the Wasserstein metric allows a generalisation of the variance to probability distributions with outcome sets which are not subsets of $\R$. To motivate this we consider the simplest case which can not be embedded in the real line; an observable whose outcome set is the set of points on the unit circle $\T$. The circle differs from a closed interval $[a-\pi, a+\pi]$ only by identifying the endpoints and is given the structure of a metric space by defining the quantity
+An application of the Wasserstein metric allows a generalisation of the variance to probability distributions with outcome sets which are not subsets of $\R$. To motivate this we consider the simplest case which can not be embedded in the real line; an observable whose outcome set is the set of points on the unit circle $\circleNotate$. The circle differs from a closed interval $[a-\pi, a+\pi]$ only by identifying the endpoints and is given the structure of a metric space by defining the quantity
 \begin{align}
   d(x_1,x_2) \defeq \min_{n\in \{-1,0,1\}} \abs{x_1 + 2n\pi - x_2},
 \end{align}
-where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We show there is no way to define the variance of a probability distribution on the unit circle by considering the uniform distribution, to define the variance one first needs to define a mean, and there is no unique way to assign a mean to the uniform distribution over the circle. Nonetheless, there is a natural sense in which some distributions on $\T$ are more concentrated than others. For a metric space $(\mathsf{A}, d)$, and Borel probability measure $\mu$ we define
+where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We show there is no way to define the variance of a probability distribution on the unit circle by considering the uniform distribution, to define the variance one first needs to define a mean, and there is no unique way to assign a mean to the uniform distribution over the circle. Nonetheless, there is a natural sense in which some distributions on $\circleNotate$ are more concentrated than others. For a metric space $(\mathsf{A}, d)$, and Borel probability measure $\mu$ we define
 \begin{align}
   \wsDev{\mu}[\alpha] \defeq \inf_{x_0\in\mathsf{A}} \ws{\mu, \delta_{x_0}}[\alpha], \label{eqn:wassersten-variance}
 \end{align}

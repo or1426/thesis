@@ -1,0 +1,498 @@
+% Note that AJP uses the same style as Phys. Rev. B (prb).
+% at least according to their sample .tex file
+\documentclass[prb,amsmath,amssymb,notitlepage]{revtex4-1}
+
+\usepackage{graphicx,amsfonts}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\usepackage{amsthm}
+\usepackage{mathtools} %for matrix*
+
+\usepackage{placeins}
+\usepackage{bbm}
+\usepackage{lmodern,bm}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyvrb}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+
+\usepackage[normalem]{ulem} 
+%for \sout command: strike out in \instead; remove after use since it turns \emph or \em from ital to underlined
+
+%comment
+%\newcommand{\comment}[1]{\blue{#1}} %comments visible
+%\renewcommand{\comment}[1]{} %comments not visible
+\newcommand{\away}[1]{\red{\sout{#1}}}
+\newcommand{\instead}[1]{\blue{#1}}
+\newcommand{\margincomment}[1]{{\color{blue}\rule[-0.5ex]{2pt}{2.5ex}}\marginpar{\small\begin{flushleft}\color{blue}#1\end{flushleft}}}
+
+\newcommand{\msout}[1]{\text{\sout{\ensuremath{#1}}}}
+
+%\usepackage[justification=raggedright]{caption}
+%\usepackage[width=0.4\textwidth]{subfig}
+
+
+
+\newcommand{\sdev}[1]{\operatorname{\Delta} #1} % for the standard deviation
+\newcommand{\varr}[1]{\Delta^2_\rho #1} % for the variance 
+\newcommand{\varp}[1]{\Delta^2_\psi #1} % for the variance 
+\newcommand{\var}[2]{\operatorname{\Delta^{\!2}_{{#2}}} #1} 
+\newcommand{\sdevr}[1]{\Delta_\rho #1} % for the standard deviation 
+\newcommand{\expr}[1]{\left\langle #1\right\rangle_\rho} % for the expectation value
+\newcommand{\expe}[2]{\left\langle #1\right\rangle_{#2}}
+\newcommand{\ft}[1]{\widetilde{#1}} % formal Fourier transform
+\newcommand{\Cos}[1]{\cos\left(#1\right)} % cos with brackets
+\newcommand{\Sin}[1]{\sin\left(#1\right)} % sin with brackets
+
+\newcommand{\bracks}[1]{\left(#1\right)} % for brackets
+\newcommand{\sbracks}[1]{\left[#1\right]} % square brackets
+\newcommand{\com}[2]{\left[#1,#2\right]} % commutator
+\newcommand{\acom}[2]{#1 #2 + #2 #1} % anti-commutator
+
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\bra}[1]{\left\langle #1 \right|}
+\newcommand{\braket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \middle\rangle\middle\langle #2 \right|}
+\newcommand{\sttfmr}[1]{\mathcal{I}\negmedspace\left(\Omega\right)\negmedspace\left[ #1 \right]}
+\newcommand{\sttfmrs}[2]{\mathcal{I}\negmedspace\left(#1\right)\negmedspace\left[ #2 \right]}
+\newcommand{\mymod}[1]{\left\lvert #1  \right\rvert}
+
+\newcommand{\dop}[1]{\mathcal{S}\left(#1\right)}
+\newcommand{\ps}[1]{\psi_{#1}}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\opt}{T}
+\DeclareMathOperator{\opa}{A}
+\DeclareMathOperator{\opb}{B}
+\DeclareMathOperator{\opp}{P}
+\DeclareMathOperator{\opq}{Q}
+\DeclareMathOperator{\oph}{H}
+\DeclareMathOperator{\re}{re}
+\newtheorem{thm}{Theorem}
+\newtheorem{defi}{Definition}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\newtheorem{exa}{Example}
+\newtheorem{rem}{Remark}
+
+\begin{document}
+
+\title{Particle in a box uncertainty}
+ 
+%\author{Oliver Reardon-Smith\email{ors510@york.ac.uk}}
+%\affiliation{University of York, York YO10 5DD, UK} 
+\date{\today}
+\begin{abstract}\noindent
+
+\end{abstract}
+
+
+
+\maketitle
+
+\section{Preliminaries}
+We are interested in uncertainty region, the set 
+
+\begin{equation}
+	U = \left\{\left(\varr{\opq},\ \varr{\opp}\right)\ \middle |\ \rho \in \dop{\mathcal{D}}\right\}
+\end{equation}
+
+of points defined by the ``uncertainty functional"
+
+\begin{equation}
+	\varr{\opa} = \expr{\opa^2} - \expr{\opa}^2,
+\end{equation}
+
+where $\mathcal{D}$ is the set of norm one elements $\varphi\in L^2([-\pi,\pi])$ which are continuously differentiable, and such that $\varphi^{\prime\prime}\in L^2([-\pi,\pi])$ and $\varphi(-\pi) = \varphi(\pi) = 0$ \cite{opIntSesq}. $ \dop{\mathcal{D}}$ is the usual space of trace $1$, positive semi-definite operators formed by taking convex combinations of projections onto elements of $\mathcal{D}$.
+
+The operators $\opp$ and $\opq$ are defined in the usual way on this space
+
+\begin{align}
+	\left(\opp\varphi\right)(x) &= -i\, \varphi^\prime(x)\\
+	\left(\opq\varphi\right)(x) &= x\, \varphi(x).
+\end{align}
+
+Note that for any observable $\opa$ the variance functional is concave in the state. Take $\rho,\, \sigma \in \dop{D}$ with finite first and second moments of $\opa$ and choose $\lambda \in (0,1)$ then
+
+\begin{align}
+	0&\leq \lambda(1-\lambda) \left(\expe{\opa}{\rho} - \expe{\opa}{\sigma}\right)^2\\
+	 \lambda^2 \expe{\opa}{\rho}^2 + (1- \lambda)^2\expe{\opa}{\sigma}^2 + 2\lambda(1-\lambda)\expe{\opa}{\rho}\expe{\opa}{\sigma} &\leq \lambda \expe{\opa}{\rho}^2 + (1-\lambda) \expe{\opa}{\sigma}^2\\
+	 \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &=\\
+	 \expe{\opa^2}{\lambda\rho + (1-\lambda)\sigma} - \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &\geq \lambda\left(\expe{\opa^2}{\rho} -\expe{\opa}{\rho}^2\right) + (1-\lambda)\left(\expe{\opa}{\sigma}^2 -\expe{\opa}{\sigma}^2\right)\\
+	 \var{\opa}{\lambda\rho + (1-\lambda)\sigma} &\geq \lambda \var{\opa}{\rho} + (1-\lambda ) \var{\opa}{\sigma}.
+\end{align}
+
+\section{Momentum shift invariance}
+
+It is obvious from the boundary conditions that we do not have the invariance of the state-space under position shifts which allows for significant simplifications when trying to solve the problem on, for example, the entire real line or for the ``particle on a ring" system. However we still have invariance under momentum shifts, which can be seen by expressing the effect of the ``shift operators" in the position representation
+
+\begin{align}
+	(e^{i p \opq} \varphi)(x) &= e^{ipx}\varphi(x)\\
+	(e^{i p \opq} \varphi)(-\pi) = e^{-i\pi p}\varphi(-\pi) &= 0 =  e^{i\pi p}\varphi(\pi) = (e^{i p \opq} \varphi)(\pi).
+\end{align}
+
+Critically this shift does not change any of the moments of the position observable, or the variance of the momentum observable, so the uncertainty region $U$ is exactly the same as the region
+
+\begin{equation}
+	R = \left\{\left(\varr{\opq},\, \expr{\opp^2}\right)\, \middle |\, \rho \in \dop{\mathcal{D}},\, \expe{\opp}{\rho} = 0\right\},
+\end{equation}
+
+obtained by setting the momentum expectation to zero.
+
+\section{Global facts about the uncertainty region}
+It is clear that the region is contained in the quadrant with $0 \leq\var{\opq}{}$, $0\leq\var{\opp}{}$, further, since the interval is bounded above and below by $\pi$ and $-\pi$, we must have that $\varr{Q} \leq \expr{Q^2} \leq \pi^2$. 
+
+Take any smooth, $L^2$ normalised, function $f: \mathbb{R} \to \mathbb{R}$, supported only on $[0,1]$, and consider
+\begin{equation}
+	g_{a,s}(x) = \frac{1}{\sqrt{2s}}f\left(\frac{x-a}{s}\right) +\frac{1}{\sqrt{2s}}f\left(\frac{-x-a}{s}\right),
+\end{equation}
+
+where a is non-negative, s is positive and they are taken such that $a+s < \pi$. The resulting $g_{a,s}$ is a smooth function supported on $[-a-s, -a] \cup [a,a+s]$, with $\expe{\opq}{g_{a,s}} = 0$, and so has finite momentum variance as well as
+\begin{equation}
+	a^2 < \var{\opq}{g_{a,s}} < (a+s)^2.
+\end{equation}
+
+By varying $a$ and $s$ in the allowed region we see that in any interval $I = (\alpha, \alpha+\varepsilon) \subset (0,\pi^2)$ there exists some state $\rho$ with $\varr{\opq} \in X$. Further, given any two position uncertainties $\var{\opq}{\phi}$ and $\var{\opq}{\psi}$, achieved by pure states $\phi$ and $\psi$ we can define the state
+\begin{align}
+	\xi_\theta &= \frac{1}{\sqrt{1+2\cos\theta\sin\theta\re\left(\braket{\phi}{\psi}\right)}}\left(\cos\theta\,\phi + \sin\theta\,\psi \right),
+\end{align}
+ 
+and the continuous, real valued function $\theta\mapsto\var{\opq}{\xi_\theta}$. The intermediate value theorem then asserts that for every variance $v\in(\var{\opq}{\phi},\var{\opq}{\psi})$ there exists $\theta^*\in(0,\pi)$ such that $\var{\opq}{\xi_{\theta^*}} = v$.
+
+Given a state we can increase its momentum variance as much as we like, whilst leaving the moments of position unchanged, by applying the following map,
+
+\begin{align}
+	M_a : \phi &\mapsto \left(x \mapsto \phi(x) e^{a i x^2}\right)\\
+	\expe{\opq^n}{M_a\phi} &= \expe{\opq^n}{\phi}\\
+	\var{\opp}{M_a\phi} &= \var{\opp}{\phi} + a^2 \var{\opq}{\phi} - 2a\expe{\opp}{\phi}\expe{\opq}{\phi}.
+\end{align}
+
+This means that given some $x\in (0,\pi^2)$ there is exactly one point on the boundary of the uncertainty region with $\var{\opq}{} = x$. The boundary may therefore be expressed as the graph of a function
+\begin{align}
+	b&:(0,\pi^2) \to \left(0, \infty\right)\\
+	b&:x \mapsto \inf \left\{\var{\opp}{\rho}\,\middle|\,\rho\in\dop{\mathcal{D}},\, \var{\opq}{\rho} = x\right\}.
+\end{align}
+The expectation $\expr{\opp^2}$ has a global minimum at $\frac{1}{4}$, which we can find quite easily as the least eigenvalue of $\opp^2$
+\begin{align}
+	\ps{k}(x) &= \frac{1}{\sqrt{\pi}} \sin \frac{k+1}{2}(x - \pi),\quad k\in\{0,1,...\}\\
+	\opp^2 \ps{k} &= \frac{(k+1)^2}{4} \ps{k}\\
+	\inf_\rho \expr{\opp^2} &= \expe{\opp^2}{\ps{0}} = \frac{1}{4}\\
+	\var{\opq}{\ps{0}} &= \expe{\opq^2}{\ps{0}} = \frac{\pi^2}{3} - 2 \approx 1.3.
+\end{align}
+The boundary curve must be strictly decreasing for $\var{\opq}{} < \var{\opq}{\ps{0}}$, and strictly increasing for $\var{\opq}{} > \var{\opq}{\ps{0}}$, which may be shown by taking each state on the boundary, setting its momentum expectation to zero, and mixing the resultant state $\rho$ with the minimiser $\sigma=\ketbra{\ps{0}}{\ps{0}}$. It is easy to see that for each variance $v\in(\var{\opq}{\ps{0}}, \var{\opq}{\rho})$ there exists a $\lambda^*\in(0,1)$ such that 
+\begin{align}
+	\tau(\lambda) &= (1-\lambda) \rho + \lambda\sigma\\	
+	\var{\opq}{\tau(\lambda^*)} &= v.
+\end{align}
+The existence of the required $\lambda^*$ can be asserted by noting that $\lambda\mapsto\var{\opq}{\tau(\lambda)}$ is continuous, and applying the intermediate value theorem. Since $\ps{0}$ is the unique minimiser of $\expe{\opp^2}{}$ it follows that
+\begin{align}
+	\var{\opp}{\tau(\lambda^*)} &= \expe{\opp^2}{\tau(\lambda^*)}\\
+	&= (1-\lambda^*)\expe{\opp^2}{\sigma} + \lambda^*\expe{\opp^2}{\rho}\\
+	&< \expe{\opp^2}{\rho},
+\end{align}
+which gives the result.
+
+
+%\begin{align}
+%	\xi_a(x) &= \ps{0}(x) e^{i \frac{a}{2} x^2}\\
+%	\expe{\opq}{\xi_{a}} &= \expe{\opq}{\ps{0}} = 0 \\
+%	\expe{\opq^2}{\xi_{a}} &= \expe{\opq^2}{\ps{0}} = \frac{1}{3} \left(\pi ^2-6\right)\\
+%	\expe{\opp}{\xi_{a}} &= -i \int_{-\pi}^{\pi}\ps{0}(x) e^{-i \frac{a}{2} x^2}\left(\ps{0}^\prime(x) + ia x\ps{0}\right)e^{i \frac{a}{2} x^2} \diff{x}\\
+%	&= \expe{\opp}{\ps{0}} = 0\\
+%	\expe{\opp^2}{\xi_{a}} &=\int_{-\pi}^{\pi} \left(\ps{0}^\prime(x) -i a x\ps{0}(x)\right)\left(\ps{0}^\prime(x) +i a x\ps{0}(x)\right) \diff{x}\\
+%	&= \expe{\opp^2}{\ps{0}} + a^2\int_{-\pi}^{\pi} \ps{0}(x)^2 x^2 \diff{x}\\
+%	&= \expe{\opp^2}{\ps{0}} + a^2\frac{1}{3} \left(\pi ^2-6\right).
+%\end{align}
+
+%\section{Reduction to pure states}
+%
+%A priori it is not obvious that the least momentum variance given a fixed position variance would be achieved by a pure state. Define
+%\begin{align}
+%	X&:(0,\pi^2) \to \mathcal{P}(\mathcal{D})\\
+%	X&: x\mapsto \left\{\psi\in\mathcal{D}\,\middle|\,\var{\opq}{\psi} = x\right\}\\
+%	\psi_x &= \argmin_{\psi\in X(x)} \var{\opp}{\psi}.
+%\end{align}
+%
+%It is clear that $X(x)$ is non-empty for x in the chosen domain. If there are multiple minimisers, then any representative will suffice for $\psi_x$. Here I am assuming that the uncertainty region is a closed subset of $\mathbb{R}^2$, otherwise there will be an infimum but no minimum, and hence no minimiser. Now consider the momentum variance, assuming that we have applied momentum shift invariance to set the momentum expectation to zero
+%
+%\begin{align}
+%	\var{\opp}{\rho} &= \expe{\opp^2}{\rho}\\
+%	&= \sum_i p_i \expe{\opp^2}{\phi_i}\\
+%	&\geq \sum_i p_i \expe{\opp^2}{\psi_x}
+%\end{align}
+
+\subsection{Upper and lower bounds}
+\label{subsec:upper-lower-bounds}
+There is an obvious linear isometry $F:\mathcal{D}\to L^2\left(\mathbb{R}\right)$ which takes each pure state in $\mathcal{D}$ and simply extends it to be zero outside $[-\pi,\pi]$
+\begin{equation}
+	F:\phi\mapsto\left(x\mapsto \begin{cases}\phi(x), &-\pi \leq x \leq \pi\\0,&\text{otherwise}\end{cases}\right).
+\end{equation}
+
+This map will take the position and momentum observables we have defined and map them to the usual $L^2\left(\mathbb{R}\right)$ position and momentum. in doing so it will not change the variances, and so the canonical hyperbola $\var{\opp}{}\var{\opq}{} = \frac{1}{4}$ gives a lower bound for our boundary function 
+\begin{equation}
+	\label{eqn:can-hyp}
+	b(x) \geq \frac{1}{4 x}.
+\end{equation}
+
+If it were the case that the minimal momentum uncertainty for each position uncertainty could be achieved by a state with position expectation zero, then the uncertainty region would be given by
+\begin{equation}
+	X = \left\{\left(\expr{\opq^2},\ \expr{\opp^2}\right)\ \middle |\ \rho \in \dop{\mathcal{D}}\right\}.
+\end{equation}
+
+It is easy to see that this region is convex, and so the boundary may be defined by its Legendre transform, we ask for a set of inequalities of the form
+\begin{equation}
+	\expr{\opp^2} + \alpha \expr{\opq^2} \geq c(\alpha)
+\end{equation}
+for each $\alpha\in\mathbb{R}$. Intuitively we are finding the tangent to the boundary curve at each point and using that the region is convex so each tangent line bounds the region below. Applying the well known functional calculus we see that this amounts to solving the eigenvalue problem
+\begin{align}
+	\oph_\alpha \varphi_\alpha &= \left(\opp^2 + \alpha \opq^2\right)\varphi_\alpha = c(\alpha) \varphi_\alpha\\
+	\varphi_\alpha(-\pi) &=\varphi_\alpha(\pi) = 0,
+\end{align}
+for the least eigenvalue of $\oph_\alpha$. The ground states are easy to express in terms of the confluent hyper-geometric function, or in terms of parabolic cylinder functions, however these representations are not very useful for computing the eigenvalue $c(\alpha)$. Instead we use that the eigenstates $\psi_k$ of $\opp^2$ form a core for the operators $\oph_\alpha$, so that we can compute arbitrarily good approximations to $c(\alpha)$ by expressing the operator as a matrix $h_{n,m} = \braket{\psi_n}{\oph_\alpha\psi_m}$, truncating the matrix at some finite dimension, and numerically computing the least eigenvalue for a range of $\alpha$ values.
+
+Once we have a set of points $\left\{\left(\alpha_i, c(\alpha_i)\right)\,\middle|\, i\in(1, \ldots n)\right\}$, sufficiently close together we can approximate the derivative $c^\prime(\alpha)$ to get approximations to
+\begin{align}
+	\label{eqn:pos-exp-0-x}
+	\var{\opq}{\varphi_\alpha} &= c^\prime(\alpha)\\
+	\label{eqn:pos-exp-0-y}
+	\var{\opp}{\varphi_\alpha} &= c(\alpha) - \alpha c^\prime(\alpha).
+\end{align}
+
+Note that although it might be that the boundary is only realised by states with $\expe{\opq}{} \neq 0$ the set of states with $\expe{\opq}{} = 0$ is a subset of $\mathcal{D}$, and so the uncertainties of the states we find in this way are in the uncertainty region, and hence are an upper bound for $b$.
+
+%In the sequel we focus on the portion of the boundary curve with $\var{\opq}{} > \var{\opq}{\psi_1}$, because one can consider a sequence of increasingly sharply peaked Gaussian wavefunctions, centred at the origin, each being multiplied by a smooth, symmetric ``cutoff function`` supported on $(-\pi,\pi)$. As the Gaussians become increasingly concentrated at the origin the effect of the cutoff will become small, and the position and momentum variances will approximate the canonical hyperbola $\var{\opp}{} \var{\opq}{} = \frac{1}{4}$. More prosaically, the boundary seems significantly simpler to analyse in this region.
+
+%\section{Position variances greater than $\var{\opq}{\ps{0}}$}
+%there has got to be a better way to do this...
+\begin{figure}
+	\begin{tikzpicture}
+		\begin{axis}[
+		width=0.9\textwidth, 
+		ymin=0, ymax=6,
+		xmin=0, xmax=pi,
+		grid=major, 
+		xlabel={$\sdev{\opq}{}$}, 
+		ylabel={$\sdev{\opp}{}$},
+		legend entries={{$\expe{\opq}{} = 0$ states (upper bound - exact for $\sdev{\opq} > \sqrt{\frac{\pi^2}{3} - 2}\approx 1.14$)}, {Canonical hyperbola (lower bound)}},
+		legend style={at={(0.1,0.97)}, anchor=west}
+	]
+			\addplot+[blue, mark=none] table{upper.dat};
+			\addplot+[red, mark=none, samples=1000, domain=1/20:pi]{1 / ( 2*x )};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Plot showing the lower \eqref{eqn:can-hyp} and upper \eqref{eqn:pos-exp-0-x}, \eqref{eqn:pos-exp-0-y} bounds for the uncertainty region boundary, in red and blue respectively. The upper bound is exact for $\sdev{\opq} > \sqrt{\frac{\pi^2}{3} - 2}\approx 1.14$, and is conjectured to be exact everywhere.}
+\end{figure}
+\FloatBarrier
+\section{The exact boundary curve}
+
+%It is possible to show that in the region where $\alpha < 0$, where the upper boundary curve defined in \ref{} is increasing, that the upper bound for the boundary is also a lower bound, and hence the exact boundary, at least for the pure state uncertainty region. Take, for contradiction a pure state $\xi$ such that
+
+
+%The boundary curve is convex for position variances greater than $\var{\opq}{\ps{0}}$, which is a straightforward consequence of the monotonicity property, and the concavity of the variance functional
+%\begin{align}
+%	\var{\opq}{\rho} &< \var{\opq}{\sigma} \implies \var{\opp}{\rho} < \var{\opp}{\sigma}\\
+%	\tau(\lambda) &= (1-\lambda)\rho + \lambda\sigma\\
+%	\var{\opq}{\tau(\lambda^*)} &= (1-a)\var{\opq}{\rho} + a\var{\opq}{\sigma}\\
+%	&\geq (1-\lambda^*)\var{\opq}{\rho} + \lambda^*\var{\opq}{\sigma}\\
+%	\implies (a-\lambda^*) \var{\opq}{\sigma} &\geq (a-\lambda^*) \var{\opq}{\rho}\\
+%	\implies a&\geq \lambda^*\\
+%	\implies \var{\opp}{\tau(\lambda^*)} = (1-\lambda^*)\var{\opp}{\rho} + \lambda^*\var{\opp}{\sigma} &\leq (1-a)\var{\opp}{\rho} + a\var{\opp}{\sigma}.
+%\end{align}
+%
+%Consider the  uncertainty region achievable by pure states, a priori this may not be a convex set, however we know that it is bounded by a function $x\mapsto\inf \left\{\var{\opp}{\phi}\middle|\phi\in\mathcal{D},\,\var{\opq}{\phi} = x\right\}$, which has a global minimum obtained on $\ps{0}$. We can determine the convex conjugate of this curve, which will define a lower bound to the boundary curve since a set must be contained within it's convex hull
+%\begin{align}
+%	\inf_\psi\left(\expe{\opp^2}{\psi} + \alpha \var{\opq}{\psi}\right) &= c(\alpha).
+%\end{align}
+%
+%Again we can apply the functional calculus, to show that the minimiser, $\varphi_\alpha$ obeys
+%\begin{align}
+%	\label{eqn:func-calc-min}
+%	\left(\opp^2 + \alpha(\opq^2 - \expe{\opq}{\varphi_\alpha}\opq)\right)\varphi_\alpha &= c(\alpha) \varphi_\alpha.
+%\end{align}
+%
+%This is not a linear eigenvalue equation, because of the $\expe{\opq}{\varphi_\alpha}$ term, nevertheless we can make some progress. Assume that $\expe{\opq}{\varphi_\alpha}\neq 0$, and compare to the equation
+%\begin{align}
+%	\oph_\alpha\psi = \left(\opp^2 + \alpha\opq^2\right)\psi &= \lambda \psi,
+%\end{align}
+%
+%This equation, along with our boundary conditions defines a Sturm-Liouville problem, hence there is a family of solutions for each value of $\alpha$, $(\lambda_{\alpha, i}, \psi_{\alpha, i})_{i\in\mathbb{N}}$ 
+%\begin{align}
+%	\left(\opp^2 + \alpha\opq^2\right)\psi_{\alpha, i} &= \lambda_{\alpha, i} \psi_{\alpha, i}\\
+%	\lambda_{\alpha, i} &< \lambda_{\alpha, i+1}\\
+%	\lambda_{\alpha, i} &\xrightarrow{i\to\infty} \infty.
+%\end{align}	
+%
+%Rearranging \ref{eqn:func-calc-min}, and taking the inner product with the minimiser $\varphi_\alpha$ gives
+%
+%\begin{align}
+%	\left(\opp^2 + \alpha\opq^2 - c(\alpha)\right)\varphi_\alpha &= \alpha\expe{\opq}{\varphi_\alpha}\opq\varphi_\alpha\\
+%	\braket{\varphi_\alpha}{\oph_\alpha\varphi_\alpha} - c(\alpha) &=\alpha\expe{\opq}{\varphi_\alpha}^2\\
+%	\label{eqn:lambda0-ground-state}
+%	\lambda_{\alpha, 0} - c(\alpha) &\leq\alpha\expe{\opq}{\varphi_\alpha}^2\\
+%	\label{eqn:minimiser-is-minimiser}
+%	0 &\leq\alpha\expe{\opq}{\varphi_\alpha}^2
+%\end{align}
+%
+%Line \ref{eqn:lambda0-ground-state} follows because the expectation, in any state, of a Sturm-Liouville operator must be greater than the least eigenvalue, whilst \ref{eqn:minimiser-is-minimiser} requires noting that since \ref{eqn:func-calc-min} defines the minimiser $c(\alpha)\leq\lambda_{\alpha, 0}$.
+%
+%Since $-\alpha$ is the gradient of the tangent line to the boundary curve of the convex hull the region of pure state uncertainties, it follows that for the region where the curve is increasing we must have $\expe{\opq}{\varphi_\alpha} = 0$. This means that the boundary in this region is defined by the equation
+%
+%\begin{align}
+%	\left(\opp + \alpha\opq\right)\varphi_\alpha = c_\alpha \varphi_\alpha.
+%\end{align}
+%
+%%Since this is an eigenvalue equation we can use the methods described in \ref{subsec:upper-lower-bounds} to approximate the boundary curve. 
+%
+%Since the same equation which defined the upper bound for the boundary earlier is now defining the lower bound, we see that the boundary of the pure state uncertainty region is exactly this curve. 
+
+Given the ground state $\varphi$ of $\oph_\alpha$ for some $\alpha \in\mathbb{R}$ assume, there is some state $\rho$ such that
+\begin{align}
+	\expe{\opq^2}{\rho} -\expe{\opq}{\rho}^2 &= \var{\opq}{\rho} = \var{\opq}{\varphi} = \expe{\opq^2}{\varphi}\\
+	\expe{\opp^2}{\rho} &< \expe{\opp^2}{\varphi},
+\end{align}
+then
+\begin{align}
+	\expe{\opp^2 +\alpha\opq^2}{\varphi} &\leq \tr\left(\rho\left(\opp^2 +\alpha\opq^2\right)\right)\\
+	&= \expe{\opp^2}{\rho} + \alpha\expe{\opq^2}{\rho}\\
+	&= \expe{\opp^2}{\rho} + \alpha\left(\expe{\opq^2}{\varphi} + \expe{\opq}{\rho}^2\right)\\
+	&< \expe{\opp^2}{\varphi} + \alpha\expe{\opq^2}{\varphi} + \alpha\expe{\opq}{\rho}^2
+\end{align}
+which is an obvious contradiction for $\alpha < 0$, which is the region in which the curve is increasing. We can conclude that in this region the upper bound for the boundary curve gives the exact boundary. We do not have a similar result for $\alpha > 0$, however in this region the curve is bounded between the canonical hyperbola and the upper bound, which approach each other as $\alpha\to\infty$.
+
+%The boundary function must be monotonically increasing on the interval $(\var{\opq}{\psi_1},\pi^2)$ by first showing that the uncertainty region is star-convex, with ``center point" $x_0 = (\var{\opq}{\psi_1}, \var{\opp}{\psi_1})$, i.e. for any $\rho \in \dop{\mathcal{D}} $, $a\in(0,1)$ there exists some $\tau\in\dop{\mathcal{D}}$ with 
+%
+%\begin{align}
+%	\var{\opp}{\tau} &= a \var{\opp}{\rho} + (1-a)\var{\opp}{\sigma} \\
+%	\var{\opq}{\tau} &= a \var{\opq}{\rho} + (1-a)\var{\opq}{\sigma},
+%\end{align}
+%
+%where $\sigma = \ketbra{\psi_1}{\psi_1}$. Set $\tau(\lambda) = \lambda \rho + (1-\lambda)\sigma$, and consider the continuous function $f:\lambda \mapsto \var{\opq}{\tau(\lambda)}$, with $f(0)=\var{\opq}{\sigma}$ and $f(1) =\var{\opq}{\rho} $. By the intermediate value theorem there exists $\lambda^* \in (0,1)$ with $\var{\opq}{\tau(\lambda^*)} = a \var{\opq}{\rho} + (1-a)\var{\opq}{\sigma}$. Recall the variance functional is concave
+%
+%\begin{align}
+%	{\tau(\lambda^*)} &= a \var{\opq}{\rho} + (1-a)\var{\opq}{\sigma} \\
+%	&\geq \lambda^* \var{\opq}{\rho} + (1-\lambda^*)\var{\opq}{\sigma}\\
+%	\implies (a-\lambda^*) \var{\opq}{\rho} &\geq (a-\lambda^*) \var{\opq}{\sigma},
+%\end{align}
+%
+%so if $\var{\opq}{\sigma} \leq \var{\opq}{\rho}$ we have $\lambda^* \leq a$, otherwise $\lambda^* \geq a$.
+%
+%Without loss of generality assume $\expe{\opp}{\rho} = 0$ so
+%
+%\begin{align}
+%	\var{\opp}{\tau(\lambda^*)} = \lambda^* \expe{\opp^2}{\rho} + (1-\lambda^*) \expe{\opp^2}{\sigma}\\
+%\end{align}
+
+%because given a (pure) state in $\mathcal{D}$ with position wave-function $\xi$, and a number $a\in(0,1)$ we can ``shrink" the state in position space 
+%
+%\begin{align}
+%	\eta_a(x) &= \begin{cases}\frac{1}{\sqrt{a}} \,\xi\left(\frac{x}{a}\right), &  -a\pi < x < a\pi \\ 0 & a\pi < \mymod{x}<\pi \end{cases}\\
+%	\var{\opp}{\eta_a} &= \frac{1}{a^2} \var{\opp}{\xi}\\
+%	\var{\opq}{\eta_a} &= a^2 \var{\opq}{\xi}.
+%\end{align}
+
+
+%\section{Reduction to pure states}
+%
+%Fix $\lambda$ to be a real number in $[0,1]$, the momentum second moment is linear in the state 
+%
+%\begin{equation}
+%	\expe{\opp^2}{\lambda \rho + (1-\lambda)\sigma} = \lambda \expe{\opp^2}{\rho} + (1-\lambda)\expe{\opp^2}{\sigma},
+%\end{equation}
+%
+%so the infimum must be reached by pure states. The position variance is slightly more complicated
+%
+%\begin{align}
+%	0&\leq \lambda(1-\lambda) \left(\expe{\opq}{\rho} - \expe{\opq}{\sigma}\right)^2\\
+%	 \lambda^2 \expe{\opq}{\rho}^2 + (1- \lambda)^2\expe{\opq}{\sigma}^2 + 2\lambda(1-\lambda)\expe{\opq}{\rho}\expe{\opq}{\sigma} &\leq \lambda \expe{\opq}{\rho}^2 + (1-\lambda) \expe{\opq}{\sigma}^2\\
+%	 \left(\lambda \expe{\opq}{\rho} + (1- \lambda)\expe{\opq}{\sigma}\right)^2 &=\\
+%	 \expe{\opq^2}{\lambda\rho + (1-\lambda)\sigma} - \left(\lambda \expe{\opq}{\rho} + (1- \lambda)\expe{\opq}{\sigma}\right)^2 &\geq \lambda\left(\expe{\opq^2}{\rho} -\expe{\opq}{\rho}^2\right) + (1-\lambda)\left(\expe{\opq}{\sigma}^2 -\expe{\opq}{\sigma}^2\right)\\
+%	 \var{\opq}{\lambda\rho + (1-\lambda)\sigma} &\geq \lambda \var{\opq}{\rho} + (1-\lambda ) \var{\opq}{\sigma}.
+%\end{align}
+%
+%From this it follows that at least one of $\var{\opq}{\rho}$ and $\var{\opq}{\sigma}$ must be less than or equal to $\var{\opq}{\lambda\rho + (1-\lambda)\sigma}$, and by taking an arbitrary mixed state, writing it as a convex combination of a projector onto one of its eigenvectors and the rest, and recursively applying this argument, it follows that the infimum of momentum 
+
+
+
+%We have the following functional to minimise
+%\begin{equation}
+%	\Delta[\psi] = \braket{\psi}{\opp^2 \psi} + \alpha\left(\braket{\psi}{\opq^2 \psi} - \braket{\psi}{\opq\psi}^2  \right),
+%\end{equation}
+%
+%if $\alpha = 0$ then this simplifies to the expectation value $\braket{\psi}{\opp^2 \psi}$ and we are done, so consider $\alpha\neq 0$.
+%We apply the functional calculus to show that $\opb$ is extremised by solutions to 
+%
+%\begin{equation}
+%	\opa(\psi) = \left(\opp^2  + \alpha \opq^2  - \alpha\braket{\psi}{\opq\psi}\opq  \right)\psi = \mu\, \psi.
+%	\label{eqn:nonlin-eigenval}
+%\end{equation}
+%
+%Note that $A$ is written as a function of $\psi$, rather than an operator because it is non-linear. 
+%
+%Define the linear operator
+%
+%\begin{equation}
+%	\opb = \opp^2 + \alpha \opq^2,
+%\end{equation}
+%
+%and note it is self-adjoint on the domain of interest so it's eigenfunctions form an orthonormal basis
+%
+%\begin{align}
+%	\label{eqn:lin-eigenval}
+%	\left(\opp^2 + \alpha \opq^2\right)\varphi_i = &\lambda_i\, \varphi_i\\
+%	\lambda_{i+1}  > &\lambda_i\\
+%	\lambda_i\xrightarrow{i\to\infty} &\infty.
+%\end{align}
+%
+%Every solution of \eqref{eqn:lin-eigenval} is a solution of \eqref{eqn:nonlin-eigenval} with position expectation $0$, because $\opa$ commutes with the parity operator $\Pi$. Since we are looking for the minimising states for $\Delta$ we can restrict to looking for a solution to \eqref{eqn:nonlin-eigenval} with $\mu < \lambda_0$.
+%
+%We can take the inner product of both sides of \eqref{eqn:nonlin-eigenval} with $\psi$
+%
+%\begin{align}
+%	\braket{\psi}{\left(\opp^2  + \alpha \opq^2\right)\psi}  -\mu \braket{\psi}{\psi} &= \alpha\braket{\psi}{\opq\psi}^2.
+%\end{align}
+%
+%Finally we note that since we are only interested in quantum states we may take the norm of $\psi$ to be $1$ and the expectation of $\opb$ in any state must be greater than, or equal to it's least eigenvalue $\lambda_0$, which is greater than $\mu$ by assumption.
+%
+%\begin{align}
+%	\braket{\psi}{\left(\opp^2  + \alpha \opq^2\right)\psi}  -\mu \braket{\psi}{\psi} &= \alpha\braket{\psi}{\opq\psi}^2\\
+%	0 < \lambda_0 - \mu &\leq \alpha\braket{\psi}{\opq\psi}^2
+%\end{align}
+%
+%Since $\braket{\psi}{\opq\psi}^2$ is positive, this is not possible for $\alpha < 0$.
+
+\bibliography{particle-in-a-box}
+
+%\begin{thebibliography}{7}
+%
+%%\bibitem{qtm}
+%%Busch, P., Lahti, P. J., Mittelstaedt, P.
+%%\newblock{The Quantum Theory of Measurement}
+%%\newblock{\em Lecture Notes in Physics} (1996) Springer
+%%
+%%\bibitem{qcrypt-no-bell}
+%%Bennett, C. H., Brassard, G. and Mermin, N. D. 
+%%\newblock{Quantum cryptography without Bell's theorem}
+%%\newblock{\em Phys. Rev. Lett.} {\bf 68} 5 (1992) 557-559
+%%%
+%%%\bibitem{dAriano}
+%%%D’Ariano, G. M.
+%%%\newblock{On the Heisenberg principle, namely on the information-disturbance trade-off in a quantum measurement}
+%%%\newblock{\em Fortschr. Phys} {\bf 51}  4–5 (2003) 31-330
+%
+%
+%
+%\end{thebibliography}
+
+\end{document}

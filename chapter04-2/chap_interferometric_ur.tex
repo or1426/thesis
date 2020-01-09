@@ -1,9 +1,81 @@
 \chapter{Infinite dimensional preparation uncertainty}\label{chap:infinite-prep-ur}
-\section{Introduction}
-A standard introductory course on quantum mechanics mentions several infinite dimensional state-spaces. Namely the pure states of a particle free to move on an line ($L^2(\R)$), and other Euclidean spaces ($L^2(\R^2)$,  $L^2(\R^3)$ etc.), a particle fixed to a one dimensional ring ($L^2(\circleNotate)$, where $\circleNotate$ denotes the unit circle), and a particle in a ``box'', a finite interval (without loss of generality $L^2([-\pi, \pi])$). Preparation uncertainty for position and momentum observables has been studied for several of these spaces, with the variance~\cite{Heisenberg1927-Wheeler+Zurek} and Shannon-entropy~\cites{Bialynicki-BirulaMycielski1975}{beckner-1975} uncertainty regions for the Euclidean spaces being characterised in 1927 and 1975, respectively. More recently the case of the particle on a ring has been addressed for both for measurement uncertainty  and ``variance-like'' preparation uncertainty~\cite{sharp-ur-num-angle} \coma{talk about this ``like'' later}.
+\subsection{Introduction}
+A standard introductory course on quantum mechanics mentions several infinite dimensional state-spaces. Namely the pure states of a particle free to move on an line ($L^2(\R)$), and other Euclidean spaces ($L^2(\R^2)$,  $L^2(\R^3)$ etc.), a particle fixed to a one dimensional ring ($L^2(\circleNotate)$, where $\circleNotate$ denotes the unit circle), and a particle in a ``box'', a finite interval (without loss of generality $L^2([-\pi, \pi])$). Preparation uncertainty for position and momentum observables has been studied for several of these spaces, with the variance~\cite{Heisenberg1927-Wheeler+Zurek} and Shannon-entropy~\cites{Bialynicki-BirulaMycielski1975}{beckner-1975} uncertainty regions for the Euclidean spaces being characterised in 1927 and 1975, respectively. More recently the case of the particle on a ring has been addressed for both for measurement uncertainty and preparation uncertainty~\cite{sharp-ur-num-angle}. 
 
-There does not seem to have been a similar analysis for particle in a box system. In part this omission may be due to the lack of the phase-space symmetry which makes the problem tractable in the other cases 
+There does not seem to have been a similar analysis for particle in a box system. In part this omission may be due to the lack of the phase-space symmetry which makes the problem more tractable in other cases. We contrast our approach with that taken in ref.~\cite{entropic-ur-infinite-well} which seems superficially similar, however the authors of that reference only examine the uncertainty of eigenstates of the Hamiltonian of the ``box'' system, rather than the full state-space. Our approach is more similar the original Heisenberg result, in that we seek an uncertainty relation which is valid for all quantum states of the system.
 
+Since the ring, as a topological space, may be formed from the interval by identifying the end-points we will be interested in comparing our results to those of ref.~\cite{sharp-ur-num-angle}. A barrier to this is that it is not possible to directly define the variance for a probability distribution defined on a circle. This may be seen by noting that in order to define the variance one must first define the mean and that, for example, the uniform distribution on the circle does not have a well-defined mean. For this reason Busch, Kiukas and Werner introduced a ``generalised standard-deviation'', similar to the Fr{\'e}chet variance in order to compare the localisation of probability distributions. \coma{We will discuss} 
+
+\subsection{State-space }
+We model the box system as one obtained from the full Hilbert space $L^2(\R)$ by imposing the restriction that the states are zero outside the interval $[-\pi, \pi]$, this is an idealisation of the physical situation where there are large (but finite) potential ``walls'' causing the probability density of the particle to decay rapidly outside the box. There is an obvious isometry $l:~L^2([-\pi,\pi])\to L^2(\R)$ which extends a state by $0$ outside the allowed interval
+\begin{align}
+  (l\varphi)(x) = \begin{cases}\varphi(x), &x\in [-\pi,\pi]\\ 0, &\text{otherwise}\end{cases},
+\end{align}
+from which we obtain position and momentum observables 
+\begin{align}
+  \ope:X &\mapsto l^* \ope_0(X) l\\
+  \opf:Y &\mapsto l^* \opf_0(Y) l,
+\end{align}
+where $\ope$, $\ope$ are the observables (POVMs) acting on $L^2([-\pi,\pi])$ and $\ope_0$, $\opf_0$ are those for $L^2(\R)$, i.e. $\ope_0$, $\opf_0$ are the spectral measures of the standard position and momentum self-adjoint operators respectively. More explicitly $\ope_0(X)$ is the operator which multiplies by the characteristic function of the (Borel) set $X$, while $\opf_0$ is the Fourier transform
+\begin{align}
+  (\ope_0(X)\varphi)(x) &= \begin{cases}\varphi(x), &x\in X\\ 0, &\text{otherwise}\end{cases}\\
+  (\opf_0(Y)\varphi)(x) &= (\fcal^*\ope_0(Y)\fcal)(x),
+\end{align}
+where the unitary $\fcal$ implements the Fourier transform
+\begin{align}
+  (\fcal\varphi)(p) &= \int_\R e^{-2\pi i x p} \varphi(x)dx.
+\end{align}
+We restrict our attention to those states for which the first and second moments of both observables are finite, where the moments are
+\begin{align}
+  \expe{\ope[1]}{\varphi} &= \int_\R x \braket{\varphi}{\ope(dx)\varphi} & \expe{\opf[1]}{\varphi} &= \int_\R p \braket{\varphi}{\opf(dp)\varphi}\\
+  \expe{\ope[2]}{\varphi} &= \int_\R x^2 \braket{\varphi}{\ope(dx)\varphi} & \expe{\opf[2]}{\varphi} &= \int_\R p^2 \braket{\varphi}{\opf(dp)\varphi}. 
+\end{align}
+This imposes some non-trivial conditions on the states we examine. The states $\varphi$ must be absolutely continuous, as well as taking the value $0$ at the boundary points, $-\pi$ and $\pi$, in order that $l\varphi$ is in the domain of $\opf_0[1]$. We note that $\opf[1]$ is \emph{not} a self-adjoint operator on its domain,
+\begin{align}
+  \dom{\opf[1]} = \left\{\varphi\in L^2([-\pi,\pi])\, \middle|\, \varphi \text{ is abs. cont., } \varphi(-\pi) = \varphi(\pi) = 0\right\},
+\end{align}
+and therefore the expectation of the second moment $\opf[2]$ is finite on a larger set than 
+\begin{align}\label{eqn:bad-opf[2]-domain}
+  \dom{\opf[1]\opf[1]} = \left\{\varphi\in\dom{\opf[1]}\,\middle|\,\left(\opf[1]\varphi\right)\in\dom{\opf[1]}\right\}.
+\end{align}
+In fact $\braket{\varphi}{\opf[2]\varphi}$ is finite for
+\begin{align}\label{eqn:good-opf[2]-domain}
+  \varphi\in\dom{\opf[1]^*\opf[1]} = \left\{\varphi\in\dom{\opf[1]}\,\middle|\,\varphi^\prime \text{ is abs. cont.}\right\}.
+\end{align}
+To prove this we first note that since $\varphi$ is a (normalised) state, $\ope_0$ a projection-valued measure, $l$ an isometry and $\fcal$ a unitary we have that 
+\begin{align}\label{eqn:interferometric-ur-measure-bounded-by-1}
+  0\leq\int_P \braket{\varphi}{\opf(dp)\varphi} \leq \int_P dp,
+\end{align}
+for all measurable sets $P$. In particular this implies
+\begin{align}
+   \abs{\int_{-1}^1 p^k \braket{\varphi}{\opf(dp)\varphi} } \leq 2.
+\end{align}
+We split the integral defining the second moment into three parts
+\begin{align}
+  \expe{\opf[2]}{\varphi} &= \int_\R p^2 \braket{\varphi}{\opf(dp)\varphi}\\
+                          &= \int_{-\infty}^{-1} p^2 \braket{\varphi}{\opf(dp)\varphi} + \int_{-1}^{1} p^2 \braket{\varphi}{\opf(dp)\varphi} + \int_1^{\infty} p^2 \braket{\varphi}{\opf(dp)\varphi},
+\end{align}
+and note the inequalities
+\begin{align}
+  0&\leq - \int_{-\infty}^{-1} p \braket{\varphi}{\opf(dp)\varphi}  \leq \int_{-\infty}^{-1} p^2 \braket{\varphi}{\opf(dp)\varphi}\\
+  0&\leq  \int_1^{\infty} p \braket{\varphi}{\opf(dp)\varphi}  \leq \int_1^{\infty} p^2 \braket{\varphi}{\opf(dp)\varphi}.
+\end{align}
+Combining these with the fact that equation \eqref{eqn:interferometric-ur-measure-bounded-by-1} implies that
+\begin{align}
+  \int_{-1}^{1} p \braket{\varphi}{\opf(dp)\varphi} < 2
+\end{align}
+
+
+note that $\opf[1]^*\opf[1]$ is self-adjoint (indeed it is positive) on it's domain. Its action, when expressed in the position representation, is
+\begin{align}
+  (\opf[1]^*\opf[1]\varphi)(x) = -\varphi^{\prime\prime}(x).
+\end{align}
+
+
+the difference between equations \eqref{eqn:bad-opf[2]-domain} and \eqref{eqn:good-opf[2]-domain} being that we do not need to impose the condition that $\varphi^\prime(-\pi) = \varphi^\prime(\pi) = 0$. 
+
+
+We do not require any additional conditions to ensure that the moments of position are finite, since absolute continuity, combined with the boundary conditions, implies that the states are bounded functions in the position representation.
 
 
 \subsubsection{Uncertainty diagrams}

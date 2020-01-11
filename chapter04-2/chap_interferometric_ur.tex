@@ -127,6 +127,72 @@ such that the $P_k$ are mutually orthogonal projectors onto subspaces of $\dom{\
   \sum_k p_k = 1.
 \end{align}
 
+It is clear that the region is contained in the quadrant with $0 \leq\var[\rho]{\ope}$, $0\leq\var[\rho]{\opp}$, further, since the interval is bounded above and below by $\pi$ and $-\pi$, we must have that $\var[\rho]{\ope} \leq \expe{\ope[2]}{\rho} \leq \pi^2$. These bounds are classical, for example the probability distribution which assigns probability $frac{1}{2}$ to each of the points $-\pi$ and $\pi$ has (classical) position variance $\pi^2$.
+
+\begin{lem}\label{lem:box-ur-all-points-filled}
+  For any $x\in (0, \pi^2)$ there exists a state $\varphi\in\dom{\opf[1]^*\opf[1]}$  such that 
+  \begin{align}
+    \var[\varphi]{\ope} = x.
+  \end{align}
+\end{lem}
+\begin{proof}
+Take any smooth, $L^2$ normalised, function $f: \mathbb{R} \to \mathbb{R}$, supported only on $[0,1]$, and consider
+\begin{equation}
+	g_{a,s}(x) = \frac{1}{\sqrt{2s}}f\left(\frac{x-a}{s}\right) +\frac{1}{\sqrt{2s}}f\left(\frac{-x-a}{s}\right),
+\end{equation}
+where a is non-negative, s is positive and they are taken such that $a+s < \pi$. The resulting $g_{a,s}$ is a smooth function supported on $[-a-s, -a] \cup [a,a+s]$, with $\expe{\opq}{g_{a,s}} = 0$, and so has finite momentum variance as well as
+\begin{equation}
+	a^2 < \var{\opq}{g_{a,s}} < (a+s)^2.
+\end{equation}
+By varying $a$ and $s$ in the allowed region we see that in any interval $I = (\alpha, \alpha+\varepsilon) \subset (0,\pi^2)$ there exists some state $\varphi$ with $\var[\varphi]{\ope} \in X$. Further, given any two position uncertainties $\var[\varphi]{\ope}$ and $\var[\psi]{\opq}$, achieved by pure states $\varphi$ and $\psi$ we can define the state
+\begin{align}
+	\xi_\theta &= \frac{1}{\sqrt{1+2\cos\theta\sin\theta\Re\left(\braket{\varphi}{\psi}\right)}}\left(\cos\theta\,\varphi + \sin\theta\,\psi \right),
+\end{align}
+and the continuous, real valued function $\theta\mapsto\var[\xi_\theta]{\opq}$. The intermediate value theorem then asserts that for every variance $v\in(\var[\varphi]{\opq},\var[\psi]{\opq})$ there exists $\theta^*\in(0,\pi)$ such that $\var[\xi_{\theta^*}]{\opq} = v$.
+\end{proof}
+
+\begin{lem}\label{lem:box-ur-half-line-contained}
+Given a state $\varphi$ with variances $(\var[\varphi]{\ope}, \var[\varphi]{\opf})$ the half-line
+\begin{align}
+  L = \left\{(\var[\varphi]{\ope}, y)\middle| y \geq \var[\varphi]{\opf}\right\},
+\end{align}
+is contained in the uncertainty region.
+\end{lem}
+\begin{proof}
+We apply the map 
+\begin{align}
+  M_a : \varphi &\mapsto \left(x \mapsto \varphi(x) e^{a i x^2}\right),
+\end{align}
+to obtain a new state, for which the expectations and variances can be computed
+\begin{align}
+  \expe{\ope[1]}{M_a\varphi}&= \expe{\ope[1]}{\varphi} & \expe{\opf[1]}{M_a\varphi} &= \expe{\opf[1]}{\varphi} + 2a\expe{\ope[1]}{\varphi}\\
+  \expe{\ope[2]}{M_a\varphi}&= \expe{\ope[2]}{\varphi} & \expe{\opf[2]}{M_a\varphi} &= \expe{\opf[2]}{\varphi} + 4a^2\expe{\ope[2]}{\varphi}\\
+  \var[M_a\varphi]{\ope} &= \var[\varphi]{\ope} & \var[M_a\varphi]{\opf} &= \var[\varphi]{\opf} + 4 a^2 \var[\varphi]{\ope} - 2a\expe{\ope[1]}{\varphi}\expe{\opf[1]}{\varphi}.
+\end{align}
+Since $0<\var[\varphi]{\ope}$ for all states $\varphi$ there exists an $a$ such that $\var[M_a\varphi]{\opf} = y$, for all $y \geq \var[\varphi]{\opf}$.
+\end{proof}
+
+This offers a convenient description of the uncertainty region in terms of a boundary function.
+\begin{thm}
+  The uncertainty region is the epigraph (the set of points lying above the graph) of the function
+  \begin{align}
+    b&:(0,\pi^2) \to \R\\
+    b&:x\mapsto \inf\left\{\var[\varphi]{\opf}\,\middle|\,\var[\varphi]{\ope} = x\right\}.\label{eqn:box-ur-boundry-func-defn}
+  \end{align}
+\end{thm}
+Loosely this means that in addition to being unbounded above the uncertainty region has no ``holes'' in it.
+\begin{proof}
+  In order to define such a function it is necessary that for each $x\in (0,\pi^2)$ the infimum in equation~\eqref{eqn:box-ur-boundry-func-defn} exists and is finite. This is true since the set the infimum is being taken over is non-empty (by lemma~\ref{lem:box-ur-all-points-filled}) and bounded below (by $0$, since the variance is non-negative). 
+
+The uncertainty region $U$ contains the epigraph of $b$ if all the points above $b$ are in $U$, which follows from lemma~\ref{lem:box-ur-half-line-contained} combined with the definition of $b$. If $(x,y)$ is a point not in $U$ then there is no point directly below\footnote{By directly below (resp. above) $(x,y)$ we here mean a point $(x,y^\prime)$ such that $y^\prime < y$ (resp. $y^\prime > y$).} $(x,y)$ which is in $U$ due to lemma~\ref{lem:box-ur-half-line-contained}, therefore $y$ is a lower bound for the set
+\begin{align}
+  U(x) = \left\{\var[\varphi]{\opf}\,\middle|\,\var[\varphi]{\ope} = x\right\}.
+\end{align}
+From the definition of $b(x)$ we can therefore see $y \leq b(x)$, since $y$ is a lower bound for $U(x)$ and $b(x)$ is the greatest lower bound for $U(x)$, so $(x,y)$ is not in the epigraph of $b$. 
+
+Conversely the epigraph of $b$ contains $U$, which can be seen by noting that for each $x\in (0,\pi^2)$, all of the points $(x,y)$ in the uncertainty region are, by definition directly above $b(x)$.
+\end{proof}
+
 We first note that the variance is concave as a function of the (mixed) state.
 \begin{lem}
   Given any observable $\opa$, if $\dops$ is the set of density operators for which the first and second moments of $\opa$ are finite then the map $\nu:\dops\to \R$, $\nu:\rho\mapsto \varr{\opa}$ is concave.
@@ -138,9 +204,67 @@ We first note that the variance is concave as a function of the (mixed) state.
     \lambda^2 \expe{\opa}{\rho}^2 + (1- \lambda)^2\expe{\opa}{\sigma}^2 + 2\lambda(1-\lambda)\expe{\opa}{\rho}\expe{\opa}{\sigma} &\leq \lambda \expe{\opa}{\rho}^2 + (1-\lambda) \expe{\opa}{\sigma}^2\\
     \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &=\\
     \expe{\opa^2}{\lambda\rho + (1-\lambda)\sigma} - \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &\geq \lambda\left(\expe{\opa^2}{\rho} -\expe{\opa}{\rho}^2\right) + (1-\lambda)\left(\expe{\opa}{\sigma}^2 -\expe{\opa}{\sigma}^2\right)\\
-    \var{\opa}{\lambda\rho + (1-\lambda)\sigma} &\geq \lambda \var{\opa}{\rho} + (1-\lambda ) \var{\opa}{\sigma}.
+    \var[\lambda\rho + (1-\lambda)\sigma]{\opa} &\geq \lambda \var{\opa}{\rho} + (1-\lambda ) \var{\opa}{\sigma}.
   \end{align}
 \end{proof}
+
+
+
+Due to the boundary conditions in \eqref{eqn:good-opf[2]-domain} in we do not have shift operators, which move the states in position space. Explicitly given a pure state $\varphi\in\dom{\opf[1]^*\opf[1]}$, and $a\in [0,2\pi] $ the function
+\begin{align}
+  \tilde{\varphi}&:[-\pi,\pi]\to \Cx\\
+  \tilde{\varphi}&:x\mapsto \begin{cases}\varphi(x+a), & x+a\in [-\pi,\pi]\\ \varphi(x+a-2\pi), & x+a-2\pi\in [-\pi,\pi]\end{cases},
+\end{align}
+will generally \emph{not} obey the boundary conditions and therefore will not be a state. This ability to shift states is a key point in proofs of the usual Heisenberg uncertainty relation for the particle on the line. In particular on the real line one can shift any state in order to set the expectation values of position and momentum to zero, at which point the variance functional becomes linear in the state, offering a significant simplification.
+
+We do have the ability to shift the expectation of the first moment of momentum of the states as we choose. Given $\varphi\in\dom{\opf[1]^*\opf[1]}$ and $a\in\R$ the map
+\begin{align}
+  M_a &:\dom{\opf[1]^*\opf[1]}\to\dom{\opf[1]^*\opf[1]}\\
+  (M_a\varphi)&:x\mapsto e^{i a x}\varphi(x),
+\end{align}
+leaves the variance of momentum unchanged, along with the expectation of all the moments of position. As required $M_a$ changes the expectation of the first moment of momentum by $a$
+\begin{align}
+  \expe{\ope[1]}{M_a\varphi} &= \expe{\ope[1]}{\varphi} & \expe{\opf[1]}{M_a\varphi} &= \expe{\opf[1]}{\varphi} + a\\
+  \expe{\ope[2]}{M_a\varphi} &= \expe{\ope[2]}{\varphi}& \expe{\opf[2]}{M_a\varphi} &= \expe{\opf[2]}{\varphi} + 2a\expe{\opf[1]}{\varphi} + a^2,
+\end{align}
+so
+\begin{align}
+  \var[M_a\varphi]{\opf[2]} &= \expe{\opf[2]}{\varphi} + 2a\expe{\opf[1]}{\varphi} + a^2 - \left(\expe{\opf[1]}{\varphi} + a\right)^2\\
+                            &= \var[M_a\varphi]{\opf[2]}.
+\end{align}
+This means that we can reduce the problem of exploring momentum variances over all states, to exploring the expectation of momentum second moments, with the restriction that the expectation of the first moment of momentum is zero.
+
+We can now immediately find the least possible momentum, from the least eigenvalue of the self-adjoint operator $\opf[2] = \opf[1]^*\opf[1]$. It is well known that the solutions to
+\begin{align}
+  -\varphi^{\prime\prime} = \lambda\varphi
+\end{align}
+are sines and cosines. Applying the boundary conditions $\varphi(-\pi)=\varphi(\pi)=0$ implies that the eigenstates are
+\begin{align}
+  \psi_k(x) = \frac{1}{\sqrt{\pi}}\sin\left(\frac{k+1}{2}(x-\pi)\right), \qquad k\in\{0,1,2,\hdots\}
+\end{align}
+and the eigenvalues are
+\begin{align}
+  \opf[2]\psi_k(x) = \frac{(k+1)^2}{4}\psi_k(x).
+\end{align}
+Where we have chosen the form such that $\psi_k$ is an odd function if $k$ is odd, and even if $k$ is even. Note that each eigenspace is one-dimensional, in particular there is only one state (up to phase) attaining the value $\expe{\opf[2]}{\psi_0} = \frac{1}{4}$. One can compute
+\begin{align}
+  \expe{\opf[1]}{\psi_k} &= -i\int_{-\pi}^\pi dx \psi_k(x)^* \psi_k^\prime(x)\\
+                         &= -i\frac{k+1}{2\pi}\int_{-\pi}^\pi dx \sin\left(\frac{k+1}{2}(x-\pi)\right) \cos\left(\frac{k+1}{2}(x-\pi)\right)\\
+                         &= 0,
+\end{align}
+so the least eigenvalue of $\opf[2]$ is exactly the least possible momentum variance,
+\begin{align}
+  \inf\left\{\varr{\opf}\,\middle|\,\rho\in\dom{\opf[2]}\right\} = \frac{1}{4}.
+\end{align}
+We also compute the position variance of the state $\psi_0$ which minimises the momentum variance
+\begin{align}
+  \var[\psi_0]{\ope} &= \expe{\ope[2]}{\psi_0} - \expe{\ope[1]}{\psi_0}^2\\
+                     &= \frac{1}{\pi}\int_{-\pi}^\pi dx x^2 \sin\left(\frac{1}{2}(x-\pi)\right)^2 - \left(\frac{1}{\pi}\int_{-\pi}^\pi dx x \sin\left(\frac{1}{2}(x-\pi)\right)^2\right)^2\\
+                     &= \frac{\pi^2}{3} - 2.
+\end{align}
+
+We now show that the minimum momentum variance splits the uncertainty region into two parts, to the 
+
 \subsubsection{Uncertainty diagrams}
 We now turn to the calculation of the bottom of the spectrum of $H_\alpha$, this may be solved numerically by noting that the eigenfunctions $(\phi_i)_{i\in\Z}$ of $\Qd$ are a core for $H_\alpha$. We may therefore approximate $c(\alpha)$ by calculating the least eigenvalue of the $(2n-1)\times (2n-1)$ matrix with entries
 \begin{align}

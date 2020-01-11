@@ -25,59 +25,122 @@ where the unitary $\fcal$ implements the Fourier transform
 \begin{align}
   (\fcal\varphi)(p) &= \int_\R e^{-2\pi i x p} \varphi(x)dx.
 \end{align}
-We restrict our attention to those states for which the first and second moments of both observables are finite, where the moments are
+We restrict our attention to those states for which the first and second moments of both observables are finite, this imposes some non-trivial conditions on the states we examine. 
+\begin{thm}
+  The first and second moments 
+  \begin{align}
+    \expe{\ope[1]}{\varphi} &= \int_\R x \braket{\varphi}{\ope(dx)\varphi} & \expe{\opf[1]}{\varphi} &= \int_\R p \braket{\varphi}{\opf(dp)\varphi}\\
+    \expe{\ope[2]}{\varphi} &= \int_\R x^2 \braket{\varphi}{\ope(dx)\varphi} & \expe{\opf[2]}{\varphi} &= \int_\R p^2 \braket{\varphi}{\opf(dp)\varphi}. 
+  \end{align}
+  are finite on the domain of the self-adjoint operator
+  \begin{align}\label{eqn:good-opf[2]-domain}
+    \dom{\opf[1]^*\opf[1]} = \left\{\varphi\in\dom{\opf[1]}\,\middle|\,\varphi^{\prime} \text{ is abs. cont.},\,\varphi^{\prime\prime}\in L^2([-\pi,\pi])\right\},
+  \end{align}
+  furthermore they are not finite on any larger domain.
+\end{thm}
+\begin{proof}
+The actions of the moments are exactly those of the more familiar operators on $L^2(\R)$, since they are just restrictions of those operators to $L^2([-\pi,\pi])$, so
 \begin{align}
-  \expe{\ope[1]}{\varphi} &= \int_\R x \braket{\varphi}{\ope(dx)\varphi} & \expe{\opf[1]}{\varphi} &= \int_\R p \braket{\varphi}{\opf(dp)\varphi}\\
-  \expe{\ope[2]}{\varphi} &= \int_\R x^2 \braket{\varphi}{\ope(dx)\varphi} & \expe{\opf[2]}{\varphi} &= \int_\R p^2 \braket{\varphi}{\opf(dp)\varphi}. 
+  \left(\ope[1]\varphi\right)(x) &= x\varphi(x) & \left(\opf[1]\varphi\right)(x) &= -i\varphi^\prime(x)\\
+1  \left(\ope[2]\varphi\right)(x) &= x^2\varphi(x) & \left(\opf[2]\varphi\right)(x) &= -\varphi^{\prime\prime}(x). 
 \end{align}
-This imposes some non-trivial conditions on the states we examine. The states $\varphi$ must be absolutely continuous, as well as taking the value $0$ at the boundary points, $-\pi$ and $\pi$, in order that $l\varphi$ is in the domain of $\opf_0[1]$. We note that $\opf[1]$ is \emph{not} a self-adjoint operator on its domain,
+The states $\varphi$ must be absolutely continuous, as well as taking the value $0$ at the boundary points, $-\pi$ and $\pi$, in order that $l\varphi$ is in the domain of $\opf_0[1]$. We note that $\opf[1]$ is \emph{not} a self-adjoint operator on its domain,
 \begin{align}
-  \dom{\opf[1]} = \left\{\varphi\in L^2([-\pi,\pi])\, \middle|\, \varphi \text{ is abs. cont., } \varphi(-\pi) = \varphi(\pi) = 0\right\},
+  \dom{\opf[1]} = \left\{\varphi\in L^2([-\pi,\pi])\, \middle|\, \varphi \text{ is abs. cont., } \varphi^\prime\in L^2([-\pi,\pi]),\, \varphi(-\pi) = \varphi(\pi) = 0\right\},
 \end{align}
 and therefore the expectation of the second moment $\opf[2]$ is finite on a larger set than 
 \begin{align}\label{eqn:bad-opf[2]-domain}
   \dom{\opf[1]\opf[1]} = \left\{\varphi\in\dom{\opf[1]}\,\middle|\,\left(\opf[1]\varphi\right)\in\dom{\opf[1]}\right\}.
 \end{align}
-In fact $\braket{\varphi}{\opf[2]\varphi}$ is finite for
-\begin{align}\label{eqn:good-opf[2]-domain}
-  \varphi\in\dom{\opf[1]^*\opf[1]} = \left\{\varphi\in\dom{\opf[1]}\,\middle|\,\varphi^\prime \text{ is abs. cont.}\right\}.
-\end{align}
-To prove this we first note that since $\varphi$ is a (normalised) state, $\ope_0$ a projection-valued measure, $l$ an isometry and $\fcal$ a unitary we have that 
-\begin{align}\label{eqn:interferometric-ur-measure-bounded-by-1}
-  0\leq\int_P \braket{\varphi}{\opf(dp)\varphi} \leq \int_P dp,
-\end{align}
-for all measurable sets $P$. In particular this implies
-\begin{align}
-   \abs{\int_{-1}^1 p^k \braket{\varphi}{\opf(dp)\varphi} } \leq 2.
-\end{align}
-We split the integral defining the second moment into three parts
-\begin{align}
-  \expe{\opf[2]}{\varphi} &= \int_\R p^2 \braket{\varphi}{\opf(dp)\varphi}\\
-                          &= \int_{-\infty}^{-1} p^2 \braket{\varphi}{\opf(dp)\varphi} + \int_{-1}^{1} p^2 \braket{\varphi}{\opf(dp)\varphi} + \int_1^{\infty} p^2 \braket{\varphi}{\opf(dp)\varphi},
-\end{align}
-and note the inequalities
-\begin{align}
-  0&\leq - \int_{-\infty}^{-1} p \braket{\varphi}{\opf(dp)\varphi}  \leq \int_{-\infty}^{-1} p^2 \braket{\varphi}{\opf(dp)\varphi}\\
-  0&\leq  \int_1^{\infty} p \braket{\varphi}{\opf(dp)\varphi}  \leq \int_1^{\infty} p^2 \braket{\varphi}{\opf(dp)\varphi}.
-\end{align}
-Combining these with the fact that equation \eqref{eqn:interferometric-ur-measure-bounded-by-1} implies that
-\begin{align}
-  \int_{-1}^{1} p \braket{\varphi}{\opf(dp)\varphi} < 2
-\end{align}
+The difference between equations \eqref{eqn:bad-opf[2]-domain} and \eqref{eqn:good-opf[2]-domain} being that in the latter we have the extra condition that $\varphi^\prime(-\pi) = \varphi^\prime(\pi) = 0$. To prove that this is the largest possible domain for $\opf[2]$ we recall that the integral of a real function against a POVM is a symmetric operator (see, e.g., \cite{quantum-measurement-busch-et-al} chapter 4) and that von Neumann's formulas imply that a densely defined self adjoint operator can have no proper symmetric extensions. Indeed any symmetric extension of a densely defined symmetric operator $\opa$ is a restriction of $\opa^*$~\cite{akhiezer-glazman-lin-ops-hilb-space}.
 
-
-note that $\opf[1]^*\opf[1]$ is self-adjoint (indeed it is positive) on it's domain. Its action, when expressed in the position representation, is
+It remains to show that the domain of $\opf[1]^*\opf[1]$ is indeed the set given in \eqref{eqn:good-opf[2]-domain}, which we may verify using integration by parts, recalling that the domain of $\opf[1]^*$ is given by the set of vectors $\psi$ such that there exists a vector $\xi\in L^2([-\pi,\pi])$ such that for all $\phi\in\dom{\opf[1]}$
 \begin{align}
-  (\opf[1]^*\opf[1]\varphi)(x) = -\varphi^{\prime\prime}(x).
+  \braket{\psi}{\opf[1]\phi} = \braket{\xi}{\phi}.
 \end{align}
-
-
-the difference between equations \eqref{eqn:bad-opf[2]-domain} and \eqref{eqn:good-opf[2]-domain} being that we do not need to impose the condition that $\varphi^\prime(-\pi) = \varphi^\prime(\pi) = 0$. 
-
+In the position representation we therefore have
+\begin{align}
+  \braket{\psi}{\opf[1]\phi} &= \braket{\xi}{\phi}\\
+  \int_{-\pi}^{\pi}dx\psi(x)^*(-i)\phi^\prime(x) &= \int_{-\pi}^{\pi}dx \xi(x)^* \phi(x), \\
+                             &= \left.\Xi(x)\phi(x)\right\vert_{-\pi}^{\pi} + \int_{-\pi}^{\pi}dx i\Xi(x)^* \phi^\prime(x)\\
+                             &= \int_{-\pi}^{\pi}dx i\Xi(x)^* \phi^\prime(x), 
+\end{align}
+where
+\begin{align}
+  \Xi(x) = \xi(-\pi)+\int_{-\pi}^{x}dy\xi(y),
+\end{align}
+exists since we assume $\xi\in L^2([-\pi,\pi])$ and the interval is bounded, while $\phi^\prime$ exists since we are assuming $\phi\in\dom{\opf[1]}$. A standard argument, choosing $\phi$ such that $\phi^\prime$ ranges over a basis for~$L^2([-\pi,\pi])$ now ensures that
+\begin{align}
+  \psi(x) &= -i\Xi(x)\\
+          &= -i\xi(-\pi)-i\int_{-\pi}^{x}dy\xi(y).
+\end{align}
+There therefore exists a Lebesgue integrable function $g$ such that 
+\begin{align}
+  \psi(x) = \psi(-\pi) + \int_{-\pi}^xdy g(y),
+\end{align}
+by Lebesgue's fundamental theorem of calculus this is equivalent to $\psi$ being absolutely continuous.
 
 We do not require any additional conditions to ensure that the moments of position are finite, since absolute continuity, combined with the boundary conditions, implies that the states are bounded functions in the position representation.
+\end{proof}
+
+% To prove this we first note that since $\varphi$ is a (normalised) state, $\ope_0$ a projection-valued measure, $l$ an isometry and $\fcal$ a unitary we have that 
+% \begin{align}\label{eqn:interferometric-ur-measure-bounded-by-1}
+%   0\leq\int_P \braket{\varphi}{\opf(dp)\varphi} \leq \int_P dp,
+% \end{align}
+% for all measurable sets $P$. In particular this implies
+% \begin{align}
+%    \abs{\int_{-1}^1 p^k \braket{\varphi}{\opf(dp)\varphi} } \leq 2.
+% \end{align}
+% We split the integral defining the second moment into three parts
+% \begin{align}
+%   \expe{\opf[2]}{\varphi} &= \int_\R p^2 \braket{\varphi}{\opf(dp)\varphi}\\
+%                           &= \int_{-\infty}^{-1} p^2 \braket{\varphi}{\opf(dp)\varphi} + \int_{-1}^{1} p^2 \braket{\varphi}{\opf(dp)\varphi} + \int_1^{\infty} p^2 \braket{\varphi}{\opf(dp)\varphi},
+% \end{align}
+% and note the inequalities
+% \begin{align}
+%   0&\leq - \int_{-\infty}^{-1} p \braket{\varphi}{\opf(dp)\varphi}  \leq \int_{-\infty}^{-1} p^2 \braket{\varphi}{\opf(dp)\varphi}\\
+%   0&\leq  \int_1^{\infty} p \braket{\varphi}{\opf(dp)\varphi}  \leq \int_1^{\infty} p^2 \braket{\varphi}{\opf(dp)\varphi}.
+% \end{align}
+% Combining these with the fact that equation \eqref{eqn:interferometric-ur-measure-bounded-by-1} implies that
+% \begin{align}
+%   \int_{-1}^{1} p \braket{\varphi}{\opf(dp)\varphi} < 2
+% \end{align}
 
 
+% note that $\opf[1]^*\opf[1]$ is self-adjoint (indeed it is positive) on it's domain. Its action, when expressed in the position representation, is
+% \begin{align}
+%   (\opf[1]^*\opf[1]\varphi)(x) = -\varphi^{\prime\prime}(x).
+% \end{align}
+
+\subsubsection{Structure of the uncertainty region}
+
+We are interested in the region
+\begin{align}
+  U = \left\{(\varr{\ope}, \varr{\opf}))\middle|\rho\in \dops\right\},
+\end{align}
+where $\dops$ is the set of density operators over the $\dom{\opf[1]^*\opf[1]}$, that is the set of operators of the form
+\begin{align}
+  \sum_k p_k P_k,
+\end{align}
+such that the $P_k$ are mutually orthogonal projectors onto subspaces of $\dom{\opf[1]^*\opf[1]}$, that $p_k\geq 0$ and
+\begin{align}
+  \sum_k p_k = 1.
+\end{align}
+
+We first note that the variance is concave as a function of the (mixed) state.
+\begin{lem}
+  Given any observable $\opa$, if $\dops$ is the set of density operators for which the first and second moments of $\opa$ are finite then the map $\nu:\dops\to \R$, $\nu:\rho\mapsto \varr{\opa}$ is concave.
+\end{lem}
+\begin{proof}
+  Take $\rho,\, \sigma \in \dops$ with finite first and second moments of $\opa$ and choose $\lambda \in (0,1)$ then
+  \begin{align}
+    0&\leq \lambda(1-\lambda) \left(\expe{\opa}{\rho} - \expe{\opa}{\sigma}\right)^2\\
+    \lambda^2 \expe{\opa}{\rho}^2 + (1- \lambda)^2\expe{\opa}{\sigma}^2 + 2\lambda(1-\lambda)\expe{\opa}{\rho}\expe{\opa}{\sigma} &\leq \lambda \expe{\opa}{\rho}^2 + (1-\lambda) \expe{\opa}{\sigma}^2\\
+    \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &=\\
+    \expe{\opa^2}{\lambda\rho + (1-\lambda)\sigma} - \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &\geq \lambda\left(\expe{\opa^2}{\rho} -\expe{\opa}{\rho}^2\right) + (1-\lambda)\left(\expe{\opa}{\sigma}^2 -\expe{\opa}{\sigma}^2\right)\\
+    \var{\opa}{\lambda\rho + (1-\lambda)\sigma} &\geq \lambda \var{\opa}{\rho} + (1-\lambda ) \var{\opa}{\sigma}.
+  \end{align}
+\end{proof}
 \subsubsection{Uncertainty diagrams}
 We now turn to the calculation of the bottom of the spectrum of $H_\alpha$, this may be solved numerically by noting that the eigenfunctions $(\phi_i)_{i\in\Z}$ of $\Qd$ are a core for $H_\alpha$. We may therefore approximate $c(\alpha)$ by calculating the least eigenvalue of the $(2n-1)\times (2n-1)$ matrix with entries
 \begin{align}

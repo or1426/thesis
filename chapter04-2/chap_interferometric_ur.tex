@@ -404,7 +404,6 @@ We recall that the variance is concave as a function of the (mixed) state.
   Recall we are attempting to show that the point $\lambda(v,w) + (1-\lambda)(x,y)\in U$, but we have now shown that the point $(\lambda v + (1-\lambda) x, \mu w + (1-\mu) y)\in U$, and $\mu w + (1-\mu) y < \lambda w + (1-\lambda)y$. We can now employ lemma~\ref{lem:box-ur-half-line-contained} to move directly up in the uncertainty region to get to the desired point.
 \end{proof}
 
-
 \begin{lem}
 The boundary function $b$ is convex on $\left(\frac{\pi^2}{3}-2, \pi^2\right)$.
 \end{lem}
@@ -512,14 +511,23 @@ We first note that a simple bound may be obtained by recalling that the position
   \expe{\opf[1]}{\varphi} &= \expe{\opf_0[1]}{l\varphi} & \expe{\opf[2]}{\varphi} &= \expe{\opf_0[2]}{l\varphi},
 \end{align}
 where $\ope_0, \opf_0$ are the position and observables on $L^2(\R)$, respectively. This means that the lower bound
-\begin{align}
+\begin{align}\label{eqn:box-ur-hesenberg-is-a-lower-bound}
   \var[\varphi]{\ope}\var[\varphi]{\opf} \geq \frac{1}{4},
 \end{align}
 due to Heisenberg, is still valid for the box system. We can not expect that the Heisenberg bound will be tight for the box, since it is saturated by Gaussian states and these certainly do not obey the boundary conditions $\varphi(-\pi) = \varphi(\pi) = 0$. We can compare this lower bound to upper bounds obtained by considering families of states in $\dom{\opf}$. An obvious family of states is achieved by squeezing the minimizer of momentum, to obtain the bounds
 \begin{align}
   \frac{1}{4x}\leq b(x) \leq \frac{1}{4x}\left(\frac{\pi^2}{3}-2\right),
 \end{align}
-valid for $x\in\left(0, \frac{\pi^2}{3}-2\right)$. An improved bound, at small values of $x$, is provided by the ``tempered-Gaussians''
+valid for $x\in\left(0, \frac{\pi^2}{3}-2\right)$. 
+
+\begin{lem}\label{lem:box-ur-b-asymtotic-to-hyperbola}
+  As the position variance becomes small the boundary function $b$ is asymtotic to the canonical hyperbola, that is
+  \begin{align}
+    \lim_{x\to 0} x b(x) = \frac{1}{4}.
+  \end{align}
+\end{lem}
+\begin{proof}
+An upper bound for $b$, may be computed using the family of ``tempered-Gaussians''
 \begin{align}
   \xi_s = \frac{1}{N^2} e^{-s x^2} (\pi-x)(x+\pi),
 \end{align}
@@ -536,14 +544,15 @@ These expressions are unfortunately rather unwieldy, but we have
 \begin{align}
   \lim_{s\to 0^+} \var[\ope]{\xi_s} = 0,
 \end{align}
-and 
+and one can verify
 \begin{align}
   \lim_{s\to 0^+} \var[\ope]{\xi_s}\var[\opf]{\xi_s} = \frac{1}{4}.
 \end{align}
-Combining this limiting upper bound with the lower bound provided by the Heisenberg relation proves that
+Combining this limiting upper bound with the lower bound provided equation~\ref{eqn:box-ur-hesenberg-is-a-lower-bound} proves that
 \begin{align}
   \lim_{x\to 0} x b(x) = \frac{1}{4}.
 \end{align}
+\end{proof}
 % An obvious such family is the class of ``tapered-Gaussians'', we define to be
 % \begin{align}
 %   \xi_{s,x}(x) := \frac{1}{N} \begin{cases}\frac{1}{b}e^{-s(\pi-b)}(x+\pi), &x\in (-\pi,-\pi+b)\\ e^{-sx^2}, &x\in (-\pi+b, \pi-b)\\\frac{1}{b}e^{-s(\pi-b)}(\pi-x), &x\in (\pi-b,\pi)\end{cases},
@@ -558,34 +567,102 @@ Combining this limiting upper bound with the lower bound provided by the Heisenb
 
 We can do somewhat better that the analytical bounds from section~\ref{subsubsec:box-ur-analytical-bounds} in the interval $\left(\frac{\pi^2}{3} -2,\pi^2\right)$. Here the uncertainty region is convex, and so may be determined by it's convex conjugate. We seek
 \begin{align}
-  c(\alpha) := -b^*(-\alpha) = \inf \left\{b(x) + \alpha x\,\middle|\,x\in\left(\frac{\pi^2}{3} -2,\pi^2\right)\right\},
+  c(\alpha) := -b^*(-\alpha) = \inf \left\{b(x) + \alpha x\,\middle|\,x\in \left(\frac{\pi^2}{3} -2,\pi^2\right)\right\},
 \end{align}
 where we have introduced the minus signs for later convenience. Substituting the definition of $b$ gives
 \begin{align}
-  c(\alpha) = \inf \left\{\inf\left\{\var[\varphi]{\opf}\,\middle|\,\var[\varphi]{\ope} = x \right\} + \alpha x\middle| x\in\left(\frac{pi^2}{3} -2,\pi^2\right)\right\}.
+  c(\alpha) = \inf \left\{\inf\left\{\var[\varphi]{\opf}\,\middle|\,\var[\varphi]{\ope} = x \right\} + \alpha x\middle| x\in\left(\frac{\pi^2}{3} -2,\pi^2\right)\right\}.
 \end{align}
 We notice we can combine the two infima to obtain
 \begin{align}
   c(\alpha) = \inf\left\{\var[\varphi]{\opf} + \alpha \var[\varphi]{\ope}\,\middle|\,\varphi\in\dom{\opf[2]}\right\},
 \end{align}
-since searching over all $x$, and then over all states with variance equal to that $x$ is equivalent to searching over all the states directly. We now employ lemma~\ref{lem:infinite-dim-ur-shift-momentum} to restrict the search to those states with momentum expectation value equal to $0$
+since searching over all $x$, and then over all states with variance equal to that $x$ is equivalent to searching over all the states directly. Recalling that $b$ is increasing on $\left(\frac{\pi^2}{3} -2,\pi^2\right)$, we can see that
+\begin{align}
+  \alpha \geq 0 \implies c(\alpha) = \frac{1}{4} + \alpha \left(\frac{\pi^2}{3} -2\right).
+\end{align}
+We now employ lemma~\ref{lem:infinite-dim-ur-shift-momentum} to restrict the search to those states with momentum expectation value equal to $0$
 \begin{align}
   c(\alpha) = \inf\left\{\expe{\opf[2]}{\varphi} + \alpha \var[\varphi]{\ope}\,\middle|\,\varphi\in\dom{\opf[2]},\,\expe{\opf[1]}{\varphi} = 0\right\}.
 \end{align}
-For convenience we define the function of the state
+For convenience we define the function
 \begin{align}
   h_{\alpha} : \varphi &\mapsto \expe{\opf[2]}{\varphi} + \alpha \var[\varphi]{\ope}\\
                     &= \expe{\opf[2]}{\varphi} + \alpha\left(\expe{\ope[2]}{\varphi} - \expe{\opf[1]}{\varphi}^2\right),
 \end{align}
-to which we apply the method of Lagrange-multipliers. We seek the extrema of $h_\alpha(\varphi)$ such that $\braket{\varphi}{\varphi} = 1$ so obtain the Lagrangian
+and the operator
 \begin{align}
-  \lcal(\varphi,\lambda) = h_\alpha(\lambda) - \lambda(\braket{\varphi}{\varphi} - 1).
+  H_\alpha = \opf[2] + \alpha\ope[2],
 \end{align}
-Choose an arbitrary unit vector $\xi\in\dom{\opf[2]}$ and consider the limit
+which is self-adjoint on $\dom{\opf[2]}$.
+\begin{lem}
+  Let $\alpha < 0$ and let $\eta_\alpha$ be the ground state of $H_\alpha$. For any state $\varphi$
+  \begin{align}
+    \var[\varphi]{\ope} = \var[\eta_\alpha]{\ope} \implies \var[\varphi]{\opf} \geq \var[\eta_\alpha]{\opf}
+  \end{align}
+\end{lem}
+\begin{proof}
+First note that $H_\alpha$ commutes with the parity operator 
 \begin{align}
-  \lim_{\varepsilon\to 0} \frac{\lcal(\varphi+ \varepsilon\xi, \lambda) - \lcal(\varphi,\lambda) }{\varepsilon} 
+  \Pi: L^2([-\pi,\pi]) &\to L^2([-\pi,\pi])\\
+  (\Pi \varphi):x &\mapsto \varphi(-x),
 \end{align}
+which implies the eigenstates of $H_\alpha$ are also eigenstates of $\Pi$, in particular this means that the eigenstates of $\H_\alpha$ have zero expectation of position so
+\begin{align}
+  \var[\ope]{\eta_\alpha} = \expe{\ope[2]}{\eta_\alpha}.
+\end{align}
+Assume there is some state $\rho$ such that
+\begin{align}
+	\expe{\ope[2]}{\rho} - \expe{\ope[1]}{\rho}^2 &= \var[\rho]{\ope} = \var[\eta_\alpha]{\ope} = \expe{\ope[2]}{\eta_\alpha}\\
+	\expe{\opf[2]}{\rho} &< \expe{\opf[2]}{\eta_\alpha},
+\end{align}
+then
+\begin{align}
+	\expe{\opf[2] +\alpha\ope[2]}{\eta_\alpha} &\leq \tr{\rho\left(\opf[2] +\alpha\ope[2]\right)}\\
+	&= \expe{\opf[2]}{\rho} + \alpha\expe{\ope[2]}{\rho}\\
+	&= \expe{\opf[2]}{\rho} + \alpha\left(\expe{\ope[2]}{\eta_\alpha} + \expe{\ope}{\rho}^2\right)\\
+	&< \expe{\opf[2] + \alpha\ope[2]}{\eta_\alpha} + \alpha\expe{\ope}{\rho}^2
+\end{align}
+which is an obvious contradiction for $\alpha < 0$, which is the region in which the curve is increasing. We can conclude that in this region the upper bound for the boundary curve gives the exact boundary. 
+\end{proof}
 
+We are now searching for the ground state, and least eigenvalue, of the operator $H_\alpha$, it is well known that the solutions to
+\begin{align}
+  H_\alpha\varphi = \lambda \varphi,
+\end{align}
+are combinations of Whittaker Functions or hypergeometric functions~\cites{Abramowitz-and-Stegun}{Whittaker-and-Watson}. Unfortunately applying the boundary conditions to determine the constants leads to equations which it does not seem possible to solve in terms of any common functions. We therefore resort to computing a numerical approximation to the ground state. We can compute the matrix elements of the operator $H_\alpha$ in the basis of eigenfunctions of $\opf[2]$
+\begin{align}
+  \braket{\psi_j}{H_\alpha \psi_k} &= \begin{cases}\frac{(k+1)^2}{4} + \alpha\left(\frac{\pi^2}{3} - \frac{2}{\left(k+1\right)^2}\right), & j=k\\ stuff, &\text{otherwise} \end{cases}.
+\end{align}
+We then fix some $n\in\N$ and numerically determine the eigenvalues and eigenvectors of an $n\times n$ dimensional truncation of the infinite matrix $\braket{\psi_j}{H_\alpha \psi_k}$. Once we have computed approximate values of $c(\alpha_i)$ for a large enough set of values $\alpha_i$ we can compute the variances by numerically approximating the derivative
+\begin{align}
+  c^\prime(\alpha) &= \var[\eta_\alpha]{\ope}\\
+  c(\alpha) - \alpha c^\prime(\alpha) &= \var[\eta_\alpha]{\opf}.
+\end{align}
+The resulting curve is plotted in figure~\ref{fig:box-ur}. We note that in addition to the eigenvalue $c(\alpha)$ we obtain a numerical approximation to the ground state $\xi_\alpha$ of $H_\alpha$, we can therefore directly compute approximations to the variances $\var[\eta_\alpha]{\ope}$, and $\var[\eta_\alpha]{\opf}$, this curve is also plotted in figure~\ref{fig:box-ur} but is indistinguishable to the curve obtained by numerical differentiation. We are interested in the direct computation of the variances since in addition to exactly giving the boundary curve $b(x)$ in the interval $\left(\frac{\pi^2}{3} -2, \pi^2\right)$ the ground states are upper bounds on the boundary curve everywhere, as all states are, explicitly
+\begin{align}\label{eqn:box-ur-hamiltonian-gs-ineq}
+  b\left(\var[\eta_\alpha]{\ope}\right) \leq \var[\eta_\alpha]{\opf}.
+\end{align}
+This is the reason that the curve is plotted both for the entire interval $(0, \pi^2)$. We conjecture that the ground states of $H_\alpha$ are, in fact optimisers of $b$ globally, rather than just on the interval $\left(\frac{\pi^2}{3} -2, \pi^2\right)$, in other words we conjecture that the inequality in equation~\ref{eqn:box-ur-hamiltonian-gs-ineq} is an equality. We note that this is implied by a seemingly natural assumption, that among the optimisers of momentum variance for each fixed position variance, there exist those with position expectation equal to zero.
+
+\subsubsection{Comparisons}
+
+We have already compared our results for the particle in a box with the well known variance uncertainty relation for the particle on the line. The particle on a line hyperbola is everywhere a lower bound for the boundary function $b$ for the particle in a box. We have shown that the two curves are asymtotic to each other in the limit as the variance becomes small in lemma~\ref{lem:box-ur-b-asymtotic-to-hyperbola}, that is
+\begin{align}
+  \lim_{x\to 0} \frac{b(x)}{\frac{1}{4x}} = 1.
+\end{align}
+This is quite natural, loosely one would expect that the more concentrated the box states are around the origin, the less the boundary conditions influence them. 
+
+We would also like to compare our results with those from the particle on a ring system addressed in ref.~\cite{sharp-ur-num-angle}. Of course the variance is not defined for a probability measure on a ring, for the simple reason that the variance requires the mean in order to be defined and, in general, probability measures on a ring do not have means. One can consider, for example, the uniform probability measure, which assigns the same probability density to each point on the ring. Busch, Kiukas and Werner address this by considering the quantity
+\begin{align}
+  \wsDev{\mu}[\alpha] = \inf_{x_0\in\mathsf{A}} \left(\int_{\mathsf{A}} d(x,x_0)^\alpha d\mu(x)\right)^\frac{1}{\alpha},
+\end{align}
+we defined in equation~\ref{eqn:wassersten-variance}. As shown in lemma~\ref{lem:prelims-wasserstein-var-equals-var} for probability measures on the reals this quantity is identical to the usual variance. In contrast to the case of the particle on a ring, a probability measure $\mu$ defined on the interval $[-\pi,\pi]$ may be considered identical to a probability measure on $\R$ which is supported only on $[-\pi,\pi]$. More explicitly, given $\mu:\mathcal{B}([-\pi,\pi])$ we may define
+\begin{align}
+  \mu_\R&: \mathcal{B}(\R) \to [0,1]\\
+  \mu_\R(X) = \mu(X\cap [-\pi,\pi]).
+\end{align}
+We are therefore free to interpret the variances we have been considering in this chapter as $2$-deviations, and directly compare them to the $2$-deviations computed in ref.~\cite{sharp-ur-num-angle}.
 
 \subsubsection{Uncertainty diagrams}
 We now turn to the calculation of the bottom of the spectrum of $H_\alpha$, this may be solved numerically by noting that the eigenfunctions $(\phi_i)_{i\in\Z}$ of $\Qd$ are a core for $H_\alpha$. We may therefore approximate $c(\alpha)$ by calculating the least eigenvalue of the $(2n-1)\times (2n-1)$ matrix with entries

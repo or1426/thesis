@@ -702,13 +702,57 @@ An application of the Wasserstein metric allows a generalisation of the variance
 \begin{align}
   d(x_1,x_2) \defeq \min_{n\in \{-1,0,1\}} \abs{x_1 + 2n\pi - x_2},
 \end{align}
-where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We show there is no way to define the variance of a probability distribution on the unit circle by considering the uniform distribution, to define the variance one first needs to define a mean, and there is no unique way to assign a mean to the uniform distribution over the circle. Nonetheless, there is a natural sense in which some distributions on $\circleNotate$ are more concentrated than others. For a metric space $(\mathsf{A}, d)$, and Borel probability measure $\mu$ we define
+where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We show there is no way to define the variance of a probability distribution on the unit circle by considering the uniform distribution, to define the variance one first needs to define a mean, and there is no unique way to assign a mean to the uniform distribution over the circle. Nonetheless, there is a natural sense in which some distributions on $\circleNotate$ are more concentrated than others. For a metric space $(\mathsf{A}, d)$, and Borel probability measure $\mu$ we define the \emph{$\alpha$-deviation}
 \begin{align}
   \wsDev{\mu}[\alpha] \defeq \inf_{x_0\in\mathsf{A}} \ws{\mu, \delta_{x_0}}[\alpha], \label{eqn:wassersten-variance}
 \end{align}
-where $\delta_{x_0}$ is a point measure supported at $x_0$. If $\mu$ is a probability measure on the Borel sets of $\R$, with the standard topology, for which the mean and variance exist, it is easy to see that when $\alpha=2$, the infimum in \eqref{eqn:wassersten-variance} is attained where $x_0$ equals the mean and that $\wsDev{\mu}[2]$ equals the standard deviation of $\mu$. Similarly, $\wsDev{\mu}[1]$ is the absolute deviation, and the infimum is attained at the median. The $\alpha$-deviation appears in \cite{blw-meas-uncertainty}, and was applied in \cite{sharp-ur-num-angle} to the case of covariant number and phase observables. Note that the only coupling between a measure and a point measure is the product measure, so the formula \eqref{eq:wasserstein-prob-dists} simplifies substantially in this case
+where $\delta_{x_0}$ is a point measure supported at $x_0$.  If $\mu$ is a probability measure on the Borel sets of $\R$, with the standard topology, for which the mean and variance exist, it is easy to see that when $\alpha=2$, the infimum in \eqref{eqn:wassersten-variance} is attained where $x_0$ equals the mean and that $\wsDev{\mu}[2]$ equals the standard deviation of $\mu$. The $\alpha$-deviation appears in \cite{blw-meas-uncertainty}, and was applied in \cite{sharp-ur-num-angle} to the case of covariant number and phase observables. Note that the only coupling between a measure and a point measure is the product measure, so the formula \eqref{eq:wasserstein-prob-dists} simplifies substantially in this case
 \begin{align}
   \wsDev{\mu}[\alpha] = \inf_{x_0\in\mathsf{A}} \left(\int_{\mathsf{A}} d(x,x_0)^\alpha d\mu(x)\right)^\frac{1}{\alpha}.
+\end{align}
+We prove a piece of ``folklore'', giving connecting $\wsDev{\mu}[2]$, with the standard variance, in the case where $\mu$ is a Borel probability measure on the reals.
+\begin{lem}\label{lem:prelims-wasserstein-var-equals-var}
+  If $\mu$ is a probability measure on the Borel sets of $\R$, with the standard topology, for which first and second moment exist and are finite then 
+  \begin{align}
+    \wsDev{\mu}[2] = \var{\mu},
+  \end{align}
+  furthermore the infimum in equation~\eqref{eqn:wassersten-variance} is achieved at the mean, and nowhere else.
+\end{lem}
+\begin{proof}
+  We let $\mu$ be a Borel probability measure on $\R$ and consider the function
+  \begin{align}
+    f&:\R\to\R\\
+    f&:x_0\mapsto \int_{\R} d(x,x_0)^2 d\mu(x).
+  \end{align}
+  We can expand 
+  \begin{align}
+    f(x_0) &= \int_{\R} d(x,x_0)^2 d\mu(x)\\
+           &= \int_{\R} (x - x_0)^2 d\mu(x)\\
+           &= \int_{\R} (x^2 - 2x x_0 + x_0^2) d\mu(x),
+  \end{align}
+  since the first and second moment exist and are assumed to be finite we can apply the linearity of the expected value to obtain
+  \begin{align}
+    f(x_0) &= \int_{\R} x^2d\mu(x) - 2x_0 \int_{\R} x d\mu(x) + x_0^2\int_{\R} d\mu(x)\\
+           &= \int_{\R} x^2d\mu(x) - 2x_0 \int_{\R} x d\mu(x) + x_0^2,
+  \end{align}
+  since this is simply a quadratic in $x_0$ we can obtain the minimum and unique minimzer
+  \begin{align}
+    \inf_{x_0}f(x_0) &= f\left(\int_{\R} x d\mu(x)\right)\\
+                    &= \int_{\R} x^2d\mu(x) - \left(\int_{\R} x d\mu(x)\right)^2,
+  \end{align}
+  which are just the variance and mean, respectively.
+\end{proof}
+Although this proof is rather trivial we emphasise it to contrast with the case of $\wsDev{\mu}[1]$ where the minimisation does \emph{not} uniquely pick out the relevant central tendency, which is the median. An incorrect claim to the contrary was made in ref.~\cite{blw-meas-uncertainty}. For example consider the two outcome probability distribution defined by
+\begin{align}
+  p(0) = p(1) = \frac{1}{2},
+\end{align}
+then 
+\begin{align}
+  \wsDev{p}[1] = \inf_{x_0} f(x_0),
+\end{align}
+where
+\begin{align}
+  f(x_0) = \begin{cases}x_0 - \frac{1}{2}, &x_0 \leq 0\\ \frac{1}{2}, & x_0\in [0,1] \\ x_0 - \frac{1}{2}, & x_0 \geq 0. \end{cases}
 \end{align}
 The Wasserstein metric was used in the context of quantum uncertainty by Busch, Lahti and Werner in \cite{PhysRevLett.111.160405}, with a focus on the case of canonically covariant observables $\ope^Q$ and $\ope^P$, and restricted to $\alpha=2$. In \cite{blw-meas-uncertainty} the same authors generalised this approach to consider arbitrary $\alpha$. In these papers the authors considered both the supremum of the Wasserstein metric over all states, called the metric error, and a quantity called the calibration error. For observables for which there are states which make the induced probability distributions deterministic the calibration error is given by the maximum over those states. In general an observable may not induce a deterministic probability distribution in any state, so the calibration error is given by a limiting procedure
 \begin{align}

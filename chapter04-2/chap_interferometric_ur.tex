@@ -42,7 +42,7 @@ We restrict our attention to those states for which the first and second moments
 The actions of the moments are exactly those of the more familiar operators on $L^2(\R)$, since they are just restrictions of those operators to $L^2([-\pi,\pi])$, so
 \begin{align}
   \left(\ope[1]\varphi\right)(x) &= x\varphi(x) & \left(\opf[1]\varphi\right)(x) &= -i\varphi^\prime(x)\\
-1  \left(\ope[2]\varphi\right)(x) &= x^2\varphi(x) & \left(\opf[2]\varphi\right)(x) &= -\varphi^{\prime\prime}(x). 
+  \left(\ope[2]\varphi\right)(x) &= x^2\varphi(x) & \left(\opf[2]\varphi\right)(x) &= -\varphi^{\prime\prime}(x). 
 \end{align}
 The states $\varphi$ must be absolutely continuous, as well as taking the value $0$ at the boundary points, $-\pi$ and $\pi$, in order that $l\varphi$ is in the domain of $\opf_0[1]$. We note that $\opf[1]$ is \emph{not} a self-adjoint operator on its domain,
 \begin{align}
@@ -83,6 +83,50 @@ by Lebesgue's fundamental theorem of calculus this is equivalent to $\psi$ being
 We do not require any additional conditions to ensure that the moments of position are finite, since absolute continuity, combined with the boundary conditions, implies that the states are bounded functions in the position representation.
 \end{proof}
 
+Due to the boundary conditions in \eqref{eqn:good-opf[2]-domain} in we do not have shift operators, which move the states in position space. Explicitly given a pure state $\varphi\in\dom{\opf[1]^*\opf[1]}$, and $a\in [0,2\pi] $ the function
+\begin{align}
+  \tilde{\varphi}&:[-\pi,\pi]\to \Cx\\
+  \tilde{\varphi}&:x\mapsto \begin{cases}\varphi(x+a), & x+a\in [-\pi,\pi]\\ \varphi(x+a-2\pi), & x+a-2\pi\in [-\pi,\pi]\end{cases},
+\end{align}
+will generally \emph{not} obey the boundary conditions and therefore will not be a state. This ability to shift states is a key point in proofs of the usual Heisenberg uncertainty relation for the particle on the line. In particular on the real line one can shift any state in order to set the expectation values of position and momentum to zero, at which point the variance functional becomes linear in the state, offering a significant simplification.
+
+We do have the ability to shift the expectation of the first moment of momentum of the states as we choose. 
+\begin{lem}\label{lem:infinite-dim-ur-shift-momentum}
+  Given $\varphi\in\dom{\opf[1]^*\opf[1]}$ and $a\in\R$ there exists $\varphi_a\in\dom{\opf[1]^*\opf[1]}$ such that
+  \begin{align}
+    \expe{\ope[1]}{\varphi_a} &= \expe{\ope[1]}{\varphi} & \expe{\opf[1]}{\varphi_a} &= \expe{\opf[1]}{\varphi} + a\\
+    \expe{\ope[2]}{\varphi_a} &= \expe{\ope[2]}{\varphi}& \expe{\opf[2]}{\varphi_a} &= \expe{\opf[2]}{\varphi} + 2a\expe{\opf[1]}{\varphi} + a^2.
+  \end{align}
+  Further, these formulae imply that
+  \begin{align}
+    \var[\varphi_a]{\ope} &= \var[\varphi]{\ope}\\
+    \var[\varphi_a]{\opf} &= \var[\varphi]{\opf}.
+  \end{align}
+\end{lem}
+\begin{proof}
+Given $\varphi\in\dom{\opf[1]^*\opf[1]}$ and $a\in\R$ the map
+\begin{align}
+  M_a &:\dom{\opf[1]^*\opf[1]}\to\dom{\opf[1]^*\opf[1]}\\
+  (M_a\varphi)&:x\mapsto e^{i a x}\varphi(x),
+\end{align}
+leaves the variance of momentum unchanged, along with the expectation of all the moments of position. As required $M_a$ changes the expectation of the first moment of momentum by $a$
+\begin{align}
+  \expe{\ope[1]}{M_a\varphi} &= \expe{\ope[1]}{\varphi} & \expe{\opf[1]}{M_a\varphi} &= \expe{\opf[1]}{\varphi} + a\\
+  \expe{\ope[2]}{M_a\varphi} &= \expe{\ope[2]}{\varphi}& \expe{\opf[2]}{M_a\varphi} &= \expe{\opf[2]}{\varphi} + 2a\expe{\opf[1]}{\varphi} + a^2.
+\end{align}
+These formulae are easily proved by expressing the states in the position representation and computing
+\begin{align}
+  (\ope[1]M_a\varphi)(x) &= -i \frac{d}{dx}\left(e^{iax}\varphi(x)\right)\\
+                         &= e^{iax}\left(a\varphi(x) -i\varphi^\prime(x)\right),
+\end{align}
+and
+\begin{align}
+  (\ope[2]M_a\varphi)(x) &= - \frac{d^2}{dx^2}\left(e^{iax}\varphi(x)\right)\\
+                         &= -i\frac{d}{dx} e^{iax}\left(a\varphi(x) -i\varphi^\prime(x)\right)\\
+                         &= e^{iax}\left(a^2\varphi(x) -2 a i\varphi^\prime(x)- \varphi^{\prime\prime}(x)\right),
+\end{align}
+before computing the integrals that form the inner products.
+\end{proof}
 % To prove this we first note that since $\varphi$ is a (normalised) state, $\ope_0$ a projection-valued measure, $l$ an isometry and $\fcal$ a unitary we have that 
 % \begin{align}\label{eqn:interferometric-ur-measure-bounded-by-1}
 %   0\leq\int_P \braket{\varphi}{\opf(dp)\varphi} \leq \int_P dp,
@@ -127,7 +171,20 @@ such that the $P_k$ are mutually orthogonal projectors onto subspaces of $\dom{\
   \sum_k p_k = 1.
 \end{align}
 
-It is clear that the region is contained in the quadrant with $0 \leq\var[\rho]{\ope}$, $0\leq\var[\rho]{\opp}$, further, since the interval is bounded above and below by $\pi$ and $-\pi$, we must have that $\var[\rho]{\ope} \leq \expe{\ope[2]}{\rho} \leq \pi^2$. These bounds are classical, for example the probability distribution which assigns probability $frac{1}{2}$ to each of the points $-\pi$ and $\pi$ has (classical) position variance $\pi^2$.
+For convenience we summarise the results of this section in proposition~\ref{prop:box-ur-structure-summarise-prop}.
+\begin{prop}\label{prop:box-ur-structure-summarise-prop}
+  The uncertainty region $U$ is the epigraph of a function $b:(0,\pi^2)\to \R$. Further
+  \begin{enumerate}
+    \item $b$ is continuous.
+    \item $b$ has a global minimum $b(x)\geq b\left(\frac{\pi^2}{3} -2\right) = \frac{1}{4}$.
+    \item The minimum is unique.
+    \item The minimum is achieved by the state $\psi_0:x\mapsto \frac{1}{\sqrt{\pi}}\sin\left(\frac{1}{2}(x-\pi)\right)$.
+    \item $b$ is decreasing on $\left(0,  \frac{\pi^2}{3} -2\right)$ and increasing on $\left(\frac{\pi^2}{3} -2, \pi^2\right)$.
+    \item $b$ is convex on the interval $\left(\frac{\pi^2}{3} -2, \pi^2\right)$.
+  \end{enumerate}
+\end{prop}
+
+It is clear that the region is contained in the quadrant with $0 \leq\var[\rho]{\ope}$, $0\leq\var[\rho]{\opp}$, further, since the interval is bounded above and below by $\pi$ and $-\pi$, we must have that $\var[\rho]{\ope} \leq \expe{\ope[2]}{\rho} \leq \pi^2$. These bounds are classical, for example the probability distribution which assigns probability $\frac{1}{2}$ to each of the points $-\pi$ and $\pi$ has (classical) position variance $\pi^2$.
 
 \begin{lem}\label{lem:box-ur-all-points-filled}
   For any $x\in (0, \pi^2)$ there exists a state $\varphi\in\dom{\opf[1]^*\opf[1]}$  such that 
@@ -173,13 +230,13 @@ Since $0<\var[\varphi]{\ope}$ for all states $\varphi$ there exists an $a$ such 
 \end{proof}
 
 This offers a convenient description of the uncertainty region in terms of a boundary function.
-\begin{thm}
+\begin{lem}
   The uncertainty region is the epigraph (the set of points lying above the graph) of the function
   \begin{align}
     b&:(0,\pi^2) \to \R\\
     b&:x\mapsto \inf\left\{\var[\varphi]{\opf}\,\middle|\,\var[\varphi]{\ope} = x\right\}.\label{eqn:box-ur-boundry-func-defn}
   \end{align}
-\end{thm}
+\end{lem}
 Loosely this means that in addition to being unbounded above the uncertainty region has no ``holes'' in it.
 \begin{proof}
   In order to define such a function it is necessary that for each $x\in (0,\pi^2)$ the infimum in equation~\eqref{eqn:box-ur-boundry-func-defn} exists and is finite. This is true since the set the infimum is being taken over is non-empty (by lemma~\ref{lem:box-ur-all-points-filled}) and bounded below (by $0$, since the variance is non-negative). 
@@ -192,49 +249,23 @@ From the definition of $b(x)$ we can therefore see $y \leq b(x)$, since $y$ is a
 
 Conversely the epigraph of $b$ contains $U$, which can be seen by noting that for each $x\in (0,\pi^2)$, all of the points $(x,y)$ in the uncertainty region are, by definition directly above $b(x)$.
 \end{proof}
-
-We first note that the variance is concave as a function of the (mixed) state.
+We can find the minimum of $b$. 
 \begin{lem}
-  Given any observable $\opa$, if $\dops$ is the set of density operators for which the first and second moments of $\opa$ are finite then the map $\nu:\dops\to \R$, $\nu:\rho\mapsto \varr{\opa}$ is concave.
+  For all $x\in (0,\pi^2)$
+  \begin{align}
+    b\left(\frac{\pi^2}{3} - 2\right) = \frac{1}{4} \leq b(x).
+  \end{align}
+  Further this minimum is achieved by the state
+  \begin{align}
+     \psi_0 = \frac{1}{\sqrt{\pi}}\sin\left(\frac{1}{2}(x-\pi)\right),
+  \end{align}
+  and is unique
+  \begin{align}
+    x\neq\frac{\pi^2}{3} - 2 \implies \frac{1}{4} < b(x).
+  \end{align}
 \end{lem}
 \begin{proof}
-  Take $\rho,\, \sigma \in \dops$ with finite first and second moments of $\opa$ and choose $\lambda \in (0,1)$ then
-  \begin{align}
-    0&\leq \lambda(1-\lambda) \left(\expe{\opa}{\rho} - \expe{\opa}{\sigma}\right)^2\\
-    \lambda^2 \expe{\opa}{\rho}^2 + (1- \lambda)^2\expe{\opa}{\sigma}^2 + 2\lambda(1-\lambda)\expe{\opa}{\rho}\expe{\opa}{\sigma} &\leq \lambda \expe{\opa}{\rho}^2 + (1-\lambda) \expe{\opa}{\sigma}^2\\
-    \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &=\\
-    \expe{\opa^2}{\lambda\rho + (1-\lambda)\sigma} - \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &\geq \lambda\left(\expe{\opa^2}{\rho} -\expe{\opa}{\rho}^2\right) + (1-\lambda)\left(\expe{\opa}{\sigma}^2 -\expe{\opa}{\sigma}^2\right)\\
-    \var[\lambda\rho + (1-\lambda)\sigma]{\opa} &\geq \lambda \var{\opa}{\rho} + (1-\lambda ) \var{\opa}{\sigma}.
-  \end{align}
-\end{proof}
-
-
-
-Due to the boundary conditions in \eqref{eqn:good-opf[2]-domain} in we do not have shift operators, which move the states in position space. Explicitly given a pure state $\varphi\in\dom{\opf[1]^*\opf[1]}$, and $a\in [0,2\pi] $ the function
-\begin{align}
-  \tilde{\varphi}&:[-\pi,\pi]\to \Cx\\
-  \tilde{\varphi}&:x\mapsto \begin{cases}\varphi(x+a), & x+a\in [-\pi,\pi]\\ \varphi(x+a-2\pi), & x+a-2\pi\in [-\pi,\pi]\end{cases},
-\end{align}
-will generally \emph{not} obey the boundary conditions and therefore will not be a state. This ability to shift states is a key point in proofs of the usual Heisenberg uncertainty relation for the particle on the line. In particular on the real line one can shift any state in order to set the expectation values of position and momentum to zero, at which point the variance functional becomes linear in the state, offering a significant simplification.
-
-We do have the ability to shift the expectation of the first moment of momentum of the states as we choose. Given $\varphi\in\dom{\opf[1]^*\opf[1]}$ and $a\in\R$ the map
-\begin{align}
-  M_a &:\dom{\opf[1]^*\opf[1]}\to\dom{\opf[1]^*\opf[1]}\\
-  (M_a\varphi)&:x\mapsto e^{i a x}\varphi(x),
-\end{align}
-leaves the variance of momentum unchanged, along with the expectation of all the moments of position. As required $M_a$ changes the expectation of the first moment of momentum by $a$
-\begin{align}
-  \expe{\ope[1]}{M_a\varphi} &= \expe{\ope[1]}{\varphi} & \expe{\opf[1]}{M_a\varphi} &= \expe{\opf[1]}{\varphi} + a\\
-  \expe{\ope[2]}{M_a\varphi} &= \expe{\ope[2]}{\varphi}& \expe{\opf[2]}{M_a\varphi} &= \expe{\opf[2]}{\varphi} + 2a\expe{\opf[1]}{\varphi} + a^2,
-\end{align}
-so
-\begin{align}
-  \var[M_a\varphi]{\opf[2]} &= \expe{\opf[2]}{\varphi} + 2a\expe{\opf[1]}{\varphi} + a^2 - \left(\expe{\opf[1]}{\varphi} + a\right)^2\\
-                            &= \var[M_a\varphi]{\opf[2]}.
-\end{align}
-This means that we can reduce the problem of exploring momentum variances over all states, to exploring the expectation of momentum second moments, with the restriction that the expectation of the first moment of momentum is zero.
-
-We can now immediately find the least possible momentum, from the least eigenvalue of the self-adjoint operator $\opf[2] = \opf[1]^*\opf[1]$. It is well known that the solutions to
+We first seek the least eigenvalue of the self-adjoint operator $\opf[2] = \opf[1]^*\opf[1]$. It is well known that the solutions to
 \begin{align}
   -\varphi^{\prime\prime} = \lambda\varphi
 \end{align}
@@ -244,15 +275,15 @@ are sines and cosines. Applying the boundary conditions $\varphi(-\pi)=\varphi(\
 \end{align}
 and the eigenvalues are
 \begin{align}
-  \opf[2]\psi_k(x) = \frac{(k+1)^2}{4}\psi_k(x).
+  \opf[2]\psi_k(x) = \frac{(k+1)^2}{4}\psi_k(x),
 \end{align}
-Where we have chosen the form such that $\psi_k$ is an odd function if $k$ is odd, and even if $k$ is even. Note that each eigenspace is one-dimensional, in particular there is only one state (up to phase) attaining the value $\expe{\opf[2]}{\psi_0} = \frac{1}{4}$. One can compute
+where we have chosen the form such that $\psi_k$ is an odd function if $k$ is odd, and even if $k$ is even. Note that each eigenspace is one-dimensional, in particular there is only one state (up to phase) attaining the value $\expe{\opf[2]}{\psi_0} = \frac{1}{4}$. One can compute
 \begin{align}
   \expe{\opf[1]}{\psi_k} &= -i\int_{-\pi}^\pi dx \psi_k(x)^* \psi_k^\prime(x)\\
                          &= -i\frac{k+1}{2\pi}\int_{-\pi}^\pi dx \sin\left(\frac{k+1}{2}(x-\pi)\right) \cos\left(\frac{k+1}{2}(x-\pi)\right)\\
                          &= 0,
 \end{align}
-so the least eigenvalue of $\opf[2]$ is exactly the least possible momentum variance,
+so applying lemma~\ref{lem:infinite-dim-ur-shift-momentum} the least eigenvalue of $\opf[2]$ is exactly the least possible momentum variance,
 \begin{align}
   \inf\left\{\varr{\opf}\,\middle|\,\rho\in\dom{\opf[2]}\right\} = \frac{1}{4}.
 \end{align}
@@ -262,8 +293,299 @@ We also compute the position variance of the state $\psi_0$ which minimises the 
                      &= \frac{1}{\pi}\int_{-\pi}^\pi dx x^2 \sin\left(\frac{1}{2}(x-\pi)\right)^2 - \left(\frac{1}{\pi}\int_{-\pi}^\pi dx x \sin\left(\frac{1}{2}(x-\pi)\right)^2\right)^2\\
                      &= \frac{\pi^2}{3} - 2.
 \end{align}
+Finally we show the minimum is unique. Assume a state achieves 
+\begin{align}
+  \var[\varphi]{\opf} = \frac{1}{4},
+\end{align}
+then we can employ lemma~\ref{lem:infinite-dim-ur-shift-momentum} to obtain a state $\xi$ with
+\begin{align}
+  \expe{\opf[1]}{\xi} = 0\\
+  \expe{\opf[2]}{\xi} = \frac{1}{4},
+\end{align}
+the fact that the eigenspaces of $\opf[2]$ are one dimensional then implies that 
+\begin{align}
+  \xi = \alpha \psi_0,
+\end{align}
+for some complex phase $\alpha$. Reversing the transformation from the proof of lemma~\ref{lem:infinite-dim-ur-shift-momentum} then implies that
+\begin{align}
+  \varphi(x) = \alpha e^{-iax}\psi_0(x),
+\end{align}
+for some $a\in\R$. It follows that 
+\begin{align}
+  \var[\varphi]{\opf} = \var[\psi_0]{\opf} = \frac{\pi^2}{3}-2,
+\end{align}
+and so the minimum of $b$ is unique.
+\end{proof}
 
-We now show that the minimum momentum variance splits the uncertainty region into two parts, to the 
+The minimum splits $b$ into two regions, to the left of the minimum $b$ is decreasing and to the right it is increasing.
+\begin{lem}\label{lem:box-ur-fn-dec-inc}
+  The boundary function $b$ is strictly decreasing on $\left(0, \frac{\pi^2}{3}-2\right)$ and strictly increasing on $\left(\frac{\pi^2}{3}-2, \pi^2\right)$.
+\end{lem}
+\begin{proof}
+  Choose $x,y \in \left(0,\frac{\pi^2}{3}-2\right)$, without loss of generality let $x < y$, and choose a sequence of states $\rho_n$ such that
+  \begin{align}%n > m &\implies \var[\rho_n]{\opf} < \var[\rho_m]{\opf}\\
+    \var[\rho_n]{\ope} &= x\\
+    \lim_{n\to\infty}\var[\rho_n]{\opf} &=b(x).
+  \end{align}
+  Such a sequence exists due to the definition of $b(x)$. Without loss of generality, due to lemma~\ref{lem:infinite-dim-ur-shift-momentum} choose
+  \begin{align}
+    \expe{\opf[1]}{\rho_n}.
+  \end{align}
+  Now we mix these states with the projector onto the minimizer of the momentum variance, $\ketbra{\psi_0}{\psi_0}$, and define the functions
+  \begin{align}
+    f_n&:(0,1) \to \R\\
+    f_n:\lambda \to \var[\lambda\rho_n+(1-\lambda)\ketbra{\psi_0}{\psi_0}]{\ope},
+  \end{align}
+  by continuity, for each $n\in\N$ there exists $\lambda^*\in (0,1)$ such that $f_n(\lambda) = y$, now by the definition of $b$ we have
+  \begin{align}
+    b(y) &\leq \expe{\opf[2]}{\lambda^*\rho_n+(1-\lambda^*)\ketbra{\psi_0}{\psi_0}}\\
+         &= \lambda^*\expe{\opf[2]}{\rho_n}+(1-\lambda^*)\expe{\opf[2]}{\ketbra{\psi_0}{\psi_0}}\\
+         &< \expe{\opf[2]}{\rho_n}.
+  \end{align}
+  Taking the limit $n\to\infty$ of the last inequality gives
+  \begin{align}
+    b(y) \leq b(x),
+  \end{align}
+  as required. The proof for the increasing region is essentially identical.
+\end{proof}
+
+We recall that the variance is concave as a function of the (mixed) state.
+\begin{lem}\label{lem:box-ur-variance-concave}
+  Given any observable $\opa$, if $\dops$ is the set of density operators for which the first and second moments of $\opa$ are finite then the map $\nu:\dops\to \R$, $\nu:\rho\mapsto \varr{\opa}$ is concave.
+\end{lem}
+\begin{proof}
+  Take $\rho,\, \sigma \in \dops$ with finite first and second moments of $\opa$ and choose $\lambda \in (0,1)$ then
+  \begin{align}
+    0&\leq \lambda(1-\lambda) \left(\expe{\opa}{\rho} - \expe{\opa}{\sigma}\right)^2\\
+    \lambda^2 \expe{\opa}{\rho}^2 + (1- \lambda)^2\expe{\opa}{\sigma}^2 + 2\lambda(1-\lambda)\expe{\opa}{\rho}\expe{\opa}{\sigma} &\leq \lambda \expe{\opa}{\rho}^2 + (1-\lambda) \expe{\opa}{\sigma}^2\\
+    \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &=\\
+    \expe{\opa^2}{\lambda\rho + (1-\lambda)\sigma} - \left(\lambda \expe{\opa}{\rho} + (1- \lambda)\expe{\opa}{\sigma}\right)^2 &\geq \lambda\left(\expe{\opa^2}{\rho} -\expe{\opa}{\rho}^2\right) + (1-\lambda)\left(\expe{\opa}{\sigma}^2 -\expe{\opa}{\sigma}^2\right)\\
+    \var[\lambda\rho + (1-\lambda)\sigma]{\opa} &\geq \lambda \var{\opa}{\rho} + (1-\lambda) \var{\opa}{\sigma}.
+  \end{align}
+\end{proof}
+\begin{lem}\label{lem:increasing-line-segments-contained}
+  If $(v,w), (x,y)\in U$ and $v<x$, and $w < y$ then 
+  \begin{align}
+    \lambda(v,w) + (1-\lambda)(x,y)\in U,
+  \end{align}
+  for all $\lambda\in (0,1)$.
+\end{lem}
+\begin{proof}
+  We choose density operators $\rho,\sigma$ such that
+  \begin{align}
+    \var[\rho]{\ope} &= v & \var[\sigma]{\ope} &= x \\
+    \var[\rho]{\opf} &= w & \var[\sigma]{\opf} &= y \\
+    \expe{\opf[1]}{\rho} &= 0 & \expe{\opf[1]}{\sigma} &= 0,
+  \end{align}
+  Consider the real, continuous function
+  \begin{align}
+    f:\lambda \mapsto \var[\lambda\rho+ (1-\lambda)\sigma]{\ope}.
+  \end{align} 
+  By continuity, for any $\lambda\in (0,1)$ there exists $\mu\in (0,1)$ such that
+  \begin{align}
+    f(\mu) = \lambda v + (1-\lambda)x.
+  \end{align}
+  Due to the concavity of the variance functional (lemma~\ref{lem:box-ur-variance-concave}) $f$ is concave and 
+  \begin{align}
+    f(\mu) &\geq \mu v + (1-\mu)x\\
+    \lambda v + (1-\lambda)x &\geq \mu v + (1-\mu)x\\
+    \lambda (v-x) &\geq \mu(v-x)\\
+    \implies \lambda &\leq \mu.
+  \end{align}
+  Then $w < y$ implies
+  \begin{align}
+    \mu w + (1-\mu) y \leq \lambda w + (1-\lambda)y.
+  \end{align}
+  Since we chose $\rho$ and $\sigma$ such that the first moments of momentum are zero, the momentum variance is linear in the state and
+  \begin{align}
+    \var[\mu\rho+ (1-\mu)\sigma]{\ope} &= \mu w + (1-\mu) y\\
+                                           &\leq \lambda w + (1-\lambda)y.
+  \end{align}
+  Recall we are attempting to show that the point $\lambda(v,w) + (1-\lambda)(x,y)\in U$, but we have now shown that the point $(\lambda v + (1-\lambda) x, \mu w + (1-\mu) y)\in U$, and $\mu w + (1-\mu) y < \lambda w + (1-\lambda)y$. We can now employ lemma~\ref{lem:box-ur-half-line-contained} to move directly up in the uncertainty region to get to the desired point.
+\end{proof}
+
+
+\begin{lem}
+The boundary function $b$ is convex on $\left(\frac{\pi^2}{3}-2, \pi^2\right)$.
+\end{lem}
+\begin{proof}
+  The boundary function $b$ is convex on this interval iff the restriction of the uncertainty region
+  \begin{align}
+    U_{>} = \left\{(x,y)\in U\,\middle|\,x >\frac{\pi^2}{3}-2 \right\},
+  \end{align}
+  is convex. We therefore have to show that for any two points $(v,w), (x,y)\in U_{>}$ the points
+  \begin{align}
+    \lambda(v,w) + (1-\lambda)(x,y)\in U,
+  \end{align}
+  for all $\lambda\in (0,1)$. Without loss of generality we choose $v < x$, we wish to employ lemma~\ref{lem:increasing-line-segments-contained} but we do not necessarily have $w < y$. We therefore consider a new point $(v,w^\prime)\in U_{>}$, directly below $(v,w)$. Since we have shown in lemma~\ref{lem:box-ur-fn-dec-inc} that the boundary curve is increasing in this interval we can choose $w^\prime \leq y$. By lemma~\ref{lem:increasing-line-segments-contained} we have that 
+\begin{align}
+  \lambda (v,w^\prime) + (1-\lambda)(x,y)\in U.
+\end{align}
+Employing lemma~\ref{lem:box-ur-half-line-contained} and noting that $w^\prime < w\implies \lambda w^\prime + (1-\lambda) y < \lambda  w+ (1-\lambda) y$ proves that $\lambda  w+ (1-\lambda) y$ is in the uncertainty region as required.
+\end{proof}
+
+A useful feature of the particle on a line is the ability to rescale states, if $\varphi\in L^2(\R)$, and $a > 0$ then
+\begin{align}
+  \varphi_a:x\mapsto\sqrt{a}\varphi{ax},
+\end{align}
+is also a state. We do not have this symmetry in the particle in a box system, since ``broadening'' a state will generally break the boundary conditions, but we can ``squeeze'' states if we wish.
+\begin{lem}\label{lem:box-ur-squeeze-states}
+  If $\varphi\in\dom{\ope[2]}$, $a \geq 1$ and
+  \begin{align}
+    \varphi_a:x\mapsto\begin{cases}\sqrt{a}\varphi(ax),& \abs{ax}\leq \pi\\ 0, &\text{otherwise}\end{cases},
+  \end{align}
+  then $\varphi_a\in\dom{\ope[2]}$, further
+  \begin{align}
+    \var[\varphi_a]{\ope} &= \frac{1}{a^2}\var[\varphi]{\ope}\label{eqn:box-ur-rescaling-1}\\
+    \var[\varphi_a]{\opf} &= a^2\var[\varphi]{\opf}.\label{eqn:box-ur-rescaling-2}
+  \end{align}
+\end{lem}
+\begin{proof}
+  It is well known that this rescaling preserves the domains of the moments of the position and momentum observables on $L^2(\R)$, the only additional constraint in the present case is the imposition of the boundary conditions, which are easily shown to be preserved. One can verify equations~\eqref{eqn:box-ur-rescaling-1} and~\eqref{eqn:box-ur-rescaling-2} by directly computing the integrals.
+\end{proof}
+
+\begin{lem}
+  The boundary function $b$ is continuous.
+\end{lem}
+\begin{proof}
+  Convex functions are continuous, so $b$ is automatically continuous on $\left(\frac{\pi^2}{3}-2, \pi^2\right)$. In order to show that $b$ is continuous on $\left(0, \frac{\pi^2}{3}-2\right)$ we recall that $b$ is decreasing in this interval (lemma~\ref{lem:box-ur-fn-dec-inc}), that monotone functions have limits from the left and the right at every point, and can only have jump discontinuities.
+
+We assume that there exists some discontinuity at a point $a\in\left(0, \frac{\pi^2}{3}-2\right)$ so that
+\begin{align}
+  \lim_{x\to a^-}b(x) = \lim_{x\to a^+}b(x) + \alpha,
+\end{align}
+where monotonicity implies $\alpha > 0$. We choose a sequence of states $\rho_n$ such that
+\begin{align}
+  \lim_{n\to\infty}\var[\rho_n]{\ope} &= x\\
+  \var[\rho_n]{\ope} &\geq a\\
+  \lim_{n\to\infty}\var[\rho_n]{\opf} &= \lim_{x\to a^+}b(x).
+\end{align}
+We fix $y < a$ then apply the ``squeezing map'' from lemma~\ref{lem:box-ur-squeeze-states} to each $\rho_n$ to obtain a sequence of states $\sigma_n$ such that
+\begin{align}
+  \var[\sigma_n]{\ope} = y,
+\end{align}
+then 
+\begin{align}
+  \var[\sigma_n]{\ope}\var[\sigma_n]{\opf} &= \var[\rho_n]{\ope}\var[\rho_n]{\opf}\\
+  y b(y) &\leq \var[\rho_n]{\ope}\var[\rho_n]{\opf},
+\end{align}
+since, by definition, $b(y)\leq \var[\sigma_n]{\opf}$. Taking the limit $n\to\infty$ on the right hand side then gives the second inequality of
+\begin{align}
+  y \lim_{x\to a^+}b(x) \leq y b(y) \leq a \lim_{x\to a^+}b(x),
+\end{align}
+where the first inequality is just the monotonicity of $b$. Now taking the limit $y\to a^-$ gives
+\begin{align}
+  a \lim_{x\to a^+}b(x) \leq a \lim_{y\to a^-}b(y) \leq a \lim_{x\to a^+}b(x),
+\end{align}
+so $\lim_{y\to a^-}b(y) = \lim_{x\to a^+}b(x)$ implying $\lim_{x\to a}b(x)$ exists. A simple generalisation (choosing $\sigma_n$ such that $\var[\sigma_n]{\ope} = a$) establishes that $\lim_{y\to a}b(y) = b(a)$.
+
+It remains to show that $b$ is continuous at the point $a=\frac{\pi^2}{3}-2$. This can be achieved by slightly altering the proof of lemma~\ref{lem:box-ur-fn-dec-inc}. We fix $v < \frac{\pi^2}{3}-2$ and choose a state $\rho$ such that
+\begin{align}
+  \var[\rho]{\ope} &= v\\
+  \expe{\opf[1]}{\rho} &= 0.
+\end{align} 
+Then consider the states
+\begin{align}
+  \sigma(\lambda) = \lambda\rho + (1-\lambda)\ketbra{\psi_0}{\psi_0}.
+\end{align}
+As before, for each $x\in \left(v,\frac{\pi^2}{3}-2\right)$ there exists some $\lambda(x)$ such that 
+\begin{align}
+  \var[\sigma(\lambda(x))]{\ope} &= x,
+\end{align}
+then, by construction
+\begin{align}
+  \frac{1}{4} \leq b(x) &\leq \var[\sigma(\lambda(x))]{\opf}\\
+                        &= \lambda(x)\var[\rho]{\opf} + (1-\lambda(x))\var[\ketbra{\psi_0}{\psi_0}]{\opf}.
+\end{align}
+Now as $x\to a^-$ we have $\lambda\to 0^+$ and obtain
+\begin{align}
+  \frac{1}{4} \leq \lim_{x\to a^-} b(x) \leq \frac{1}{4}.
+\end{align}
+The proof for $x\to a^+$ is similar.
+\end{proof}
+
+\subsubsection{Analytical bounds on the boundary function}
+\label{subsubsec:box-ur-analytical-bounds}
+We first note that a simple bound may be obtained by recalling that the position and momentum observables $\ope,\opf$ we have defined are essentially restrictions of the standard position and momentum observables on $L^2(\R)$. In particular given a state $\varphi\in\dom{\opf}$ there exists a state $(l\varphi)\in L^2(\R)$ such that
+\begin{align}
+  \expe{\ope[1]}{\varphi} &= \expe{\ope_0[1]}{l\varphi} & \expe{\ope[2]}{\varphi} &= \expe{\ope_0[2]}{l\varphi}\\
+  \expe{\opf[1]}{\varphi} &= \expe{\opf_0[1]}{l\varphi} & \expe{\opf[2]}{\varphi} &= \expe{\opf_0[2]}{l\varphi},
+\end{align}
+where $\ope_0, \opf_0$ are the position and observables on $L^2(\R)$, respectively. This means that the lower bound
+\begin{align}
+  \var[\varphi]{\ope}\var[\varphi]{\opf} \geq \frac{1}{4},
+\end{align}
+due to Heisenberg, is still valid for the box system. We can not expect that the Heisenberg bound will be tight for the box, since it is saturated by Gaussian states and these certainly do not obey the boundary conditions $\varphi(-\pi) = \varphi(\pi) = 0$. We can compare this lower bound to upper bounds obtained by considering families of states in $\dom{\opf}$. An obvious family of states is achieved by squeezing the minimizer of momentum, to obtain the bounds
+\begin{align}
+  \frac{1}{4x}\leq b(x) \leq \frac{1}{4x}\left(\frac{\pi^2}{3}-2\right),
+\end{align}
+valid for $x\in\left(0, \frac{\pi^2}{3}-2\right)$. An improved bound, at small values of $x$, is provided by the ``tempered-Gaussians''
+\begin{align}
+  \xi_s = \frac{1}{N^2} e^{-s x^2} (\pi-x)(x+\pi),
+\end{align}
+where
+\begin{align}
+  N = \frac{\sqrt{2 \pi } \left(16 \pi^4 s^2-8 \pi^2 s+3\right) \erf\left(\sqrt{2s} \pi \right)+4 \pi  e^{-2 \pi ^2 s} \left(4 \pi ^2 s-3\right) \sqrt{s}}{32 s^{5/2}},
+\end{align}
+normalises the state. Then we have
+\begin{align}
+  \var[\xi_s]{\ope} &= \frac{\sqrt{2 \pi } \left(16 \pi ^4 s^2-24 \pi ^2 s+15\right) \erf\left(\sqrt{2s} \pi\right)+4 \pi  e^{-2 \pi ^2 s} \left(4 \pi ^2 s-15\right) \sqrt{s}}{128 s^{7/2}N}\\
+  \var[\xi_s]{\opf} &= \frac{\sqrt{2 \pi } \left(16 \pi ^4 s^2+8 \pi ^2 s+7\right) \erf\left(\sqrt{2s} \pi\right)+4 \pi  e^{-2 \pi ^2 s} \left(4 \pi ^2 s-7\right) \sqrt{s}}{32 s^{3/2}N }.
+\end{align}
+These expressions are unfortunately rather unwieldy, but we have
+\begin{align}
+  \lim_{s\to 0^+} \var[\ope]{\xi_s} = 0,
+\end{align}
+and 
+\begin{align}
+  \lim_{s\to 0^+} \var[\ope]{\xi_s}\var[\opf]{\xi_s} = \frac{1}{4}.
+\end{align}
+Combining this limiting upper bound with the lower bound provided by the Heisenberg relation proves that
+\begin{align}
+  \lim_{x\to 0} x b(x) = \frac{1}{4}.
+\end{align}
+% An obvious such family is the class of ``tapered-Gaussians'', we define to be
+% \begin{align}
+%   \xi_{s,x}(x) := \frac{1}{N} \begin{cases}\frac{1}{b}e^{-s(\pi-b)}(x+\pi), &x\in (-\pi,-\pi+b)\\ e^{-sx^2}, &x\in (-\pi+b, \pi-b)\\\frac{1}{b}e^{-s(\pi-b)}(\pi-x), &x\in (\pi-b,\pi)\end{cases},
+% \end{align}
+% where
+% \begin{align}
+% N^2 = \sqrt{\frac{\pi}{2s}}\erf\left(\sqrt{2s}(\pi-b)\right) + \frac{2b}{3}e^{-2s(\pi-b)^2},
+% \end{align}
+% normalises the state.
+
+\subsubsection{Numerical approximation of $b$}
+
+We can do somewhat better that the analytical bounds from section~\ref{subsubsec:box-ur-analytical-bounds} in the interval $\left(\frac{\pi^2}{3} -2,\pi^2\right)$. Here the uncertainty region is convex, and so may be determined by it's convex conjugate. We seek
+\begin{align}
+  c(\alpha) := -b^*(-\alpha) = \inf \left\{b(x) + \alpha x\,\middle|\,x\in\left(\frac{\pi^2}{3} -2,\pi^2\right)\right\},
+\end{align}
+where we have introduced the minus signs for later convenience. Substituting the definition of $b$ gives
+\begin{align}
+  c(\alpha) = \inf \left\{\inf\left\{\var[\varphi]{\opf}\,\middle|\,\var[\varphi]{\ope} = x \right\} + \alpha x\middle| x\in\left(\frac{pi^2}{3} -2,\pi^2\right)\right\}.
+\end{align}
+We notice we can combine the two infima to obtain
+\begin{align}
+  c(\alpha) = \inf\left\{\var[\varphi]{\opf} + \alpha \var[\varphi]{\ope}\,\middle|\,\varphi\in\dom{\opf[2]}\right\},
+\end{align}
+since searching over all $x$, and then over all states with variance equal to that $x$ is equivalent to searching over all the states directly. We now employ lemma~\ref{lem:infinite-dim-ur-shift-momentum} to restrict the search to those states with momentum expectation value equal to $0$
+\begin{align}
+  c(\alpha) = \inf\left\{\expe{\opf[2]}{\varphi} + \alpha \var[\varphi]{\ope}\,\middle|\,\varphi\in\dom{\opf[2]},\,\expe{\opf[1]}{\varphi} = 0\right\}.
+\end{align}
+For convenience we define the function of the state
+\begin{align}
+  h_{\alpha} : \varphi &\mapsto \expe{\opf[2]}{\varphi} + \alpha \var[\varphi]{\ope}\\
+                    &= \expe{\opf[2]}{\varphi} + \alpha\left(\expe{\ope[2]}{\varphi} - \expe{\opf[1]}{\varphi}^2\right),
+\end{align}
+to which we apply the method of Lagrange-multipliers. We seek the extrema of $h_\alpha(\varphi)$ such that $\braket{\varphi}{\varphi} = 1$ so obtain the Lagrangian
+\begin{align}
+  \lcal(\varphi,\lambda) = h_\alpha(\lambda) - \lambda(\braket{\varphi}{\varphi} - 1).
+\end{align}
+Choose an arbitrary unit vector $\xi\in\dom{\opf[2]}$ and consider the limit
+\begin{align}
+  \lim_{\varepsilon\to 0} \frac{\lcal(\varphi+ \varepsilon\xi, \lambda) - \lcal(\varphi,\lambda) }{\varepsilon} 
+\end{align}
+
 
 \subsubsection{Uncertainty diagrams}
 We now turn to the calculation of the bottom of the spectrum of $H_\alpha$, this may be solved numerically by noting that the eigenfunctions $(\phi_i)_{i\in\Z}$ of $\Qd$ are a core for $H_\alpha$. We may therefore approximate $c(\alpha)$ by calculating the least eigenvalue of the $(2n-1)\times (2n-1)$ matrix with entries

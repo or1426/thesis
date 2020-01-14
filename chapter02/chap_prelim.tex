@@ -495,8 +495,8 @@ A group, representation, action and observable satisfying equation \eqref{eqn:ge
       \draw[->, thick] (\x+5.25, \y-0.5) -- (\x+5.75, \y-0.5);
     \node[right] at (\x+5.75, \y-0.5)  {\text{``up''},\text{``down''},\text{``up''},\text{``up''}};
   \end{tikzpicture}
-  \caption{A Stern-Gerlach type device correctly measures the $\mathrm{\sigma_z}$ observable on some input qubits, each in a $\mathrm{\sigma_z}$ eigenstate.}
-\end{subfigure}\label{subfig:stern-gerlach-right-way}\\~\\~\\
+  \caption{A Stern-Gerlach type device correctly measures the $\mathrm{\sigma_z}$ observable on some input qubits, each in a $\mathrm{\sigma_z}$ eigenstate.}\label{subfig:stern-gerlach-right-way}
+\end{subfigure}\\~\\~\\
 \begin{subfigure}{0.7\textwidth}
   \drawDeviceUpsideDown{(-4.3+9.5, 0.75-0.5)}{$\mathrm{\sigma_z}$}{0.8}
   \begin{tikzpicture}[scale=1]    
@@ -620,12 +620,13 @@ Note here we are considering probability distributions as functions on the outco
   \lPVar{\mu}{\nu}[1] \defeq \sup_{S\in\fcal}\abs{\mu(S) - \nu(S)}.
 \end{align}
 The use of the total variation for measurement errors of continuous variables has been criticised in \cite{blw-meas-uncertainty}, on the basis that it is insensitive to any metric on the underlying space. Explicitly, every point measure is at distance $2$ from every other point measure, whereas in a physical context it is often natural to consider point measures corresponding to points which are close together to be similarly close.
-A key tool for comparing Borel measures on a metric space $(\mathsf{A}, d)$ is the Wasserstein $\alpha$-metric, using a real parameter $\alpha$ greater than $1$,
+\begin{defn}
+  If $(\mathsf{A}, d)$ is  a metric space and $\alpha > 0$ then the Wasserstein $\alpha$-metric is
 \begin{align}
   \ws{\mu,\nu}[\alpha]  \defeq \left(\inf_{\gamma\in\Gamma(\mu,\nu)} \int_{\mathsf{A}\times\mathsf{A}} d(x,y)^\alpha d\gamma(x,y)\right)^\frac{1}{\alpha}.\label{eq:wasserstein-prob-dists}
 \end{align}
 Here $\Gamma(\mu,\nu)$ is the set of ``couplings'' between $\mu$ and $\nu$, the probability measures on the product space $\mathsf{A}\times\mathsf{A}$, with first margin $\mu$ and second margin $\nu$.
-
+\end{defn}
 We provide a simple example, computing the Wasserstein $\alpha$distance between two probability distributions on the outcome set $\{-1,1\}$. We let 
 \begin{align}
   \mu(1) &= m\\
@@ -679,19 +680,6 @@ the formula for the moments becomes
 \begin{align}
   \mu[n] \defeq \int_\R x^n p(x) dx.
 \end{align}
-
-% The moments 
-% If $\mu:\mathcal{B}(\R)\to [0,1]$ is a probability measure then we define the 
-
-% can compute the integrals
-% \begin{align}
-%   I^-(n) &= \int_{X^{-}(n)} (-x)^n d\mu(x),\\
-%   I^+(n) &= \int_{X^{+}(n)} x^n d\mu(x),
-% \end{align}
-% where $X^{+}(n)$, (resp. $X^{-}(n)$) is the subset of $\R$ for which $x^n$ is non-negative, (resp. negative). Both integrands are non-negative and measurable on the regions of integration so both integrals exist, but may be equal to $+\infty$. If at least one integral is finite we define the $n^\text{th}$ moment of $\mu$
-% \begin{align}
-%   \mu[n] \defeq I^+(n) - I^-(n),
-% \end{align}
 If the first and second moments of a probability measure exist and are finite then we can define the variance
 \begin{align}
   \var{\mu} \defeq \mu[2] - \mu[1]^2, \label{eqn:prelim-def-variance}
@@ -702,15 +690,19 @@ An application of the Wasserstein metric allows a generalisation of the variance
 \begin{align}
   d(x_1,x_2) \defeq \min_{n\in \{-1,0,1\}} \abs{x_1 + 2n\pi - x_2},
 \end{align}
-where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We show there is no way to define the variance of a probability distribution on the unit circle by considering the uniform distribution, to define the variance one first needs to define a mean, and there is no unique way to assign a mean to the uniform distribution over the circle. Nonetheless, there is a natural sense in which some distributions on $\circleNotate$ are more concentrated than others. For a metric space $(\mathsf{A}, d)$, and Borel probability measure $\mu$ we define the \emph{$\alpha$-deviation}
+where the minimisation reflects the fact that two points may be connected by arcs either way around the circle. We show there is no way to define the variance of a probability distribution on the unit circle by considering the uniform distribution, to define the variance one first needs to define a mean, and there is no unique way to assign a mean to the uniform distribution over the circle. Nonetheless, there is a natural sense in which some distributions on $\circleNotate$ are more concentrated than others. 
+\begin{defn}\label{defn:wasserstein-a-deviation}
+  If $\mu$ is a probability measure on a metric space $(\mathsf{A}, d)$ and $\alpha > 1$, the $\alpha$-deviation is
 \begin{align}
   \wsDev{\mu}[\alpha] \defeq \inf_{x_0\in\mathsf{A}} \ws{\mu, \delta_{x_0}}[\alpha], \label{eqn:wassersten-variance}
 \end{align}
-where $\delta_{x_0}$ is a point measure supported at $x_0$. The $\alpha$-deviation appears in \cite{blw-meas-uncertainty}, and was applied in \cite{sharp-ur-num-angle} to the case of covariant number and phase observables. Note that the only coupling between a measure and a point measure is the product measure, so the formula \eqref{eq:wasserstein-prob-dists} simplifies substantially in this case
+where $\delta_{x_0}$ is a point measure supported at $x_0$.
+\end{defn}
+ The $\alpha$-deviation appears in \cite{blw-meas-uncertainty}, and was applied in \cite{sharp-ur-num-angle} to the case of covariant number and phase observables. Note that the only coupling between a measure and a point measure is the product measure, so the formula \eqref{eq:wasserstein-prob-dists} simplifies substantially in this case
 \begin{align}
   \wsDev{\mu}[\alpha] = \inf_{x_0\in\mathsf{A}} \left(\int_{\mathsf{A}} d(x,x_0)^\alpha d\mu(x)\right)^\frac{1}{\alpha}.
 \end{align}
-We prove a piece of ``folklore'', giving connecting $\wsDev{\mu}[2]$, with the standard variance for the case where $\mu$ is a Borel probability measure on the reals.
+We prove a piece of ``folklore'', giving connecting $\wsDev{\mu}[2]$, with the standard variance for the case where $\mu$ is a Borel probability measure on the reals. 
 \begin{lem}\label{lem:prelims-wasserstein-var-equals-var}
   If $\mu$ is a probability measure on the Borel sets of $\R$, with the standard topology, for which first and second moment exist and are finite then 
   \begin{align}
@@ -742,7 +734,7 @@ We prove a piece of ``folklore'', giving connecting $\wsDev{\mu}[2]$, with the s
   \end{align}
   which are just the variance and mean, respectively.
 \end{proof}
-Although this proof is rather trivial we emphasise it to contrast with the case of $\wsDev{\mu}[1]$ where the minimisation does \emph{not} uniquely pick out the relevant central tendency, which is the median. An incorrect claim to the contrary was made in ref.~\cite{blw-meas-uncertainty}. For example consider the two outcome probability distribution defined by
+Although this proof is rather trivial, and almost certainly is known else where, we have not been able to find a reference for it. In addition we emphasise it to contrast with the case of $\wsDev{\mu}[1]$ where the minimisation does \emph{not} uniquely pick out the relevant central tendency, which is the median. An incorrect claim to the contrary was made in ref.~\cite{blw-meas-uncertainty}. A counterexample is given by the two outcome probability distribution defined by
 \begin{align}
   p(0) = p(1) = \frac{1}{2},
 \end{align}
@@ -754,7 +746,7 @@ where
 \begin{align}
   f(x_0) = \begin{cases}x_0 - \frac{1}{2}, &x_0 \leq 0\\ \frac{1}{2}, & x_0\in [0,1] \\ x_0 - \frac{1}{2}, & x_0 \geq 0. \end{cases}
 \end{align}
-The Wasserstein metric was used in the context of quantum uncertainty by Busch, Lahti and Werner in \cite{PhysRevLett.111.160405}, with a focus on the case of canonically covariant observables $\ope^Q$ and $\ope^P$, and restricted to $\alpha=2$. In \cite{blw-meas-uncertainty} the same authors generalised this approach to consider arbitrary $\alpha$. In these papers the authors considered both the supremum of the Wasserstein metric over all states, called the metric error, and a quantity called the calibration error. For observables for which there are states which make the induced probability distributions deterministic the calibration error is given by the maximum over those states. In general an observable may not induce a deterministic probability distribution in any state, so the calibration error is given by a limiting procedure
+Hence any $x_0\in [0,1]$ is a minimizer for $f(x_0)$. The Wasserstein metric was used in the context of quantum uncertainty by Busch, Lahti and Werner in \cite{PhysRevLett.111.160405}, with a focus on the case of canonically covariant observables $\ope^Q$ and $\ope^P$, and restricted to $\alpha=2$. In \cite{blw-meas-uncertainty} the same authors generalised this approach to consider arbitrary $\alpha$. In these papers the authors considered both the supremum of the Wasserstein metric over all states, called the metric error, and a quantity called the calibration error. For observables for which there are states which make the induced probability distributions deterministic the calibration error is given by the maximum over those states. In general an observable may not induce a deterministic probability distribution in any state, so the calibration error is given by a limiting procedure
 \begin{align}
   \calibError{F}{E}{\alpha}[\varepsilon] &\defeq \sup_{\rho,x} \sbuild{\ws{F^\rho,\delta_{x}}[\alpha]}{\ws{E^\rho,\delta_{x}}[\alpha]}\\
   \calibError{F}{E}{\alpha} &\defeq \lim_{\varepsilon\to 0} \calibError{F}{E}{\alpha}[\varepsilon]  
@@ -784,51 +776,3 @@ of course the choice of the set $S$ is highly significant and the appropriate ch
   J: (A,B) \mapsto E^\rho(A) F^\rho(B) I.
 \end{align}
 In chapter \ref{chap:cov-meas-ur} the set $S$ will be the whole state-space, and the distance measure on probability distributions will be the  $\alpha$-deviation given in \eqref{eqn:wassersten-variance}. In general the choice of distance on the probability measures is also application dependent, but we note that if $\delta$ is a metric on the space of probability distributions, and $S$ spans $\dops{\hcal}$ then $\delta_S$ is a metric on the observables. Measuring differences between observables in terms of the outcome statistics was proposed by Ludwig \cite{ludwig-foundations-of-qm}, although the formulation of measurement uncertainty we are interested in in this thesis was introduced by Busch, Lahti and Werner \cite{blw-meas-uncertainty}.
-
-\begin{subappendices}
-\section{Example of a non-basis independent ``trace''}\label{app:bad-sum-is-bad}
-Consider an infinite dimensional Hilbert space spanned by basis vectors $\left\{\ket{e_k}\middle|k\in\N\right\}$. Let $Z$ be the operator acting as
-\begin{align}
-  Z\ket{e_{2n}} &= \ket{e_{2n}}\\
-  Z\ket{e_{2n+1}} &= -\ket{e_{2n+1}},
-\end{align}
-effectively the direct sum of Pauli-z operators acting in two dimensional subspaces. For $k\in\N$ define the operators $U_{k\theta}$ acting as rotations around the $y$ axis in the $k^\text{th}$ two dimensional subspace, and the identity outside
-\begin{align}
-  U_{k\theta} \ket{e_{2k}} &= \cos(\theta) \ket{e_{2k}} + \sin(\theta)\ket{e_{2k+1}}\\
-  U_{k\theta} \ket{e_{2k+1}} &= -\sin(\theta) \ket{e_{2k}} + \cos(\theta)\ket{e_{2k+1}}\\
-  U_{k\theta} \ket{e_k} &= \ket{e_j},                            
-\end{align}
-where $j\neq 2k, 2k+1$, then 
-\begin{align}
-  \braket{U_{k\theta}e_{2k}}{ZU_{k,\theta}e_{2k}} &= \cos^2(\theta) - \sin^2(\theta)\\
-  \braket{U_{k\theta}e_{2k+1}}{ZU_{k,\theta}e_{2k+1}} &= -\cos^2(\theta) + \sin^2(\theta).
-\end{align}
-We choose $\theta_k$ such that 
-\begin{align}
-  \braket{U_{k\theta_k}e_{2k}}{ZU_{k,\theta_k}e_{2k}} = \frac{1}{k+1} = -\braket{U_{k\theta_k}e_{2k+1}}{ZU_{k,\theta_k}e_{2k+1}}.
-\end{align}
-If the basis $\left\{\ket{\phi_k}\middle|k\in\N\right\}$ is chosen such that 
-\begin{align}
-  \ket{\phi_{2k}} &= U_{k,\theta_k}e_{2k}\\
-  \ket{\phi_{2k+1}} &= U_{k,\theta_k}e_{2k+1},
-\end{align}
-then we can rewrite the terms of the series
-\begin{align}
-  \sum_{k\geq 0} \braket{\phi_k}{Z\phi_k} = \sum_{k>0}\frac{(-1)^{k-1}}{\lfloor k/2\rfloor},
-\end{align}
-where $\lfloor x\rfloor$ denotes the \emph{floor} of $x$, the largest natural below $x$. It is now easy to see the series converges to zero, but does not converge absolutely. By the Riemann series theorem \cite{Sierpinski1910} this series may be rearranged (by relabelling basis elements) to give any real number as the sum.
-
-\end{subappendices}
-
-% \begin{subappendices}
-
-
-% \section{Square root of positive operator}
-
-% Let $A\in\posops[\hcal]$ be positive and bounded, without loss of generality we choose $A \leq \opi$, by multiplying by a positive real number if necessary. We choose $B_0 = \opi$, and note that if $X$ is a positive definite (hence invertible) operator, then
-% \begin{align}
-%   \frac{1}{2}\left( \frac{A}{X} + X \right),
-% \end{align}
-% is also positive definite
-
-% \end{subappendices}

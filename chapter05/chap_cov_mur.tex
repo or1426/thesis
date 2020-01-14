@@ -2,7 +2,7 @@
 \label{chap:cov-meas-ur}
 \section{Introduction}
 
-Here we are interested in a scenario where we would like to measure several observables, denoted $\ope_i$, to achieve some practical goal. Unfortunately it may be that these observables are not compatible, that is there is no way to measure them on the same state. We therefore need to measure some compatible observables which are ``close'', in an appropriate sense, to the targets. The distance measure we use to quantify this closeness will depend on the application, but we will explore methods based based on the $p$-norm of finite dimensional real vectors below. 
+Here we are interested in a scenario where we would like to measure several observables, denoted $\ope_i$, to achieve some goal. Unfortunately it may be that these observables are not compatible, that is there is no way to measure them all on the same state. We therefore instead need to measure some compatible observables which are ``close'', in an appropriate sense, to the targets. The distance measure we use to quantify this closeness will depend on the application, but we will explore methods based based on the $p$-norm of finite dimensional real vectors below. 
 
 The general picture is then summarised in figure~\ref{fig:depict-meas-uncertainty}, where $E_i$ are the target observables, and $F_i$ are respective compatible approximations, and $J$ is a joint observable for the $F_i$. If supplied with a ``figure of merit'' $d$ indicating how well one observable approximates another we can explore the set
 \begin{equation}
@@ -13,7 +13,9 @@ which we call a \emph{measurement uncertainty region}. We refer to chapter 13 of
 
 Finding the uncertainty region for generic observables is a difficult problem for interesting figures of merit, with exact results known only in cases with high symmetry or low dimension~\cites{yu-oh-qubit}{dsw-meas-ur-ang-mom}. Here we do not remedy this situation, but instead employ a systematic approach to exploiting available symmetries to simplify measurement uncertainty problems. 
 
-Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used throughout, \ref{sec:inc-error} contains some technical lemmas related to how we fill the uncertainty region. Section \ref{sec:invariant-mean} contains quite general results about the use of covariance to simplify measurement uncertainty problems, with the key result being that if the target observables are covariant, then for every family of jointly measurable approximators there exists a covariant family of joint approximators which is at least as good, according to the $d_p$ figure of merit. Finally sections \ref{sec:qubit-triple} and \ref{sec:fourier-pair} are case studies, applying the previous results to the three mutually unbiased qubit observables, and the pair of observables related by the quantum Fourier transform in dimension $n$, respectively. Exact results about measurement uncertainty in arbitrary dimension are rare, so the latter result is particularly interesting.
+Section \ref{sec:error-measure} defines the $p$-norm based figure of merit used throughout, \ref{sec:inc-error} contains some technical lemmas related to how we fill the uncertainty region. Section \ref{sec:invariant-mean} contains quite general results about the use of covariance to simplify measurement uncertainty problems, with the key result being that if the target observables are covariant, then for every family of jointly measurable approximators there exists a covariant family of joint approximators which is at least as good, according to the $d_p$ figure of merit. Finally sections \ref{sec:qubit-triple} and \ref{sec:fourier-pair} are case studies, applying the previous results to the three mutually unbiased qubit observables, and the pair of observables related by the quantum Fourier transform in dimension $n$, unknown to us this latter case was addressed already in~\cite{Werner2016}, although our method of proof if different and provides a case study of the use of the invariant mean in solving problems in measurement uncertainty.
+
+
 
 \begin{figure}[ht]
   \centering
@@ -666,9 +668,9 @@ then computing the lower boundary of the uncertainty region is equivalent to the
     &&  \tr{\opi_n  X} &= 1, \\
     && X &\geq 0.
   \end{aligned}
-  \label{eqn:semidefinite-program}
+  \label{eqn:mur-semidefinite-program}
 \end{equation}
-We can impose the equality constraints in \eqref{eqn:semidefinite-program}, by means of the linear map
+We can impose the equality constraints in \eqref{eqn:mur-semidefinite-program}, by means of the linear map
 \begin{align}
   \mathcal{M}&: \saops[\hcal] \to M_2(\mathbb{C})\\
   \mathcal{M}&:X \mapsto \begin{pmatrix}\tr{\ketbra{0}{0} X} & 0 \\ 0 & \tr{X}\end{pmatrix},
@@ -687,7 +689,7 @@ We can compute the dual of $\mathcal{M}$ directly from the defining relation
                           &= Y_{00} \tr{\ketbra{0}{0}X} + Y_{11} \tr{\opi_n X} \\
   \mathcal{M}^*\left(\begin{pmatrix}Y_{00} & Y_{01} \\ Y_{10} & Y_{11}\end{pmatrix}\right) &= Y_{00} \ketbra{0}{0} + Y_{11}\opi_n.
 \end{align}
-The dual problem to \eqref{eqn:semidefinite-program} is then given by
+The dual problem to \eqref{eqn:mur-semidefinite-program} is then given by
 \begin{equation}
   \begin{aligned}
     & \underset{Y}{\text{minimise}}
@@ -696,7 +698,7 @@ The dual problem to \eqref{eqn:semidefinite-program} is then given by
     & \mathcal{M}^*(Y) &\geq A_n\\
     && Y &\in M_2(\mathbb{C}).
   \end{aligned}
-  \label{eqn:semidefinite-program-dual}
+  \label{eqn:mur-semidefinite-program-dual}
 \end{equation}
 Alternatively 
 \begin{equation}

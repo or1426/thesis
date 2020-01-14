@@ -1,6 +1,6 @@
 \chapter{Infinite dimensional preparation uncertainty}\label{chap:infinite-prep-ur}
 \section{Introduction}
-A standard introductory course on quantum mechanics mentions several infinite dimensional state-spaces. Namely the pure states of a particle free to move on an line ($L^2(\R)$), a particle fixed to a one dimensional ring ($L^2(\circleNotate)$, where $\circleNotate$ denotes the unit circle), and a particle in a ``box'', a finite interval (without loss of generality $L^2([-\pi, \pi])$). Preparation uncertainty for position and momentum observables has been studied for several of these spaces, with the variance~\cite{Heisenberg1927-Wheeler+Zurek} and Shannon-entropy~\cites{Bialynicki-BirulaMycielski1975}{beckner-1975} uncertainty regions for the Euclidean spaces being characterised in 1927 and 1975, respectively. More recently the case of the particle on a ring has been addressed for both measurement uncertainty and preparation uncertainty~\cite{sharp-ur-num-angle}. 
+A standard introductory course on quantum mechanics, for example one following ref.~\cite{griffiths2005introduction},~\cite{Zettili} or~\cite{Shankar}, mentions several infinite dimensional state-spaces. Namely the pure states of a particle free to move on an line ($L^2(\R)$), a particle fixed to a one dimensional ring ($L^2(\circleNotate)$, where $\circleNotate$ denotes the unit circle), and a particle in a ``box'', a finite interval (without loss of generality $L^2([-\pi, \pi])$). Preparation uncertainty for position and momentum observables has been studied for several of these spaces, with the variance~\cite{Heisenberg1927-Wheeler+Zurek} and Shannon-entropy~\cites{Bialynicki-BirulaMycielski1975}{beckner-1975} uncertainty regions for the Euclidean spaces being characterised in 1927 and 1975, respectively. More recently the case of the particle on a ring has been addressed for both measurement uncertainty and preparation uncertainty~\cite{sharp-ur-num-angle}. 
 
 There does not seem to have been a similar analysis for the particle in a box system. In part this omission may be due to the lack of phase-space symmetry which makes the problem more tractable in other cases. We contrast our approach with that taken in ref.~\cite{entropic-ur-infinite-well} which seems superficially similar, however the authors of that reference only examine the uncertainty of eigenstates of the Hamiltonian of the ``box'' system, rather than the full state-space. Our approach is more similar to the original Heisenberg result, in that we seek an uncertainty relation which is valid for all quantum states of the system.
 
@@ -567,7 +567,7 @@ Combining this limiting upper bound with the lower bound provided by equation~\e
 
 \section{Numerical approximation of $b$}\label{sec:box-ur-numerics}
 
-We can do somewhat better than the analytical bounds from section~\ref{subsubsec:box-ur-analytical-bounds} in the interval $\left(\frac{\pi^2}{3} -2,\pi^2\right)$. Here the uncertainty region is convex, and so may be determined by its convex conjugate. We seek
+We can do somewhat better than the analytical bounds from section~\ref{sec:box-ur-analytical-bounds} in the interval $\left(\frac{\pi^2}{3} -2,\pi^2\right)$. Here the uncertainty region is convex, and so may be determined by its convex conjugate. We seek
 \begin{align}
   c(\alpha) := -b^*(-\alpha) = \inf \left\{b(x) + \alpha x\,\middle|\,x\in \left(\frac{\pi^2}{3} -2,\pi^2\right)\right\},
 \end{align}
@@ -609,7 +609,7 @@ First note that $H_\alpha$ commutes with the parity operator
   \Pi: L^2([-\pi,\pi]) &\to L^2([-\pi,\pi])\\
   (\Pi \varphi):x &\mapsto \varphi(-x),
 \end{align}
-which implies the eigenstates of $H_\alpha$ are also eigenstates of $\Pi$, in particular this means that the eigenstates of $\H_\alpha$ have zero expectation of position so
+which implies the eigenstates of $H_\alpha$ are also eigenstates of $\Pi$, in particular this means that the eigenstates of $H_\alpha$ have zero expectation of position so
 \begin{align}
   \var[\ope]{\eta_\alpha} = \expe{\ope[2]}{\eta_\alpha}.
 \end{align}
@@ -625,7 +625,7 @@ then
 	&= \expe{\opf[2]}{\rho} + \alpha\left(\expe{\ope[2]}{\eta_\alpha} + \expe{\ope}{\rho}^2\right)\\
 	&< \expe{\opf[2] + \alpha\ope[2]}{\eta_\alpha} + \alpha\expe{\ope}{\rho}^2
 \end{align}
-which is an obvious contradiction for $\alpha < 0$, which is the region for which we do not yet know $c(\alpha)$. We can conclude that in this region the upper bound for the boundary curve gives the exact boundary. 
+which is an obvious contradiction for $\alpha < 0$, which is the region for which we do not yet know $c(\alpha)$. We conclude that in this region the ground states of the operators $H_\alpha$ explore the boundary curve.
 \end{proof}
 
 We are now searching for the ground state, and least eigenvalue, of the operator $H_\alpha$. It is well known that the solutions to
@@ -649,30 +649,32 @@ This is the reason that the curve is plotted for the entire interval $(0, \pi^2)
 
 \section{Comparisons}\label{sec:box-ur-comparisons}
 
-We have already compared our results for the particle in a box with the well known variance uncertainty relation for the particle on the line. The particle on a line hyperbola is everywhere a lower bound for the boundary function $b$ for the particle in a box. We have shown that the two curves are asymptotic to each other in the limit as the variance becomes small in lemma~\ref{lem:box-ur-b-asymptotic-to-hyperbola}, that is
+We have already compared our results for the particle in a box with the well known variance uncertainty relation for the particle on the line. The particle on a line hyperbola is everywhere a lower bound for the boundary function $b$ for the particle in a box. We have also shown that the two curves are asymptotic to each other in the limit as the variance becomes small in lemma~\ref{lem:box-ur-b-asymptotic-to-hyperbola}, that is
 \begin{align}
   \lim_{x\to 0} \frac{b(x)}{\frac{1}{4x}} = 1.
 \end{align}
 This is quite natural, loosely one would expect that the more concentrated the box states are around the origin, the less the boundary conditions influence them. 
 
-We would also like to compare our results with those from the particle on a ring system addressed in ref.~\cite{sharp-ur-num-angle}, in which $\alpha$-deviations are used to quantify the spread of distributions. As shown in lemma~\ref{lem:prelims-wasserstein-var-equals-var}, for probability measures on the reals this quantity is identical to the usual variance. In contrast to the case of the particle on a ring, a probability measure $\mu$ defined on the interval $[-\pi,\pi]$ may be considered identical to a probability measure on $\R$ which is supported only on $[-\pi,\pi]$. 
+We would also like to compare our results with those from the particle on a ring system addressed in ref.~\cite{sharp-ur-num-angle}, in which $\alpha$-deviations (see definition~\ref{defn:wasserstein-a-deviation}) are used to quantify the spread of distributions. As shown in lemma~\ref{lem:prelims-wasserstein-var-equals-var}, for probability measures on the reals this quantity is identical to the usual variance. In contrast to the case of the particle on a ring, a probability measure $\mu$ defined on the interval $[-\pi,\pi]$ may be considered identical to a probability measure on $\R$ which is supported only on $[-\pi,\pi]$. 
 % More explicitly, given $\mu:\mathcal{B}([-\pi,\pi])$ we may define
 % \begin{align}
 %   \mu_\R&: \mathcal{B}(\R) \to [0,1]\\
 %   \mu_\R&:X\mapsto \mu(X\cap [-\pi,\pi]).
 % \end{align}
-We are therefore free to interpret the variances we have been considering in this chapter as $2$-deviations, and directly compare them to the $2$-deviations computed in ref.~\cite{sharp-ur-num-angle}. We invite the reader to compare figures~\ref{fig:box-ur} and~\ref{fig:ring-ur}, depicting the particle in a box, and on a ring, $2$-deviation based uncertainty regions, respectively.
-
+We are therefore free to interpret the variances we have been considering in this chapter as $2$-deviations, and directly compare them to the $2$-deviations computed in ref.~\cite{sharp-ur-num-angle}. We invite the reader to compare figures~\ref{fig:box-ur} and~\ref{fig:ring-ur}, depicting the particle in a box, and on a ring, $2$-deviation based uncertainty regions, respectively. The particle on the ring system allows momentum eigenstates, with zero momentum variance and maximal position variance, including the state whose position wavefunction is constant. This is in contrast to the particle in a box system, where there is not a state maximising the position variance, but we can approach the maximum of $\pi^2$ by sequences of states which are increasingly concentrated at the points $-\pi$ and $\pi$. This is since the variance of probability measures on $[\pi,\pi]$ is maximised by the symmetric two point measure concentrated at the end points.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.6\textwidth]{box-ur}  
-  \caption{The uncertainty region for the particle in a box system, showing the curve obtained from the least eigenvalues of the operators $H_\alpha$ (solid curve), this is the exact boundary curve on the right hand side of the vertical line at $\sqrt{\frac{\pi^2}{3} -2}$ (dashed). On the left hand side the true curve lies between the solid curve and the canonical hyperbola (dotted).}
+  \begin{subfigure}{\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{box-ur2}  
+  \caption{The uncertainty region for the particle in a box system, showing the curve obtained from the least eigenvalues of the operators $H_\alpha$ (solid curve), this is the exact boundary curve on the right hand side of the vertical line at $\sqrt{\frac{\pi^2}{3} -2}$ (dashed). On the left hand side the true curve lies between the solid curve and the boundary of the free particle uncertainty region (dotted).}
   \label{fig:box-ur}
-\end{figure}
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.6\textwidth]{ring-ur}  
-  \caption{The uncertainty region for the particle on a ring system. Note that this is identical to the top left panel of figure~1 in ref.~\cite{sharp-ur-num-angle}, and is included here only for comparison with figure~\ref{fig:box-ur}.}
-  \label{fig:ring-ur}
+  \end{subfigure}
+  \begin{subfigure}{\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{ring-ur2}  
+    \caption{The uncertainty region for the particle on a ring system. Note that this is identical to the top left panel of figure~1 in ref.~\cite{sharp-ur-num-angle}, and is included here only for comparison with figure~\ref{fig:box-ur}.}
+    \label{fig:ring-ur}
+  \end{subfigure}
+  \caption{The box, free particle and ring uncertainty regions.}
 \end{figure}

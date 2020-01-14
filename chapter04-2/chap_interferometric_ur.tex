@@ -1,12 +1,14 @@
 \chapter{Infinite dimensional preparation uncertainty}\label{chap:infinite-prep-ur}
-\subsection{Introduction}
-A standard introductory course on quantum mechanics mentions several infinite dimensional state-spaces. Namely the pure states of a particle free to move on an line ($L^2(\R)$), and other Euclidean spaces ($L^2(\R^2)$,  $L^2(\R^3)$ etc.), a particle fixed to a one dimensional ring ($L^2(\circleNotate)$, where $\circleNotate$ denotes the unit circle), and a particle in a ``box'', a finite interval (without loss of generality $L^2([-\pi, \pi])$). Preparation uncertainty for position and momentum observables has been studied for several of these spaces, with the variance~\cite{Heisenberg1927-Wheeler+Zurek} and Shannon-entropy~\cites{Bialynicki-BirulaMycielski1975}{beckner-1975} uncertainty regions for the Euclidean spaces being characterised in 1927 and 1975, respectively. More recently the case of the particle on a ring has been addressed for both for measurement uncertainty and preparation uncertainty~\cite{sharp-ur-num-angle}. 
+\section{Introduction}
+A standard introductory course on quantum mechanics mentions several infinite dimensional state-spaces. Namely the pure states of a particle free to move on an line ($L^2(\R)$), a particle fixed to a one dimensional ring ($L^2(\circleNotate)$, where $\circleNotate$ denotes the unit circle), and a particle in a ``box'', a finite interval (without loss of generality $L^2([-\pi, \pi])$). Preparation uncertainty for position and momentum observables has been studied for several of these spaces, with the variance~\cite{Heisenberg1927-Wheeler+Zurek} and Shannon-entropy~\cites{Bialynicki-BirulaMycielski1975}{beckner-1975} uncertainty regions for the Euclidean spaces being characterised in 1927 and 1975, respectively. More recently the case of the particle on a ring has been addressed for both measurement uncertainty and preparation uncertainty~\cite{sharp-ur-num-angle}. 
 
-There does not seem to have been a similar analysis for particle in a box system. In part this omission may be due to the lack of the phase-space symmetry which makes the problem more tractable in other cases. We contrast our approach with that taken in ref.~\cite{entropic-ur-infinite-well} which seems superficially similar, however the authors of that reference only examine the uncertainty of eigenstates of the Hamiltonian of the ``box'' system, rather than the full state-space. Our approach is more similar the original Heisenberg result, in that we seek an uncertainty relation which is valid for all quantum states of the system.
+There does not seem to have been a similar analysis for the particle in a box system. In part this omission may be due to the lack of phase-space symmetry which makes the problem more tractable in other cases. We contrast our approach with that taken in ref.~\cite{entropic-ur-infinite-well} which seems superficially similar, however the authors of that reference only examine the uncertainty of eigenstates of the Hamiltonian of the ``box'' system, rather than the full state-space. Our approach is more similar to the original Heisenberg result, in that we seek an uncertainty relation which is valid for all quantum states of the system.
 
-Since the ring, as a topological space, may be formed from the interval by identifying the end-points we will be interested in comparing our results to those of ref.~\cite{sharp-ur-num-angle}. A barrier to this is that it is not possible to directly define the variance for a probability distribution defined on a circle. This may be seen by noting that in order to define the variance one must first define the mean and that, for example, the uniform distribution on the circle does not have a well-defined mean. For this reason Busch, Kiukas and Werner introduced a ``generalised standard-deviation'', similar to the Fr{\'e}chet variance in order to compare the localisation of probability distributions. \coma{We will discuss} 
+We will be interested in comparing our results to those obtained for the ring, as well as the free particle. A barrier to this is that it is not possible to directly define the variance for a probability distribution defined on a circle. This may be seen by noting that in order to define the variance one must first define the mean and that, for example, the uniform distribution on the circle does not have a well-defined mean. For this reason Busch, Kiukas and Werner employed the  $\alpha$-deviation (see equation~\eqref{eqn:wassersten-variance}), in order to compare the localisation of probability distributions. 
 
-\subsection{State-space }
+In section~\ref{sec:box-ur-state-space} we will define the observables of interest, which will be obtained as restrictions of the standard position and momentum observables on $L^2(\R)$. We will also determine the relevant domain, the largest subspace of $L^2([-\pi,\pi])$ for which the first and second moments of both observables are finite. In section~\ref{sec:box-ur-structure} we will determine some constraints on the structure of the uncertainty region, in particular we show that it is the epigraph of a continuous function, which decreases on the interval $\left(0,\frac{\pi^2}{3}-2\right)$, attains a minimum of $\frac{1}{4}$ at $\frac{\pi^2}{3}-2$ and increases again on $\left(\frac{\pi^2}{3}-2, \pi^2\right)$. In addition the boundary function is convex in the interval on which it is increasing. In section~\ref{sec:box-ur-analytical-bounds} we obtain some analytical bounds on the boundary function, in particular showing it is bounded below by, and is asymptotic to, the hyperbola which bounds the free particle uncertainty region. In section~\ref{sec:box-ur-numerics} we discuss numerical approximations to the boundary curve, in particular we give a method to approximate a curve which upper bounds the boundary function. We prove that the curve which is being approximated is exactly the boundary function in the region where the latter is convex, and conjecture that this is also true outside this interval. Finally in section~\ref{sec:box-ur-comparisons} we compare the results for the box system with those already known for the particle on a ring, and the free particle. We note that the variance for the box system is the same as the $2$-deviation used for the analysis of the ring system in~\cite{sharp-ur-num-angle}, so it is reasonable to compare the two.
+
+\section{State-space}\label{sec:box-ur-state-space}
 We model the box system as one obtained from the full Hilbert space $L^2(\R)$ by imposing the restriction that the states are zero outside the interval $[-\pi, \pi]$, this is an idealisation of the physical situation where there are large (but finite) potential ``walls'' causing the probability density of the particle to decay rapidly outside the box. There is an obvious isometry $l:~L^2([-\pi,\pi])\to L^2(\R)$ which extends a state by $0$ outside the allowed interval
 \begin{align}
   (l\varphi)(x) = \begin{cases}\varphi(x), &x\in [-\pi,\pi]\\ 0, &\text{otherwise}\end{cases},
@@ -25,7 +27,7 @@ where the unitary $\fcal$ implements the Fourier transform
 \begin{align}
   (\fcal\varphi)(p) &= \int_\R e^{-2\pi i x p} \varphi(x)dx.
 \end{align}
-We restrict our attention to those states for which the first and second moments of both observables are finite, this imposes some non-trivial conditions on the states we examine. 
+We restrict our attention to those states for which the first and second moments of both observables are finite, this imposes some non-trivial conditions on the quantum states. 
 \begin{thm}
   The first and second moments 
   \begin{align}
@@ -52,7 +54,7 @@ and therefore the expectation of the second moment $\opf[2]$ is finite on a larg
 \begin{align}\label{eqn:bad-opf[2]-domain}
   \dom{\opf[1]\opf[1]} = \left\{\varphi\in\dom{\opf[1]}\,\middle|\,\left(\opf[1]\varphi\right)\in\dom{\opf[1]}\right\}.
 \end{align}
-The difference between equations \eqref{eqn:bad-opf[2]-domain} and \eqref{eqn:good-opf[2]-domain} being that in the latter we have the extra condition that $\varphi^\prime(-\pi) = \varphi^\prime(\pi) = 0$. To prove that this is the largest possible domain for $\opf[2]$ we recall that the integral of a real function against a POVM is a symmetric operator (see, e.g., \cite{quantum-measurement-busch-et-al} chapter 4) and that von Neumann's formulas imply that a densely defined self adjoint operator can have no proper symmetric extensions. Indeed any symmetric extension of a densely defined symmetric operator $\opa$ is a restriction of $\opa^*$~\cite{akhiezer-glazman-lin-ops-hilb-space}.
+The difference between equations \eqref{eqn:bad-opf[2]-domain} and \eqref{eqn:good-opf[2]-domain} being that in the latter we have the extra condition that $\varphi^\prime(-\pi) = \varphi^\prime(\pi) = 0$. To prove that this is the largest possible domain for $\opf[2]$ we recall that the integral of a real function against a POVM is a symmetric operator (see, e.g., \cite{quantum-measurement-busch-et-al}, chapter 4) and that von Neumann's formulas imply that a densely defined self adjoint operator can have no proper symmetric extensions. Indeed any symmetric extension of a densely defined symmetric operator $\opa$ is a restriction of $\opa^*$~\cite{akhiezer-glazman-lin-ops-hilb-space}.
 
 It remains to show that the domain of $\opf[1]^*\opf[1]$ is indeed the set given in \eqref{eqn:good-opf[2]-domain}, which we may verify using integration by parts, recalling that the domain of $\opf[1]^*$ is given by the set of vectors $\psi$ such that there exists a vector $\xi\in L^2([-\pi,\pi])$ such that for all $\phi\in\dom{\opf[1]}$
 \begin{align}
@@ -83,14 +85,14 @@ by Lebesgue's fundamental theorem of calculus this is equivalent to $\psi$ being
 We do not require any additional conditions to ensure that the moments of position are finite, since absolute continuity, combined with the boundary conditions, implies that the states are bounded functions in the position representation.
 \end{proof}
 
-Due to the boundary conditions in \eqref{eqn:good-opf[2]-domain} in we do not have shift operators, which move the states in position space. Explicitly given a pure state $\varphi\in\dom{\opf[1]^*\opf[1]}$, and $a\in [0,2\pi] $ the function
+Due to the boundary conditions in \eqref{eqn:good-opf[2]-domain} we do not have shift operators, which move the states in position space. Explicitly, given a pure state $\varphi\in\dom{\opf[1]^*\opf[1]}$, and $a\in [0,2\pi] $ the function
 \begin{align}
   \tilde{\varphi}&:[-\pi,\pi]\to \Cx\\
   \tilde{\varphi}&:x\mapsto \begin{cases}\varphi(x+a), & x+a\in [-\pi,\pi]\\ \varphi(x+a-2\pi), & x+a-2\pi\in [-\pi,\pi]\end{cases},
 \end{align}
 will generally \emph{not} obey the boundary conditions and therefore will not be a state. This ability to shift states is a key point in proofs of the usual Heisenberg uncertainty relation for the particle on the line. In particular on the real line one can shift any state in order to set the expectation values of position and momentum to zero, at which point the variance functional becomes linear in the state, offering a significant simplification.
 
-We do have the ability to shift the expectation of the first moment of momentum of the states as we choose. 
+We do, however, have the ability to shift the expectation of the first moment of momentum of the states as we choose. 
 \begin{lem}\label{lem:infinite-dim-ur-shift-momentum}
   Given $\varphi\in\dom{\opf[1]^*\opf[1]}$ and $a\in\R$ there exists $\varphi_a\in\dom{\opf[1]^*\opf[1]}$ such that
   \begin{align}
@@ -114,7 +116,7 @@ leaves the variance of momentum unchanged, along with the expectation of all the
   \expe{\ope[1]}{M_a\varphi} &= \expe{\ope[1]}{\varphi} & \expe{\opf[1]}{M_a\varphi} &= \expe{\opf[1]}{\varphi} + a\\
   \expe{\ope[2]}{M_a\varphi} &= \expe{\ope[2]}{\varphi}& \expe{\opf[2]}{M_a\varphi} &= \expe{\opf[2]}{\varphi} + 2a\expe{\opf[1]}{\varphi} + a^2.
 \end{align}
-These formulae are easily proved by expressing the states in the position representation and computing
+These formulae may be proved by expressing the states in the position representation and computing
 \begin{align}
   (\ope[1]M_a\varphi)(x) &= -i \frac{d}{dx}\left(e^{iax}\varphi(x)\right)\\
                          &= e^{iax}\left(a\varphi(x) -i\varphi^\prime(x)\right),
@@ -156,7 +158,7 @@ before computing the integrals that form the inner products.
 %   (\opf[1]^*\opf[1]\varphi)(x) = -\varphi^{\prime\prime}(x).
 % \end{align}
 
-\subsubsection{Structure of the uncertainty region}
+\section{Structure of the uncertainty region}\label{sec:box-ur-structure}
 
 We are interested in the region
 \begin{align}
@@ -166,7 +168,7 @@ where $\dops$ is the set of density operators over the $\dom{\opf[1]^*\opf[1]}$,
 \begin{align}
   \sum_k p_k P_k,
 \end{align}
-such that the $P_k$ are mutually orthogonal projectors onto subspaces of $\dom{\opf[1]^*\opf[1]}$, that $p_k\geq 0$ and
+such that the $P_k$ are mutually orthogonal projectors onto subspaces of $\dom{\opf[1]^*\opf[1]}$, $p_k\geq 0$ and
 \begin{align}
   \sum_k p_k = 1.
 \end{align}
@@ -201,7 +203,7 @@ where a is non-negative, s is positive and they are taken such that $a+s < \pi$.
 \begin{equation}
 	a^2 < \var{\opq}{g_{a,s}} < (a+s)^2.
 \end{equation}
-By varying $a$ and $s$ in the allowed region we see that in any interval $I = (\alpha, \alpha+\varepsilon) \subset (0,\pi^2)$ there exists some state $\varphi$ with $\var[\varphi]{\ope} \in X$. Further, given any two position uncertainties $\var[\varphi]{\ope}$ and $\var[\psi]{\opq}$, achieved by pure states $\varphi$ and $\psi$ we can define the state
+By varying $a$ and $s$ in the allowed region we see that in any interval $I = (\alpha, \alpha+\varepsilon) \subset (0,\pi^2)$ there exists some state $\varphi$ with $\var[\varphi]{\ope} \in I$. Further, given any two position uncertainties $\var[\varphi]{\ope}$ and $\var[\psi]{\opq}$, achieved by pure states $\varphi$ and $\psi$ we can define the state
 \begin{align}
 	\xi_\theta &= \frac{1}{\sqrt{1+2\cos\theta\sin\theta\Re\left(\braket{\varphi}{\psi}\right)}}\left(\cos\theta\,\varphi + \sin\theta\,\psi \right),
 \end{align}
@@ -245,7 +247,7 @@ The uncertainty region $U$ contains the epigraph of $b$ if all the points above 
 \begin{align}
   U(x) = \left\{\var[\varphi]{\opf}\,\middle|\,\var[\varphi]{\ope} = x\right\}.
 \end{align}
-From the definition of $b(x)$ we can therefore see $y \leq b(x)$, since $y$ is a lower bound for $U(x)$ and $b(x)$ is the greatest lower bound for $U(x)$, so $(x,y)$ is not in the epigraph of $b$. 
+From the definition of $b(x)$ have $y \leq b(x)$, since $y$ is a lower bound for $U(x)$ and $b(x)$ is the greatest lower bound for $U(x)$, so $(x,y)$ is not in the epigraph of $b$. 
 
 Conversely the epigraph of $b$ contains $U$, which can be seen by noting that for each $x\in (0,\pi^2)$, all of the points $(x,y)$ in the uncertainty region are, by definition directly above $b(x)$.
 \end{proof}
@@ -329,14 +331,14 @@ The minimum splits $b$ into two regions, to the left of the minimum $b$ is decre
   \end{align}
   Such a sequence exists due to the definition of $b(x)$. Without loss of generality, due to lemma~\ref{lem:infinite-dim-ur-shift-momentum} choose
   \begin{align}
-    \expe{\opf[1]}{\rho_n}.
+    \expe{\opf[1]}{\rho_n} = 0.
   \end{align}
   Now we mix these states with the projector onto the minimizer of the momentum variance, $\ketbra{\psi_0}{\psi_0}$, and define the functions
   \begin{align}
     f_n&:(0,1) \to \R\\
-    f_n:\lambda \to \var[\lambda\rho_n+(1-\lambda)\ketbra{\psi_0}{\psi_0}]{\ope},
+    f_n&:\lambda \to \var[\lambda\rho_n+(1-\lambda)\ketbra{\psi_0}{\psi_0}]{\ope},
   \end{align}
-  by continuity, for each $n\in\N$ there exists $\lambda^*\in (0,1)$ such that $f_n(\lambda) = y$, now by the definition of $b$ we have
+  by continuity, for each $n\in\N$ there exists $\lambda^*\in (0,1)$ such that $f_n(\lambda) = y$. Now by the definition of $b$ we have
   \begin{align}
     b(y) &\leq \expe{\opf[2]}{\lambda^*\rho_n+(1-\lambda^*)\ketbra{\psi_0}{\psi_0}}\\
          &= \lambda^*\expe{\opf[2]}{\rho_n}+(1-\lambda^*)\expe{\opf[2]}{\ketbra{\psi_0}{\psi_0}}\\
@@ -440,7 +442,7 @@ is also a state. We do not have this symmetry in the particle in a box system, s
   \end{align}
 \end{lem}
 \begin{proof}
-  It is well known that this rescaling preserves the domains of the moments of the position and momentum observables on $L^2(\R)$, the only additional constraint in the present case is the imposition of the boundary conditions, which are easily shown to be preserved. One can verify equations~\eqref{eqn:box-ur-rescaling-1} and~\eqref{eqn:box-ur-rescaling-2} by directly computing the integrals.
+  It is well known that this rescaling preserves the domains of the moments of the position and momentum observables on $L^2(\R)$. The only additional constraint in the present case is the imposition of the boundary conditions, which are easily shown to be preserved. One can verify equations~\eqref{eqn:box-ur-rescaling-1} and~\eqref{eqn:box-ur-rescaling-2} by directly computing the integrals.
 \end{proof}
 
 \begin{lem}
@@ -503,8 +505,8 @@ Now as $x\to a^-$ we have $\lambda\to 0^+$ and obtain
 The proof for $x\to a^+$ is similar.
 \end{proof}
 
-\subsubsection{Analytical bounds on the boundary function}
-\label{subsubsec:box-ur-analytical-bounds}
+\section{Analytical bounds on the boundary function}
+\label{sec:box-ur-analytical-bounds}
 We first note that a simple bound may be obtained by recalling that the position and momentum observables $\ope,\opf$ we have defined are essentially restrictions of the standard position and momentum observables on $L^2(\R)$. In particular given a state $\varphi\in\dom{\opf}$ there exists a state $(l\varphi)\in L^2(\R)$ such that
 \begin{align}
   \expe{\ope[1]}{\varphi} &= \expe{\ope_0[1]}{l\varphi} & \expe{\ope[2]}{\varphi} &= \expe{\ope_0[2]}{l\varphi}\\
@@ -520,8 +522,8 @@ due to Heisenberg, is still valid for the box system. We can not expect that the
 \end{align}
 valid for $x\in\left(0, \frac{\pi^2}{3}-2\right)$. 
 
-\begin{lem}\label{lem:box-ur-b-asymtotic-to-hyperbola}
-  As the position variance becomes small the boundary function $b$ is asymtotic to the canonical hyperbola, that is
+\begin{lem}\label{lem:box-ur-b-asymptotic-to-hyperbola}
+  As the position variance becomes small the boundary function $b$ is asymptotic to the canonical hyperbola, that is
   \begin{align}
     \lim_{x\to 0} x b(x) = \frac{1}{4}.
   \end{align}
@@ -548,7 +550,7 @@ and one can verify
 \begin{align}
   \lim_{s\to 0^+} \var[\ope]{\xi_s}\var[\opf]{\xi_s} = \frac{1}{4}.
 \end{align}
-Combining this limiting upper bound with the lower bound provided equation~\ref{eqn:box-ur-hesenberg-is-a-lower-bound} proves that
+Combining this limiting upper bound with the lower bound provided by equation~\eqref{eqn:box-ur-hesenberg-is-a-lower-bound} proves that
 \begin{align}
   \lim_{x\to 0} x b(x) = \frac{1}{4}.
 \end{align}
@@ -563,9 +565,9 @@ Combining this limiting upper bound with the lower bound provided equation~\ref{
 % \end{align}
 % normalises the state.
 
-\subsubsection{Numerical approximation of $b$}
+\section{Numerical approximation of $b$}\label{sec:box-ur-numerics}
 
-We can do somewhat better that the analytical bounds from section~\ref{subsubsec:box-ur-analytical-bounds} in the interval $\left(\frac{\pi^2}{3} -2,\pi^2\right)$. Here the uncertainty region is convex, and so may be determined by it's convex conjugate. We seek
+We can do somewhat better than the analytical bounds from section~\ref{subsubsec:box-ur-analytical-bounds} in the interval $\left(\frac{\pi^2}{3} -2,\pi^2\right)$. Here the uncertainty region is convex, and so may be determined by its convex conjugate. We seek
 \begin{align}
   c(\alpha) := -b^*(-\alpha) = \inf \left\{b(x) + \alpha x\,\middle|\,x\in \left(\frac{\pi^2}{3} -2,\pi^2\right)\right\},
 \end{align}
@@ -623,183 +625,54 @@ then
 	&= \expe{\opf[2]}{\rho} + \alpha\left(\expe{\ope[2]}{\eta_\alpha} + \expe{\ope}{\rho}^2\right)\\
 	&< \expe{\opf[2] + \alpha\ope[2]}{\eta_\alpha} + \alpha\expe{\ope}{\rho}^2
 \end{align}
-which is an obvious contradiction for $\alpha < 0$, which is the region in which the curve is increasing. We can conclude that in this region the upper bound for the boundary curve gives the exact boundary. 
+which is an obvious contradiction for $\alpha < 0$, which is the region for which we do not yet know $c(\alpha)$. We can conclude that in this region the upper bound for the boundary curve gives the exact boundary. 
 \end{proof}
 
-We are now searching for the ground state, and least eigenvalue, of the operator $H_\alpha$, it is well known that the solutions to
+We are now searching for the ground state, and least eigenvalue, of the operator $H_\alpha$. It is well known that the solutions to
 \begin{align}
   H_\alpha\varphi = \lambda \varphi,
 \end{align}
-are combinations of Whittaker Functions or hypergeometric functions~\cites{Abramowitz-and-Stegun}{Whittaker-and-Watson}. Unfortunately applying the boundary conditions to determine the constants leads to equations which it does not seem possible to solve in terms of any common functions. We therefore resort to computing a numerical approximation to the ground state. We can compute the matrix elements of the operator $H_\alpha$ in the basis of eigenfunctions of $\opf[2]$
+are combinations of Whittaker functions or hypergeometric functions~\cites{Abramowitz-and-Stegun}{Whittaker-and-Watson}. Unfortunately applying the boundary conditions to determine the constants leads to equations which seem impossible to solve in terms of any common functions. We therefore resort to computing a numerical approximation to the ground state. We can compute the matrix elements of the operator $H_\alpha$ in the basis of eigenfunctions of $\opf[2]$
 \begin{align}
-  \braket{\psi_j}{H_\alpha \psi_k} &= \begin{cases}\frac{(k+1)^2}{4} + \alpha\left(\frac{\pi^2}{3} - \frac{2}{\left(k+1\right)^2}\right), & j=k\\ stuff, &\text{otherwise} \end{cases}.
+  \braket{\psi_j}{H_\alpha \psi_k} &= \begin{cases}\frac{(k+1)^2}{4} + \alpha\left(\frac{\pi^2}{3} - \frac{2}{\left(k+1\right)^2}\right), & j=k\\ 32\alpha\frac{(j + 1)(k + 1)}{((j+1)^2-(k+1)^2)^2}, &j+k\text{ is even}\\0, &\text{otherwise} \end{cases}.
 \end{align}
 We then fix some $n\in\N$ and numerically determine the eigenvalues and eigenvectors of an $n\times n$ dimensional truncation of the infinite matrix $\braket{\psi_j}{H_\alpha \psi_k}$. Once we have computed approximate values of $c(\alpha_i)$ for a large enough set of values $\alpha_i$ we can compute the variances by numerically approximating the derivative
 \begin{align}
   c^\prime(\alpha) &= \var[\eta_\alpha]{\ope}\\
   c(\alpha) - \alpha c^\prime(\alpha) &= \var[\eta_\alpha]{\opf}.
 \end{align}
-The resulting curve is plotted in figure~\ref{fig:box-ur}. We note that in addition to the eigenvalue $c(\alpha)$ we obtain a numerical approximation to the ground state $\xi_\alpha$ of $H_\alpha$, we can therefore directly compute approximations to the variances $\var[\eta_\alpha]{\ope}$, and $\var[\eta_\alpha]{\opf}$, this curve is also plotted in figure~\ref{fig:box-ur} but is indistinguishable to the curve obtained by numerical differentiation. We are interested in the direct computation of the variances since in addition to exactly giving the boundary curve $b(x)$ in the interval $\left(\frac{\pi^2}{3} -2, \pi^2\right)$ the ground states are upper bounds on the boundary curve everywhere, as all states are, explicitly
+The resulting curve is plotted in figure~\ref{fig:box-ur}. We note that in addition to the eigenvalue $c(\alpha)$ we obtain a numerical approximation to the ground state $\xi_\alpha$ of $H_\alpha$. We can therefore directly compute approximations to the variances $\var[\eta_\alpha]{\ope}$, and $\var[\eta_\alpha]{\opf}$, this curve is also plotted in figure~\ref{fig:box-ur} but is indistinguishable to the curve obtained by numerical differentiation. We are interested in the direct computation of the variances since in addition to exactly giving the boundary curve $b(x)$ in the interval $\left(\frac{\pi^2}{3} -2, \pi^2\right)$ the ground states are upper bounds on the boundary curve everywhere, as all states are, explicitly
 \begin{align}\label{eqn:box-ur-hamiltonian-gs-ineq}
   b\left(\var[\eta_\alpha]{\ope}\right) \leq \var[\eta_\alpha]{\opf}.
 \end{align}
-This is the reason that the curve is plotted both for the entire interval $(0, \pi^2)$. We conjecture that the ground states of $H_\alpha$ are, in fact optimisers of $b$ globally, rather than just on the interval $\left(\frac{\pi^2}{3} -2, \pi^2\right)$, in other words we conjecture that the inequality in equation~\ref{eqn:box-ur-hamiltonian-gs-ineq} is an equality. We note that this is implied by a seemingly natural assumption, that among the optimisers of momentum variance for each fixed position variance, there exist those with position expectation equal to zero.
+This is the reason that the curve is plotted for the entire interval $(0, \pi^2)$. We conjecture that the ground states of $H_\alpha$ are, in fact, optimisers of $b$ globally, rather than just on the interval $\left(\frac{\pi^2}{3} -2, \pi^2\right)$, in other words we conjecture that the inequality in equation~\ref{eqn:box-ur-hamiltonian-gs-ineq} is an equality. We note that this is implied by a seemingly natural assumption, that among the optimisers of momentum variance for each fixed position variance, there exist those with position expectation equal to zero.
 
-\subsubsection{Comparisons}
+\section{Comparisons}\label{sec:box-ur-comparisons}
 
-We have already compared our results for the particle in a box with the well known variance uncertainty relation for the particle on the line. The particle on a line hyperbola is everywhere a lower bound for the boundary function $b$ for the particle in a box. We have shown that the two curves are asymtotic to each other in the limit as the variance becomes small in lemma~\ref{lem:box-ur-b-asymtotic-to-hyperbola}, that is
+We have already compared our results for the particle in a box with the well known variance uncertainty relation for the particle on the line. The particle on a line hyperbola is everywhere a lower bound for the boundary function $b$ for the particle in a box. We have shown that the two curves are asymptotic to each other in the limit as the variance becomes small in lemma~\ref{lem:box-ur-b-asymptotic-to-hyperbola}, that is
 \begin{align}
   \lim_{x\to 0} \frac{b(x)}{\frac{1}{4x}} = 1.
 \end{align}
 This is quite natural, loosely one would expect that the more concentrated the box states are around the origin, the less the boundary conditions influence them. 
 
-We would also like to compare our results with those from the particle on a ring system addressed in ref.~\cite{sharp-ur-num-angle}. Of course the variance is not defined for a probability measure on a ring, for the simple reason that the variance requires the mean in order to be defined and, in general, probability measures on a ring do not have means. One can consider, for example, the uniform probability measure, which assigns the same probability density to each point on the ring. Busch, Kiukas and Werner address this by considering the quantity
-\begin{align}
-  \wsDev{\mu}[\alpha] = \inf_{x_0\in\mathsf{A}} \left(\int_{\mathsf{A}} d(x,x_0)^\alpha d\mu(x)\right)^\frac{1}{\alpha},
-\end{align}
-we defined in equation~\ref{eqn:wassersten-variance}. As shown in lemma~\ref{lem:prelims-wasserstein-var-equals-var} for probability measures on the reals this quantity is identical to the usual variance. In contrast to the case of the particle on a ring, a probability measure $\mu$ defined on the interval $[-\pi,\pi]$ may be considered identical to a probability measure on $\R$ which is supported only on $[-\pi,\pi]$. More explicitly, given $\mu:\mathcal{B}([-\pi,\pi])$ we may define
-\begin{align}
-  \mu_\R&: \mathcal{B}(\R) \to [0,1]\\
-  \mu_\R(X) = \mu(X\cap [-\pi,\pi]).
-\end{align}
-We are therefore free to interpret the variances we have been considering in this chapter as $2$-deviations, and directly compare them to the $2$-deviations computed in ref.~\cite{sharp-ur-num-angle}.
+We would also like to compare our results with those from the particle on a ring system addressed in ref.~\cite{sharp-ur-num-angle}, in which $\alpha$-deviations are used to quantify the spread of distributions. As shown in lemma~\ref{lem:prelims-wasserstein-var-equals-var}, for probability measures on the reals this quantity is identical to the usual variance. In contrast to the case of the particle on a ring, a probability measure $\mu$ defined on the interval $[-\pi,\pi]$ may be considered identical to a probability measure on $\R$ which is supported only on $[-\pi,\pi]$. 
+% More explicitly, given $\mu:\mathcal{B}([-\pi,\pi])$ we may define
+% \begin{align}
+%   \mu_\R&: \mathcal{B}(\R) \to [0,1]\\
+%   \mu_\R&:X\mapsto \mu(X\cap [-\pi,\pi]).
+% \end{align}
+We are therefore free to interpret the variances we have been considering in this chapter as $2$-deviations, and directly compare them to the $2$-deviations computed in ref.~\cite{sharp-ur-num-angle}. We invite the reader to compare figures~\ref{fig:box-ur} and~\ref{fig:ring-ur}, depicting the particle in a box, and on a ring, $2$-deviation based uncertainty regions, respectively.
 
-\subsubsection{Uncertainty diagrams}
-We now turn to the calculation of the bottom of the spectrum of $H_\alpha$, this may be solved numerically by noting that the eigenfunctions $(\phi_i)_{i\in\Z}$ of $\Qd$ are a core for $H_\alpha$. We may therefore approximate $c(\alpha)$ by calculating the least eigenvalue of the $(2n-1)\times (2n-1)$ matrix with entries
-\begin{align}
-  (h_\alpha)_{ij} &= \braket{\phi_{i-n}}{H_\alpha \phi_{j-n}}\\
-                  &= \begin{cases}(i-n)^2 + \alpha\frac{\pi^2}{3},& i = j\\ \frac{2 \alpha(-1)^{i+j}}{(i-j)^2}, & \text{otherwise}\end{cases}
-\end{align}
-for sufficiently large $n\in\N$. We can recover the graph of $b$ by (numerically) differentiating, 
-\begin{align}
-  \left\{(x,b(x))\middle|x\in \left(0,\frac{\pi^2}{3}\right)\right\} = \left\{ (c^\prime(\alpha), c(\alpha)-\alpha c^\prime(\alpha))\middle| \alpha > 0\right\}
-\end{align}
-the resulting curve is plotted in figure \ref{fig:ring-ur}.
-
-\begin{figure}
+\begin{figure}[ht]
   \centering
-  \includegraphics[width=0.8\textwidth]{ring-ur}
-  \caption{The uncertainty region for the particle on a ring system, showing the curve obtained from the least eigenvalues of the operators $\Qd^2 + \alpha \MOD P^2$.}
-  \label{fig:ring-ur}
+  \includegraphics[width=0.6\textwidth]{box-ur}  
+  \caption{The uncertainty region for the particle in a box system, showing the curve obtained from the least eigenvalues of the operators $H_\alpha$ (solid curve), this is the exact boundary curve on the right hand side of the vertical line at $\sqrt{\frac{\pi^2}{3} -2}$ (dashed). On the left hand side the true curve lies between the solid curve and the canonical hyperbola (dotted).}
+  \label{fig:box-ur}
 \end{figure}
 
-\subsection{Projective detection of interference}
-
-We now proceed to the case (b) where the position on the second detector is recorded without identifying the endpoints of the interval, that is, distance between $\pi-\epsilon$ and $-\pi+\epsilon$ approaches $2\pi$ as $\epsilon\rightarrow 0$, acknowledging the fact that the maximum and minimum points of the spectrum of $\MOD P$ are $2\pi$ distance apart from each other.
-
-As discussed above, the appropriate observable conjugate to $\MOD P$ now has continuous outcome set (in fact the whole of $\mathbb R$), and the solutions of the covariance system are characterised by dilation into $L^2(\mathbb R, \mathcal K_0)$ where it acts as the canonical position $Q$, and there is an isometry $\iota_0:\mathcal H_0\mapsto \mathcal K_0$. Applying the usual Fourier transform we write this as 
-\begin{align}
-UE(X)U^* = V^* (E^P(X)\otimes \id_{\mathcal K_0})V,
-\end{align}
-where $V:L^2([-\pi,\pi], \mathcal H_0)\to L^2(\mathbb R, \mathcal K_0)$ is an isometry for which $e^{ip Q\otimes \id}V=Ve^{ipQ_0\otimes \id}$, that is, $e^{ip Q\otimes \id}VI^* =VI^*e^{ipQ\otimes \id}$ where $I:L^2([-\pi,\pi], \mathcal H_0)\to L^2(\mathbb R, \mathcal K_0)$ is the isometry $(I\psi)(p) = \iota_0\psi_p$ for $p\in [-\pi,\pi]$ and zero elsewhere. Then $S:=VI^*$ commutes with $Q\otimes \id$ and hence must be decomposable in $L^2(\mathbb R,\mathcal K_0)$, that is, of the form $(S\psi)(p) = S_p\psi_p$, where $(S\psi)(p)=0$ for all $\psi$ for which $\psi_p$ vanishes on $[-\pi,\pi]$. The latter is only possible if $S_p=0$ outside $[-\pi,\pi]$, which implies that $V = VI^*I = SI$ has its range in $L^2([-\pi,\pi], \mathcal K_0)$, as in the periodic case. However, we now have $E^P(dp)=|e^{ipn}\rangle\langle e^{ipn}| dp$, that is, the spectral measure of the standard momentum with the continuum of ``eigenvectors'' $e^{ixp}$ respecting the Dirac delta normalisation, and since the outcome set is not equal to the dual group of $[-\pi,\pi]$, there are no spectral measure solutions - every possible path observable is a POVM with no projections in its range. Another way of saying this is that $VV^*$ cannot commute with all $E^P(X)$, which is explicit since $VV^*=SII^*S$ contains the spectral projection $II^*$ of $Q\otimes \id$.
-
-In this case the resulting uncertainty measure reads
-\begin{align}
-  \delta(E,\psi)^2 = \inf_{x_0\in \mathbb R} \int (x-x_0)^2 E_\psi(dx) = \inf_{x_0}\int x^2 E_{e^{-ix_0\MOD P}\psi}(dx),
-\end{align}
-by covariance, and again this is finite exactly when $\psi$ is in the square integrability domain
-\begin{align}
-  \left\{ \psi\middle | \int x^2 E_{\psi}(dx) <\infty\right\},
-\end{align}
-and in this case
-\begin{align}
-  \delta(E,\psi)^2 = \int x^2 E_\psi(dx) - \langle \psi| E[1]\psi\rangle^2 = \var{E_\psi},
-\end{align}
-where $E[1]$ is defined on the square integrability domain, provided the latter is dense. Now looking at the dilation we easily see that
-\begin{align}
-  UE[1]U^* = V^*(P\otimes \id)V,
-\end{align}
-where $P\otimes \id$ is unique selfadjoint extension of the corresponding algebraic tensor product operator. Since $(V\psi)(p)= S_p\iota_0\psi_p$ vanishes outside $[-\pi,\pi]$, and nevertheless needs to be absolutely continuous to make the uncertainty quantity finite,  $S_p\iota_0\psi_p$ must be absolutely continuous and hence vanish at the boundaries. Since each $S_p\iota_0$ is an isometry, this implies that $\psi_{-\pi}=\psi_{\pi}=0$. Hence the \emph{finiteness of the uncertainty quantity forces the Dirichlet boundary conditions if covariance holds.}
-
-Now in general we can write 
-\begin{align}
-  \delta(E,\psi)^2 = \|E[1]\psi\|^2 - \langle \psi| E[1]\psi\rangle^2 + N_E(\psi)
-\end{align}
-where $N_E(\psi) := \int x^2 E_\psi(dx) -\|E[1]\psi\|^2$ is called the \emph{variance form} \cite{werner-screen-obs}. Since $E$ is not projection valued, $N_E$ is typically not zero, in which case the ``intrinsic noise'' of the observable adds to the uncertainty. Hence from the point of view of sharp uncertainty relations it makes sense to restrict to observables with $N_E(\psi)=0$, which are called \emph{variance free} \cite{}. In this case the uncertainty quantity reduces to the form identical to the projection valued case, namely
-\begin{align}
-  \delta(E,\psi)^2 = \|E[1]\psi\|^2 - \langle \psi| E[1]\psi\rangle^2 = \inf_{x_0} \| E[1]e^{-ix_0\MOD P}\psi\|^2,
-\end{align}
-where we note that the domain is invariant under $e^{ix_0\MOD P}$.
-
-If we define $P_0\otimes \id$ as the operator with domain consisting of functions $\psi\in L^2(\mathbb R,\mathcal H_0)$ absolutely continuous in the strong sense of the existence of $\psi'\in L^2(\mathbb R,\mathcal H_0)$ for which $\psi_p = \int_{-\pi}^p \psi_p'dp'$ (where integral is Bochner, and we recall that $L^2$-functions are automatically integrable since the interval is bounded), and $\psi_{-\pi}=\psi_\pi=0$, we may also write
-\begin{align}
-E[1] = V^* (P_0\otimes \id) V.
-\end{align}
-One can then easily check that $P_0\otimes \id$ is closed (same standard proof as with $P_0$ itself), and hence the variance-free condition implies that $E[1]$ is also closed, so the von Neumann theorem implies that $E[1]^*E[1]$ is selfadjoint on its domain as long as the domain of $E[1]$ is dense. Moreover, $VV^*P_0\otimes \id V\psi=(P_0\otimes \id) V\psi$ for any $\psi$ in the domain (by the stated invariance), and hence 
-\begin{align}
-  E[1]^*E[1]\supset V^*(P_0^*P_0\otimes \id)V = V^*(H_0\otimes \id)V
-\end{align}
-where $H_0$ is the usual ``particle in a box'' Hamiltonian. Consequently, for $\psi$ in this smaller domain, we obtain
-\begin{align}
-  \delta(E,\psi)^2 &= \inf_{x_0} \expe{H_0}{Ve^{i x_0\MOD P}\psi}\\
-                   &= \inf_{x_0} \expe{H_0}{e^{i x_0 Q_0}V\psi}\\
-  \delta(\MOD P,\psi)^2 &= \expe{Q_0^2}{V\psi} -\langle Q_0\rangle_{V\psi}^2.
-\end{align}
-The expectation term $\langle Q_0\rangle_{V\psi}$ reflects the fact that we do not have covariance for the other direction, that is, $P_0$ does not generate translations in the spectrum of $\MOD P$. Hence the uncertainty diagram will be more complicated in this case. However, if we restrict to the zero expectation subspace $\mathcal M := V^*(\xi_0\otimes \mathcal K_0)^\perp$ where
-$\xi_0(p) =p$, we obtain the family of uncertainty relations
-$$
-\delta(E,\psi)^2+\alpha\delta(\MOD P,\psi)^2\geq c(\alpha)
-$$
-where $c(\alpha)$ is the bottom eigenvalue of the particle in the box Hamiltonian $H_0+\alpha Q_0^2$. The corresponding minimum uncertainty states are of the form $\psi = V^*(\varphi_\alpha\otimes\xi)$, provided that the range of $V$ contains at least of such product state, which happens when $V_pV_p^*\xi =\xi$ for almost all $p$, that is, the intersection of the ranges of $V_p$ is nontrivial.
-
-Notice that there are easy examples where the domain is dense but does not contain any product vectors: for instance, if $V_p=V_-$ for $-\pi<p<0$ and $V_p=V_+$ for $0<p<\pi$ where the isometries $V_\pm$ have orthogonal ranges, then the domain consists of those vectors $\psi$ for which $\psi_p$ is absolutely continuous and vanishes at $-\pi$, $0$, and $\pi$. This case is variance-free since the derivative of $V_p\psi_p$ is just $V_p\psi_p'$, that is, is included in the range of $V$. It might be interesting to see if one can still get arbitrarily close to the minimum.
-
-Hence in this case the form of the minimum uncertainty states is not so clearly fixed as in the periodic case. However, \emph{if we make the additional assumption that the minimum uncertainty must be reached}, that is, for at least one $\xi$ there is a $\psi$ in the domain so that $\varphi_\alpha\otimes\xi = VU\psi$ so $\varphi_\alpha(p) \xi = V_pU\psi_p$, that is, $U\psi_p= \eta_\alpha(p) V_p^*\xi$. Now $V$ need not be unitary so the isometry relation \eqref{orth} of the periodic case need not hold (so that integer translates of $\eta$ overlap), and continuous convolution is more appropriate - we have $\hat \psi(p) = \varphi_\alpha(p) \hat \eta(p)$ where $\varphi_\alpha$ is extended periodically over the whole $\mathbb R$, and $\hat \eta(p)$ is constructed so that $\hat\eta(p+n2\pi)= \langle n|V_p^*\xi\rangle$ for $p\in [-\pi,\pi]$. Now there is no constraint on the translates of $\eta$ being orthogonal, the inverse Fourier transform becomes convolution, and we end up with a continuous version of \eqref{minURC}:
-\begin{align}\label{minUR2}
-\psi(x) &= \int_{-\infty}^\infty dy\left[\int_{-\pi}^\pi dp \,e^{iyp}\varphi_\alpha(p)\right] \eta(x-y)
-%&=\int_{-\infty}^\infty dy\left[\int_{-\pi}^\pi dp \,e^{i(x-y)p}\varphi_\alpha(p)\right] \eta(y)
-\end{align}
-
-\subsubsection{Uncertainty diagram}
-
-Here we consider the case of the ``particle in a box'' system, the subset of $L^2([-\pi,\pi])$, of absolutely continuous functions, with absolutely continuous first derivatives. As indicated above the uncertainty quantity may only be finite if  $\psi(-\pi) = \psi(\pi) = 0$ are imposed, so we restrict to the subspace that respects these boundary conditions. On this space the operators position and momentum operators are defined in the usual way
-\begin{align}
-  (Q_0 \varphi)(x) &= x \varphi(x)\\
-  P_0\varphi &= -i \varphi^\prime.
-\end{align}
-For any state in this space there is one with identical position and momentum variances, and momentum expectation value zero so, without loss of generality, we restrict our attention to the momentum expectation zero subspace. Obviously it is possible to construct states supported within $[-\varepsilon, \varepsilon]$ for any $\varepsilon>0$, similarly it is possible to construct states supported within $[-\pi, -\pi+\varepsilon]\cup [\pi-\varepsilon, \pi]$. We also note that given a state we can arbitrarily increase its ``momentum'' uncertainty, without changing the ``position'' uncertainty, for example by applying the operator $e^{i a Q_0^2}$ for some $a\in\R$. These considerations imply that the uncertainty region is entirely defined by the lower boundary function
-\begin{align}
-  b&:(0,\pi^2)\to \R^+\\
-  b(x) &:= \inf_{\rho\in S(x)} \left\langle P_0^2\right\rangle_\rho,
-\end{align}
-where $S(x) = \left\{\rho\middle|\var{E^{Q_0}_\rho} = x \right\}$. There is a global minimum of this function $b\left(\frac{\pi^2}{3} -2\right) = \frac{1}{4}$, obtained by the ground state $\varphi_0$ of $H_0$. It is useful to note that the position expectation of $\varphi_0$ is zero, mixing (at the level of density operators) the minimising states with $\var{E^{Q_0}_\rho}\neq\frac{\pi^2}{3} -2$ with the projector $\ketbra{\varphi_0}{\varphi_0}$, one can show that $b$ is strictly decreasing on the open interval $\left(0,\frac{\pi^2}{3} -2\right)$ and strictly increasing on $\left(\frac{\pi^2}{3} -2,\pi^2\right)$. It is convenient to consider the two cases separately, we will refer to the region where $\var{E^{Q_0}_\rho} < \frac{\pi^2}{3} -2$ as the left hand side, and that where $\var{E^{Q_0}_\rho} > \frac{\pi^2}{3} -2$ as the right, in accordance with figure \ref{fig:box-ur}.
-
-The concavity of $\rho\mapsto\var{E^{Q_0}_\rho}$ combined with the linearity of $\rho\mapsto \expe{P_0^2}{\rho}$ implies that on the right hand side the function $b$ is convex. We can therefore recover $b$ in this region from the convex conjugate
-\begin{align}
-  c(\alpha) &= -b^*(-\alpha)\\
-  \label{eqn:rhs-conjugate}
-            &= \begin{cases}\inf_{\rho}\expe{P_0^2}{\rho} + \alpha\var{E^{Q_0}_\rho}, & \alpha < 0\\
-              \infty, & \alpha \geq 0
-            \end{cases},
-\end{align}
-where we have set $b(x) = \infty$ for $x$ outside $\left(\frac{\pi^2}{3} -2,\pi^2\right)$, to restrict to the region of interest. We now show that, for negative $\alpha$, the infimum in \eqref{eqn:rhs-conjugate} is achieved by the ground state $\psi_\alpha$ of the operator $P_0^2 + \alpha Q_0^2$, to see this assume the contrary, there exists a state $\rho$ such that 
-\begin{align}
-  \expe{P_0^2}{\rho} + \alpha\var{E^{Q_0}_\rho} &< \expe{P_0^2}{\psi_\alpha} + \alpha\var{E^{Q_0}_{\psi_\alpha}},
-\end{align}
-rearranging, and noting that $\expe{Q_0}{\psi_\alpha} = 0$, we see
-\begin{align}
-  \expe{P_0^2 + \alpha Q_0^2}{\rho} - \alpha\expe{Q_0}{\rho}^2 &< \expe{P_o^2 + \alpha Q_0^2}{\psi_\alpha}\\
-  \implies \expe{P_o^2 + \alpha Q_0^2}{\rho} &< \expe{P_o^2 + \alpha Q_0^2}{\psi_\alpha},
-\end{align}
-contradicting the definition of $\psi_\alpha$. Note that the assumption that $\alpha < 0$, resulting from restricting our attention to the right hand side, is critical to the derivation. 
-
-We now turn out attention to the left hand side of \ref{fig:box-ur}, here we conjecture, but do not show, that the states with minimal uncertainty are once again the ground states of the Hamiltonian $P_0^2 + \alpha Q_0^2$, now with $\alpha >0$. If our conjecture is false then the curve we derive by solving the ground state problems will be an upper bound for the true boundary curve $b$. It is therefore interesting to look for a lower bound for $b$, an obvious choice is given by the isometry $I:L^2([-\pi,\pi])\to L^2(\R)$
-\begin{align}
-  (I\psi)(x) = \begin{cases}\psi(x),&x\in [-\pi,\pi]\\ 0, &\text{else}\end{cases}.
-\end{align}
-The usual $L^2(\R)$ position and momentum variances of $I\rho I^{*}$ are identical to the respective uncertainty quantities of $\rho$, the latter are therefore are subject to Heisenberg's uncertainty relation
-\begin{align}
-  \expe{P_0^2}{\rho} \var{E^{Q_0}_{\rho}} &= \var{E^{Q}_{I\rho I^{*}}} \var{E^{P}_{I\rho I^{*}}} \geq \frac{1}{4}.
-\end{align}
-In the limit of small position uncertainties this lower bound becomes tight, in the sense that
-\begin{align}
-  \lim_{x\to 0^{+}} x b(x) = \frac{1}{4},
-\end{align}
-which can be demonstrated by considering a sequence of truncated Gaussian states, equal to Gaussians with standard deviations $\sigma_n$ within the interval $[-\pi+\sigma_n, \pi-\sigma_n]$ and linearly interpolating between their values at $\pm (\pi-\sigma_n)$ and $\pm \pi$ outside as $\sigma_n \to 0$.
-
-\begin{figure}
+\begin{figure}[ht]
   \centering
-  \includegraphics[width=0.8\textwidth]{box-ur}  
-  \caption{The uncertainty region for the particle in a box system, showing the curve obtained from the least eigenvalues of the operators $P_0^2 + \alpha Q_0^2$ (solid curve), this is the exact boundary curve on the right hand side of the vertical line at $\sqrt{\frac{\pi^2}{3} -2}$ (dashed). On the left hand side the true curve lies between the solid curve and the canonical hyperbola (dotted). }
-  \label{fig:box-ur}
+  \includegraphics[width=0.6\textwidth]{ring-ur}  
+  \caption{The uncertainty region for the particle on a ring system. Note that this is identical to the top left panel of figure~1 in ref.~\cite{sharp-ur-num-angle}, and is included here only for comparison with figure~\ref{fig:box-ur}.}
+  \label{fig:ring-ur}
 \end{figure}

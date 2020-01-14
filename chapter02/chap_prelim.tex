@@ -706,17 +706,17 @@ where the minimisation reflects the fact that two points may be connected by arc
 \begin{align}
   \wsDev{\mu}[\alpha] \defeq \inf_{x_0\in\mathsf{A}} \ws{\mu, \delta_{x_0}}[\alpha], \label{eqn:wassersten-variance}
 \end{align}
-where $\delta_{x_0}$ is a point measure supported at $x_0$.  If $\mu$ is a probability measure on the Borel sets of $\R$, with the standard topology, for which the mean and variance exist, it is easy to see that when $\alpha=2$, the infimum in \eqref{eqn:wassersten-variance} is attained where $x_0$ equals the mean and that $\wsDev{\mu}[2]$ equals the standard deviation of $\mu$. The $\alpha$-deviation appears in \cite{blw-meas-uncertainty}, and was applied in \cite{sharp-ur-num-angle} to the case of covariant number and phase observables. Note that the only coupling between a measure and a point measure is the product measure, so the formula \eqref{eq:wasserstein-prob-dists} simplifies substantially in this case
+where $\delta_{x_0}$ is a point measure supported at $x_0$. The $\alpha$-deviation appears in \cite{blw-meas-uncertainty}, and was applied in \cite{sharp-ur-num-angle} to the case of covariant number and phase observables. Note that the only coupling between a measure and a point measure is the product measure, so the formula \eqref{eq:wasserstein-prob-dists} simplifies substantially in this case
 \begin{align}
   \wsDev{\mu}[\alpha] = \inf_{x_0\in\mathsf{A}} \left(\int_{\mathsf{A}} d(x,x_0)^\alpha d\mu(x)\right)^\frac{1}{\alpha}.
 \end{align}
-We prove a piece of ``folklore'', giving connecting $\wsDev{\mu}[2]$, with the standard variance, in the case where $\mu$ is a Borel probability measure on the reals.
+We prove a piece of ``folklore'', giving connecting $\wsDev{\mu}[2]$, with the standard variance for the case where $\mu$ is a Borel probability measure on the reals.
 \begin{lem}\label{lem:prelims-wasserstein-var-equals-var}
   If $\mu$ is a probability measure on the Borel sets of $\R$, with the standard topology, for which first and second moment exist and are finite then 
   \begin{align}
     \wsDev{\mu}[2] = \var{\mu},
   \end{align}
-  furthermore the infimum in equation~\eqref{eqn:wassersten-variance} is achieved at the mean, and nowhere else.
+  where $\var{\mu}$ is the variance. Furthermore the infimum in equation~\eqref{eqn:wassersten-variance} is achieved at the mean, and nowhere else.
 \end{lem}
 \begin{proof}
   We let $\mu$ be a Borel probability measure on $\R$ and consider the function
@@ -733,9 +733,9 @@ We prove a piece of ``folklore'', giving connecting $\wsDev{\mu}[2]$, with the s
   since the first and second moment exist and are assumed to be finite we can apply the linearity of the expected value to obtain
   \begin{align}
     f(x_0) &= \int_{\R} x^2d\mu(x) - 2x_0 \int_{\R} x d\mu(x) + x_0^2\int_{\R} d\mu(x)\\
-           &= \int_{\R} x^2d\mu(x) - 2x_0 \int_{\R} x d\mu(x) + x_0^2,
+           &= \int_{\R} x^2d\mu(x) - 2x_0 \int_{\R} x d\mu(x) + x_0^2.
   \end{align}
-  since this is simply a quadratic in $x_0$ we can obtain the minimum and unique minimzer
+  This is simply a quadratic in $x_0$ so we can obtain the minimum and unique minimzer
   \begin{align}
     \inf_{x_0}f(x_0) &= f\left(\int_{\R} x d\mu(x)\right)\\
                     &= \int_{\R} x^2d\mu(x) - \left(\int_{\R} x d\mu(x)\right)^2,
